@@ -18,6 +18,7 @@ class CreateVenuesTable extends Migration
             $table->string('name');
             $table->foreignId('admin_id');
             $table->string('address')->nullable();
+            $table->string('city')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('website')->nullable();

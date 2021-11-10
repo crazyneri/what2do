@@ -22,7 +22,6 @@ class CreateEventsTable extends Migration
             $table->date('end_date')->nullable();
             $table->time('end_time', $precision = 0);
             $table->text('description')->nullable();
-            $table->tinyInteger('has_end');
             $table->tinyInteger('is_recurring');
             $table->tinyInteger('monday')->nullable();
             $table->tinyInteger('tuesday')->nullable();
