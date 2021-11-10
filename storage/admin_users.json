@@ -22,6 +22,38 @@
         "password": "Psss",
         "phone": "111 222 333",
         "gender": "Female"        
+    },
+    {
+        "role": "super_admin",
+        "name": "Jana Flaskova",
+        "email": "flaskova.jana@gmail.com",
+        "password": "janajana",
+        "phone": null,
+        "gender": "Female"      
+    },
+    {
+        "role": "super_admin",
+        "name": "Jon Doig",
+        "email": "jonathan_doig@hotmail.com",
+        "password": "jonjon",
+        "phone": null,
+        "gender": "Male"
+    },
+    {
+        "role": "super_admin",
+        "name": "Petr Zofak",
+        "email": "petr.zofak@gmail.com",
+        "password": "petrpetr",
+        "phone": null,
+        "gender": "Male"     
+    },
+    {
+        "role": "super_admin",
+        "name": "Jachym Pivonka",
+        "email": "jachympivonka@gmail.com",
+        "password": "jachymjachym",
+        "phone": null,
+        "gender": "Male"     
     }
 ]
 
