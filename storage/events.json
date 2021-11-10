@@ -1,0 +1,167 @@
+[
+    {
+        "venue_id": 1,
+        "name": "No Time to Die",
+        "start_date": "2021-11-25",
+        "start_time": "10:00",
+        "end_date": "2021-11-25",
+        "end_time": "12:00",
+        "description": "Daniel Craig returns one last time as James Bond, starring alongside Oscar-winner Rami Malek in No Time To Die. Bond has left active service and is enjoying life in Jamaica. His peace is short-lived when his old friend Felix Leiter from the CIA turns up asking for help. The mission to rescue a kidnapped scientist turns out to be far more treacherous than expected, leading Bond onto the trail of a mysterious villain armed with dangerous new technology.",
+        "price": 70,
+        "is_recurring": 0
+    },
+    {
+        "venue_id": 1,
+        "name": "I Never Cry + I Am Here",
+        "start_date": "2021-11-25",
+        "start_time": "20:15",
+        "end_date": "2021-11-25",
+        "end_time": "12:45",
+        "description": "Seventeen-year-old Ola travels from Poland to Ireland, where her father tragically died while working on a construction site. Her mother gives her the euros she has saved and a daunting task. A coming-of-age road movie with no shortage of drama, sensitivity or humour. Director Domalewski once again takes on the theme of Polish labour migration, his previous film Silent Night (2017) screened at BFF 2018.",
+        "price": 150,
+        "is_recurring": 0
+    },
+    {
+        "venue_id": 1,
+        "name": "25 Years of Innocence",
+        "start_date": "2021-11-26",
+        "start_time": "20:00",
+        "end_date": "2021-11-26",
+        "end_time": "21:30",
+        "description": "An incredible story based on a true miscarriage of justice. Tomasz Komenda was sentenced to 25 years in prison for the rape and brutal murder of a young girl. His innocence was only proven after 18 long years in prison. In addition to the first-class acting performances, the film was also praised for the direction of debutant Jan Holoubek",
+        "price": 150,
+        "is_recurring": 0
+    },
+    {
+        "venue_id": 1,
+        "name": "Icarus. The Legend of Mietek Kosz",
+        "start_date": "2021-11-27",
+        "start_time": "18:10",
+        "end_date": "2021-11-27",
+        "end_time": "20:30",
+        "description": "Inspired by true events, a story of a blind grand piano genius. As a child Mietek loses his sight. His mother places him in the care of the nuns in Laski. At the centre for the blind the boy discovers that music may be his way of seeing the world again and of describing it. Mietek goes on to become a brilliant classical pianist. Once he discovers jazz music, though, he has only one goal left: to become the best jazz pianist in Poland. He is more and more successful, not only in Poland but around the world. He wins the prestigious Montreux Jazz Festival. Unexpectedly, a charismatic vocalist, Zuza, walks into his life. This meeting will change it forever.",
+        "price": 150,
+        "is_recurring": 0
+    },
+    {
+        "venue_id": 1,
+        "name": "Dreams About Stray Cats",
+        "start_date": "2021-11-29",
+        "start_time": "15:00",
+        "end_date": "2021-11-29",
+        "end_time": "16:30",
+        "description": "“Do you know what I’ve always wanted to find out, brother? Where do you get your ideas for your drawings?” director David Sís asks his older brother Petr at the beginning of the film. Instead of answering, the internationally renowned artist lets this expansive documentary speak for him as it traces his life from childhood and forced emigration to the United States, through to the present day. Via a collage of archival materials, interviews, and animated segments, the film captures the life of this immensely talented Renaissance man, journalist, one of the first Czech DJs, and animator whose film The Heads (1980) earned an award at the Berlinale… and that was just the start of his career. A homage free of pathos but characterized by immense respect and (brotherly) love. That is Dreams About Stray Cats.",
+        "price": 70,
+        "is_recurring": 0
+    },
+    {
+        "venue_id": 2,
+        "name": "Dune",
+        "start_date": "2021-11-28",
+        "start_time": "21:15",
+        "end_date": "2021-11-28",
+        "end_time": "22:30",
+        "description": "Feature adaptation of Frank Herbert's science fiction novel, about the son of a noble family entrusted with the protection of the most valuable asset and most vital element in the galaxy.",
+        "price": 180,
+        "is_recurring": 0
+    },
+    {
+        "venue_id": 2,
+        "name": "My Sunny Maad",
+        "start_date": "2021-11-29",
+        "start_time": "16:30",
+        "end_date": "2021-11-29",
+        "end_time": "18:00",
+        "description": "When Herra, a young Czech woman, falls in love with Nazir, an Afghan, she has no idea what kind of life awaits her in post-Taliban Afghanistan, nor of the family she is about to integrate into. A liberal grandfather, an adopted child who is highly intelligent and Freshta, who would do anything to escape her husband's violent grip.",
+        "price": 120,
+        "is_recurring": 0
+    },
+    {
+        "venue_id": 2,
+        "name": "No Time To Die",
+        "start_date": "2021-11-25",
+        "start_time": "20:00",
+        "end_date": "2021-11-25",
+        "end_time": "22:30",
+        "description": "James Bond has left active service. His peace is short-lived when Felix Leiter, an old friend from the CIA, turns up asking for help, leading Bond onto the trail of a mysterious villain armed with dangerous new technology.",
+        "price": 200,
+        "is_recurring": 0
+    },
+    {
+        "venue_id": 2,
+        "name": "Druk",
+        "start_date": "2021-11-26",
+        "start_time": "19:30",
+        "end_date": "2021-11-26",
+        "end_time": "21:00",
+        "description": "Four high school teachers consume alcohol on a daily basis to see how it affects their social and professional lives.",
+        "price": 220,
+        "is_recurring": 0
+    },
+    {
+        "venue_id": 2,
+        "name": "The Nest",
+        "start_date": "2021-11-26",
+        "start_time": "21:30",
+        "end_date": "2021-11-26",
+        "end_time": "22:15",
+        "description": "Life for an entrepreneur and his American family begins to take a twisted turn after moving into an English country manor.",
+        "price": 180,
+        "is_recurring": 0
+    },
+    {
+        "venue_id": 3,
+        "name": "Into the Wild",
+        "start_date": "2021-11-25",
+        "start_time": "20:30",
+        "end_date": "2021-11-25",
+        "end_time": "22:00",
+        "description": "Sean Penn's Into the Wild documents the heartbreaking true story of Christopher McCandless, who shunned society and disappeared into the Alaskan wilderness in 1992 at age 24. McCandless' journey is a tragic one, extraordinarily documented in Jon Krakauer's excellent book by the same name and recreated here.",
+        "price": 140,
+        "is_recurring": 0
+    },
+    {
+        "venue_id": 3,
+        "name": "Home Alone",
+        "start_date": "2021-11-26",
+        "start_time": "18:00",
+        "end_date": "2021-11-26",
+        "end_time": "19:30",
+        "description": "When bratty 8-year-old Kevin McCallister (Macaulay Culkin) acts out the night before a family trip to Paris, his mother (Catherine O'Hara) makes him sleep in the attic. After the McCallisters mistakenly leave for the airport without Kevin, he awakens to an empty house and assumes his wish to have no family has come true. But his excitement sours when he realizes that two con men (Joe Pesci, Daniel Stern) plan to rob the McCallister residence, and that he alone must protect the family home.",
+        "price": 160,
+        "is_recurring": 0
+    },
+    {
+        "venue_id": 3,
+        "name": "Parallel Mothers",
+        "start_date": "2021-11-26",
+        "start_time": "13:30",
+        "end_date": "2021-11-26",
+        "end_time": "14:25",
+        "description": "Two women, Janis and Ana, coincide in a hospital room where they are going to give birth. Both are single and became pregnant by accident. Janis, middle-aged, doesn't regret it and she is exultant. The other, Ana, an adolescent, is scared, repentant and traumatized. Janis tries to encourage her while they move like sleepwalkers along the hospital corridors. The few words they exchange in these hours will create a very close link between the two, which by chance develops and complicates, and changes their lives in a decisive way.",
+        "price": 70,
+        "is_recurring": 0
+    },
+    {
+        "venue_id": 3,
+        "name": "My Neighbor Totoro",
+        "start_date": "2021-11-26",
+        "start_time": "15:25",
+        "end_date": "2021-11-26",
+        "end_time": "17:00",
+        "description": "From the legendary and highly celebrated Studio Ghibli, creators of Spirited Away and princess Mononoke, comes My Neighbor Totoro, a classic masterpiece for the whole family from filmmaker Hayao Miyazaki.",
+        "price": 160,
+        "is_recurring": 0
+    },
+    {
+        "venue_id": 3,
+        "name": "King Richard",
+        "start_date": "2021-11-27",
+        "start_time": "20:30",
+        "end_date": "2021-11-27",
+        "end_time": "22:10",
+        "description": "A look at how tennis superstars Venus and Serena Williams became who they are after the coaching from their father Richard Williams.",
+        "price": 140,
+        "is_recurring": 0
+    }
+]

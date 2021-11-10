@@ -1,0 +1,93 @@
+[
+    {
+        "name": "Bio Oko",
+        "admin_id": 1,
+        "address": "Františka Křížka 460/15, 170 00 Prague 7",
+        "city": "Prague",
+        "email": "info@biooko.net",
+        "phone": "+420 776 622 940",
+        "website": "https://www.biooko.net/en",
+        "map_link": "https://goo.gl/maps/9JJXA6TruSEtFVY97"
+    },
+    {
+        "name": "Kino Pilotu",
+        "admin_id": 2,
+        "address": "Donská 168/19, 101 00 Praha 10",
+        "city": "Prague",
+        "email": "kinopilotu@mimesis.cz",
+        "phone": "+420 723 985 986",
+        "website": "https://kinopilotu.cz/",
+        "map_link": "https://goo.gl/maps/f8SiUUSiotS7cCx77"
+    },
+    {
+        "name": "Kino Aero",
+        "admin_id": 3,
+        "address": "Biskupcova 31, 130 00 Prague 3",
+        "city": "Prague",
+        "email": "info@kinoaero.cz",
+        "phone": "+420 608 330 088",
+        "website": "https://www.kinoaero.cz/en",
+        "map_link": "https://goo.gl/maps/4gSNY5wf9y5PHb4t9"
+    },
+    {
+        "name": "Lucerna Music Bar",
+        "admin_id": 1,
+        "address": "Vodickova 36, 110 00 Prague 1",
+        "city": "Prague",
+        "email": "tickets@musicbar.cz",
+        "phone": "+420 151 542 645",
+        "website": "https://musicbar.cz/en/",
+        "map_link": "https://goo.gl/maps/1SjmHFr1vdCUimYB9"
+    },
+    {
+        "name": "Roxy",
+        "admin_id": 2,
+        "address": "Dlouhá 33, 110 00 Prague 1" ,
+        "city": "Prague",
+        "email": "laf@roxy.cz",
+        "phone": "+420 775 541 430",
+        "website": "https://www.roxy.cz/en/",
+        "map_link": "https://goo.gl/maps/BNkMez62rRYRwGE66"
+    },
+    {
+        "name": "Cross Club",
+        "admin_id": 3,
+        "address": "Plynární 23, 170 00 Prague 7",
+        "city": "Prague",
+        "email": "lorenzo@cros­sclub.cz",
+        "phone": "+420 776 622 940",
+        "website": "https://www.crossclub.cz/en/contact/?secured=1",
+        "map_link": "https://goo.gl/maps/LNK1mpdG9KFruCFF7"
+    },
+    {
+        "name": "Dejvicke divadlo",
+        "admin_id": 1,
+        "address": "Zelená 1084/15a, 160 00 Prague 6",
+        "city": "Prague",
+        "email": "dejvickedivadlo@dejvickedivadlo.cz",
+        "phone": "+420 233 339 108",
+        "website": "https://www.dejvickedivadlo.cz/en",
+        "map_link": "https://goo.gl/maps/Hfa5KhGBtwK7r8AJ7"
+    },
+    {
+        "name": "Narodni divadlo",
+        "admin_id": 2,
+        "address": "Narodni 2, 110 00 Prague 1",
+        "city": "Prague",
+        "email": "info@national-theatre.cz",
+        "phone": "+420 224 901 448",
+        "website": "https://www.narodni-divadlo.cz/en",
+        "map_link": "https://goo.gl/maps/3tDqTcQygGPJkhhF8"
+    },
+    {
+        "name": "Cirk La Putyka",
+        "admin_id": 3,
+        "address": "Bubenské nábřeží 306/13, 170 00  Prague 7",
+        "city": "Prague",
+        "email": "info@laputyka.cz",
+        "phone": "+420 789 454 120",
+        "website": "http://www.laputyka.cz/en",
+        "map_link": "https://goo.gl/maps/vVE7DnnABHFAkxrW9"
+    }
+
+]

@@ -17,6 +17,7 @@ class CreateUserChoicesTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('session_id');
+            $table->float('max_budget', 8, 2)->nullable();
             $table->unsignedBigInteger('category1_id')->nullable();
             $table->unsignedBigInteger('category2_id')->nullable();
             $table->unsignedBigInteger('category3_id')->nullable();

@@ -1,0 +1,201 @@
+[
+    {   
+        "name": "cinema",
+        "parent_id": 0
+    },
+    {
+        "name": "music",
+        "parent_id": 0
+    },
+    {
+        "name": "theater",
+        "parent_id": 0 
+    },
+    {
+        "name": "Action",
+        "parent_id": 1 
+    },
+    {
+        "name": "Adventure",
+        "parent_id": 1 
+    },
+    {
+        "name": "Animation",
+        "parent_id": 1 
+    },
+    {
+        "name": "Biography",
+        "parent_id": 1 
+    },
+    {
+        "name": "Comedy",
+        "parent_id": 1 
+    },
+    {
+        "name": "Crime",
+        "parent_id": 1 
+    },
+    {
+        "name": "Documentary",
+        "parent_id": 1 
+    },
+    {
+        "name": "Drama",
+        "parent_id": 1 
+    },
+    {
+        "name": "Family",
+        "parent_id": 1 
+    },
+    {
+        "name": "Fantasy",
+        "parent_id": 1 
+    },
+    {
+        "name": "Film-Noir",
+        "parent_id": 1 
+    },
+    {
+        "name": "History",
+        "parent_id": 1 
+    },
+    {
+        "name": "Horror",
+        "parent_id": 1 
+    },
+    {
+        "name": "Music",
+        "parent_id": 1 
+    },
+    {
+        "name": "Musical",
+        "parent_id": 1 
+    },
+    {
+        "name": "Mystery",
+        "parent_id": 1 
+    },
+    {
+        "name": "Romance",
+        "parent_id": 1 
+    },
+    {
+        "name": "Sci-Fi",
+        "parent_id": 1 
+    },
+    {
+        "name": "Short",
+        "parent_id": 1 
+    },
+    {
+        "name": "Sport",
+        "parent_id": 1 
+    },
+     {
+        "name": "Thriller",
+        "parent_id": 1 
+    },
+     {
+        "name": "War",
+        "parent_id": 1 
+    },
+     {
+        "name": "Western",
+        "parent_id": 1 
+    },
+    {
+        "name": "Classical",
+        "parent_id": 2 
+    },
+    {
+        "name": "Country",
+        "parent_id": 2 
+    },
+    {
+        "name": "Electronic",
+        "parent_id": 2 
+    },
+    {
+        "name": "Funk",
+        "parent_id": 2 
+    },
+    {
+        "name": "Hip hop",
+        "parent_id": 2 
+    },
+    {
+        "name": "Jazz",
+        "parent_id": 2 
+    },
+    {
+        "name": "Latin",
+        "parent_id": 2 
+    },
+    {
+        "name": "Pop",
+        "parent_id": 2 
+    },
+    {
+        "name": "Punk",
+        "parent_id": 2 
+    },
+    {
+        "name": "Reggae",
+        "parent_id": 2 
+    },
+    {
+        "name": "Rock",
+        "parent_id": 2 
+    },
+    {
+        "name": "Metal",
+        "parent_id": 2 
+    },
+    {
+        "name": "Soul",
+        "parent_id": 2 
+    },
+    {
+        "name": "R&B",
+        "parent_id": 2 
+    },
+    {
+        "name": "Drama",
+        "parent_id": 3 
+    },
+    {
+        "name": "Opera",
+        "parent_id": 3 
+    },
+    {
+        "name": "Operetta",
+        "parent_id": 3 
+    },
+    {
+        "name": "Musical",
+        "parent_id": 3 
+    },
+    {
+        "name": "Ballet",
+        "parent_id": 3 
+    },
+    {
+        "name": "Pantomime",
+        "parent_id": 3 
+    },
+    {
+        "name": "Dance",
+        "parent_id": 3 
+    },
+    {
+        "name": "Puppet theater",
+        "parent_id": 3 
+    }
+]	
+
+
+
+
+
+
+

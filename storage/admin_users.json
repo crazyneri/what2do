@@ -1,0 +1,28 @@
+[
+    {
+        "role": "admin",
+        "name": "Joseph Stalin",
+        "email": "josephstalin@hotmail.com",
+        "password": "Im_the_boss_here",
+        "phone": "666 666 666",
+        "gender": "Neutral"        
+    },
+    {
+        "role": "admin",
+        "name": "Albert Einstein",
+        "email": "albert@bum.com",
+        "password": "Im_clever",
+        "phone": "123 456 789",
+        "gender": "Male"        
+    },
+    {
+        "role": "admin",
+        "name": "Cleopatra",
+        "email": "cleo@patra.com",
+        "password": "Psss",
+        "phone": "111 222 333",
+        "gender": "Female"        
+    }
+]
+
+
