@@ -190,6 +190,10 @@
     {
         "name": "Puppet theater",
         "parent_id": 3 
+    },
+    {
+        "name": "Folk",
+        "parent_id": 2 
     }
 ]	
 
