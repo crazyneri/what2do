@@ -21,6 +21,6 @@ class Group extends Model
     }
     public function owner()
     {
-        return $this->hasOne(Person::class, 'groups', 'id', 'owner_id');
+        return $this->belongsTo(Person::class, 'groups', 'id', 'owner_id');
     }
 }
