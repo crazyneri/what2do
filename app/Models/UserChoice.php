@@ -4,26 +4,24 @@ namespace App\Models;
 
 use App\Models\Category;
 use App\Models\SearchSession;
-use App\Models\Venue;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model
+class UserChoice extends Model
 {
     use HasFactory;
 
-    public function categories()
+    public function user()
     {
-        return $this->belongsToMany(Category::class);
-    }
-
-    public function venue()
-    {
-        return $this->belongsTo(Venue::class);
+        return $this->belongsTo(User::class);
     }
     public function search_session()
     {
         return $this->belongsTo(SearchSession::class);
     }
-
+    public function category()
+    {
+        return $this->hasOne(Category::class);
+    }
 }

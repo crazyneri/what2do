@@ -17,6 +17,7 @@ class CreateSearchSessionsTable extends Migration
             $table->id();
             $table->foreignId('group_id');
             $table->foreignId('event_id');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

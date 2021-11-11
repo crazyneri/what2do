@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Group;
+use App\Models\SearchSession;
+use App\Models\UserChoice;
+use App\Models\Venue;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -41,4 +44,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function user_choices()
+    {
+        return $this->hasMany(UserChoice::class);
+    }
+    public function search_sessions()
+    {
+        return $this->hasMany(SearchSession::class);
+    }
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class);
+    }
+    public function owned_groups()
+    {
+        return $this->hasMany(Group::class, 'groups', 'owner_id', 'id');
+    }
+    public function venues()
+    {
+        return $this->hasMany(Venue::class, 'venues', 'admin_id', 'id');
+    }
 }
