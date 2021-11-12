@@ -10,9 +10,13 @@ class Venue extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name', 'address', 'city', 'phone', 'website', 'map_link', 'admin_id'
+    ];
+
     public function admin()
     {
-        return $this->belongsTo(Person::class, 'venues', 'id', 'admin_id');
+        return $this->belongsTo(User::class, 'venues', 'id', 'admin_id');
     }
 
     public function events()

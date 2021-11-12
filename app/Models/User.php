@@ -59,10 +59,21 @@ class User extends Authenticatable
     }
     public function owned_groups()
     {
-        return $this->hasMany(Group::class, 'groups', 'owner_id', 'id');
+        return $this->hasMany(Group::class, 'owner_id', 'id');
     }
+
     public function venues()
     {
-        return $this->hasMany(Venue::class, 'venues', 'admin_id', 'id');
+        return $this->hasMany(Venue::class, 'admin_id', 'id');
+    }
+
+    public function events(){
+        return $this->hasManyThrough(Event::class, Venue::class, 
+            'admin_id', // Foreign key on the venues table...
+
+        'venue_id', // Foreign key on the events table...
+            'id', // Local key on the venues table...
+            'id' // Local key on the users table...
+        );
     }
 }

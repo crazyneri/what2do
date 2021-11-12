@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// HOME PAGE
 Route::get('/', function () {
     return view('home/index');
 });
+
+// ADMIN PART
+Route::get('/admin', 'AdminController@show');
+
+
+// VENUE PART
+Route::get('venue/{id}', 'VenueController@show');
+Route::get('/admin/venue/create', 'VenueController@create');
+Route::post('/admin/venue/create', 'VenueController@store');

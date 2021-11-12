@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
         // DELETE ALL DATA
         DB::table('users')->truncate();
 
-        $users = json_decode(file_get_contents(storage_path('admin_users.json')));
+        $users = json_decode(file_get_contents(storage_path('users.json')));
 
         foreach($users as $user){
             $usr = new User;

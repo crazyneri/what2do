@@ -54,6 +54,22 @@
         "password": "jachymjachym",
         "phone": null,
         "gender": "Male"     
+    },
+    {
+        "role": null,
+        "name": "Robinson Crusoe",
+        "email": "robinson@crusoe.com",
+        "password": "robinsonrobinson",
+        "phone": null,
+        "gender": "Male"     
+    },
+    {
+        "role": null,
+        "name": "Britney Spears",
+        "email": "britney@spears.com",
+        "password": "britneybritney",
+        "phone": null,
+        "gender": "Female"     
     }
 ]
 
