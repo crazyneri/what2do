@@ -62,8 +62,8 @@
                 </tr>
             </table>
     
-            <button><a href="/events">See all events</a></button>
-            <button><a href="/event/create">Create event</a></button>
+            <button><a href="/admin/events">See all events</a></button>
+            <button><a href="/admin/event/create">Create event</a></button>
         </div>
     </div>
     

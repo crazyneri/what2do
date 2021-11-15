@@ -19,9 +19,12 @@ class AdminController extends Controller
         //$venues = Venue::where('admin_id', $user->id)->get();
         $venues = $user->venues;
 
+        $currentDate = date('Y-m-d');
+
         // pluck display all values for selected element -> all venue ids for current user
         $events = Event::orderBy('start_date', 'ASC')
                         ->whereIn('venue_id', $venues->pluck('id'))
+                        ->whereDate('start_date', '>=', $currentDate)
                         ->limit(5)
                         ->get();
 
