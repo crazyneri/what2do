@@ -31,10 +31,10 @@ export default function CategoryBox({
         if (showCinemaSubCats && category.id === 'cinema') {
             setShowCinemaSubCats(false);
         }
-        if (!showTheatreSubCats && category.id === 'theater') {
+        if (!showTheatreSubCats && (category.id === 'theater' || category.id === 'theatre')) {
             setShowTheatreSubCats(true);
         }
-        if (showTheatreSubCats && category.id === 'theater') {
+        if (showTheatreSubCats && (category.id === 'theater' || category.id === 'theatre')) {
             setShowTheatreSubCats(false);
         }
         if (!showMusicSubCats && category.id === 'music') {

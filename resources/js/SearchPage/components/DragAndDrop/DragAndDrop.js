@@ -24,7 +24,7 @@ function DragAndDrop() {
         if (showTheatreSubCats) {
             const columns = state.columnOrder.filter((category) => {
                 return (
-                    category === 'categories' || category.includes('theatre')
+                    category === 'categories' || category.includes('theater') || category.includes('theatre')
                 );
             });
             setColumnsToRender(columns);
@@ -168,11 +168,14 @@ function DragAndDrop() {
         let categoriesObject = {};
 
         response.data.forEach((category) => {
-            categoriesObject[category.name.toLowerCase()] = {
-                id: category.name.toLowerCase(),
-                name: category.name,
-                categoryId: category.id,
-                parent_id: category.parent_id,
+
+            if (!categoriesObject[category.name.toLowerCase()]) {
+                categoriesObject[category.name.toLowerCase()] = {
+                    id: category.name.toLowerCase(),
+                    name: category.name,
+                    categoryId: category.id,
+                    parent_id: category.parent_id,
+                }
             }
         }
 
@@ -229,10 +232,9 @@ function DragAndDrop() {
                     columnType: 'sub',
                     categoryId: category.id,
                     categoryIds:
-
                         response.data.filter((cat) => {
                             return cat.parent_id === category.id;
-                        }).map(c => c.name)
+                        }).map(c => c.name.toLowerCase())
                     ,
                 }
 
@@ -255,10 +257,10 @@ function DragAndDrop() {
                 'what2do',
                 'cinema-preferences',
                 'music-preferences',
-                'theatre-preferences',
+                'theater-preferences',
                 'cinema-sub-categories',
                 'music-sub-categories',
-                'theatre-sub-categories',
+                'theater-sub-categories',
                 'empty-sub-categories',
             ]
 

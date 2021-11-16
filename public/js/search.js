@@ -2172,11 +2172,11 @@ function CategoryBox(_ref) {
       setShowCinemaSubCats(false);
     }
 
-    if (!showTheatreSubCats && category.id === 'theater') {
+    if (!showTheatreSubCats && (category.id === 'theater' || category.id === 'theatre')) {
       setShowTheatreSubCats(true);
     }
 
-    if (showTheatreSubCats && category.id === 'theater') {
+    if (showTheatreSubCats && (category.id === 'theater' || category.id === 'theatre')) {
       setShowTheatreSubCats(false);
     }
 
@@ -2430,7 +2430,7 @@ function DragAndDrop() {
 
     if (showTheatreSubCats) {
       var _columns = state.columnOrder.filter(function (category) {
-        return category === 'categories' || category.includes('theatre');
+        return category === 'categories' || category.includes('theater') || category.includes('theatre');
       });
 
       setColumnsToRender(_columns);
@@ -2565,12 +2565,14 @@ function DragAndDrop() {
               response = _context.sent;
               categoriesObject = {};
               response.data.forEach(function (category) {
-                categoriesObject[category.name.toLowerCase()] = {
-                  id: category.name.toLowerCase(),
-                  name: category.name,
-                  categoryId: category.id,
-                  parent_id: category.parent_id
-                };
+                if (!categoriesObject[category.name.toLowerCase()]) {
+                  categoriesObject[category.name.toLowerCase()] = {
+                    id: category.name.toLowerCase(),
+                    name: category.name,
+                    categoryId: category.id,
+                    parent_id: category.parent_id
+                  };
+                }
               });
               columnsObject = {
                 categories: {
@@ -2620,7 +2622,7 @@ function DragAndDrop() {
                     categoryIds: response.data.filter(function (cat) {
                       return cat.parent_id === category.id;
                     }).map(function (c) {
-                      return c.name;
+                      return c.name.toLowerCase();
                     })
                   };
                 }
@@ -2629,7 +2631,7 @@ function DragAndDrop() {
                 categories: categoriesObject,
                 columns: columnsObject,
                 // columnOrder: Object.keys(columnsObject)
-                columnOrder: ['categories', 'what2do', 'cinema-preferences', 'music-preferences', 'theatre-preferences', 'cinema-sub-categories', 'music-sub-categories', 'theatre-sub-categories', 'empty-sub-categories']
+                columnOrder: ['categories', 'what2do', 'cinema-preferences', 'music-preferences', 'theater-preferences', 'cinema-sub-categories', 'music-sub-categories', 'theater-sub-categories', 'empty-sub-categories']
               };
               setState(initialState);
 
