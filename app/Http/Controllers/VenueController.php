@@ -50,6 +50,35 @@ class VenueController extends Controller
  
     }
 
+    // EDIT CURRENT VENUE
+    public function edit($id){
+        
+        $venue = Venue::findOrFail($id);
+
+    
+
+        return view('venue/form', compact('venue'));
+    }
+
+    // UPDATE CURRENT VENUE
+    public function update(Request $request, $id){
+        // dd($id);
+        $venue = Venue::findOrFail($id);
+
+        $data = $request->all();
+        
+
+        $this->venueValidate($request);
+
+        $venue->update($data);
+
+        session()->flash('success_message', 'The venue has been updated!');
+
+        return redirect()->action('VenueController@show', ['id' => $id]);
+
+    }
+
+    // VALIDATION FOR VENUE FORM
     public function venueValidate(Request $request){
         $this->validate($request, [
             'name' => 'required|min:3',

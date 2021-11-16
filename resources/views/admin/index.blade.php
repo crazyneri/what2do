@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>{{$user->name}}, welcome in administration</h1>
+    <h1>Welcome in administration</h1>
 
     {{-- DISPLAY SUCCESS MESSAGE --}}
     @if (Session::has('success_message'))
@@ -22,23 +22,28 @@
                     <th>Name</th>
                     <th>Future events</th>
                     <th>Edit</th>
-                    @foreach ($user->venues as $venue)
+                    @foreach ($venues_events as $venue)
                         <tr>
                             <td>{{$venue->name}}</td>
-                            <td></td>
+                            <td>{{count($venue->events)}}</td>
                             <td><a href="/venue/{{$venue->id}}">Edit</a></td>
                         </tr>
                     @endforeach
                 </tr>
             </table>
-    
-            <button><a href="/admin/venue/create">Add new venue</a></button>
-    
+
+            {{-- EVERY USER CAN HAVE 6 VENUES AT MAX --}}
+            @if (count($venues_events) < 6)
+                <button><a href="/admin/venue/create">Add new venue</a></button>
+            @else
+                <p>Note: You can have max 6 venues on one admin user account. If you want more PAY MORE!</p>
+            @endif
+            
         </div>
         
         {{-- LIST OF COMMING EVENTS (limit 5)--}}
         <div class="right-side">
-            <h2>Comming soon:</h2>
+            <h2>Coming soon:</h2>
             <table>
                 <tr>
                     <th>Name</th>

@@ -1,10 +1,21 @@
+@if ($venue->id === null)
+    @extends('layout/main')
+    @section('content')
+
+@endif
 
 @foreach ($errors->all() as $message)
     <p>{{$message}}</p>
     
 @endforeach
 
-<form action="/admin/venue/create" method="post">
+@if ($venue->id === null)
+    <form action="/venue/create" method="post">
+@else
+    <form action="/venue/{{$venue->id}}" method="post">
+    @method('put')
+@endif
+
     @csrf
     <label for="name">Name:</label>
     <input type="text" name="name" id="name" value="{{old('name', $venue->name)}}"/>
@@ -24,6 +35,15 @@
     <label for="map_link">Map link:</label>
     <input type="text" name="map_link" id="map_link" value="{{old('map_link', $venue->map_link)}}"/>
     <br>
-    <input type="submit" value="Create venue"/>  
+
+    @if ($venue->id === null)
+        <input type="submit" value="Create venue"/>  
+    @else
+        <input type="submit" value="Edit venue"/>  
+    @endif
 
 </form>
+
+@if ($venue->id === null)
+   @endsection 
+@endif

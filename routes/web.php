@@ -22,11 +22,14 @@ Route::get('/', function () {
 Route::get('/admin', 'AdminController@show');
 
 // VENUE PART
-Route::get('venue/{id}', 'VenueController@show');
+Route::get('/venue/{id}', 'VenueController@show');
 Route::get('/admin/venue/create', 'VenueController@create');
-Route::post('/admin/venue/create', 'VenueController@store');
+Route::post('/venue/create', 'VenueController@store');
+Route::get('/venue/{id}/edit', 'VenueController@edit');
+Route::put('/venue/{id}', 'VenueController@update');
+
 
 // EVENT PART
-Route::get('admin/events', 'EventController@index');
-Route::get('admin/event/create', 'EventController@create');
-Route::post('admin/event/create', 'EventController@store');
+Route::get('/admin/events', 'EventController@index');
+Route::view('/admin/event/create', 'event/form');
+Route::get('/admin/event/data', 'EventController@data');

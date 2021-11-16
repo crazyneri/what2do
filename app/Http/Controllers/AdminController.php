@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Venue;
 use App\Models\Event;
 use Auth;
 
@@ -19,8 +20,10 @@ class AdminController extends Controller
         //$venues = Venue::where('admin_id', $user->id)->get();
         $venues = $user->venues;
 
+        // get current date
         $currentDate = date('Y-m-d');
 
+        // get first 5 events depending on current date
         // pluck display all values for selected element -> all venue ids for current user
         $events = Event::orderBy('start_date', 'ASC')
                         ->whereIn('venue_id', $venues->pluck('id'))
@@ -28,7 +31,18 @@ class AdminController extends Controller
                         ->limit(5)
                         ->get();
 
-        return view('admin/index', compact('user', 'events', 'venues'));
+        // get events of venue to be able to calculate count of future events
+        $venues_events = Venue::with([
+                'events' => function($query) {
+                    $query->whereDate('start_date', '>=', date('Y-m-d'));
+                }
+                ]
+
+                )
+                        ->where('admin_id', $user->id)
+                        ->get();
+
+        return view('admin/index', compact('events', 'venues_events'));
     }
 
 }

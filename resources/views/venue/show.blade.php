@@ -2,6 +2,14 @@
 
 @section('content')
 
+    {{-- SHOW SUCCESS MESSAGE --}}
+    @if (Session::has('success_message'))
+
+        <div class="alert alert-success">
+            {{ Session::get('success_message') }}
+        </div>
+
+    @endif
 
     {{-- INFORMATION ABOUT VENUE --}}
     <div class="venue-container">
@@ -51,6 +59,13 @@
                 </table>
             </div>
     </div>
+
+    {{-- INCLUDE FORM --}}
+    <div class="edit-form">
+        <h2>Edit information about {{$venue->name}}</h2>
+        @include('venue/form')
+    </div>
+    
 
     
     
