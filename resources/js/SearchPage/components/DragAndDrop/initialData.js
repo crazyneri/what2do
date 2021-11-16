@@ -7,19 +7,19 @@ const initialData = {
             id: 'cinema',
             name: 'Cinema',
             categoryId: 1,
-            parentId: 0,
+            parent_id: 0,
         },
         music: {
             id: 'music',
             name: 'Music',
             categoryId: 2,
-            parentId: 0,
+            parent_id: 0,
         },
         theatre: {
             id: 'theatre',
             name: 'Theatre',
             categoryId: 3,
-            parentId: 0,
+            parent_id: 0,
         },
         action: {
             id: 'action',

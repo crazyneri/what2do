@@ -3,6 +3,7 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import './style.scss';
 import initialData from './initialData';
 import Column from './Column';
+import { get } from '../../../util/request';
 
 function DragAndDrop() {
     const [state, setState] = useState(initialData);
@@ -10,6 +11,8 @@ function DragAndDrop() {
     const [showTheatreSubCats, setShowTheatreSubCats] = useState(false);
     const [showMusicSubCats, setShowMusicSubCats] = useState(false);
     const [columnsToRender, setColumnsToRender] = useState([]);
+
+    const [searchIds, setSearchIds] = useState([]);
 
     const renderColumns = () => {
         if (showCinemaSubCats) {
@@ -140,8 +143,140 @@ function DragAndDrop() {
             // ? need to decide how to update the server
             // one way is to call an 'end-point' to let the server now a change has occurred
         }
+
+
     };
 
+    useEffect(() => {
+
+        const categoryIds = state.columns.what2do.categoryIds;
+        const categoryNumberIds = categoryIds.map(categoryIds => {
+            const categoryNumberId = state.categories[categoryIds].categoryId;
+            return categoryNumberId;
+        });
+
+        setSearchIds(categoryNumberIds);
+
+    }, [state]);
+
+
+
+    const fetchData = async () => {
+
+        const response = await get('/api/search');
+
+        let categoriesObject = {};
+
+        response.data.forEach((category) => {
+            categoriesObject[category.name.toLowerCase()] = {
+                id: category.name.toLowerCase(),
+                name: category.name,
+                categoryId: category.id,
+                parent_id: category.parent_id,
+            }
+        }
+
+        );
+
+        let columnsObject = {
+            categories: {
+                id: 'categories',
+                title: 'Categories',
+                columnType: 'main',
+                categoryId: 0,
+                categoryIds: response.data.filter((cat) => {
+                    return cat.parent_id === 0;
+                }).map(c => c.name.toLowerCase()),
+            },
+            what2do: {
+                id: 'what2do',
+                title: 'what2do',
+                columnType: 'main',
+                categoryId: 0,
+                categoryIds: [],
+            },
+            'empty-sub-categories': {
+                id: 'empty-sub-categories',
+                title: 'Instructions:',
+                columnType: 'main',
+                categoryId: 0,
+                categoryIds: [],
+            },
+        }
+
+        response.data.forEach((category) => {
+            const titleString = `${category.name} Preferences`;
+
+            const preferencesString = `${category.name.toLowerCase()}-preferences`;
+
+
+            const subcategoriesString = `${category.name.toLowerCase()}-sub-categories`;
+
+            if (category.parent_id === 0) {
+                columnsObject[preferencesString] = {
+                    id: preferencesString,
+                    title: titleString,
+                    columnType: 'sub',
+                    categoryId: category.id,
+                    categoryIds: [],
+                }
+
+
+
+                columnsObject[subcategoriesString] = {
+                    id: subcategoriesString,
+                    title: titleString,
+                    columnType: 'sub',
+                    categoryId: category.id,
+                    categoryIds:
+
+                        response.data.filter((cat) => {
+                            return cat.parent_id === category.id;
+                        }).map(c => c.name)
+                    ,
+                }
+
+            }
+
+        }
+
+        );
+
+        const initialState =
+
+        {
+            categories: categoriesObject,
+
+            columns: columnsObject,
+
+            // columnOrder: Object.keys(columnsObject)
+            columnOrder: [
+                'categories',
+                'what2do',
+                'cinema-preferences',
+                'music-preferences',
+                'theatre-preferences',
+                'cinema-sub-categories',
+                'music-sub-categories',
+                'theatre-sub-categories',
+                'empty-sub-categories',
+            ]
+
+        }
+        setState(initialState);
+    }
+    useEffect(() => {
+
+
+        fetchData();
+
+    }, [])
+
+
+    if (!state) {
+        return <h1>loading</h1>
+    }
+    console.log(state);
     return (
         <DragDropContext
             // see notes on this

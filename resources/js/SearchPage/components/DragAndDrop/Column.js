@@ -44,7 +44,7 @@ export default function Column({
                 </button>
             )}
             {column.id === 'empty-sub-categories' ? (
-                empty()
+                <EmptyRefinements />
             ) : (
                 <Droppable
                     droppableId={column.id}

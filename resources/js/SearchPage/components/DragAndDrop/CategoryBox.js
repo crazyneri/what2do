@@ -24,16 +24,17 @@ export default function CategoryBox({
 
     const showRefinements = () => {
         console.log('clicked!');
+        console.log(category.id);
         if (!showCinemaSubCats && category.id === 'cinema') {
             setShowCinemaSubCats(true);
         }
         if (showCinemaSubCats && category.id === 'cinema') {
             setShowCinemaSubCats(false);
         }
-        if (!showTheatreSubCats && category.id === 'theatre') {
+        if (!showTheatreSubCats && category.id === 'theater') {
             setShowTheatreSubCats(true);
         }
-        if (showTheatreSubCats && category.id === 'theatre') {
+        if (showTheatreSubCats && category.id === 'theater') {
             setShowTheatreSubCats(false);
         }
         if (!showMusicSubCats && category.id === 'music') {
@@ -61,7 +62,7 @@ export default function CategoryBox({
                     key={index}
                 >
                     <h3 {...provided.dragHandleProps}>{category.id}</h3>
-                    {category.parentId === 0 && (
+                    {category.parent_id === 0 && (
                         <button
                             type="button"
                             onClick={showRefinements}
