@@ -2078,8 +2078,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _DragAndDrop_DragAndDrop__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../DragAndDrop/DragAndDrop */ "./resources/js/SearchPage/components/DragAndDrop/DragAndDrop.js");
-/* harmony import */ var _Inputs_Inputs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Inputs/Inputs */ "./resources/js/SearchPage/components/Inputs/Inputs.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _DragAndDrop_initialData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../DragAndDrop/initialData */ "./resources/js/SearchPage/components/DragAndDrop/initialData.js");
+/* harmony import */ var _Inputs_Inputs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Inputs/Inputs */ "./resources/js/SearchPage/components/Inputs/Inputs.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -2088,8 +2102,83 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Inputs_Inputs__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_DragAndDrop_DragAndDrop__WEBPACK_IMPORTED_MODULE_1__["default"], {})]
+  // input values
+  var initialValues = {
+    city: 'Prague',
+    date: '',
+    time: ''
+  };
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialValues),
+      _useState2 = _slicedToArray(_useState, 2),
+      values = _useState2[0],
+      setValues = _useState2[1];
+
+  var city = values.city,
+      date = values.date,
+      time = values.time; // drag and drop states
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_DragAndDrop_initialData__WEBPACK_IMPORTED_MODULE_2__["default"]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      state = _useState4[0],
+      setState = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      showCinemaSubCats = _useState6[0],
+      setShowCinemaSubCats = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      showTheatreSubCats = _useState8[0],
+      setShowTheatreSubCats = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState10 = _slicedToArray(_useState9, 2),
+      showMusicSubCats = _useState10[0],
+      setShowMusicSubCats = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState12 = _slicedToArray(_useState11, 2),
+      columnsToRender = _useState12[0],
+      setColumnsToRender = _useState12[1];
+
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState14 = _slicedToArray(_useState13, 2),
+      searchIds = _useState14[0],
+      setSearchIds = _useState14[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log(values);
+  }, [values]);
+
+  var search = function search() {
+    console.log(searchIds);
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Inputs_Inputs__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      city: city,
+      date: date,
+      time: time,
+      setValues: setValues
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_DragAndDrop_DragAndDrop__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      state: state,
+      setState: setState,
+      showCinemaSubCats: showCinemaSubCats,
+      setShowCinemaSubCats: setShowCinemaSubCats,
+      showTheatreSubCats: showTheatreSubCats,
+      setShowTheatreSubCats: setShowTheatreSubCats,
+      showMusicSubCats: showMusicSubCats,
+      setShowMusicSubCats: setShowMusicSubCats,
+      columnsToRender: columnsToRender,
+      setColumnsToRender: setColumnsToRender,
+      searchIds: searchIds,
+      setSearchIds: setSearchIds
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+      onClick: search,
+      children: "Search"
+    })]
   });
 };
 
@@ -2351,17 +2440,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-beautiful-dnd */ "./node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js");
+/* harmony import */ var react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-beautiful-dnd */ "./node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js");
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./resources/js/SearchPage/components/DragAndDrop/style.scss");
-/* harmony import */ var _initialData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./initialData */ "./resources/js/SearchPage/components/DragAndDrop/initialData.js");
-/* harmony import */ var _Column__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Column */ "./resources/js/SearchPage/components/DragAndDrop/Column.js");
-/* harmony import */ var _util_request__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../util/request */ "./resources/js/util/request.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Column__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Column */ "./resources/js/SearchPage/components/DragAndDrop/Column.js");
+/* harmony import */ var _util_request__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../util/request */ "./resources/js/util/request.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -2369,17 +2469,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -2387,38 +2476,19 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
-
-function DragAndDrop() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(_initialData__WEBPACK_IMPORTED_MODULE_3__["default"]),
-      _useState2 = _slicedToArray(_useState, 2),
-      state = _useState2[0],
-      setState = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState4 = _slicedToArray(_useState3, 2),
-      showCinemaSubCats = _useState4[0],
-      setShowCinemaSubCats = _useState4[1];
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState6 = _slicedToArray(_useState5, 2),
-      showTheatreSubCats = _useState6[0],
-      setShowTheatreSubCats = _useState6[1];
-
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState8 = _slicedToArray(_useState7, 2),
-      showMusicSubCats = _useState8[0],
-      setShowMusicSubCats = _useState8[1];
-
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
-      _useState10 = _slicedToArray(_useState9, 2),
-      columnsToRender = _useState10[0],
-      setColumnsToRender = _useState10[1];
-
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
-      _useState12 = _slicedToArray(_useState11, 2),
-      searchIds = _useState12[0],
-      setSearchIds = _useState12[1];
+function DragAndDrop(_ref) {
+  var state = _ref.state,
+      setState = _ref.setState,
+      showCinemaSubCats = _ref.showCinemaSubCats,
+      setShowCinemaSubCats = _ref.setShowCinemaSubCats,
+      showTheatreSubCats = _ref.showTheatreSubCats,
+      setShowTheatreSubCats = _ref.setShowTheatreSubCats,
+      showMusicSubCats = _ref.showMusicSubCats,
+      setShowMusicSubCats = _ref.setShowMusicSubCats,
+      columnsToRender = _ref.columnsToRender,
+      setColumnsToRender = _ref.setColumnsToRender,
+      searchIds = _ref.searchIds,
+      setSearchIds = _ref.setSearchIds;
 
   var renderColumns = function renderColumns() {
     if (showCinemaSubCats) {
@@ -2544,22 +2614,30 @@ function DragAndDrop() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var categoryIds = state.columns.what2do.categoryIds;
-    var categoryNumberIds = categoryIds.map(function (categoryIds) {
-      var categoryNumberId = state.categories[categoryIds].categoryId;
+    var preferencesIds = [];
+    categoryIds.forEach(function (categoryId) {
+      var preferencesString = "".concat(categoryId, "-preferences");
+      var subcategoriesArray = state.columns[preferencesString].categoryIds;
+      preferencesIds.push.apply(preferencesIds, _toConsumableArray(subcategoriesArray));
+    });
+    var categoryNumberIds = preferencesIds.map(function (preferenceId) {
+      var categoryNumberId = state.categories[preferenceId].categoryId;
       return categoryNumberId;
     });
+    console.log(preferencesIds);
+    console.log(categoryNumberIds);
     setSearchIds(categoryNumberIds);
   }, [state]);
 
   var fetchData = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       var response, categoriesObject, columnsObject, initialState;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_5__.get)('/api/search');
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.get)('/api/search');
 
             case 2:
               response = _context.sent;
@@ -2602,7 +2680,7 @@ function DragAndDrop() {
                 }
               };
               response.data.forEach(function (category) {
-                var titleString = "".concat(category.name, " Preferences");
+                var titleString = "".concat(category.name[0].toUpperCase() + category.name.slice(1), " Preferences");
                 var preferencesString = "".concat(category.name.toLowerCase(), "-preferences");
                 var subcategoriesString = "".concat(category.name.toLowerCase(), "-sub-categories");
 
@@ -2644,7 +2722,7 @@ function DragAndDrop() {
     }));
 
     return function fetchData() {
-      return _ref.apply(this, arguments);
+      return _ref2.apply(this, arguments);
     };
   }();
 
@@ -2653,23 +2731,23 @@ function DragAndDrop() {
   }, []);
 
   if (!state) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
       children: "loading"
     });
   }
 
   console.log(state);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_7__.DragDropContext // see notes on this
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_6__.DragDropContext // see notes on this
   , {
     onDragEnd: onDragEnd,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "container",
       children: columnsToRender.map(function (columnId, key) {
         var column = state.columns[columnId];
         var categories = column.categoryIds.map(function (categoryId) {
           return state.categories[categoryId];
         });
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Column__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Column__WEBPACK_IMPORTED_MODULE_3__["default"], {
           column: column,
           categories: categories,
           index: key,
@@ -2945,37 +3023,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
 
-var Inputs = function Inputs() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('Prague'),
-      _useState2 = _slicedToArray(_useState, 2),
-      city = _useState2[0],
-      setCity = _useState2[1];
+var Inputs = function Inputs(_ref) {
+  var city = _ref.city,
+      date = _ref.date,
+      time = _ref.time,
+      setValues = _ref.setValues;
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
-      _useState4 = _slicedToArray(_useState3, 2),
-      date = _useState4[0],
-      setDate = _useState4[1];
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
-      _useState6 = _slicedToArray(_useState5, 2),
-      time = _useState6[0],
-      setTime = _useState6[1];
+  var handleChange = function handleChange(e) {
+    setValues(function (prev_values) {
+      return _objectSpread(_objectSpread({}, prev_values), {}, _defineProperty({}, e.target.name, e.target.value));
+    });
+  };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: "inputs",
@@ -2985,21 +3053,24 @@ var Inputs = function Inputs() {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
       type: "text",
       name: "city",
-      value: city
+      value: city,
+      onChange: handleChange
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
       htmlFor: "date",
       children: "When:"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
       type: "date",
       name: "date",
-      value: date
+      value: date,
+      onChange: handleChange
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
       htmlFor: "time",
       children: "Duration:"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
       type: "time",
       name: "time",
-      value: time
+      value: time,
+      onChange: handleChange
     })]
   });
 };
@@ -3321,7 +3392,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n  box-sizing: border-box;\n}\n\nbody {\n  width: 100vw;\n  min-height: 100vh;\n  margin: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\ndiv p {\n  margin: 0.1rem;\n  font-size: 0.8rem;\n  font-weight: 600;\n}\n\n.refine {\n  cursor: pointer;\n}\n\n.container {\n  width: 100vw;\n  height: auto;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.list {\n  padding: 5px;\n  border-radius: 5px;\n  background-color: white;\n  color: black;\n  font-weight: bold;\n}\n\nh2 {\n  border-bottom: 1px solid black;\n  margin: 0.1rem;\n  text-align: center;\n}\n\nh3 {\n  border-bottom: 1px solid black;\n  margin: 0.1rem;\n  text-align: center;\n}\n\nh5 {\n  border-bottom: 1px solid black;\n  margin: 0.1rem;\n  text-align: center;\n}\n\n.drag-space {\n  width: 90%;\n  min-height: 400px;\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: center;\n  align-items: center;\n  border-radius: 20px;\n  background-color: darkcyan;\n}\n\n.dragging {\n  background-color: #72b0b3;\n  box-shadow: 5px 5px 5px black;\n}\n\n.dragged-over {\n  background-color: darkslategray;\n  color: white;\n}\n\n.column {\n  width: 300px;\n  height: 500px;\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: center;\n  align-items: center;\n  margin: 5%;\n  padding: 10px;\n  border: 1px solid black;\n  border-radius: 15px;\n  background-color: cadetblue;\n  font-family: sans-serif;\n}\n\n.inner-column {\n  width: 95%;\n  height: auto;\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: center;\n  align-items: center;\n  margin: 5%;\n  padding: 10px;\n  border: 1px solid black;\n  border-radius: 15px;\n  font-family: sans-serif;\n}\n\n.hidden {\n  display: none;\n}\n\nol {\n  font-size: 0.8em;\n}", "",{"version":3,"sources":["webpack://./resources/js/SearchPage/components/DragAndDrop/style.scss"],"names":[],"mappings":"AAAA;EACI,sBAAA;AACJ;;AAEA;EACI,YAAA;EACA,iBAAA;EACA,SAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;AACJ;;AAEA;EACI,cAAA;EACA,iBAAA;EACA,gBAAA;AACJ;;AAEA;EACI,eAAA;AACJ;;AAEA;EACI,YAAA;EACA,YAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;AACJ;;AAEA;EACI,YAAA;EACA,kBAAA;EACA,uBAAA;EACA,YAAA;EACA,iBAAA;AACJ;;AAEA;EACI,8BAAA;EACA,cAAA;EACA,kBAAA;AACJ;;AAEA;EACI,8BAAA;EACA,cAAA;EACA,kBAAA;AACJ;;AAEA;EACI,8BAAA;EACA,cAAA;EACA,kBAAA;AACJ;;AAEA;EACI,UAAA;EACA,iBAAA;EACA,aAAA;EACA,wBAAA;EACA,uBAAA;EACA,mBAAA;EACA,mBAAA;EACA,0BAAA;AACJ;;AAEA;EACI,yBAAA;EACA,6BAAA;AACJ;;AAEA;EACI,+BAAA;EACA,YAAA;AACJ;;AAEA;EACI,YAAA;EACA,aAAA;EACA,aAAA;EACA,wBAAA;EACA,uBAAA;EACA,mBAAA;EACA,UAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,2BAAA;EAEA,uBAAA;AAAJ;;AAGA;EACI,UAAA;EACA,YAAA;EACA,aAAA;EACA,wBAAA;EACA,uBAAA;EACA,mBAAA;EACA,UAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,uBAAA;AAAJ;;AAGA;EACI,aAAA;AAAJ;;AAGA;EACI,gBAAA;AAAJ","sourcesContent":["* {\r\n    box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n    width: 100vw;\r\n    min-height: 100vh;\r\n    margin: 0;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\ndiv p {\r\n    margin: 0.1rem;\r\n    font-size: 0.8rem;\r\n    font-weight: 600;\r\n}\r\n\r\n.refine {\r\n    cursor: pointer;\r\n}\r\n\r\n.container {\r\n    width: 100vw;\r\n    height: auto;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.list {\r\n    padding: 5px;\r\n    border-radius: 5px;\r\n    background-color: white;\r\n    color: black;\r\n    font-weight: bold;\r\n}\r\n\r\nh2 {\r\n    border-bottom: 1px solid black;\r\n    margin: 0.1rem;\r\n    text-align: center;\r\n}\r\n\r\nh3 {\r\n    border-bottom: 1px solid black;\r\n    margin: 0.1rem;\r\n    text-align: center;\r\n}\r\n\r\nh5 {\r\n    border-bottom: 1px solid black;\r\n    margin: 0.1rem;\r\n    text-align: center;\r\n}\r\n\r\n.drag-space {\r\n    width: 90%;\r\n    min-height: 400px;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    justify-content: center;\r\n    align-items: center;\r\n    border-radius: 20px;\r\n    background-color: darkcyan;\r\n}\r\n\r\n.dragging {\r\n    background-color: rgb(114, 176, 179);\r\n    box-shadow: 5px 5px 5px black;\r\n}\r\n\r\n.dragged-over {\r\n    background-color: darkslategray;\r\n    color: white;\r\n}\r\n\r\n.column {\r\n    width: 300px;\r\n    height: 500px;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin: 5%;\r\n    padding: 10px;\r\n    border: 1px solid black;\r\n    border-radius: 15px;\r\n    background-color: cadetblue;\r\n\r\n    font-family: sans-serif;\r\n}\r\n\r\n.inner-column {\r\n    width: 95%;\r\n    height: auto;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin: 5%;\r\n    padding: 10px;\r\n    border: 1px solid black;\r\n    border-radius: 15px;\r\n    font-family: sans-serif;\r\n}\r\n\r\n.hidden {\r\n    display: none;\r\n}\r\n\r\nol {\r\n    font-size: 0.8em;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n  box-sizing: border-box;\n}\n\nbody {\n  width: 100vw;\n  min-height: 100vh;\n  margin: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\ndiv p {\n  margin: 0.1rem;\n  font-size: 0.8rem;\n  font-weight: 600;\n}\n\n.refine {\n  cursor: pointer;\n}\n\n.container {\n  width: 100vw;\n  height: auto;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.list {\n  padding: 5px;\n  border-radius: 5px;\n  background-color: white;\n  color: black;\n  font-weight: bold;\n}\n\nh2 {\n  border-bottom: 1px solid black;\n  margin: 0.1rem;\n  text-align: center;\n}\n\nh3 {\n  border-bottom: 1px solid black;\n  margin: 0.1rem;\n  text-align: center;\n}\n\nh5 {\n  border-bottom: 1px solid black;\n  margin: 0.1rem;\n  text-align: center;\n}\n\n.drag-space {\n  width: 90%;\n  min-height: 400px;\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-start;\n  align-items: center;\n  border-radius: 20px;\n  background-color: darkcyan;\n  overflow: hidden auto;\n}\n\n.dragging {\n  background-color: #72b0b3;\n  box-shadow: 5px 5px 5px black;\n}\n\n.dragged-over {\n  background-color: darkslategray;\n  color: white;\n}\n\n.column {\n  width: 300px;\n  height: 500px;\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: center;\n  align-items: center;\n  margin: 5%;\n  padding: 10px;\n  border: 1px solid black;\n  border-radius: 15px;\n  background-color: cadetblue;\n  font-family: sans-serif;\n}\n\n.inner-column {\n  width: 95%;\n  height: auto;\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: center;\n  align-items: center;\n  margin: 5%;\n  padding: 10px;\n  border: 1px solid black;\n  border-radius: 15px;\n  font-family: sans-serif;\n}\n\n.hidden {\n  display: none;\n}\n\nol {\n  font-size: 0.8em;\n}", "",{"version":3,"sources":["webpack://./resources/js/SearchPage/components/DragAndDrop/style.scss"],"names":[],"mappings":"AAAA;EACI,sBAAA;AACJ;;AAEA;EACI,YAAA;EACA,iBAAA;EACA,SAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;AACJ;;AAEA;EACI,cAAA;EACA,iBAAA;EACA,gBAAA;AACJ;;AAEA;EACI,eAAA;AACJ;;AAEA;EACI,YAAA;EACA,YAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;AACJ;;AAEA;EACI,YAAA;EACA,kBAAA;EACA,uBAAA;EACA,YAAA;EACA,iBAAA;AACJ;;AAEA;EACI,8BAAA;EACA,cAAA;EACA,kBAAA;AACJ;;AAEA;EACI,8BAAA;EACA,cAAA;EACA,kBAAA;AACJ;;AAEA;EACI,8BAAA;EACA,cAAA;EACA,kBAAA;AACJ;;AAEA;EACI,UAAA;EACA,iBAAA;EACA,aAAA;EACA,wBAAA;EACA,2BAAA;EACA,mBAAA;EACA,mBAAA;EACA,0BAAA;EACA,qBAAA;AACJ;;AAEA;EACI,yBAAA;EACA,6BAAA;AACJ;;AAEA;EACI,+BAAA;EACA,YAAA;AACJ;;AAEA;EACI,YAAA;EACA,aAAA;EACA,aAAA;EACA,wBAAA;EACA,uBAAA;EACA,mBAAA;EACA,UAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,2BAAA;EAEA,uBAAA;AAAJ;;AAGA;EACI,UAAA;EACA,YAAA;EACA,aAAA;EACA,wBAAA;EACA,uBAAA;EACA,mBAAA;EACA,UAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,uBAAA;AAAJ;;AAGA;EACI,aAAA;AAAJ;;AAGA;EACI,gBAAA;AAAJ","sourcesContent":["* {\r\n    box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n    width: 100vw;\r\n    min-height: 100vh;\r\n    margin: 0;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\ndiv p {\r\n    margin: 0.1rem;\r\n    font-size: 0.8rem;\r\n    font-weight: 600;\r\n}\r\n\r\n.refine {\r\n    cursor: pointer;\r\n}\r\n\r\n.container {\r\n    width: 100vw;\r\n    height: auto;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.list {\r\n    padding: 5px;\r\n    border-radius: 5px;\r\n    background-color: white;\r\n    color: black;\r\n    font-weight: bold;\r\n}\r\n\r\nh2 {\r\n    border-bottom: 1px solid black;\r\n    margin: 0.1rem;\r\n    text-align: center;\r\n}\r\n\r\nh3 {\r\n    border-bottom: 1px solid black;\r\n    margin: 0.1rem;\r\n    text-align: center;\r\n}\r\n\r\nh5 {\r\n    border-bottom: 1px solid black;\r\n    margin: 0.1rem;\r\n    text-align: center;\r\n}\r\n\r\n.drag-space {\r\n    width: 90%;\r\n    min-height: 400px;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    justify-content: flex-start;\r\n    align-items: center;\r\n    border-radius: 20px;\r\n    background-color: darkcyan;\r\n    overflow: hidden auto;\r\n}\r\n\r\n.dragging {\r\n    background-color: rgb(114, 176, 179);\r\n    box-shadow: 5px 5px 5px black;\r\n}\r\n\r\n.dragged-over {\r\n    background-color: darkslategray;\r\n    color: white;\r\n}\r\n\r\n.column {\r\n    width: 300px;\r\n    height: 500px;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin: 5%;\r\n    padding: 10px;\r\n    border: 1px solid black;\r\n    border-radius: 15px;\r\n    background-color: cadetblue;\r\n\r\n    font-family: sans-serif;\r\n}\r\n\r\n.inner-column {\r\n    width: 95%;\r\n    height: auto;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin: 5%;\r\n    padding: 10px;\r\n    border: 1px solid black;\r\n    border-radius: 15px;\r\n    font-family: sans-serif;\r\n}\r\n\r\n.hidden {\r\n    display: none;\r\n}\r\n\r\nol {\r\n    font-size: 0.8em;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

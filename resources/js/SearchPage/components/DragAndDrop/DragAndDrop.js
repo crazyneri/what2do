@@ -1,18 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import './style.scss';
-import initialData from './initialData';
 import Column from './Column';
 import { get } from '../../../util/request';
 
-function DragAndDrop() {
-    const [state, setState] = useState(initialData);
-    const [showCinemaSubCats, setShowCinemaSubCats] = useState(false);
-    const [showTheatreSubCats, setShowTheatreSubCats] = useState(false);
-    const [showMusicSubCats, setShowMusicSubCats] = useState(false);
-    const [columnsToRender, setColumnsToRender] = useState([]);
-
-    const [searchIds, setSearchIds] = useState([]);
+function DragAndDrop({
+    state,
+    setState,
+    showCinemaSubCats,
+    setShowCinemaSubCats,
+    showTheatreSubCats,
+    setShowTheatreSubCats,
+    showMusicSubCats,
+    setShowMusicSubCats,
+    columnsToRender,
+    setColumnsToRender,
+    searchIds,
+    setSearchIds
+}) {
 
     const renderColumns = () => {
         if (showCinemaSubCats) {
@@ -149,11 +154,28 @@ function DragAndDrop() {
 
     useEffect(() => {
 
+
         const categoryIds = state.columns.what2do.categoryIds;
-        const categoryNumberIds = categoryIds.map(categoryIds => {
-            const categoryNumberId = state.categories[categoryIds].categoryId;
+
+        let preferencesIds = [];
+
+        categoryIds.forEach((categoryId => {
+            const preferencesString = `${categoryId}-preferences`;
+
+            const subcategoriesArray = state.columns[preferencesString].categoryIds;
+
+            preferencesIds.push(...subcategoriesArray);
+
+        }))
+
+        const categoryNumberIds = preferencesIds.map(preferenceId => {
+            const categoryNumberId = state.categories[preferenceId].categoryId;
             return categoryNumberId;
         });
+
+        console.log(preferencesIds);
+        console.log(categoryNumberIds);
+
 
         setSearchIds(categoryNumberIds);
 
@@ -208,7 +230,8 @@ function DragAndDrop() {
         }
 
         response.data.forEach((category) => {
-            const titleString = `${category.name} Preferences`;
+
+            const titleString = `${category.name[0].toUpperCase() + category.name.slice(1)} Preferences`;
 
             const preferencesString = `${category.name.toLowerCase()}-preferences`;
 

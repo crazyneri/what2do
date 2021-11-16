@@ -35,6 +35,8 @@ export default function Column({
         return <EmptyRefinements />;
     };
 
+
+
     return (
         <div className={`column ${draggedOverClass}`} key={key}>
             <h2 style={{ borderBottom: '1px solid black' }}>{column.title}</h2>

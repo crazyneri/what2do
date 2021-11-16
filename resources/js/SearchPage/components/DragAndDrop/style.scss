@@ -60,10 +60,11 @@ h5 {
     min-height: 400px;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     border-radius: 20px;
     background-color: darkcyan;
+    overflow: hidden auto;
 }
 
 .dragging {
