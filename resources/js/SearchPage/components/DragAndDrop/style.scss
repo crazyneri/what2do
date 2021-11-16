@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div p {
+    margin: 0.1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.refine {
+    cursor: pointer;
+}
+
+.container {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+
+h2 {
+    border-bottom: 1px solid black;
+    margin: 0.1rem;
+    text-align: center;
+}
+
+h3 {
+    border-bottom: 1px solid black;
+    margin: 0.1rem;
+    text-align: center;
+}
+
+h5 {
+    border-bottom: 1px solid black;
+    margin: 0.1rem;
+    text-align: center;
+}
+
+.drag-space {
+    width: 90%;
+    min-height: 400px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: darkcyan;
+}
+
+.dragging {
+    background-color: rgb(114, 176, 179);
+    box-shadow: 5px 5px 5px black;
+}
+
+.dragged-over {
+    background-color: darkslategray;
+    color: white;
+}
+
+.column {
+    width: 300px;
+    height: 500px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: cadetblue;
+
+    font-family: sans-serif;
+}
+
+.inner-column {
+    width: 95%;
+    height: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 15px;
+    font-family: sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+
+ol {
+    font-size: 0.8em;
+}
