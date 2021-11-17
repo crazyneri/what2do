@@ -2081,7 +2081,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _CategorySelection_CategorySelection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../CategorySelection/CategorySelection */ "./resources/js/EventCreate/components/CategorySelection/CategorySelection.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2104,13 +2105,44 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function App() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+  // STATE FOR GETTING DATA FROM BACKEND
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
       venues = _useState2[0],
       setVenues = _useState2[1];
 
-  var fetchData = /*#__PURE__*/function () {
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      categories = _useState4[0],
+      setCategories = _useState4[1]; // STATE FOR KEEPING SELECTED MAIN CATEGORY
+
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      selectedMainCategory = _useState6[0],
+      setSelectedMainCategory = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null),
+      _useState8 = _slicedToArray(_useState7, 2),
+      selectedSubCategory = _useState8[0],
+      setSelectedSubCategory = _useState8[1]; // STATE FOR KEEPING INFO ABOUT RECURRING
+
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)('No'),
+      _useState10 = _slicedToArray(_useState9, 2),
+      recurring = _useState10[0],
+      setRecurring = _useState10[1]; // STATE FOR RECURRING DAYS
+
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null),
+      _useState12 = _slicedToArray(_useState11, 2),
+      recDays = _useState12[0],
+      setRecDays = _useState12[1]; // GET DATA
+
+
+  var getData = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       var response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -2128,8 +2160,9 @@ function App() {
             case 2:
               response = _context.sent;
               setVenues(response.data.venues);
+              setCategories(response.data.categories);
 
-            case 4:
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -2137,37 +2170,210 @@ function App() {
       }, _callee);
     }));
 
-    return function fetchData() {
+    return function getData() {
       return _ref.apply(this, arguments);
     };
-  }();
+  }(); // DAYS OF WEEK
+
+
+  var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']; // GET VALUE OF CHECKBOXES - SUBCATEGORIES
+
+  var getChecked = function getChecked() {
+    var checkboxes = document.querySelectorAll('.checkbox');
+    var checkboxesDays = document.querySelectorAll('.dayofweek');
+    var checked = [];
+    var daysDB = [];
+
+    for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked == true) {
+        checked.push(checkboxes[i].value);
+        setSelectedSubCategory(checked);
+      }
+    }
+
+    for (var _i2 = 0; _i2 < checkboxesDays.length; _i2++) {
+      if (checkboxesDays[_i2].checked == true) {
+        daysDB.push(1);
+      } else {
+        daysDB.push(null);
+      }
+    }
+
+    setRecDays(daysDB);
+  }; // GET IF ITS RECCURING EVENT
+
+
+  var isRecurring = function isRecurring() {
+    var recurringCheckbox = document.querySelector('#question');
+
+    if (recurringCheckbox.checked == true) {
+      setRecurring('Yes');
+    } else {
+      setRecurring('No');
+    }
+  }; // USE EFFECT
+
 
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
-    fetchData();
-  }, []); // console.log(data.venues);
+    getData();
+  }, []); // console.log(selectedMainCategory);
+  // console.log(selectedSubCategory);
+  // console.log(recurring);
+  // console.log(recDays);
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "create-form",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
+      onSubmit: function onSubmit(e) {
+        return e.preventDefault();
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
         htmlFor: "name",
         children: "Name:"
-      }), "\xA0 \xA0             ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+      }), "\xA0 \xA0             ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
         type: "text",
         name: "name",
         id: "name"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), "\xA0 \xA0 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), "\xA0 \xA0 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
         children: "Venue:"
-      }), "\xA0 \xA0 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
+      }), "\xA0 \xA0 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
         name: "venue_id",
-        children: [venues.map(function (venue, index) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+        onChange: function onChange(e) {
+          return console.log(e.target.value);
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+          children: "-- select your venue --"
+        }), venues && venues.map(function (venue, index) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
             value: venue.id,
             children: venue.name
           }, index);
         }), "\xA0 \xA0 "]
-      }), "\xA0 \xA0 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {})]
+      }), "\xA0 \xA0 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+        htmlFor: "start_date",
+        children: "Start date:"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+        type: "date",
+        name: "start_date",
+        id: "start_date"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+        htmlFor: "start_time",
+        children: "Start time:"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+        type: "time",
+        name: "start_time",
+        id: "start_time"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+        htmlFor: "end_date",
+        children: "End date:"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+        type: "date",
+        name: "end_date",
+        id: "end_date"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+        htmlFor: "end_time",
+        children: "End time:"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+        type: "time",
+        name: "end_time",
+        id: "end_time"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+        htmlFor: "description",
+        children: "Descriptiom:"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("textarea", {
+        name: "description",
+        id: "description"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+        htmlFor: "price",
+        children: "Price:"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+        type: "number",
+        name: "price",
+        id: "price"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_CategorySelection_CategorySelection__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        categories: categories,
+        selectedMainCategory: selectedMainCategory,
+        setSelectedMainCategory: setSelectedMainCategory
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+        htmlFor: "question",
+        children: "Do you want to create event that is recuring in time?"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+        type: "checkbox",
+        name: "question",
+        id: "question",
+        value: recurring,
+        onClick: function onClick() {
+          return isRecurring();
+        }
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), days.map(function (day, index) {
+        return recurring == 'Yes' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+            htmlFor: "dayofweek",
+            children: day
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+            className: "dayofweek",
+            type: "checkbox",
+            value: day
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {})]
+        }, index) : '';
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+        onClick: function onClick() {
+          return getChecked();
+        },
+        children: "Create event"
+      })]
     })
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/EventCreate/components/CategorySelection/CategorySelection.js":
+/*!************************************************************************************!*\
+  !*** ./resources/js/EventCreate/components/CategorySelection/CategorySelection.js ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ CategorySelection)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+function CategorySelection(_ref) {
+  var categories = _ref.categories,
+      selectedMainCategory = _ref.selectedMainCategory,
+      setSelectedMainCategory = _ref.setSelectedMainCategory;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    className: "dynamic_inputs",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("select", {
+      name: "category",
+      onChange: function onChange(e) {
+        return setSelectedMainCategory(e.target.value);
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
+        children: "-- select main category --"
+      }), categories && categories.map(function (category, index) {
+        return category.parent_id == 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
+          value: category.id,
+          children: category.name
+        }) : '';
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), categories && categories.map(function (subcategory, index) {
+      return subcategory.parent_id == selectedMainCategory && selectedMainCategory !== '' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+          htmlFor: "subcategory",
+          children: subcategory.name
+        }, index), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+          className: "checkbox",
+          type: "checkbox",
+          value: subcategory.id
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {})]
+      }) : '';
+    })]
   });
 }
 
