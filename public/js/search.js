@@ -2078,9 +2078,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _DragAndDrop_DragAndDrop__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../DragAndDrop/DragAndDrop */ "./resources/js/SearchPage/components/DragAndDrop/DragAndDrop.js");
-/* harmony import */ var _DragAndDrop_initialData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../DragAndDrop/initialData */ "./resources/js/SearchPage/components/DragAndDrop/initialData.js");
-/* harmony import */ var _Inputs_Inputs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Inputs/Inputs */ "./resources/js/SearchPage/components/Inputs/Inputs.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Inputs_Inputs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Inputs/Inputs */ "./resources/js/SearchPage/components/Inputs/Inputs.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2092,7 +2091,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -2116,7 +2114,7 @@ var App = function App() {
 
   var city = values.city,
       date = values.date,
-      time = values.time; // drag and drop states
+      time = values.time; // DragAndDrop states
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState4 = _slicedToArray(_useState3, 2),
@@ -2148,21 +2146,19 @@ var App = function App() {
       searchIds = _useState14[0],
       setSearchIds = _useState14[1];
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.log(values);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {// console.log(values);
   }, [values]);
 
-  var search = function search() {
-    console.log(searchIds);
+  var search = function search() {// console.log(searchIds);
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Inputs_Inputs__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Inputs_Inputs__WEBPACK_IMPORTED_MODULE_2__["default"], {
       city: city,
       date: date,
       time: time,
       setValues: setValues
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_DragAndDrop_DragAndDrop__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_DragAndDrop_DragAndDrop__WEBPACK_IMPORTED_MODULE_1__["default"], {
       state: state,
       setState: setState,
       showCinemaSubCats: showCinemaSubCats,
@@ -2175,7 +2171,7 @@ var App = function App() {
       setColumnsToRender: setColumnsToRender,
       searchIds: searchIds,
       setSearchIds: setSearchIds
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
       onClick: search,
       children: "Search"
     })]
@@ -2250,9 +2246,6 @@ function CategoryBox(_ref) {
   }, [beingDragged]);
 
   var showRefinements = function showRefinements() {
-    console.log('clicked!');
-    console.log(category.id);
-
     if (!showCinemaSubCats && category.id === 'cinema') {
       setShowCinemaSubCats(true);
     }
@@ -2531,8 +2524,7 @@ function DragAndDrop(_ref) {
     // needs to update the state!
     var destination = result.destination,
         source = result.source,
-        draggableId = result.draggableId;
-    console.log(draggableId); // if there's no destination then there's nothing we need to do
+        draggableId = result.draggableId; // if there's no destination then there's nothing we need to do
 
     if (!destination) {
       return;
@@ -2570,9 +2562,8 @@ function DragAndDrop(_ref) {
 
       var newState = _objectSpread(_objectSpread({}, state), {}, {
         columns: _objectSpread(_objectSpread({}, state.columns), {}, _defineProperty({}, newColumn.id, newColumn))
-      });
+      }); // now update the state with the newState
 
-      console.log(newState); // now update the state with the newState
 
       setState(newState);
     }
@@ -2606,34 +2597,41 @@ function DragAndDrop(_ref) {
         columns: _objectSpread(_objectSpread({}, state.columns), {}, (_objectSpread3 = {}, _defineProperty(_objectSpread3, newStartColumn.id, newStartColumn), _defineProperty(_objectSpread3, newFinishColumn.id, newFinishColumn), _objectSpread3))
       });
 
-      console.log(_newState);
       setState(_newState); // ? need to decide how to update the server
       // one way is to call an 'end-point' to let the server now a change has occurred
     }
   };
 
+  var updatePreferences = function updatePreferences() {
+    // finding selected category ids (string names of the category)
+    var categoryIds = state.columns.what2do.categoryIds;
+    var preferencesIds = [];
+    categoryIds.forEach(function (categoryId) {
+      var preferencesString = "".concat(categoryId, "-preferences"); // finding the corresponding items in state.columns array under category-preferences key and retrieving its categoryIds array (still in string/name format)
+
+      var subcategoriesArray = state.columns[preferencesString].categoryIds; // pushing the result to an array that then contains all preferences, i.e. subcategories chosen by the user under any main category (still in string/name format)
+
+      preferencesIds.push.apply(preferencesIds, _toConsumableArray(subcategoriesArray));
+    }); // finding the corresponding unique keys of the subcategoriesArray items in state.categories object and creating a matching array containing those keys
+
+    var categoryNumberIds = preferencesIds.map(function (preferenceId) {
+      var categoryNumberId = state.categories[preferenceId].categoryId;
+      return categoryNumberId;
+    }); // updating the searchIds state array to reflect the current user preferences
+
+    setSearchIds(categoryNumberIds);
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    // on state update (and once the data has been loaded, i.e. state is not null), we need to update state variable searchIds = array which includes preferences,i.e. subcategories chosen by the user - this array is to be used once the user clicks on the search button
     if (state) {
-      var categoryIds = state.columns.what2do.categoryIds;
-      var preferencesIds = [];
-      categoryIds.forEach(function (categoryId) {
-        var preferencesString = "".concat(categoryId, "-preferences");
-        var subcategoriesArray = state.columns[preferencesString].categoryIds;
-        preferencesIds.push.apply(preferencesIds, _toConsumableArray(subcategoriesArray));
-      });
-      var categoryNumberIds = preferencesIds.map(function (preferenceId) {
-        var categoryNumberId = state.categories[preferenceId].categoryId;
-        return categoryNumberId;
-      });
-      console.log(preferencesIds);
-      console.log(categoryNumberIds);
-      setSearchIds(categoryNumberIds);
+      updatePreferences();
     }
   }, [state]);
 
   var fetchData = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var response, categoriesObject, columnsObject, initialState;
+      var response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -2643,79 +2641,9 @@ function DragAndDrop(_ref) {
 
             case 2:
               response = _context.sent;
-              categoriesObject = {};
-              response.data.forEach(function (category) {
-                if (!categoriesObject[category.name.toLowerCase()]) {
-                  categoriesObject[category.name.toLowerCase()] = {
-                    id: category.name.toLowerCase(),
-                    name: category.name,
-                    categoryId: category.id,
-                    parent_id: category.parent_id
-                  };
-                }
-              });
-              columnsObject = {
-                categories: {
-                  id: 'categories',
-                  title: 'Categories',
-                  columnType: 'main',
-                  categoryId: 0,
-                  categoryIds: response.data.filter(function (cat) {
-                    return cat.parent_id === 0;
-                  }).map(function (c) {
-                    return c.name.toLowerCase();
-                  })
-                },
-                what2do: {
-                  id: 'what2do',
-                  title: 'what2do',
-                  columnType: 'main',
-                  categoryId: 0,
-                  categoryIds: []
-                },
-                'empty-sub-categories': {
-                  id: 'empty-sub-categories',
-                  title: 'Instructions:',
-                  columnType: 'main',
-                  categoryId: 0,
-                  categoryIds: []
-                }
-              };
-              response.data.forEach(function (category) {
-                var titleString = "".concat(category.name[0].toUpperCase() + category.name.slice(1), " Preferences");
-                var preferencesString = "".concat(category.name.toLowerCase(), "-preferences");
-                var subcategoriesString = "".concat(category.name.toLowerCase(), "-sub-categories");
+              setState(response.data);
 
-                if (category.parent_id === 0) {
-                  columnsObject[preferencesString] = {
-                    id: preferencesString,
-                    title: titleString,
-                    columnType: 'sub',
-                    categoryId: category.id,
-                    categoryIds: []
-                  };
-                  columnsObject[subcategoriesString] = {
-                    id: subcategoriesString,
-                    title: titleString,
-                    columnType: 'sub',
-                    categoryId: category.id,
-                    categoryIds: response.data.filter(function (cat) {
-                      return cat.parent_id === category.id;
-                    }).map(function (c) {
-                      return c.name.toLowerCase();
-                    })
-                  };
-                }
-              });
-              initialState = {
-                categories: categoriesObject,
-                columns: columnsObject,
-                // columnOrder: Object.keys(columnsObject)
-                columnOrder: ['categories', 'what2do', 'cinema-preferences', 'music-preferences', 'theater-preferences', 'cinema-sub-categories', 'music-sub-categories', 'theater-sub-categories', 'empty-sub-categories']
-              };
-              setState(initialState);
-
-            case 9:
+            case 4:
             case "end":
               return _context.stop();
           }
@@ -2729,6 +2657,7 @@ function DragAndDrop(_ref) {
   }();
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    // on page reload, fetch categories data from database to populate the DragAndDrop component
     fetchData();
   }, []);
 
@@ -2738,7 +2667,6 @@ function DragAndDrop(_ref) {
     });
   }
 
-  console.log(state);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_6__.DragDropContext // see notes on this
   , {
     onDragEnd: onDragEnd,
@@ -2853,162 +2781,6 @@ function RefinementBox(_ref) {
 //                 refinements={refinements}
 //                 refinementBoxStyle={refinementBoxStyle}
 //             />;
-
-/***/ }),
-
-/***/ "./resources/js/SearchPage/components/DragAndDrop/initialData.js":
-/*!***********************************************************************!*\
-  !*** ./resources/js/SearchPage/components/DragAndDrop/initialData.js ***!
-  \***********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-// *** THE CATEGORY KEYS AND THE 'id' VALUE HAVE TO MATCH EXACTLY
-// **** INCLUDING CAPITALISATION! ****
-var initialData = {
-  categories: {
-    cinema: {
-      id: 'cinema',
-      name: 'Cinema',
-      categoryId: 1,
-      parent_id: 0
-    },
-    music: {
-      id: 'music',
-      name: 'Music',
-      categoryId: 2,
-      parent_id: 0
-    },
-    theatre: {
-      id: 'theatre',
-      name: 'Theatre',
-      categoryId: 3,
-      parent_id: 0
-    },
-    action: {
-      id: 'action',
-      name: 'Action',
-      categoryId: 4,
-      parent_id: 1
-    },
-    adventure: {
-      id: 'adventure',
-      name: 'Adventure',
-      categoryId: 5,
-      parent_id: 1
-    },
-    animation: {
-      id: 'animation',
-      name: 'Animation',
-      categoryId: 6,
-      parent_id: 1
-    },
-    biography: {
-      id: 'biography',
-      name: 'Biography',
-      categoryId: 7,
-      parent_id: 1
-    },
-    comedy: {
-      id: 'comedy',
-      name: 'Comedy',
-      categoryId: 8,
-      parent_id: 1
-    },
-    rock: {
-      id: 'rock',
-      name: 'Rock',
-      categoryId: 9,
-      parent_id: 2
-    },
-    disco: {
-      id: 'disco',
-      name: 'Disco',
-      categoryId: 10,
-      parent_id: 2
-    },
-    musical: {
-      id: 'musical',
-      name: 'Musical',
-      categoryId: 11,
-      parent_id: 3
-    }
-  },
-  //  The columns object holds the columns that are in the system
-  columns: {
-    // The colunm name/key/id for look-up
-    categories: {
-      id: 'categories',
-      title: 'Categories',
-      columnType: 'main',
-      categoryId: 0,
-      categoryIds: ['cinema', 'music', 'theatre']
-    },
-    what2do: {
-      id: 'what2do',
-      title: 'what2do',
-      columnType: 'main',
-      categoryId: 0,
-      categoryIds: []
-    },
-    'cinema-preferences': {
-      id: 'cinema-preferences',
-      title: 'Cinema Preferences',
-      columnType: 'sub',
-      categoryId: 0,
-      categoryIds: []
-    },
-    'music-preferences': {
-      id: 'music-preferences',
-      title: 'Music Preferences',
-      columnType: 'sub',
-      categoryId: 0,
-      categoryIds: []
-    },
-    'theatre-preferences': {
-      id: 'theatre-preferences',
-      title: 'Theatre Preferences',
-      columnType: 'sub',
-      categoryId: 0,
-      categoryIds: []
-    },
-    'cinema-sub-categories': {
-      id: 'cinema-sub-categories',
-      title: 'Cinema sub-categories',
-      columnType: 'sub',
-      categoryId: 1,
-      categoryIds: ['action', 'adventure', 'animation', 'biography', 'comedy']
-    },
-    'music-sub-categories': {
-      id: 'music-sub-categories',
-      title: 'Music sub-categories',
-      columnType: 'sub',
-      categoryId: 2,
-      categoryIds: ['rock', 'disco']
-    },
-    'theatre-sub-categories': {
-      id: 'theatre-sub-categories',
-      title: 'Theatre sub-categories',
-      columnType: 'sub',
-      categoryId: 3,
-      categoryIds: ['musical']
-    },
-    'empty-sub-categories': {
-      id: 'empty-sub-categories',
-      title: 'Instructions:',
-      columnType: 'main',
-      categoryId: 0,
-      categoryIds: []
-    }
-  },
-  // This facilitates the ordering of the columns
-  columnOrder: ['categories', 'what2do', 'cinema-preferences', 'music-preferences', 'theatre-preferences', 'cinema-sub-categories', 'music-sub-categories', 'theatre-sub-categories', 'empty-sub-categories']
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (initialData);
 
 /***/ }),
 

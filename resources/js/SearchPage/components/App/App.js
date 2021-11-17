@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import DragAndDrop from '../DragAndDrop/DragAndDrop'
-import initialData from '../DragAndDrop/initialData';
 import Inputs from '../Inputs/Inputs'
 
 const App = () => {
@@ -18,7 +17,7 @@ const App = () => {
 
     const { city, date, time } = values;
 
-    // drag and drop states
+    // DragAndDrop states
     const [state, setState] = useState(null);
     const [showCinemaSubCats, setShowCinemaSubCats] = useState(false);
     const [showTheatreSubCats, setShowTheatreSubCats] = useState(false);
@@ -29,12 +28,12 @@ const App = () => {
 
 
     useEffect(() => {
-        console.log(values);
+        // console.log(values);
     }, [values])
 
 
     const search = () => {
-        console.log(searchIds);
+        // console.log(searchIds);
     }
 
 

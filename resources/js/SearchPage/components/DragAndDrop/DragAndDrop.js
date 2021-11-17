@@ -59,7 +59,6 @@ function DragAndDrop({
     const onDragEnd = (result) => {
         // needs to update the state!
         const { destination, source, draggableId } = result;
-        console.log(draggableId);
         // if there's no destination then there's nothing we need to do
         if (!destination) {
             return;
@@ -106,7 +105,6 @@ function DragAndDrop({
                     [newColumn.id]: newColumn,
                 },
             };
-            console.log(newState);
             // now update the state with the newState
             setState(newState);
         }
@@ -142,7 +140,6 @@ function DragAndDrop({
                     [newFinishColumn.id]: newFinishColumn,
                 },
             };
-            console.log(newState);
 
             setState(newState);
             // ? need to decide how to update the server
@@ -152,33 +149,38 @@ function DragAndDrop({
 
     };
 
+    const updatePreferences = () => {
+
+        // finding selected category ids (string names of the category)
+        const categoryIds = state.columns.what2do.categoryIds;
+
+        let preferencesIds = [];
+
+        categoryIds.forEach((categoryId => {
+            const preferencesString = `${categoryId}-preferences`;
+            // finding the corresponding items in state.columns array under category-preferences key and retrieving its categoryIds array (still in string/name format)
+
+            const subcategoriesArray = state.columns[preferencesString].categoryIds;
+            // pushing the result to an array that then contains all preferences, i.e. subcategories chosen by the user under any main category (still in string/name format)
+            preferencesIds.push(...subcategoriesArray);
+
+        }))
+
+        // finding the corresponding unique keys of the subcategoriesArray items in state.categories object and creating a matching array containing those keys
+        const categoryNumberIds = preferencesIds.map(preferenceId => {
+            const categoryNumberId = state.categories[preferenceId].categoryId;
+            return categoryNumberId;
+        });
+
+        // updating the searchIds state array to reflect the current user preferences
+        setSearchIds(categoryNumberIds);
+    }
+
     useEffect(() => {
 
-
+        // on state update (and once the data has been loaded, i.e. state is not null), we need to update state variable searchIds = array which includes preferences,i.e. subcategories chosen by the user - this array is to be used once the user clicks on the search button
         if (state) {
-            const categoryIds = state.columns.what2do.categoryIds;
-
-            let preferencesIds = [];
-
-            categoryIds.forEach((categoryId => {
-                const preferencesString = `${categoryId}-preferences`;
-
-                const subcategoriesArray = state.columns[preferencesString].categoryIds;
-
-                preferencesIds.push(...subcategoriesArray);
-
-            }))
-
-            const categoryNumberIds = preferencesIds.map(preferenceId => {
-                const categoryNumberId = state.categories[preferenceId].categoryId;
-                return categoryNumberId;
-            });
-
-            console.log(preferencesIds);
-            console.log(categoryNumberIds);
-
-
-            setSearchIds(categoryNumberIds);
+            updatePreferences();
         }
 
     }, [state]);
@@ -189,112 +191,10 @@ function DragAndDrop({
 
         const response = await get('/api/search');
 
-        let categoriesObject = {};
-
-        response.data.forEach((category) => {
-
-            if (!categoriesObject[category.name.toLowerCase()]) {
-                categoriesObject[category.name.toLowerCase()] = {
-                    id: category.name.toLowerCase(),
-                    name: category.name,
-                    categoryId: category.id,
-                    parent_id: category.parent_id,
-                }
-            }
-        }
-
-        );
-
-        let columnsObject = {
-            categories: {
-                id: 'categories',
-                title: 'Categories',
-                columnType: 'main',
-                categoryId: 0,
-                categoryIds: response.data.filter((cat) => {
-                    return cat.parent_id === 0;
-                }).map(c => c.name.toLowerCase()),
-            },
-            what2do: {
-                id: 'what2do',
-                title: 'what2do',
-                columnType: 'main',
-                categoryId: 0,
-                categoryIds: [],
-            },
-            'empty-sub-categories': {
-                id: 'empty-sub-categories',
-                title: 'Instructions:',
-                columnType: 'main',
-                categoryId: 0,
-                categoryIds: [],
-            },
-        }
-
-        response.data.forEach((category) => {
-
-            const titleString = `${category.name[0].toUpperCase() + category.name.slice(1)} Preferences`;
-
-            const preferencesString = `${category.name.toLowerCase()}-preferences`;
-
-
-            const subcategoriesString = `${category.name.toLowerCase()}-sub-categories`;
-
-            if (category.parent_id === 0) {
-                columnsObject[preferencesString] = {
-                    id: preferencesString,
-                    title: titleString,
-                    columnType: 'sub',
-                    categoryId: category.id,
-                    categoryIds: [],
-                }
-
-
-
-                columnsObject[subcategoriesString] = {
-                    id: subcategoriesString,
-                    title: titleString,
-                    columnType: 'sub',
-                    categoryId: category.id,
-                    categoryIds:
-                        response.data.filter((cat) => {
-                            return cat.parent_id === category.id;
-                        }).map(c => c.name.toLowerCase())
-                    ,
-                }
-
-            }
-
-        }
-
-        );
-
-        const initialState =
-
-        {
-            categories: categoriesObject,
-
-            columns: columnsObject,
-
-            // columnOrder: Object.keys(columnsObject)
-            columnOrder: [
-                'categories',
-                'what2do',
-                'cinema-preferences',
-                'music-preferences',
-                'theater-preferences',
-                'cinema-sub-categories',
-                'music-sub-categories',
-                'theater-sub-categories',
-                'empty-sub-categories',
-            ]
-
-        }
-        setState(initialState);
+        setState(response.data);
     }
     useEffect(() => {
-
-
+        // on page reload, fetch categories data from database to populate the DragAndDrop component
         fetchData();
 
     }, [])
@@ -303,7 +203,7 @@ function DragAndDrop({
     if (!state) {
         return <h1>loading</h1>
     }
-    console.log(state);
+
     return (
         <DragDropContext
             // see notes on this

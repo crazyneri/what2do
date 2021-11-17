@@ -23,8 +23,7 @@ export default function CategoryBox({
     }, [beingDragged]);
 
     const showRefinements = () => {
-        console.log('clicked!');
-        console.log(category.id);
+
         if (!showCinemaSubCats && category.id === 'cinema') {
             setShowCinemaSubCats(true);
         }
