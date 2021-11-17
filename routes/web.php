@@ -28,3 +28,13 @@ Route::post('/admin/venue/create', 'VenueController@store');
 
 // SEARCH PART
 Route::get('/search', 'SearchController@index');
+
+// USER PART
+Route::get('/users','UserController@index');
+Route::get('/user/{id}', 'UserController@show');
+Route::get('/user/{id}/edit', 'UserController@edit');
+Route::post('/user/{id}', 'UserController@update');
+Route::post('/user/{id}/group', 'UserController@createGroup');
+Route::get('/user/{id}/add', 'UserController@addFriend');
+// add user to group
+Route::post('/group/{id}','UserController@groupAddUser');
