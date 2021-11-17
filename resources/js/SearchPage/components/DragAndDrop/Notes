@@ -1,0 +1,62 @@
+add with:
+
+npm add react-beautiful-dnd
+
+There are three components
+
+1. DragDropContext
+
+-   This is the wrapper for everything
+
+2. Droppable
+
+-   These are regions that you can drag things into
+
+3. Draggable
+
+-   These are components that can be dragged into 'Droppable' regions
+
+The above components need importing from 'react-beautiful-dnd':
+import { DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
+
+the DragDropContext component has 3 callbacks:
+onDragStart -> called at the beginning of a drag
+onDragUpdate -> called when something changes
+onDragEnd -> called at the end of a drag
+
+\*onDragEnd is the only required callback -> it's job is to synchronously update
+the state with the result of the drag/drop
+
+---
+
+The on onDragEnd 'result' looks like this:
+
+const result = {
+draggableId: 'task-1', <- this is the item's identifier
+type: 'TYPE',
+reason: 'DROP', <- either DROP or CANCEL(?) - not typically important
+source: { <- the start point
+droppableId: 'coloumn-1', <- started in column-1...
+index: 0, <- ...in position 0  
+ },
+destination: { <- the end point <- this can be null e.g. if the item is dropped outside of a list
+droppableId: 'column-1', <- finished in column-1...
+index: 1, <- ...in position 1
+},
+};
+
+---
+
+styling
+
+!! can change anything apart from the size of the components during a drag !!
+
+const draggableSnapshot {
+isDragging: true,
+draggingOver: 'column-1',
+};
+
+const droppableSnapshot {
+isDraggingOver: true,
+draggingOverWith: 'task-1',
+}

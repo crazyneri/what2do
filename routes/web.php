@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 // HOME PAGE
 Route::get('/', function () {
@@ -21,8 +21,10 @@ Route::get('/', function () {
 // ADMIN PART
 Route::get('/admin', 'AdminController@show');
 
-
 // VENUE PART
 Route::get('venue/{id}', 'VenueController@show');
 Route::get('/admin/venue/create', 'VenueController@create');
 Route::post('/admin/venue/create', 'VenueController@store');
+
+// SEARCH PART
+Route::get('/search', 'SearchController@index');
