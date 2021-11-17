@@ -26,3 +26,6 @@ Route::get('/admin', 'AdminController@show');
 Route::get('venue/{id}', 'VenueController@show');
 Route::get('/admin/venue/create', 'VenueController@create');
 Route::post('/admin/venue/create', 'VenueController@store');
+
+// dummy search
+Route::get('/solo_search', 'SearchResultsController@soloSearch');
