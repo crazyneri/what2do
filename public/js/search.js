@@ -2118,7 +2118,7 @@ var App = function App() {
       date = values.date,
       time = values.time; // drag and drop states
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_DragAndDrop_initialData__WEBPACK_IMPORTED_MODULE_2__["default"]),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState4 = _slicedToArray(_useState3, 2),
       state = _useState4[0],
       setState = _useState4[1];
@@ -2524,8 +2524,8 @@ function DragAndDrop(_ref) {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    renderColumns();
-  }, [showCinemaSubCats, showTheatreSubCats, showMusicSubCats]);
+    state && renderColumns();
+  }, [showCinemaSubCats, showTheatreSubCats, showMusicSubCats, state]);
 
   var onDragEnd = function onDragEnd(result) {
     // needs to update the state!
@@ -2613,20 +2613,22 @@ function DragAndDrop(_ref) {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    var categoryIds = state.columns.what2do.categoryIds;
-    var preferencesIds = [];
-    categoryIds.forEach(function (categoryId) {
-      var preferencesString = "".concat(categoryId, "-preferences");
-      var subcategoriesArray = state.columns[preferencesString].categoryIds;
-      preferencesIds.push.apply(preferencesIds, _toConsumableArray(subcategoriesArray));
-    });
-    var categoryNumberIds = preferencesIds.map(function (preferenceId) {
-      var categoryNumberId = state.categories[preferenceId].categoryId;
-      return categoryNumberId;
-    });
-    console.log(preferencesIds);
-    console.log(categoryNumberIds);
-    setSearchIds(categoryNumberIds);
+    if (state) {
+      var categoryIds = state.columns.what2do.categoryIds;
+      var preferencesIds = [];
+      categoryIds.forEach(function (categoryId) {
+        var preferencesString = "".concat(categoryId, "-preferences");
+        var subcategoriesArray = state.columns[preferencesString].categoryIds;
+        preferencesIds.push.apply(preferencesIds, _toConsumableArray(subcategoriesArray));
+      });
+      var categoryNumberIds = preferencesIds.map(function (preferenceId) {
+        var categoryNumberId = state.categories[preferenceId].categoryId;
+        return categoryNumberId;
+      });
+      console.log(preferencesIds);
+      console.log(categoryNumberIds);
+      setSearchIds(categoryNumberIds);
+    }
   }, [state]);
 
   var fetchData = /*#__PURE__*/function () {

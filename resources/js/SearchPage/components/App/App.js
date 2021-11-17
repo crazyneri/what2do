@@ -19,7 +19,7 @@ const App = () => {
     const { city, date, time } = values;
 
     // drag and drop states
-    const [state, setState] = useState(initialData);
+    const [state, setState] = useState(null);
     const [showCinemaSubCats, setShowCinemaSubCats] = useState(false);
     const [showTheatreSubCats, setShowTheatreSubCats] = useState(false);
     const [showMusicSubCats, setShowMusicSubCats] = useState(false);

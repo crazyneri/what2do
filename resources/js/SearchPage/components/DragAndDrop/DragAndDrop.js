@@ -53,8 +53,8 @@ function DragAndDrop({
     };
 
     useEffect(() => {
-        renderColumns();
-    }, [showCinemaSubCats, showTheatreSubCats, showMusicSubCats]);
+        state && renderColumns();
+    }, [showCinemaSubCats, showTheatreSubCats, showMusicSubCats, state]);
 
     const onDragEnd = (result) => {
         // needs to update the state!
@@ -155,29 +155,31 @@ function DragAndDrop({
     useEffect(() => {
 
 
-        const categoryIds = state.columns.what2do.categoryIds;
+        if (state) {
+            const categoryIds = state.columns.what2do.categoryIds;
 
-        let preferencesIds = [];
+            let preferencesIds = [];
 
-        categoryIds.forEach((categoryId => {
-            const preferencesString = `${categoryId}-preferences`;
+            categoryIds.forEach((categoryId => {
+                const preferencesString = `${categoryId}-preferences`;
 
-            const subcategoriesArray = state.columns[preferencesString].categoryIds;
+                const subcategoriesArray = state.columns[preferencesString].categoryIds;
 
-            preferencesIds.push(...subcategoriesArray);
+                preferencesIds.push(...subcategoriesArray);
 
-        }))
+            }))
 
-        const categoryNumberIds = preferencesIds.map(preferenceId => {
-            const categoryNumberId = state.categories[preferenceId].categoryId;
-            return categoryNumberId;
-        });
+            const categoryNumberIds = preferencesIds.map(preferenceId => {
+                const categoryNumberId = state.categories[preferenceId].categoryId;
+                return categoryNumberId;
+            });
 
-        console.log(preferencesIds);
-        console.log(categoryNumberIds);
+            console.log(preferencesIds);
+            console.log(categoryNumberIds);
 
 
-        setSearchIds(categoryNumberIds);
+            setSearchIds(categoryNumberIds);
+        }
 
     }, [state]);
 
