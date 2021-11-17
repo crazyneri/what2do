@@ -18,7 +18,8 @@ class SearchResultsController extends Controller
             $search_session->id = 1;
             $search_session->group_id = 1;
             // $search_session->foreignId('event_id');
-            $search_session->when = 'evening';
+            $search_session->start = '17:00:00';
+            $search_session->end = null;
             $search_session->searched_date = '2021-11-27';
             $search_session->city = 'Prague';
            // $search_session->foreignId('user_id')->nullable();
@@ -75,7 +76,7 @@ class SearchResultsController extends Controller
             }
         }
 
-       // return $category_match;
+      // return $category_match;
 
         // get only those categories with events today
         
@@ -93,22 +94,22 @@ class SearchResultsController extends Controller
         }
 
      //   return $events_match;
-        // get start time
+        // // get start time
 
-        $start_after = null;
+        // $start_after = null;
 
-        if($search_session->when == "morning")
-        {
-            $start_after = '06:00:00';
-        }
-        if($search_session->when == "afternoon")
-        {
-            $start_after = '12:00:00';
-        }
-        if($search_session->when == "evening")
-        {
-            $start_after = '17:00:00';
-        }
+        // if($search_session->when == "morning")
+        // {
+        //     $start_after = '06:00:00';
+        // }
+        // if($search_session->when == "afternoon")
+        // {
+        //     $start_after = '12:00:00';
+        // }
+        // if($search_session->when == "evening")
+        // {
+        //     $start_after = '17:00:00';
+        // }
         
                
 
@@ -120,14 +121,69 @@ class SearchResultsController extends Controller
         {
             foreach($possible_event as $event)
             {
-                if(strtotime($start_after) <= strtotime($event->start_time))
+                if(strtotime($search_session->start) <= strtotime($event->start_time))
                 {
-                     $right_time_of_day[] = $event;
+                    if($search_session->end != null)
+                    { 
+                        if(strtotime($search_session->end) >= strtotime($event->end_time))
+                        {
+                            $right_time_of_day[] = $event;
+                            continue;
+                        } else {
+                            continue;
+                        }
+                    }
+                $right_time_of_day[] = $event;
                 }
             }
         }
 
-        return $right_time_of_day;
+      //  asort($right_time_of_day->start_time);
+
+       // return $right_time_of_day;
+
+
+       // create a list of user events and assign a score based on preferences
+
+        $final_choices = null;
+        foreach($right_time_of_day as $key => $value) {
+            $final_choices[] = [ 
+                'event_id' => $value->id, 
+                'category_id' => $value->pivot->category_id, 
+                'score' => 0,
+                'start_time' => strtotime($value->start_time)
+             ];
+        }
+
+
+        for($i = 0; $i < count($user_choices_array); $i++)
+        {
+            foreach($final_choices as &$event)
+            {      
+                if($user_choices_array[$i] == $event['category_id'])
+                {
+                    $event['score'] += (9 - $i);
+                    //  var_dump($event['event_id'] . '-score: ' . $event['score']);
+                }    
+            }
+        }
+        
+return $final_choices;
+
+        // foreach($final_choices as $check_duplicate)
+        // {
+        //     foreach($final_choices as &$event)
+        //     {
+        //         if($check_duplicate['event_id'] == $event['event_id'])
+        //         {
+        //             $event['score'] += $check_duplicate['score']/2;
+        //         }
+
+        //     }
+        // }
+
+        //return 'bollocks';
+     return $final_choices;
 
 
 
