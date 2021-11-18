@@ -61,7 +61,7 @@
                             <td>{{$event->start_time}}</td>
                             <td>{{$event->end_date}}</td>
                             <td>{{$event->end_time}}</td>
-                            <td>{{$event->price . " Kc"}} </td>
+                            <td>{{$event->price . " CZK"}} </td>
                         </tr>
                     @endforeach
                 </tr>

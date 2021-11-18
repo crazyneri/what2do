@@ -48,9 +48,11 @@ class EventController extends Controller
                         ->where('admin_id', $user)
                         ->get();
         
-        // DD($venues_repeat);
+        // return $venues_repeat;
 
-        return view('event/index', compact('venues', 'venues_hist'));
+        $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+
+        return view('event/index', compact('venues', 'venues_hist', 'venues_repeat', 'days'));
     }
 
     // CREATE A DATA FOR EVENT-CREATE FORM
