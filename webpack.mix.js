@@ -25,7 +25,7 @@ if (!mix.inProduction()) {
 // ADD YOUR COMPILED ASSETS HERE
 mix.sass('resources/scss/main.scss', 'public/css');
 mix.js('resources/js/SearchPage/index.js', 'public/js/search.js').react();
-// mix.js('resources/js/app.js', 'public/js').react(); // example React app compilation
+mix.js('resources/js/EventCreate/index.js', 'public/js/event-create.js').react();
 
 mix.browserSync({
     host: 'localhost',
