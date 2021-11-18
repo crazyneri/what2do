@@ -9,7 +9,7 @@ use App\Models\UserChoice;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SearchSessions extends Model
+class SearchSession extends Model
 {
     use HasFactory;
 

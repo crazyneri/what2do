@@ -66,3 +66,5 @@ Route::get('/send-notification', function(){
 
     $user->notify(new InvoicePaid);
 });
+// dummy search
+Route::get('/solo_search', 'SearchResultsController@soloSearch');
