@@ -74,9 +74,9 @@ class SearchResultsController extends Controller
                 {
                 $date_range[] = Category::with([
                     'events' => function($query) use ($search_session) {
-                //    $query->where('start_date', '<=', $search_session->searched_date)->where('start_date', '>=', $search_session->searched_date);
+                    $query->where('start_date', '<=', $search_session->searched_date)->where('end_date', '>=', $search_session->searched_date);
                 
-                    $query->where('start_date', '=', $search_session->searched_date);
+                //    $query->where('start_date', '=', $search_session->searched_date);
                     
                     }
                 ]
@@ -86,7 +86,7 @@ class SearchResultsController extends Controller
             }
         }
 
-//     return $date_range;
+     // return $date_range;
         
         $events_match = null;
         
@@ -102,35 +102,59 @@ class SearchResultsController extends Controller
         }
                
 
-        // check for start time
+      //  return $events_match;
 
-        $right_time_of_day = null;
-        
-        foreach($events_match as $possible_event)
-        {
-            foreach($possible_event as $event)
-            {
-                if(strtotime($search_session->start) <= strtotime($event->start_time))
-                {
-                    if($search_session->end != null)
-                    { 
-                        if(strtotime($search_session->end) >= strtotime($event->end_time))
-                        {
-                            $right_time_of_day[] = $event;
-                            continue;
+
+      // check for start time
+      
+      $right_time_of_day = null;
+      
+      foreach($events_match as $possible_event)
+      {
+          foreach($possible_event as $event)
+          {
+              if(strtotime($search_session->start) <= strtotime($event->start_time))
+              {
+                  if($search_session->end != null)
+                  { 
+                      if(strtotime($search_session->end) >= strtotime($event->end_time))
+                      {
+                          $right_time_of_day[] = $event;
+                          continue;
                         } else {
                             continue;
                         }
                     }
-                $right_time_of_day[] = $event;
+                    $right_time_of_day[] = $event;
                 }
             }
         }
+        
+        // check for day match
+  
+  $day = strtolower(date('l', strtotime($search_session->searched_date)));
+  
+  
+  $right_day = [];
 
+  foreach($right_time_of_day as $event)
+  {
+    if($event->is_recurring == 0) {
+        $right_day[] = $event;
+        continue;
+    }  
+    if($event->is_recurring == 1 && $event[$day] == 1)
+      {
+        $right_day[] = $event;
+      }
+  }
+  //return $day;
+      //  return $right_day;
+        
        // create a list of user events and assign a score based on preferences
 
         $final_choices = null;
-        foreach($right_time_of_day as $key => $value) {
+        foreach($right_day as $key => $value) {
             $final_choices[] = [ 
                 'event_id' => $value->id, 
                 'category_id' => $value->pivot->category_id, 

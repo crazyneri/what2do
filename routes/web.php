@@ -67,4 +67,9 @@ Route::get('/send-notification', function(){
     $user->notify(new InvoicePaid);
 });
 // dummy search
+
+// test search function
+// Route::get('/solo_search/{id}', 'SearchResultsController@singleSearch');
+
+// test search
 Route::get('/solo_search/{id}', 'SearchResultsController@handleSearch');
