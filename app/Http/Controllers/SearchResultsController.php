@@ -74,7 +74,7 @@ class SearchResultsController extends Controller
                 {
                 $date_range[] = Category::with([
                     'events' => function($query) use ($search_session) {
-                //    $query->where('start_date', '<=', $search_session->searched_date)->where('start_date', '=>', $search_session->searched_date);
+                //    $query->where('start_date', '<=', $search_session->searched_date)->where('start_date', '>=', $search_session->searched_date);
                 
                     $query->where('start_date', '=', $search_session->searched_date);
                     
