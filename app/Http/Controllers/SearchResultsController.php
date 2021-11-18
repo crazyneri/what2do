@@ -54,19 +54,22 @@ class SearchResultsController extends Controller
         ];
 
 
-        $date = '2021-11-27';
+    //    $date = '2021-11-27';
     
+// ** to do - when events are repeated we will neeed to search for a range and then process that range for
+// ** the day of the week
 
-        $category_match = null;
+        $date_range = null;
 
         foreach($user_choices_array as $value)
         {
                 if($value)
                 {
-                $category_match[] = Category::with([
+                $date_range[] = Category::with([
                     'events' => function($query) use ($search_session) {
-                    
-                    $query->whereDate('start_date', '=', $search_session->searched_date);
+                //    $query->where('start_date', '<=', $search_session->searched_date)->where('start_date', '=>', $search_session->searched_date);
+                
+                    $query->where('start_date', '=', $search_session->searched_date);
                     
                     }
                 ]
@@ -76,13 +79,13 @@ class SearchResultsController extends Controller
             }
         }
 
-      // return $category_match;
+//     return $date_range;
 
-        // get only those categories with events today
+        // 
         
         $events_match = null;
         
-        foreach($category_match as $value)
+        foreach($date_range as $value)
         {
             foreach($value as $category)
             {
@@ -93,7 +96,7 @@ class SearchResultsController extends Controller
             }
         }
 
-     //   return $events_match;
+ //       return $events_match;
         // // get start time
 
         // $start_after = null;
@@ -167,6 +170,20 @@ class SearchResultsController extends Controller
                 }    
             }
         }
+      
+        for($i = 0; $i < count($final_choices); $i++)
+        {
+            for($j = $i+1; $j < count($final_choices); $j++)
+                {
+                    if($final_choices[$i]['event_id'] == $final_choices[$j]['event_id'])
+                    {
+                        $final_choices[$i]['score'] += 1;
+                        array_splice($final_choices, $j, 1);
+                    }
+                }
+        }
+       
+
         
 return $final_choices;
 
@@ -198,5 +215,22 @@ return $final_choices;
         public function groupSearch()
     {
         return view('search\result');
+    }
+    public function handle_search()
+    {
+        $user_choices = new UserChoice();
+            $user_choices->id = 1;
+            $user_choices->user_id = 1;
+            $user_choices->session_id = 1;
+            $user_choices->max_budget = 2000;
+            $user_choices->category1 = 4;
+            $user_choices->category2 = 28;
+            $user_choices->category3 = 31;
+            $user_choices->category4 = 34;
+            $user_choices->category5 = 12;
+            $user_choices->category6 = 17;
+            $user_choices->category7 = 33;
+            $user_choices->category8 = 7;
+            $user_choices->category9 = 19;
     }
 }
