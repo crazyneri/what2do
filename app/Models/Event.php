@@ -12,6 +12,11 @@ class Event extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name', 'venue_id', 'start_date', 'start_time',
+        'end_date', 'end_time', 'description', 'price', 'is_recurring'
+    ];
+
     public function categories()
     {
         return $this->belongsToMany(Category::class);

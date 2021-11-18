@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Mail\TestEmail;
+use App\Notifications\InvoicePaid;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +25,7 @@ Route::get('/', function () {
 Route::get('/admin', 'AdminController@show');
 
 // VENUE PART
-Route::get('venue/{id}', 'VenueController@show');
+Route::get('/venue/{id}', 'VenueController@show');
 Route::get('/admin/venue/create', 'VenueController@create');
 Route::post('/admin/venue/create', 'VenueController@store');
 
@@ -36,5 +39,30 @@ Route::get('/user/{id}/edit', 'UserController@edit');
 Route::post('/user/{id}', 'UserController@update');
 Route::post('/user/{id}/group', 'UserController@createGroup');
 Route::get('/user/{id}/add', 'UserController@addFriend');
+
 // add user to group
 Route::post('/group/{id}','UserController@groupAddUser');
+Route::post('/venue/create', 'VenueController@store');
+Route::get('/venue/{id}/edit', 'VenueController@edit');
+Route::put('/venue/{id}', 'VenueController@update');
+
+
+// EVENT PART
+Route::get('/admin/events', 'EventController@index');
+Route::view('/admin/event/create', 'event/form');
+Route::get('/admin/event/data', 'EventController@data');
+Route::post('/admin/event/data', 'EventController@store');
+
+
+// EMAIL PART
+// registration - CHANGE SENDING EMAIL AFTER THE REGISTRATION
+Route::get('/send-email', function(){
+    Mail::to('user@email.com')->send(new TestEmail());
+});
+
+// notification - GROUP and USERS NEEDS TO BE ADDED
+Route::get('/send-notification', function(){
+    $user = User::where('name', 'Jachym Pivonka')->first();
+
+    $user->notify(new InvoicePaid);
+});
