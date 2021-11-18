@@ -11,13 +11,6 @@ const [categories, setCategories] = useState(null);
 
 // STATE FOR KEEPING SELECTED MAIN CATEGORY
 const [selectedMainCategory, setSelectedMainCategory] = useState('');
-const [selectedSubCategory, setSelectedSubCategory] = useState(null);
-
-// STATE FOR KEEPING INFO ABOUT RECURRING
-const [recurring, setRecurring] = useState(0);
-
-// STATE FOR RECURRING DAYS
-const [recDays, setRecDays] = useState(null);
 
 // STATE FOR REST INPUT
 const [input, setInput] = useState({
@@ -28,7 +21,16 @@ const [input, setInput] = useState({
     end_date: "",
     end_time: "",
     description: "",
-    price: ""
+    price: "",
+    is_recurring: 0,
+    monday: 0,
+    tuesday: 0,
+    wednesday: 0,
+    thursday: 0,
+    friday: 0,
+    saturday: 0,
+    sunday: 0,
+    categories: null
 })
 
 // GET DATA
@@ -44,38 +46,21 @@ const getData = async() => {
 }
 
 // DAYS OF WEEK
-const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
 // GET VALUE OF CHECKBOXES - SUBCATEGORIES
 const getChecked = () => {
     const checkboxes = document.querySelectorAll('.checkbox');
-    const checkboxesDays = document.querySelectorAll('.dayofweek');
     const checked = [];
-    const daysDB = []
     for(let i = 0; i < checkboxes.length; i++ ){
         if(checkboxes[i].checked == true){
             checked.push(checkboxes[i].value);
-            setSelectedSubCategory(checked);
         }
     }
-    for(let i = 0; i < checkboxesDays.length; i++){
-        if(checkboxesDays[i].checked == true){
-            daysDB.push(1);
-        } else {
-            daysDB.push(null);
-        }
-    }
-    setRecDays(daysDB);   
-}
-
-// GET IF ITS RECCURING EVENT
-const isRecurring = () => {
-    const recurringCheckbox = document.querySelector('#question');
-    if(recurringCheckbox.checked == true) {
-        setRecurring(1)
-    }else {
-        setRecurring(0)
-    }
+    setInput(
+        {...input,
+        ['categories']:checked}
+    )  
 }
 
 // USE EFFECT
@@ -87,11 +72,12 @@ useEffect(() => {
 const handleSubmit = async(event) => {
     event.preventDefault();
 
-    let response = await axios.post('/admin/event/data', {input, selectedSubCategory, recurring, recDays}, {
+    let response = await axios.post('/admin/event/store', {...input}, {
         headers: {
                 'Accept': 'application/json'
             }
     });
+    console.log(response);
 }
 
 // SAVE OTHER INPUTS
@@ -104,11 +90,21 @@ const saveInput = (e) => {
     )
 }
 
+// SAVE CHECKBOX
+const saveCheckbox = (e) => {
+    let value = e.target.checked ? 1 : 0;
+    const name = e.target.name;
+    setInput(
+        {...input, 
+        [name]:value}
+    )
+}
+
 // console.log(selectedMainCategory);
 // console.log(selectedSubCategory);
 // console.log(recurring);
 // console.log(recDays);
-// console.log(input);
+console.log(input);
 
     return(
         <div className="create-form">
@@ -154,15 +150,15 @@ const saveInput = (e) => {
 
 
                 <br/>
-                <label htmlFor="question">Do you want to create event that is recuring in time?</label>
-                <input type="checkbox" name="question" id="question" value={recurring} onClick={() => isRecurring()}/>
+                <label htmlFor="is_recurring">Do you want to create event that is recuring in time?</label>
+                <input type="checkbox" name="is_recurring" id="is_recurring" value={input.is_recurring} onChange={saveCheckbox}/>
                 <br/>
                 {
                     days.map((day, index) => (
-                        recurring == 1 ?
+                        input.is_recurring == 1 ?
                         <div key={index}>
                         <label htmlFor="dayofweek">{day}</label>
-                        <input className="dayofweek" type="checkbox" value={day}/>
+                        <input className="dayofweek" type="checkbox" name={day} value={input[day]} onChange={saveCheckbox}/>
                         <br/>
                         </div>
                         :
