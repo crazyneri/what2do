@@ -78,13 +78,7 @@ class UserController extends Controller
         
     }
 
-    public function addFriend($id)
-    {
-        $user = User::findOrFail($id);
-        dd($id);
-        return view('user.add', compact('user'));
-    }
-
+    // should be split in 2 methods (display + work with info)
     public function groupAddUser(Request $request, $group_id)
     {
         // take a group, add a user to it

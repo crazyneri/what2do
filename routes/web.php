@@ -41,6 +41,8 @@ Route::post('/user/{id}/group', 'UserController@createGroup');
 Route::get('/user/{id}/add', 'UserController@addFriend');
 
 // add user to group
+Route::get('/group/{id}','UserController@groupAddUser');
+
 Route::post('/group/{id}','UserController@groupAddUser');
 Route::post('/venue/create', 'VenueController@store');
 Route::get('/venue/{id}/edit', 'VenueController@edit');

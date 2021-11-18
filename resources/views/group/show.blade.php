@@ -14,7 +14,11 @@
     <h4>Members of group:</h4>
     <ul>
     @foreach($group->users as $user)
+    @if($user->id === $group->owner_id)
+        <li>{{$user->name}}, the owner</li>
+    @else
         <li>{{$user->name}}</li>
+    @endif
     @endforeach
     </ul>
 @endsection
