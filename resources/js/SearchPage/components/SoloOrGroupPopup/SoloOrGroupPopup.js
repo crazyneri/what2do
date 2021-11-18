@@ -129,13 +129,22 @@ const SoloOrGroupPopup = () => {
                                     </ListItemAvatar>
                                     <ul className='users-list'>
                                         <ListItemText
-                                            primary={group.name}
+                                            primary={<>
+                                                <Typography
+                                                    key={user.id}
+                                                    sx={{ display: 'block', fontWeight: 'bold' }}
+                                                    component="span"
+                                                    variant="body2"
+                                                    color="text.primary"
+                                                >{group.name}</Typography>
+
+                                            </>}
                                             secondary={
                                                 <>
                                                     {group.users.map(user =>
                                                         <Typography
                                                             key={user.id}
-                                                            sx={{ display: 'inline' }}
+                                                            sx={{ display: 'inline', margin: '0 0.5rem' }}
                                                             component="span"
                                                             variant="body2"
                                                             color="text.primary"

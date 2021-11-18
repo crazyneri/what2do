@@ -31690,12 +31690,24 @@ var SoloOrGroupPopup = function SoloOrGroupPopup() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
                 className: "users-list",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_13__["default"], {
-                  primary: group.name,
+                  primary: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                      sx: {
+                        display: 'block',
+                        fontWeight: 'bold'
+                      },
+                      component: "span",
+                      variant: "body2",
+                      color: "text.primary",
+                      children: group.name
+                    }, user.id)
+                  }),
                   secondary: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
                     children: group.users.map(function (user) {
                       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
                         sx: {
-                          display: 'inline'
+                          display: 'inline',
+                          margin: '0 0.5rem'
                         },
                         component: "span",
                         variant: "body2",
@@ -32170,7 +32182,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".popup-bg {\n  height: 100vh;\n  width: 100vw;\n  background: rgba(0, 0, 0, 0.6);\n  position: fixed;\n  z-index: 1;\n}\n.popup-bg h2,\n.popup-bg h3 {\n  margin: 1rem 0;\n  padding: 0.5rem 0;\n  border: none;\n}\n\n.popup {\n  height: 80%;\n  width: 60%;\n  z-index: 2;\n  background: #dfb871;\n  position: absolute;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  left: 50%;\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n}\n.popup button {\n  align-self: center;\n}\n\n.users-list {\n  display: flex;\n  list-style-type: none !important;\n}", "",{"version":3,"sources":["webpack://./resources/js/SearchPage/components/SoloOrGroupPopup/SoloOrGroupPopup.scss"],"names":[],"mappings":"AAAA;EACI,aAAA;EACA,YAAA;EACA,8BAAA;EAEA,eAAA;EAIA,UAAA;AAHJ;AAII;;EAEI,cAAA;EACA,iBAAA;EACA,YAAA;AAFR;;AAMA;EACI,WAAA;EACA,UAAA;EACA,UAAA;EACA,mBAAA;EACA,kBAAA;EACA,QAAA;EACA,gCAAA;EACA,SAAA;EACA,aAAA;EACA,sBAAA;EACA,oBAAA;AAHJ;AAII;EACI,kBAAA;AAFR;;AAOA;EACI,aAAA;EACA,gCAAA;AAJJ","sourcesContent":[".popup-bg {\r\n    height: 100vh;\r\n    width: 100vw;\r\n    background: rgba(0, 0, 0, 0.6);\r\n    // display: none;\r\n    position: fixed;\r\n    // &:hover {\r\n    //     cursor: pointer;\r\n    // }\r\n    z-index: 1;\r\n    h2,\r\n    h3 {\r\n        margin: 1rem 0;\r\n        padding: 0.5rem 0;\r\n        border: none;\r\n    }\r\n}\r\n\r\n.popup {\r\n    height: 80%;\r\n    width: 60%;\r\n    z-index: 2;\r\n    background: rgb(223, 184, 113);\r\n    position: absolute;\r\n    top: 50%;\r\n    transform: translate(-50%, -50%);\r\n    left: 50%;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: stretch;\r\n    button {\r\n        align-self: center;\r\n    }\r\n    // display: none;\r\n}\r\n\r\n.users-list {\r\n    display: flex;\r\n    list-style-type: none !important;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".popup-bg {\n  height: 100vh;\n  width: 100vw;\n  background: rgba(0, 0, 0, 0.6);\n  position: fixed;\n  z-index: 1;\n}\n.popup-bg h2,\n.popup-bg h3 {\n  margin: 1rem 0;\n  padding: 0.5rem 0;\n  border: none;\n}\n\n.popup {\n  height: 80%;\n  width: 60%;\n  z-index: 2;\n  background: #dfb871;\n  position: absolute;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  left: 50%;\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n  overflow: hidden scroll;\n}\n.popup button {\n  align-self: center;\n}\n\n.users-list {\n  display: flex;\n  list-style-type: none !important;\n}", "",{"version":3,"sources":["webpack://./resources/js/SearchPage/components/SoloOrGroupPopup/SoloOrGroupPopup.scss"],"names":[],"mappings":"AAAA;EACI,aAAA;EACA,YAAA;EACA,8BAAA;EAEA,eAAA;EAIA,UAAA;AAHJ;AAII;;EAEI,cAAA;EACA,iBAAA;EACA,YAAA;AAFR;;AAMA;EACI,WAAA;EACA,UAAA;EACA,UAAA;EACA,mBAAA;EACA,kBAAA;EACA,QAAA;EACA,gCAAA;EACA,SAAA;EACA,aAAA;EACA,sBAAA;EACA,oBAAA;EAIA,uBAAA;AANJ;AAGI;EACI,kBAAA;AADR;;AAOA;EACI,aAAA;EACA,gCAAA;AAJJ","sourcesContent":[".popup-bg {\r\n    height: 100vh;\r\n    width: 100vw;\r\n    background: rgba(0, 0, 0, 0.6);\r\n    // display: none;\r\n    position: fixed;\r\n    // &:hover {\r\n    //     cursor: pointer;\r\n    // }\r\n    z-index: 1;\r\n    h2,\r\n    h3 {\r\n        margin: 1rem 0;\r\n        padding: 0.5rem 0;\r\n        border: none;\r\n    }\r\n}\r\n\r\n.popup {\r\n    height: 80%;\r\n    width: 60%;\r\n    z-index: 2;\r\n    background: rgb(223, 184, 113);\r\n    position: absolute;\r\n    top: 50%;\r\n    transform: translate(-50%, -50%);\r\n    left: 50%;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: stretch;\r\n    button {\r\n        align-self: center;\r\n    }\r\n    overflow: hidden scroll;\r\n    // display: none;\r\n}\r\n\r\n.users-list {\r\n    display: flex;\r\n    list-style-type: none !important;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
