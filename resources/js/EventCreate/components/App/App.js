@@ -14,10 +14,22 @@ const [selectedMainCategory, setSelectedMainCategory] = useState('');
 const [selectedSubCategory, setSelectedSubCategory] = useState(null);
 
 // STATE FOR KEEPING INFO ABOUT RECURRING
-const [recurring, setRecurring] = useState('No');
+const [recurring, setRecurring] = useState(0);
 
 // STATE FOR RECURRING DAYS
 const [recDays, setRecDays] = useState(null);
+
+// STATE FOR REST INPUT
+const [input, setInput] = useState({
+    name: "",
+    venue_id: "",
+    start_date: "",
+    start_time: "",
+    end_date: "",
+    end_time: "",
+    description: "",
+    price: ""
+})
 
 // GET DATA
 const getData = async() => {
@@ -60,9 +72,9 @@ const getChecked = () => {
 const isRecurring = () => {
     const recurringCheckbox = document.querySelector('#question');
     if(recurringCheckbox.checked == true) {
-        setRecurring('Yes')
+        setRecurring(1)
     }else {
-        setRecurring('No')
+        setRecurring(0)
     }
 }
 
@@ -71,19 +83,41 @@ useEffect(() => {
     getData();
 },[]);
 
+// SEND THE DATA TO THE DB
+const handleSubmit = async(event) => {
+    event.preventDefault();
+
+    let response = await axios.post('/admin/event/data', {input, selectedSubCategory, recurring, recDays}, {
+        headers: {
+                'Accept': 'application/json'
+            }
+    });
+}
+
+// SAVE OTHER INPUTS
+const saveInput = (e) => {
+    let value = e.target.value;
+    const name = e.target.name;
+    setInput(
+        {...input, 
+        [name]:value}
+    )
+}
+
 // console.log(selectedMainCategory);
 // console.log(selectedSubCategory);
 // console.log(recurring);
 // console.log(recDays);
+// console.log(input);
 
     return(
         <div className="create-form">
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form action='/admin/event/data' method='post' onSubmit={handleSubmit}>
                 <label htmlFor="name">Name:</label>
-                <input type="text" name="name" id="name"/>
+                <input type="text" name="name" id="name" onChange={saveInput}/>
                 <br/>
                 <label>Venue:</label>
-                <select name="venue_id" onChange={(e) => console.log(e.target.value)}>
+                <select name="venue_id" onChange={saveInput}>
                     <option>-- select your venue --</option>
                     {
                         venues &&
@@ -95,22 +129,22 @@ useEffect(() => {
                 </select>
                 <br/>
                 <label htmlFor="start_date">Start date:</label>
-                <input type="date" name="start_date" id="start_date"/>
+                <input type="date" name="start_date" id="start_date" onChange={saveInput}/>
                 <br/>
                 <label htmlFor="start_time">Start time:</label>
-                <input type="time" name="start_time" id="start_time"/>
+                <input type="time" name="start_time" id="start_time" onChange={saveInput}/>
                 <br/>
                 <label htmlFor="end_date">End date:</label>
-                <input type="date" name="end_date" id="end_date"/>
+                <input type="date" name="end_date" id="end_date" onChange={saveInput}/>
                 <br/>
                 <label htmlFor="end_time">End time:</label>
-                <input type="time" name="end_time" id="end_time"/>
+                <input type="time" name="end_time" id="end_time" onChange={saveInput}/>
                 <br/>
                 <label htmlFor="description">Descriptiom:</label>
-                <textarea name="description" id="description"></textarea>
+                <textarea name="description" id="description" onChange={saveInput}></textarea>
                 <br/>
                 <label htmlFor="price">Price:</label>
-                <input type="number" name="price" id="price"/>
+                <input type="number" name="price" id="price" onChange={saveInput}/>
                 <br/>
                     <CategorySelection
                         categories={categories}
@@ -125,7 +159,7 @@ useEffect(() => {
                 <br/>
                 {
                     days.map((day, index) => (
-                        recurring == 'Yes' ?
+                        recurring == 1 ?
                         <div key={index}>
                         <label htmlFor="dayofweek">{day}</label>
                         <input className="dayofweek" type="checkbox" value={day}/>

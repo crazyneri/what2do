@@ -9,7 +9,7 @@ export default function CategorySelection({categories, selectedMainCategory, set
                             categories &&
                             categories.map((category, index) => (
                                 category.parent_id == 0 ?
-                                    <option value={category.id}>{category.name}</option>
+                                    <option key={index} value={category.id}>{category.name}</option>
                                     :
                                     ''
                             ))
@@ -20,11 +20,10 @@ export default function CategorySelection({categories, selectedMainCategory, set
                             categories &&
                             categories.map((subcategory, index) => (
                                 subcategory.parent_id == selectedMainCategory && selectedMainCategory !== '' ?
-                                    <>
-                                    <label key={index} htmlFor="subcategory">{subcategory.name}</label>
+                                    <div key={index}>
+                                    <label htmlFor="subcategory">{subcategory.name}</label>
                                     <input className="checkbox" type="checkbox" value={subcategory.id}/>
-                                    <br/>
-                                    </>
+                                    </div>
                                     :
                                     ''
                             ))

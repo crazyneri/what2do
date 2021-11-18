@@ -2083,6 +2083,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _CategorySelection_CategorySelection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../CategorySelection/CategorySelection */ "./resources/js/EventCreate/components/CategorySelection/CategorySelection.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2130,7 +2136,7 @@ function App() {
       setSelectedSubCategory = _useState8[1]; // STATE FOR KEEPING INFO ABOUT RECURRING
 
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)('No'),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(0),
       _useState10 = _slicedToArray(_useState9, 2),
       recurring = _useState10[0],
       setRecurring = _useState10[1]; // STATE FOR RECURRING DAYS
@@ -2139,7 +2145,22 @@ function App() {
   var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null),
       _useState12 = _slicedToArray(_useState11, 2),
       recDays = _useState12[0],
-      setRecDays = _useState12[1]; // GET DATA
+      setRecDays = _useState12[1]; // STATE FOR REST INPUT
+
+
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)({
+    name: "",
+    venue_id: "",
+    start_date: "",
+    start_time: "",
+    end_date: "",
+    end_time: "",
+    description: "",
+    price: ""
+  }),
+      _useState14 = _slicedToArray(_useState13, 2),
+      input = _useState14[0],
+      setInput = _useState14[1]; // GET DATA
 
 
   var getData = /*#__PURE__*/function () {
@@ -2207,40 +2228,84 @@ function App() {
     var recurringCheckbox = document.querySelector('#question');
 
     if (recurringCheckbox.checked == true) {
-      setRecurring('Yes');
+      setRecurring(1);
     } else {
-      setRecurring('No');
+      setRecurring(0);
     }
   }; // USE EFFECT
 
 
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
     getData();
-  }, []); // console.log(selectedMainCategory);
+  }, []); // SEND THE DATA TO THE DB
+
+  var handleSubmit = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(event) {
+      var response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              event.preventDefault();
+              _context2.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/admin/event/data', {
+                input: input,
+                selectedSubCategory: selectedSubCategory,
+                recurring: recurring,
+                recDays: recDays
+              }, {
+                headers: {
+                  'Accept': 'application/json'
+                }
+              });
+
+            case 3:
+              response = _context2.sent;
+
+            case 4:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function handleSubmit(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }(); // SAVE OTHER INPUTS
+
+
+  var saveInput = function saveInput(e) {
+    var value = e.target.value;
+    var name = e.target.name;
+    setInput(_objectSpread(_objectSpread({}, input), {}, _defineProperty({}, name, value)));
+  }; // console.log(selectedMainCategory);
   // console.log(selectedSubCategory);
   // console.log(recurring);
   // console.log(recDays);
+  // console.log(input);
+
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "create-form",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
-      onSubmit: function onSubmit(e) {
-        return e.preventDefault();
-      },
+      action: "/admin/event/data",
+      method: "post",
+      onSubmit: handleSubmit,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
         htmlFor: "name",
         children: "Name:"
       }), "\xA0 \xA0             ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
         type: "text",
         name: "name",
-        id: "name"
+        id: "name",
+        onChange: saveInput
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), "\xA0 \xA0 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
         children: "Venue:"
       }), "\xA0 \xA0 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
         name: "venue_id",
-        onChange: function onChange(e) {
-          return console.log(e.target.value);
-        },
+        onChange: saveInput,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
           children: "-- select your venue --"
         }), venues && venues.map(function (venue, index) {
@@ -2255,41 +2320,47 @@ function App() {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
         type: "date",
         name: "start_date",
-        id: "start_date"
+        id: "start_date",
+        onChange: saveInput
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
         htmlFor: "start_time",
         children: "Start time:"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
         type: "time",
         name: "start_time",
-        id: "start_time"
+        id: "start_time",
+        onChange: saveInput
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
         htmlFor: "end_date",
         children: "End date:"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
         type: "date",
         name: "end_date",
-        id: "end_date"
+        id: "end_date",
+        onChange: saveInput
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
         htmlFor: "end_time",
         children: "End time:"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
         type: "time",
         name: "end_time",
-        id: "end_time"
+        id: "end_time",
+        onChange: saveInput
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
         htmlFor: "description",
         children: "Descriptiom:"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("textarea", {
         name: "description",
-        id: "description"
+        id: "description",
+        onChange: saveInput
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
         htmlFor: "price",
         children: "Price:"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
         type: "number",
         name: "price",
-        id: "price"
+        id: "price",
+        onChange: saveInput
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_CategorySelection_CategorySelection__WEBPACK_IMPORTED_MODULE_3__["default"], {
         categories: categories,
         selectedMainCategory: selectedMainCategory,
@@ -2306,7 +2377,7 @@ function App() {
           return isRecurring();
         }
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), days.map(function (day, index) {
-        return recurring == 'Yes' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        return recurring == 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
             htmlFor: "dayofweek",
             children: day
@@ -2342,7 +2413,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
-
 function CategorySelection(_ref) {
   var categories = _ref.categories,
       selectedMainCategory = _ref.selectedMainCategory,
@@ -2360,19 +2430,19 @@ function CategorySelection(_ref) {
         return category.parent_id == 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
           value: category.id,
           children: category.name
-        }) : '';
+        }, index) : '';
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), categories && categories.map(function (subcategory, index) {
-      return subcategory.parent_id == selectedMainCategory && selectedMainCategory !== '' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      return subcategory.parent_id == selectedMainCategory && selectedMainCategory !== '' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
           htmlFor: "subcategory",
           children: subcategory.name
-        }, index), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
           className: "checkbox",
           type: "checkbox",
           value: subcategory.id
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {})]
-      }) : '';
+        })]
+      }, index) : '';
     })]
   });
 }

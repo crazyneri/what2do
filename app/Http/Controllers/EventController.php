@@ -50,4 +50,13 @@ class EventController extends Controller
 
         return compact('venues', 'categories');
     }
+
+    public function store(Request $request)
+    {
+        $data = $request->all();
+
+        Event::create($data->input);
+
+        return $request->all();
+    }
 }
