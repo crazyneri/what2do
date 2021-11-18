@@ -12,45 +12,50 @@ use DB;
 class SearchResultsController extends Controller
 {
     //
-    public function soloSearch()
+    public function singleSearch($id)
     {
-            $search_session = new SearchSession();
-            $search_session->id = 1;
-            $search_session->group_id = 1;
-            // $search_session->foreignId('event_id');
-            $search_session->start = '17:00:00';
-            $search_session->end = null;
-            $search_session->searched_date = '2021-11-27';
-            $search_session->city = 'Prague';
-           // $search_session->foreignId('user_id')->nullable();
+         // ** id needs to be user_choices id **
+            $user_choices = UserChoice::findOrFail($id);
+            $search_session = SearchSession::findOrFail($user_choices->session_id);
+        // $search_session = $user_choices->session;
+
+        //     $search_session = new SearchSession();
+        //     $search_session->id = 1;
+        //     $search_session->group_id = 1;
+        //     // $search_session->foreignId('event_id');
+        //     $search_session->start = '17:00:00';
+        //     $search_session->end = null;
+        //     $search_session->searched_date = '2021-11-27';
+        //     $search_session->city = 'Prague';
+        //    // $search_session->foreignId('user_id')->nullable();
 
 
-        $user_choices = new UserChoice();
-            $user_choices->id = 1;
-            $user_choices->user_id = 1;
-            $user_choices->session_id = 1;
-            $user_choices->max_budget = 2000;
-            $user_choices->category1 = 4;
-            $user_choices->category2 = 28;
-            $user_choices->category3 = 31;
-            $user_choices->category4 = 34;
-            $user_choices->category5 = 12;
-            $user_choices->category6 = 17;
-            $user_choices->category7 = 33;
-            $user_choices->category8 = 7;
-            $user_choices->category9 = 19;
+        // $user_choices = new UserChoice();
+        //     $user_choices->id = 1;
+        //     $user_choices->user_id = 1;
+        //     $user_choices->session_id = 1;
+        //     $user_choices->max_budget = 2000;
+        //     $user_choices->category1 = 4;
+        //     $user_choices->category2 = 28;
+        //     $user_choices->category3 = 31;
+        //     $user_choices->category4 = 34;
+        //     $user_choices->category5 = 12;
+        //     $user_choices->category6 = 17;
+        //     $user_choices->category7 = 33;
+        //     $user_choices->category8 = 7;
+        //     $user_choices->category9 = 19;
         
   
         $user_choices_array = [       
-            $user_choices->category1,
-            $user_choices->category2,
-            $user_choices->category3,
-            $user_choices->category4,
-            $user_choices->category5,
-            $user_choices->category6,
-            $user_choices->category7,
-            $user_choices->category8,
-            $user_choices->category9,
+            $user_choices->category1_id,
+            $user_choices->category2_id,
+            $user_choices->category3_id,
+            $user_choices->category4_id,
+            $user_choices->category5_id,
+            $user_choices->category6_id,
+            $user_choices->category7_id,
+            $user_choices->category8_id,
+            $user_choices->category9_id,
         ];
 
 
@@ -82,8 +87,6 @@ class SearchResultsController extends Controller
         }
 
 //     return $date_range;
-
-        // 
         
         $events_match = null;
         
@@ -97,25 +100,6 @@ class SearchResultsController extends Controller
                 }     
             }
         }
-
- //       return $events_match;
-        // // get start time
-
-        // $start_after = null;
-
-        // if($search_session->when == "morning")
-        // {
-        //     $start_after = '06:00:00';
-        // }
-        // if($search_session->when == "afternoon")
-        // {
-        //     $start_after = '12:00:00';
-        // }
-        // if($search_session->when == "evening")
-        // {
-        //     $start_after = '17:00:00';
-        // }
-        
                
 
         // check for start time
@@ -142,11 +126,6 @@ class SearchResultsController extends Controller
                 }
             }
         }
-
-      //  asort($right_time_of_day->start_time);
-
-       // return $right_time_of_day;
-
 
        // create a list of user events and assign a score based on preferences
 
@@ -185,6 +164,8 @@ class SearchResultsController extends Controller
                 }
         }
        
+    // create a searchable set of values
+
         $user_results = [
                 'user_id' => $user_choices->user_id,
                 'search_session' => $search_session->id,
@@ -200,21 +181,13 @@ class SearchResultsController extends Controller
     {
         return view('search\result');
     }
-    public function handle_search()
+    public function handleSearch($id)
     {
-        $user_choices = new UserChoice();
-            $user_choices->id = 1;
-            $user_choices->user_id = 1;
-            $user_choices->session_id = 1;
-            $user_choices->max_budget = 2000;
-            $user_choices->category1 = 4;
-            $user_choices->category2 = 28;
-            $user_choices->category3 = 31;
-            $user_choices->category4 = 34;
-            $user_choices->category5 = 12;
-            $user_choices->category6 = 17;
-            $user_choices->category7 = 33;
-            $user_choices->category8 = 7;
-            $user_choices->category9 = 19;
+        $result = $this->singleSearch($id);
+
+        
+        $event = Event::findOrFail($result['results'][0]['event_id']);
+
+        return view('search\result', compact('result', 'event'));
     }
 }
