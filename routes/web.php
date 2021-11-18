@@ -22,12 +22,24 @@ Route::get('/', function () {
 });
 
 // ADMIN PART
-Route::get('/admin', 'AdminController@show');
+Route::group(["middleware" => "can:admin, super_admin"], function() {
+    // admin - main page
+    Route::get('/admin', 'AdminController@show');
+    
+    // admin - create and display events
+    Route::get('/admin/events', 'EventController@index');
+    Route::view('/admin/event/create', 'event/form');
+    Route::get('/admin/event/data', 'EventController@data');
+    Route::post('/admin/event/store', 'EventController@store');
 
-// VENUE PART
-Route::get('/venue/{id}', 'VenueController@show');
-Route::get('/admin/venue/create', 'VenueController@create');
-Route::post('/admin/venue/create', 'VenueController@store');
+    // admin - dipslay/create new venue
+    Route::get('/admin/venue/create', 'VenueController@create');
+    Route::post('/admin/venue/create', 'VenueController@store');
+    Route::post('/admin/venue/create', 'VenueController@store');
+    Route::get('/admin/venue/{id}/edit', 'VenueController@edit');
+    Route::get('/admin/venue/{id}', 'VenueController@show');
+    Route::put('/admin/venue/{id}', 'VenueController@update');
+});
 
 // SEARCH PART
 Route::get('/search', 'SearchController@index');
@@ -42,17 +54,6 @@ Route::get('/user/{id}/add', 'UserController@addFriend');
 
 // add user to group
 Route::post('/group/{id}','UserController@groupAddUser');
-Route::post('/venue/create', 'VenueController@store');
-Route::get('/venue/{id}/edit', 'VenueController@edit');
-Route::put('/venue/{id}', 'VenueController@update');
-
-
-// EVENT PART
-Route::get('/admin/events', 'EventController@index');
-Route::view('/admin/event/create', 'event/form');
-Route::get('/admin/event/data', 'EventController@data');
-Route::post('/admin/event/store', 'EventController@store');
-
 
 // EMAIL PART
 // registration - CHANGE SENDING EMAIL AFTER THE REGISTRATION
