@@ -62,14 +62,14 @@ class UserController extends Controller
     // CREATE NEW GROUP & STORE IDs IN PIVOT
         public function createGroup($id, Request $request)
     {
-        // dd($id, $request->all());
-
         $data = $request->all();
         $data['owner_id'] = $id;
-        // dd($data);
-
+        
+        if(Auth::id() == $id)
+        {
         $group = Group::create($data);
         $group->users()->attach($id);
+        }
         
         // $user = User::findOrFail($id); // same result as above
         // $user->groups()->attach($group->id);
@@ -78,13 +78,12 @@ class UserController extends Controller
         
     }
 
-    public function addFriend($id)
+    // should be split in 2 methods (display + work with info)
+    public function showGroup($group_id)
     {
-        $user = User::findOrFail($id);
-        dd($id);
-        return view('user.add', compact('user'));
+        $group = Group::findOrFail($group_id);
+        return view('group.show', compact('group'));
     }
-
     public function groupAddUser(Request $request, $group_id)
     {
         // take a group, add a user to it
@@ -92,7 +91,7 @@ class UserController extends Controller
         
 
         // **security feature for when logged in
-        // if(Auth::user()->id === $group->owner_id){
+        if(Auth::id() === $group->owner_id){
         $user = User::where('email', $request->input('email-search'))->first(); // retrieve single record
         
         if($user && $group)
@@ -103,8 +102,21 @@ class UserController extends Controller
             $group->users()->attach($user->id);
             }
         }
-    //   }
+      }
         return view('group.show', compact('group','user'));
     }
 
+    public function removeFriendget($group_id, $user_id)
+    {
+        $group = Group::findOrFail($group_id);
+        $user = User::findOrFail($user_id);
+        dd($group, $user);
+    }
+    public function removeFriend($group_id, $user_id)
+    {
+        $group = Group::findOrFail($group_id);
+        $user = User::findOrFail($user_id);
+        $group->users()->detach($user_id);
+        return redirect()->back();
+    }
 }

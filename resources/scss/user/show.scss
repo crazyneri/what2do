@@ -1,0 +1,16 @@
+.form-create-group {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    background-color: #ccc;
+    padding: 1em;
+    input[type="text"] {
+        width: 100%;
+        padding: 0 10%;
+    }
+    &_item {
+        width: 80%;
+    }
+    input[type="submit"] {
+    }
+}
