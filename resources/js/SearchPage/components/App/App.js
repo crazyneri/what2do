@@ -1,6 +1,11 @@
+
 import React, { useEffect, useState } from 'react'
 import DragAndDrop from '../DragAndDrop/DragAndDrop'
 import Inputs from '../Inputs/Inputs'
+import { get } from '../../../util/request';
+import UserContext from '../../../util/UserContext';
+
+
 
 const App = () => {
 
@@ -10,14 +15,15 @@ const App = () => {
     const initialValues = {
         city: 'Prague',
         date: '',
-        time: '',
+        startTime: '12:00',
+        endTime: '12:00',
     }
 
     const [values, setValues] = useState(initialValues)
 
-    const { city, date, time } = values;
+    const { city, date, startTime, endTime } = values;
 
-    // DragAndDrop states
+    // drag and drop states
     const [state, setState] = useState(null);
     const [showCinemaSubCats, setShowCinemaSubCats] = useState(false);
     const [showTheatreSubCats, setShowTheatreSubCats] = useState(false);
@@ -27,45 +33,63 @@ const App = () => {
     const [searchIds, setSearchIds] = useState([]);
 
 
-    useEffect(() => {
-        // console.log(values);
-    }, [values])
+    // useEffect(() => {
+    //     console.log(state);
+    // }, [])
 
 
     const search = () => {
-        // console.log(searchIds);
+        console.log(searchIds);
     }
+
+    const [user, setUser] = useState(null);
+
+    const fetchUser = async () => {
+
+        const response = await get('/api/user');
+
+        console.log(response.data);
+        setUser(response.data);
+    }
+
+    useEffect(() => {
+        fetchUser();
+    }, [])
 
 
     return (
         <>
-            <Inputs
-                city={city}
-                date={date}
-                time={time}
-                setValues={setValues}
-            />
-            <DragAndDrop
-                state={state}
-                setState={setState}
+            <UserContext.Provider value={user}>
 
-                showCinemaSubCats={showCinemaSubCats}
-                setShowCinemaSubCats={setShowCinemaSubCats}
+                <Inputs
+                    city={city}
+                    date={date}
+                    startTime={startTime}
+                    endTime={endTime}
+                    setValues={setValues}
+                />
+                <DragAndDrop
+                    state={state}
+                    setState={setState}
 
-                showTheatreSubCats={showTheatreSubCats}
-                setShowTheatreSubCats={setShowTheatreSubCats}
+                    showCinemaSubCats={showCinemaSubCats}
+                    setShowCinemaSubCats={setShowCinemaSubCats}
 
-                showMusicSubCats={showMusicSubCats}
-                setShowMusicSubCats={setShowMusicSubCats}
+                    showTheatreSubCats={showTheatreSubCats}
+                    setShowTheatreSubCats={setShowTheatreSubCats}
 
-                columnsToRender={columnsToRender}
-                setColumnsToRender={setColumnsToRender}
+                    showMusicSubCats={showMusicSubCats}
+                    setShowMusicSubCats={setShowMusicSubCats}
 
-                searchIds={searchIds}
-                setSearchIds={setSearchIds}
+                    columnsToRender={columnsToRender}
+                    setColumnsToRender={setColumnsToRender}
 
-            />
-            <button onClick={search}>Search</button>
+                    searchIds={searchIds}
+                    setSearchIds={setSearchIds}
+
+                />
+                <button onClick={search}>Search</button>
+            </UserContext.Provider>
         </>
     )
 }

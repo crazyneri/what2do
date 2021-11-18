@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 
 class SearchController extends Controller
 {
@@ -122,4 +123,13 @@ class SearchController extends Controller
 
         return $data;
     }
+
+    public function getUser()
+    {
+        $user = Auth::user();
+
+        return ['user' => $user];
+
+    }
+
 }
