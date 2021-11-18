@@ -56,8 +56,10 @@ class SearchResultsController extends Controller
 
     //    $date = '2021-11-27';
     
-// ** to do - when events are repeated we will neeed to search for a range and then process that range for
-// ** the day of the week
+// ** to do - 
+// ** - when events are repeated we will neeed to search for a range 
+// **   and then process that range for the day of the week
+// ** - filter by budget (also needs an input)
 
         $date_range = null;
 
@@ -183,33 +185,15 @@ class SearchResultsController extends Controller
                 }
         }
        
-
+        $user_results = [
+                'user_id' => $user_choices->user_id,
+                'search_session' => $search_session->id,
+                'group_id' => $search_session->group_id,
+                'results' => $final_choices,
+        ];
         
-return $final_choices;
-
-        // foreach($final_choices as $check_duplicate)
-        // {
-        //     foreach($final_choices as &$event)
-        //     {
-        //         if($check_duplicate['event_id'] == $event['event_id'])
-        //         {
-        //             $event['score'] += $check_duplicate['score']/2;
-        //         }
-
-        //     }
-        // }
-
-        //return 'bollocks';
-     return $final_choices;
-
-
-
-       
-
-
-
-
-        return view('search\result');
+        return $user_results;
+  
     }
 
         public function groupSearch()
