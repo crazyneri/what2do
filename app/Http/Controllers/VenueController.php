@@ -62,7 +62,7 @@ class VenueController extends Controller
 
     // UPDATE CURRENT VENUE
     public function update(Request $request, $id){
-        // dd($id);
+        
         $venue = Venue::findOrFail($id);
 
         $data = $request->all();

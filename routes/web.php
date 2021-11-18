@@ -51,7 +51,7 @@ Route::put('/venue/{id}', 'VenueController@update');
 Route::get('/admin/events', 'EventController@index');
 Route::view('/admin/event/create', 'event/form');
 Route::get('/admin/event/data', 'EventController@data');
-Route::post('/admin/event/data', 'EventController@store');
+Route::post('/admin/event/store', 'EventController@store');
 
 
 // EMAIL PART

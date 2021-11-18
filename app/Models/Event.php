@@ -14,7 +14,8 @@ class Event extends Model
 
     protected $fillable = [
         'name', 'venue_id', 'start_date', 'start_time',
-        'end_date', 'end_time', 'description', 'price', 'is_recurring'
+        'end_date', 'end_time', 'description', 'price', 'is_recurring',
+        'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'
     ];
 
     public function categories()
