@@ -21,6 +21,10 @@
         "sass-loader": "^12.1.0"
     },
     "dependencies": {
+        "@emotion/react": "^11.6.0",
+        "@emotion/styled": "^11.6.0",
+        "@mui/material": "^5.1.1",
+        "@mui/styles": "^5.1.1",
         "luxon": "^2.1.1",
         "react": "^17.0.2",
         "react-beautiful-dnd": "^13.1.0",

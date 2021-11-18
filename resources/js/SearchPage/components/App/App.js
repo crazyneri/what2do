@@ -4,6 +4,8 @@ import DragAndDrop from '../DragAndDrop/DragAndDrop'
 import Inputs from '../Inputs/Inputs'
 import { get } from '../../../util/request';
 import UserContext from '../../../util/UserContext';
+import SoloOrGroupPopup from '../SoloOrGroupPopup/SoloOrGroupPopup';
+import { DateTime } from 'luxon';
 
 
 
@@ -14,9 +16,9 @@ const App = () => {
 
     const initialValues = {
         city: 'Prague',
-        date: '',
-        startTime: '12:00',
-        endTime: '12:00',
+        date: DateTime.now().toFormat('yyyy-MM-dd'),
+        startTime: '12:00:00',
+        endTime: '12:00:00',
     }
 
     const [values, setValues] = useState(initialValues)
@@ -33,9 +35,9 @@ const App = () => {
     const [searchIds, setSearchIds] = useState([]);
 
 
-    // useEffect(() => {
-    //     console.log(state);
-    // }, [])
+    useEffect(() => {
+        console.log(values);
+    })
 
 
     const search = () => {
@@ -43,6 +45,9 @@ const App = () => {
     }
 
     const [user, setUser] = useState(null);
+
+    const [groupId, setGroupId] = useState(0);
+
 
     const fetchUser = async () => {
 
@@ -56,11 +61,17 @@ const App = () => {
         fetchUser();
     }, [])
 
+    // useEffect(() => {
+    //     user && fetchUser();
+    // }, [user.groups]);
+
 
     return (
         <>
             <UserContext.Provider value={user}>
-
+                {(user && groupId === 0) &&
+                    <SoloOrGroupPopup setGroupId={setGroupId} />
+                }
                 <Inputs
                     city={city}
                     date={date}
