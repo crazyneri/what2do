@@ -14,7 +14,7 @@ use App\Models\User;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 // HOME PAGE
 Route::get('/', function () {
@@ -27,6 +27,21 @@ Route::get('/admin', 'AdminController@show');
 // VENUE PART
 Route::get('/venue/{id}', 'VenueController@show');
 Route::get('/admin/venue/create', 'VenueController@create');
+Route::post('/admin/venue/create', 'VenueController@store');
+
+// SEARCH PART
+Route::get('/search', 'SearchController@index');
+
+// USER PART
+Route::get('/users','UserController@index');
+Route::get('/user/{id}', 'UserController@show');
+Route::get('/user/{id}/edit', 'UserController@edit');
+Route::post('/user/{id}', 'UserController@update');
+Route::post('/user/{id}/group', 'UserController@createGroup');
+Route::get('/user/{id}/add', 'UserController@addFriend');
+
+// add user to group
+Route::post('/group/{id}','UserController@groupAddUser');
 Route::post('/venue/create', 'VenueController@store');
 Route::get('/venue/{id}/edit', 'VenueController@edit');
 Route::put('/venue/{id}', 'VenueController@update');
@@ -51,3 +66,5 @@ Route::get('/send-notification', function(){
 
     $user->notify(new InvoicePaid);
 });
+// dummy search
+Route::get('/solo_search', 'SearchResultsController@soloSearch');
