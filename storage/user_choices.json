@@ -1,0 +1,44 @@
+[
+    {
+        "user_id": 9,
+        "session_id": 1,
+        "max_budget": 2000,
+        "category1_id": 4,
+        "category2_id": 28,
+        "category3_id": 31,
+        "category4_id": 34,
+        "category5_id": 12,
+        "category6_id": 17,
+        "category7_id": 33,
+        "category8_id": 7,
+        "category9_id": 19
+    },
+    {
+        "user_id": 8,
+        "session_id": 2,
+        "max_budget": 400,
+        "category1_id": 6,
+        "category2_id": 18,
+        "category3_id": 22,
+        "category4_id": 23,
+        "category5_id": 9,
+        "category6_id": 17,
+        "category7_id": 33,
+        "category8_id": 7,
+        "category9_id": 49
+    },
+    {
+        "user_id": 3,
+        "session_id": 3,
+        "max_budget": 5000,
+        "category1_id": 28,
+        "category2_id": 29,
+        "category3_id": 42,
+        "category4_id": 20,
+        "category5_id": 13,
+        "category6_id": null,
+        "category7_id": null,
+        "category8_id": null,
+        "category9_id": null
+    }
+]

@@ -37,6 +37,18 @@ class EventController extends Controller
                 )
                         ->where('admin_id', $user)
                         ->get();
+        
+        $venues_repeat = Venue::with([
+                'events' => function($query) {
+                    $query->where('is_recurring', 1)->whereDate('start_date', '>=', date('Y-m-d'));
+                }
+                ]
+
+                )
+                        ->where('admin_id', $user)
+                        ->get();
+        
+        // DD($venues_repeat);
 
         return view('event/index', compact('venues', 'venues_hist'));
     }
@@ -54,9 +66,15 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        
+        $event = Event::create($data);
+        
+        // save data to the pivot table
+        $event->categories()->sync($data['categories']);
+        
+        session()->flash('success_message', 'The event has been created!');
 
-        Event::create($data->input);
+        return redirect()->action('AdminController@show');
 
-        return $request->all();
     }
 }

@@ -2128,27 +2128,10 @@ function App() {
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''),
       _useState6 = _slicedToArray(_useState5, 2),
       selectedMainCategory = _useState6[0],
-      setSelectedMainCategory = _useState6[1];
-
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null),
-      _useState8 = _slicedToArray(_useState7, 2),
-      selectedSubCategory = _useState8[0],
-      setSelectedSubCategory = _useState8[1]; // STATE FOR KEEPING INFO ABOUT RECURRING
+      setSelectedMainCategory = _useState6[1]; // STATE FOR REST INPUT
 
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(0),
-      _useState10 = _slicedToArray(_useState9, 2),
-      recurring = _useState10[0],
-      setRecurring = _useState10[1]; // STATE FOR RECURRING DAYS
-
-
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null),
-      _useState12 = _slicedToArray(_useState11, 2),
-      recDays = _useState12[0],
-      setRecDays = _useState12[1]; // STATE FOR REST INPUT
-
-
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)({
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)({
     name: "",
     venue_id: "",
     start_date: "",
@@ -2156,11 +2139,20 @@ function App() {
     end_date: "",
     end_time: "",
     description: "",
-    price: ""
+    price: "",
+    is_recurring: 0,
+    monday: 0,
+    tuesday: 0,
+    wednesday: 0,
+    thursday: 0,
+    friday: 0,
+    saturday: 0,
+    sunday: 0,
+    categories: null
   }),
-      _useState14 = _slicedToArray(_useState13, 2),
-      input = _useState14[0],
-      setInput = _useState14[1]; // GET DATA
+      _useState8 = _slicedToArray(_useState7, 2),
+      input = _useState8[0],
+      setInput = _useState8[1]; // GET DATA
 
 
   var getData = /*#__PURE__*/function () {
@@ -2197,41 +2189,19 @@ function App() {
   }(); // DAYS OF WEEK
 
 
-  var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']; // GET VALUE OF CHECKBOXES - SUBCATEGORIES
+  var days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']; // GET VALUE OF CHECKBOXES - SUBCATEGORIES
 
   var getChecked = function getChecked() {
     var checkboxes = document.querySelectorAll('.checkbox');
-    var checkboxesDays = document.querySelectorAll('.dayofweek');
     var checked = [];
-    var daysDB = [];
 
     for (var i = 0; i < checkboxes.length; i++) {
       if (checkboxes[i].checked == true) {
         checked.push(checkboxes[i].value);
-        setSelectedSubCategory(checked);
       }
     }
 
-    for (var _i2 = 0; _i2 < checkboxesDays.length; _i2++) {
-      if (checkboxesDays[_i2].checked == true) {
-        daysDB.push(1);
-      } else {
-        daysDB.push(null);
-      }
-    }
-
-    setRecDays(daysDB);
-  }; // GET IF ITS RECCURING EVENT
-
-
-  var isRecurring = function isRecurring() {
-    var recurringCheckbox = document.querySelector('#question');
-
-    if (recurringCheckbox.checked == true) {
-      setRecurring(1);
-    } else {
-      setRecurring(0);
-    }
+    setInput(_objectSpread(_objectSpread({}, input), {}, _defineProperty({}, 'categories', checked)));
   }; // USE EFFECT
 
 
@@ -2248,12 +2218,7 @@ function App() {
             case 0:
               event.preventDefault();
               _context2.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/admin/event/data', {
-                input: input,
-                selectedSubCategory: selectedSubCategory,
-                recurring: recurring,
-                recDays: recDays
-              }, {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/admin/event/store', _objectSpread({}, input), {
                 headers: {
                   'Accept': 'application/json'
                 }
@@ -2261,8 +2226,9 @@ function App() {
 
             case 3:
               response = _context2.sent;
+              console.log(response);
 
-            case 4:
+            case 5:
             case "end":
               return _context2.stop();
           }
@@ -2280,13 +2246,20 @@ function App() {
     var value = e.target.value;
     var name = e.target.name;
     setInput(_objectSpread(_objectSpread({}, input), {}, _defineProperty({}, name, value)));
+  }; // SAVE CHECKBOX
+
+
+  var saveCheckbox = function saveCheckbox(e) {
+    var value = e.target.checked ? 1 : 0;
+    var name = e.target.name;
+    setInput(_objectSpread(_objectSpread({}, input), {}, _defineProperty({}, name, value)));
   }; // console.log(selectedMainCategory);
   // console.log(selectedSubCategory);
   // console.log(recurring);
   // console.log(recDays);
-  // console.log(input);
 
 
+  console.log(input);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "create-form",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
@@ -2366,25 +2339,25 @@ function App() {
         selectedMainCategory: selectedMainCategory,
         setSelectedMainCategory: setSelectedMainCategory
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-        htmlFor: "question",
+        htmlFor: "is_recurring",
         children: "Do you want to create event that is recuring in time?"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
         type: "checkbox",
-        name: "question",
-        id: "question",
-        value: recurring,
-        onClick: function onClick() {
-          return isRecurring();
-        }
+        name: "is_recurring",
+        id: "is_recurring",
+        value: input.is_recurring,
+        onChange: saveCheckbox
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), days.map(function (day, index) {
-        return recurring == 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        return input.is_recurring == 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
             htmlFor: "dayofweek",
             children: day
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             className: "dayofweek",
             type: "checkbox",
-            value: day
+            name: day,
+            value: input[day],
+            onChange: saveCheckbox
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {})]
         }, index) : '';
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
@@ -34482,7 +34455,11 @@ if (false) {} else {
 /***/ ((module) => {
 
 "use strict";
+<<<<<<< HEAD
 module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\web\\\\codingbootcamp\\\\exercises\\\\project\\\\what2do"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/","/localtunnel"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\web\\\\codingbootcamp\\\\exercises\\\\project\\\\what2do","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+=======
+module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"axios@^0.21","name":"axios","escapedName":"axios","rawSpec":"^0.21","saveSpec":null,"fetchSpec":"^0.21"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_shasum":"c67b90dc0568e5c1cf2b0b858c43ba28e2eda575","_spec":"axios@^0.21","_where":"C:\\\\web\\\\codingbootcamp\\\\what2do","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundleDependencies":false,"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"deprecated":false,"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+>>>>>>> main
 
 /***/ })
 
