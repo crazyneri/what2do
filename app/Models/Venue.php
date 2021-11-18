@@ -16,7 +16,7 @@ class Venue extends Model
 
     public function admin()
     {
-        return $this->belongsTo(User::class, 'venues', 'id', 'admin_id');
+        return $this->belongsTo(User::class, 'admin_id', 'id');
     }
 
     public function events()

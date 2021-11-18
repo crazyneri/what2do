@@ -21,3 +21,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // populate the Search Page with categories to use on DragAndDrop component
 
 Route::get('/search', 'Api\SearchController@fetchData');
+
+Route::get('/user', 'Api\SearchController@getUser'
+// function () {
+
+    // return [
+    //     'user' => Auth::user(),
+    // ];
+    // return [
+    //     'user' => [
+    //         'name' => 'James Bond',
+    //     ],
+    // ];
+
+// }
+);
