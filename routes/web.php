@@ -28,23 +28,34 @@ Route::get('/admin', 'AdminController@show');
 Route::get('/venue/{id}', 'VenueController@show');
 Route::get('/admin/venue/create', 'VenueController@create');
 Route::post('/admin/venue/create', 'VenueController@store');
+Route::post('/venue/create', 'VenueController@store');
+Route::get('/venue/{id}/edit', 'VenueController@edit');
+Route::put('/venue/{id}', 'VenueController@update');
 
 // SEARCH PART
 Route::get('/search', 'SearchController@index');
 
-// USER PART
-Route::get('/users','UserController@index');
-Route::get('/user/{id}', 'UserController@show');
-Route::get('/user/{id}/edit', 'UserController@edit');
-Route::post('/user/{id}', 'UserController@update');
-Route::post('/user/{id}/group', 'UserController@createGroup');
-Route::get('/user/{id}/add', 'UserController@addFriend');
 
+
+
+
+
+// USER PART
+// can be limited by Auth
+// no id -> Auth::id instead in Controllers
+Route::get('/users','UserController@index');
+Route::get('/user/{id}', 'UserController@show')->middleware('auth');
+Route::get('/user/{id}/edit', 'UserController@edit')->middleware('auth');
+Route::post('/user/{id}', 'UserController@update')->middleware('auth');
+Route::get('/user/{id}/group', 'UserController@createGroup')->middleware('auth');
+Route::post('/user/{id}/group', 'UserController@createGroup')->middleware('auth');
 // add user to group
-Route::post('/group/{id}','UserController@groupAddUser');
-Route::post('/venue/create', 'VenueController@store');
-Route::get('/venue/{id}/edit', 'VenueController@edit');
-Route::put('/venue/{id}', 'VenueController@update');
+Route::get('/group/{id}','UserController@showGroup')->middleware('auth');
+Route::post('/group/{id}','UserController@groupAddUser')->middleware('auth');
+Route::get('/group/{id}/user/{user_id}', 'UserController@removeFriend');
+Route::delete('/group/{id}/user/{user_id}', 'UserController@removeFriend');
+
+
 
 
 // EVENT PART
