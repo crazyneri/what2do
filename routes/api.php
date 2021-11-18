@@ -22,15 +22,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/search', 'Api\SearchController@fetchData');
 
-Route::get('/user', function () {
+Route::get('/user', 'Api\SearchController@getUser'
+// function () {
 
     // return [
     //     'user' => Auth::user(),
     // ];
-    return [
-        'user' => [
-            'name' => 'James Bond',
-        ],
-    ];
+    // return [
+    //     'user' => [
+    //         'name' => 'James Bond',
+    //     ],
+    // ];
 
-});
+// }
+);

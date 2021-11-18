@@ -33,9 +33,9 @@ const App = () => {
     const [searchIds, setSearchIds] = useState([]);
 
 
-    useEffect(() => {
-        // console.log(values);
-    }, [values])
+    // useEffect(() => {
+    //     console.log(state);
+    // }, [])
 
 
     const search = () => {

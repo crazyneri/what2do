@@ -191,6 +191,7 @@ function DragAndDrop({
 
         const response = await get('/api/search');
 
+        console.log(response.data);
         setState(response.data);
     }
     useEffect(() => {

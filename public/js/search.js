@@ -2158,10 +2158,10 @@ var App = function App() {
   var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState14 = _slicedToArray(_useState13, 2),
       searchIds = _useState14[0],
-      setSearchIds = _useState14[1];
+      setSearchIds = _useState14[1]; // useEffect(() => {
+  //     console.log(state);
+  // }, [])
 
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {// console.log(values);
-  }, [values]);
 
   var search = function search() {
     console.log(searchIds);
@@ -2696,9 +2696,10 @@ function DragAndDrop(_ref) {
 
             case 2:
               response = _context.sent;
+              console.log(response.data);
               setState(response.data);
 
-            case 4:
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -2878,7 +2879,8 @@ var Inputs = function Inputs(_ref) {
   };
 
   var convertToMilliseconds = function convertToMilliseconds(timeString) {
-    var timeInMilliseconds = luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromFormat(timeString, 'hh:mm').ts;
+    var timeInMilliseconds = luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromFormat(timeString, 'hh:mm').toObject();
+    console.log(timeInMilliseconds);
     return timeInMilliseconds;
   };
 

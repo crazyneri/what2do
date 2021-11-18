@@ -18,7 +18,9 @@ const Inputs = ({ city, date, startTime, endTime, setValues }) => {
     }
 
     const convertToMilliseconds = (timeString) => {
-        const timeInMilliseconds = DateTime.fromFormat(timeString, 'hh:mm').ts;
+        const timeInMilliseconds = DateTime.fromFormat(timeString, 'hh:mm').toObject();
+
+        console.log(timeInMilliseconds);
 
         return timeInMilliseconds;
     }
