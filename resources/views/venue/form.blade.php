@@ -10,9 +10,9 @@
 @endforeach
 
 @if ($venue->id === null)
-    <form action="/venue/create" method="post">
+    <form action="/admin/venue/create" method="post">
 @else
-    <form action="/venue/{{$venue->id}}" method="post">
+    <form action="/admin/venue/{{$venue->id}}" method="post">
     @method('put')
 @endif
 

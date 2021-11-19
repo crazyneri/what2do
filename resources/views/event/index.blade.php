@@ -45,7 +45,7 @@
     {{-- REPEATED EVENTS --}}
     <h2>Repeated events</h2>
     <div class="repeated-container">
-        @foreach ($venues as $venue)
+        @foreach ($venues_repeat as $venue)
             
             {{-- CHECK IF VENUE HAS SOME EVENTS --}}
             @if (!$venue->events->isEmpty())
@@ -54,18 +54,22 @@
                     <table>
                         <tr>
                             <th>Name</th>
-                            <th>Date - start</th>
+                            <th>Day(s)</th>
                             <th>Time - start</th>
-                            <th>Date - end</th>
                             <th>Time - end</th>
                             <th>Price</th>
                             <th>Action</th>
                             @foreach ($venue->events as $event)
                                 <tr>
                                     <td>{{$event->name}}</td>
-                                    <td>{{$event->start_date}}</td>
+                                    <td>
+                                    @foreach ($days as $day)
+                                        @if ($event->$day == 1)
+                                            {{$day}} <br>
+                                        @endif
+                                    @endforeach
+                                    </td>
                                     <td>{{$event->start_time}}</td>
-                                    <td>{{$event->end_date}}</td>
                                     <td>{{$event->end_time}}</td>
                                     <td>{{$event->price . " CZK"}} </td>
                                     <td><a href="/event/{{$event->id}}">Edit</a></td>
@@ -84,8 +88,6 @@
 
     {{-- HISTORICAL EVENTS --}}
     <h2>Historical events</h2>
-
-
      <div class="historical-container">
          @foreach ($venues_hist as $venue)
             
