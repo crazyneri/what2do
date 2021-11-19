@@ -1,15 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { forwardRef, useContext, useEffect, useState } from 'react';
 import UserContext from '../../../util/UserContext';
 import './SoloOrGroupPopup.scss'
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
-import { Autocomplete, List, ListItem, ListItemAvatar, ListItemButton, TextField, ListItemText, Typography, Button, } from '@mui/material';
+import { Autocomplete, List, ListItem, ListItemAvatar, ListItemButton, TextField, ListItemText, Typography, Button, Zoom, Divider, } from '@mui/material';
 
 import { get, post } from '../../../util/request';
 
 import { makeStyles } from '@mui/styles'
 
-const SoloOrGroupPopup = () => {
+const SoloOrGroupPopup = forwardRef((props, ref) => {
 
     const user = useContext(UserContext);
 
@@ -23,8 +23,14 @@ const SoloOrGroupPopup = () => {
         root: {
             flexDirection: 'column',
             alignItems: 'stretch !important',
-            margin: '1.5rem 0'
+            padding: '8px 0 !important',
         },
+        avatars: {
+            width: '20%'
+        },
+        avatarsGroup: {
+            justifyContent: 'flex-end'
+        }
     });
     const classes = useStyles();
 
@@ -52,10 +58,10 @@ const SoloOrGroupPopup = () => {
 
     const getGroupArray = (e, value) => {
 
-        const array = [...value, {
+        const array = [{
             id: user.id,
             name: user.name
-        }
+        }, ...value
         ];
 
         console.log(array);
@@ -102,64 +108,80 @@ const SoloOrGroupPopup = () => {
 
 
     return (
-        <div className='popup-bg'>
-
-            <div className='popup'>
-                <h2>
-                    Welcome back, {user.name}
-                </h2>
-                <h3>Groups you are in :</h3>
-                {!user.groups.length ?
-                    <p>
-                        no groups
-                    </p>
-                    :
-                    <List>
-                        {user.groups.map(group =>
-
-                            <ListItem key={group.id} alignItems="flex-start" disablePadding divider className={classes.root}>
-                                <ListItemButton onClick={() => console.log('clicked')}>
-
-                                    <ListItemAvatar>
-                                        <AvatarGroup max={group.users.length > 2 ? group.users.length : 2}>
-                                            {group.users.map(user =>
-                                                <Avatar key={user.id} alt={user.name} src='/' />
-                                            )}
-                                        </AvatarGroup>
-                                    </ListItemAvatar>
-                                    <ul className='users-list'>
-                                        <ListItemText
-                                            primary={<>
-                                                <Typography
-                                                    key={user.id}
-                                                    sx={{ display: 'block', fontWeight: 'bold' }}
-                                                    component="span"
-                                                    variant="body2"
-                                                    color="text.primary"
-                                                >{group.name}</Typography>
-
-                                            </>}
-                                            secondary={
-                                                <>
+        <div className='popup-bg' {...props} ref={ref}>
+            <Zoom in={(user && props.groupId === 0)}
+                style={{
+                    transitionDelay: (user && props.groupId === 0) ? '500ms' : '0ms',
+                }}>
+                <div className='popup'>
+                    <h2>
+                        Welcome back, {user.name}
+                    </h2>
+                    {!user.groups.length ?
+                        <h3>
+                            You are not in any group yet. Create a new one.
+                        </h3>
+                        :
+                        <>
+                            <h3>Groups you are in :</h3>
+                            <Divider />
+                            <List>
+                                {user.groups.map(group =>
+                                    <ListItem key={group.id} alignItems="flex-start" disablePadding divider className={classes.root}>
+                                        <ListItemButton onClick={() => console.log('clicked')}>
+                                            <ListItemAvatar className={classes.avatars}>
+                                                <AvatarGroup className={classes.avatarsGroup} max={group.users.length > 2 ? group.users.length : 2}>
                                                     {group.users.map(user =>
+                                                        <Avatar key={user.id} alt={user.name} src='/' />
+                                                    )}
+                                                </AvatarGroup>
+                                            </ListItemAvatar>
+                                            <ul className='users-list'>
+                                                <ListItemText
+                                                    primary={<>
                                                         <Typography
                                                             key={user.id}
-                                                            sx={{ display: 'inline', margin: '0 0.5rem' }}
+                                                            sx={{ display: 'block', fontWeight: 'bold' }}
                                                             component="span"
                                                             variant="body2"
                                                             color="text.primary"
-                                                        >{user.name}</Typography>
-                                                    )}
-                                                </>
-                                            }
-                                        />
-                                    </ul>
-                                </ListItemButton>
-                            </ListItem>
-
-                        )
-                        }
-                        <h3>Create A New Group</h3>
+                                                        >{group.name}</Typography>
+                                                    </>
+                                                    }
+                                                    secondary={
+                                                        <>
+                                                            <Typography
+                                                                // key={user.id}
+                                                                sx={{ display: 'inline', margin: '0 0.5rem' }}
+                                                                component="span"
+                                                                variant="body2"
+                                                                color="text.primary"
+                                                            >-YOU-</Typography>
+                                                            {
+                                                                group.users.filter((u) => u.id !== user.id)
+                                                                    // group.users
+                                                                    .map(user =>
+                                                                        <Typography
+                                                                            key={user.id}
+                                                                            sx={{ display: 'inline', margin: '0 0.5rem' }}
+                                                                            component="span"
+                                                                            variant="body2"
+                                                                            color="text.primary"
+                                                                        >{user.name}</Typography>
+                                                                    )}
+                                                        </>
+                                                    }
+                                                />
+                                            </ul>
+                                        </ListItemButton>
+                                    </ListItem>
+                                )
+                                }
+                            </List >
+                        </>
+                    }
+                    <h3>Create A New Group</h3>
+                    <List>
                         <ListItem disablePadding divider
                             className={classes.root}
                         >
@@ -175,7 +197,7 @@ const SoloOrGroupPopup = () => {
                                     <TextField
                                         color='primary'
                                         {...params}
-                                        label="Search for people"
+                                        label="Search for friends"
                                         placeholder="Add more..."
                                     />
                                 )}
@@ -191,12 +213,11 @@ const SoloOrGroupPopup = () => {
                             />
                         </ListItem>
                     </List >
-                }
-                <Button disabled={!(groupName && groupMembers.length)} variant="contained" onClick={launch}>{groupName && groupMembers.length ? 'Create' : 'The group must include people and have a name~'}</Button>
-            </div>
-
+                    <Button disabled={!(groupName && groupMembers.length)} variant="contained" onClick={launch}>{groupName && groupMembers.length ? 'Create the group and find out WHAT2DO !' : 'Add at least one friend and give the group a name !'}</Button>
+                </div>
+            </Zoom>
         </div >
     )
-}
+})
 
 export default SoloOrGroupPopup

@@ -6,7 +6,7 @@ import { get } from '../../../util/request';
 import UserContext from '../../../util/UserContext';
 import SoloOrGroupPopup from '../SoloOrGroupPopup/SoloOrGroupPopup';
 import { DateTime } from 'luxon';
-
+import { Zoom } from '@mui/material'
 
 
 const App = () => {
@@ -70,7 +70,10 @@ const App = () => {
         <>
             <UserContext.Provider value={user}>
                 {(user && groupId === 0) &&
-                    <SoloOrGroupPopup setGroupId={setGroupId} />
+
+
+                    <SoloOrGroupPopup groupId={groupId} setGroupId={setGroupId} />
+                    // </Zoom>
                 }
                 <Inputs
                     city={city}
