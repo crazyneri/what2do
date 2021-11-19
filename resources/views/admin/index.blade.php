@@ -26,7 +26,7 @@
                         <tr>
                             <td>{{$venue->name}}</td>
                             <td>{{count($venue->events)}}</td>
-                            <td><a href="/venue/{{$venue->id}}">Edit</a></td>
+                            <td><a href="/admin/venue/{{$venue->id}}">Edit</a></td>
                         </tr>
                     @endforeach
                 </tr>
@@ -61,7 +61,7 @@
                             <td>{{$event->start_time}}</td>
                             <td>{{$event->end_date}}</td>
                             <td>{{$event->end_time}}</td>
-                            <td>{{$event->price . " Kc"}} </td>
+                            <td>{{$event->price . " CZK"}} </td>
                         </tr>
                     @endforeach
                 </tr>
