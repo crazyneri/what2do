@@ -81,7 +81,10 @@ class EventController extends Controller
         
         session()->flash('success_message', 'The event has been created!');
 
-        return redirect()->action('AdminController@show');
+    }
 
+    public function show($id){
+        
+        return $id;
     }
 }

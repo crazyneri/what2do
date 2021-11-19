@@ -5,32 +5,50 @@ import { DateTime } from 'luxon';
 
 const Inputs = ({ city, date, startTime, endTime, setValues }) => {
 
+
+    const convertToHoursAndMinutes = (timeString) => {
+        const formated = DateTime.fromFormat(timeString, 'hh:mm').toFormat('HH:mm:ss')
+
+        console.log(formated);
+
+        return formated;
+    }
+
     const handleChange = (e) => {
+
+        const name = e.target.name;
+
+        const inputValue = e.target.value;
+
+        const valueToStore = (name === 'startTime' || name === 'endTime') ? convertToHoursAndMinutes(inputValue) : inputValue
+
 
         setValues(prev_values => {
             return ({
                 ...prev_values,
-                [e.target.name]: e.target.value
+                [name]: valueToStore
 
             });
         });
 
     }
 
-    const convertToMilliseconds = (timeString) => {
-        const timeInMilliseconds = DateTime.fromFormat(timeString, 'hh:mm').toObject();
+    const convertToObject = (timeString) => {
+        const object = DateTime.fromFormat(timeString, 'hh:mm:ss').toObject();
 
-        console.log(timeInMilliseconds);
-
-        return timeInMilliseconds;
+        // console.log(object);
+        return object;
     }
+
+
+
     useEffect(() => {
 
-        if (convertToMilliseconds(endTime) < convertToMilliseconds(startTime)) {
+        if (convertToObject(endTime).hour <= convertToObject(startTime).hour || (convertToObject(endTime).hour === convertToObject(startTime).hour && convertToObject(endTime).minute <= convertToObject(startTime).minute)) {
             setValues(prev_values => {
                 return ({
                     ...prev_values,
-                    endTime: startTime
+                    endTime: '23:59:00'
                 })
 
             });

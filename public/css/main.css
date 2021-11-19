@@ -1,1 +1,31 @@
+.img-group-owner {
+  width: 20px;
+  color: #222;
+  align-self: center;
+}
 
+.group-display-members {
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+}
+
+.form-create-group {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  background-color: #ccc;
+  padding: 1em;
+}
+.form-create-group input[type=text] {
+  width: 100%;
+  padding: 0 10%;
+}
+.form-create-group_item {
+  width: 80%;
+}
+* {
+  box-sizing: border-box;
+}
+
+/*# sourceMappingURL=main.css.map*/

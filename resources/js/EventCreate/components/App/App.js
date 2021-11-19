@@ -77,7 +77,8 @@ const handleSubmit = async(event) => {
                 'Accept': 'application/json'
             }
     });
-    console.log(response);
+    // redirect to the events page
+    window.location.replace("/admin/events");
 }
 
 // SAVE OTHER INPUTS

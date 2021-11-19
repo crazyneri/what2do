@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Mail\TestEmail;
-use App\Notifications\InvoicePaid;
 use App\Models\User;
+use App\Notifications\InvoicePaid;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +31,7 @@ Route::group(["middleware" => "can:admin"], function() {
     Route::view('/admin/event/create', 'event/form');
     Route::get('/admin/event/data', 'EventController@data');
     Route::post('/admin/event/store', 'EventController@store');
+    Route::get('/admin/event/{id}', 'EventController@show');
 
     // admin - dipslay/create new venue
     Route::get('/admin/venue/create', 'VenueController@create');
@@ -39,33 +40,51 @@ Route::group(["middleware" => "can:admin"], function() {
     Route::get('/admin/venue/{id}/edit', 'VenueController@edit');
     Route::get('/admin/venue/{id}', 'VenueController@show');
     Route::put('/admin/venue/{id}', 'VenueController@update');
+    
 });
 
 // SEARCH PART
 Route::get('/search', 'SearchController@index');
 
 // USER PART
-Route::get('/users','UserController@index');
-Route::get('/user/{id}', 'UserController@show');
-Route::get('/user/{id}/edit', 'UserController@edit');
-Route::post('/user/{id}', 'UserController@update');
-Route::post('/user/{id}/group', 'UserController@createGroup');
-Route::get('/user/{id}/add', 'UserController@addFriend');
+// can be limited by Auth
+// no id -> Auth::id instead in Controllers
+Route::get('/users', 'UserController@index');
+Route::get('/user/{id}', 'UserController@show')->middleware('auth');
+Route::get('/user/{id}/edit', 'UserController@edit')->middleware('auth');
+Route::post('/user/{id}', 'UserController@update')->middleware('auth');
+Route::get('/user/{id}/group', 'UserController@createGroup')->middleware('auth');
+Route::post('/user/{id}/group', 'UserController@createGroup')->middleware('auth');
 
 // add user to group
+Route::get('/group/{id}', 'UserController@showGroup')->middleware('auth');
+Route::post('/group/{id}', 'UserController@groupAddUser')->middleware('auth');
+Route::get('/group/{id}/user/{user_id}', 'UserController@removeFriend');
+Route::delete('/group/{id}/user/{user_id}', 'UserController@removeFriend');
+
 Route::post('/group/{id}','UserController@groupAddUser');
 
 // EMAIL PART
 // registration - CHANGE SENDING EMAIL AFTER THE REGISTRATION
-Route::get('/send-email', function(){
+Route::get('/send-email', function () {
     Mail::to('user@email.com')->send(new TestEmail());
 });
 
 // notification - GROUP and USERS NEEDS TO BE ADDED
-Route::get('/send-notification', function(){
+Route::get('/send-notification', function () {
     $user = User::where('name', 'Jachym Pivonka')->first();
 
     $user->notify(new InvoicePaid);
 });
 // dummy search
+
+// test search function
+// Route::get('/solo_search/{id}', 'SearchResultsController@singleSearch');
+
+// test search
+Route::get('/solo_search/{id}', 'SearchResultsController@handleSearch');
 Route::get('/solo_search', 'SearchResultsController@soloSearch');
+
+// quick create group
+
+Route::post('/quick-create-group', 'GroupController@store');

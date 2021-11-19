@@ -2226,7 +2226,8 @@ function App() {
 
             case 3:
               response = _context2.sent;
-              console.log(response);
+              // redirect to the events page
+              window.location.replace("/admin/events");
 
             case 5:
             case "end":

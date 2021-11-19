@@ -16,8 +16,10 @@ class CreateSearchSessionsTable extends Migration
         Schema::create('search_sessions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('group_id');
-            $table->foreignId('event_id');
+            $table->foreignId('event_id')->nullable();
             $table->date('searched_date');
+            $table->time('start_time', $precision = 0);
+            $table->time('end_time', $precision = 0);
             $table->string('city');
             $table->foreignId('user_id')->nullable();
             $table->timestamps();
