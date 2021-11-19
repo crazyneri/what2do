@@ -22,10 +22,10 @@ Route::get('/', function () {
 });
 
 // ADMIN PART
-Route::group(["middleware" => "can:admin"], function() {
+Route::group(["middleware" => "can:admin"], function () {
     // admin - main page
     Route::get('/admin', 'AdminController@show');
-    
+
     // admin - create and display events
     Route::get('/admin/events', 'EventController@index');
     Route::view('/admin/event/create', 'event/form');
@@ -40,7 +40,7 @@ Route::group(["middleware" => "can:admin"], function() {
     Route::get('/admin/venue/{id}/edit', 'VenueController@edit');
     Route::get('/admin/venue/{id}', 'VenueController@show');
     Route::put('/admin/venue/{id}', 'VenueController@update');
-    
+
 });
 
 // SEARCH PART
@@ -62,7 +62,7 @@ Route::post('/group/{id}', 'UserController@groupAddUser')->middleware('auth');
 Route::get('/group/{id}/user/{user_id}', 'UserController@removeFriend');
 Route::delete('/group/{id}/user/{user_id}', 'UserController@removeFriend');
 
-Route::post('/group/{id}','UserController@groupAddUser');
+Route::post('/group/{id}', 'UserController@groupAddUser');
 
 // EMAIL PART
 // registration - CHANGE SENDING EMAIL AFTER THE REGISTRATION
@@ -88,3 +88,4 @@ Route::get('/solo_search', 'SearchResultsController@soloSearch');
 // quick create group
 
 Route::post('/quick-create-group', 'GroupController@store');
+Route::post('/start-session', 'SearchSessionController@store');

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import DragAndDrop from '../DragAndDrop/DragAndDrop'
 import Inputs from '../Inputs/Inputs'
-import { get } from '../../../util/request';
+import { get, post } from '../../../util/request';
 import UserContext from '../../../util/UserContext';
 import SoloOrGroupPopup from '../SoloOrGroupPopup/SoloOrGroupPopup';
 import { DateTime } from 'luxon';
@@ -34,6 +34,9 @@ const App = () => {
 
     const [searchIds, setSearchIds] = useState([]);
 
+    const [user, setUser] = useState(null);
+
+    const [groupId, setGroupId] = useState(0);
 
     useEffect(() => {
         console.log(values);
@@ -44,9 +47,6 @@ const App = () => {
         console.log(searchIds);
     }
 
-    const [user, setUser] = useState(null);
-
-    const [groupId, setGroupId] = useState(0);
 
 
     const fetchUser = async () => {
@@ -66,14 +66,31 @@ const App = () => {
     // }, [user.groups]);
 
 
+    const startSession = async (group_id) => {
+
+        // setLoading(true)
+        const sessionData = {
+            user_id: user.id,
+            group_id: group_id,
+        }
+        console.log('starting session with group id', group_id)
+
+        const response = await post('/start-session', sessionData);
+
+        console.log(response.data)
+        // setLoading(false);
+    }
+
+    useEffect(() => {
+        startSession(groupId);
+    }, [groupId])
+
+
     return (
         <>
             <UserContext.Provider value={user}>
                 {(user && groupId === 0) &&
-
-
                     <SoloOrGroupPopup groupId={groupId} setGroupId={setGroupId} />
-                    // </Zoom>
                 }
                 <Inputs
                     city={city}

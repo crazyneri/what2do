@@ -31201,14 +31201,6 @@ var App = function App() {
       searchIds = _useState14[0],
       setSearchIds = _useState14[1];
 
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    console.log(values);
-  });
-
-  var search = function search() {
-    console.log(searchIds);
-  };
-
   var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState16 = _slicedToArray(_useState15, 2),
       user = _useState16[0],
@@ -31218,6 +31210,14 @@ var App = function App() {
       _useState18 = _slicedToArray(_useState17, 2),
       groupId = _useState18[0],
       setGroupId = _useState18[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    console.log(values);
+  });
+
+  var search = function search() {
+    console.log(searchIds);
+  };
 
   var fetchUser = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -31253,14 +31253,49 @@ var App = function App() {
   //     user && fetchUser();
   // }, [user.groups]);
 
+  var startSession = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(group_id) {
+      var sessionData, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              // setLoading(true)
+              sessionData = {
+                user_id: user.id,
+                group_id: group_id
+              };
+              console.log('starting session with group id', group_id);
+              _context2.next = 4;
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)('/start-session', sessionData);
+
+            case 4:
+              response = _context2.sent;
+              console.log(response.data); // setLoading(false);
+
+            case 6:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function startSession(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    startSession(groupId);
+  }, [groupId]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_util_UserContext__WEBPACK_IMPORTED_MODULE_5__["default"].Provider, {
       value: user,
       children: [user && groupId === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_SoloOrGroupPopup_SoloOrGroupPopup__WEBPACK_IMPORTED_MODULE_6__["default"], {
         groupId: groupId,
         setGroupId: setGroupId
-      }) // </Zoom>
-      , /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Inputs_Inputs__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Inputs_Inputs__WEBPACK_IMPORTED_MODULE_3__["default"], {
         city: city,
         date: date,
         startTime: startTime,
@@ -32014,19 +32049,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _util_UserContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../util/UserContext */ "./resources/js/util/UserContext.js");
 /* harmony import */ var _SoloOrGroupPopup_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SoloOrGroupPopup.scss */ "./resources/js/SearchPage/components/SoloOrGroupPopup/SoloOrGroupPopup.scss");
-/* harmony import */ var _mui_material_Avatar__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @mui/material/Avatar */ "./node_modules/@mui/material/Avatar/Avatar.js");
-/* harmony import */ var _mui_material_AvatarGroup__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @mui/material/AvatarGroup */ "./node_modules/@mui/material/AvatarGroup/AvatarGroup.js");
+/* harmony import */ var _mui_material_Avatar__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @mui/material/Avatar */ "./node_modules/@mui/material/Avatar/Avatar.js");
+/* harmony import */ var _mui_material_AvatarGroup__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @mui/material/AvatarGroup */ "./node_modules/@mui/material/AvatarGroup/AvatarGroup.js");
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Zoom/Zoom.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Divider/Divider.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/List/List.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItem/ListItem.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItemButton/ListItemButton.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItemAvatar/ListItemAvatar.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItemText/ListItemText.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Typography/Typography.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Autocomplete/Autocomplete.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/TextField/TextField.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Button/Button.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Button/Button.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Divider/Divider.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/List/List.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItem/ListItem.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItemButton/ListItemButton.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItemAvatar/ListItemAvatar.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItemText/ListItemText.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Typography/Typography.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Autocomplete/Autocomplete.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/TextField/TextField.js");
 /* harmony import */ var _util_request__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../util/request */ "./resources/js/util/request.js");
 /* harmony import */ var _mui_styles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/styles */ "./node_modules/@mui/styles/makeStyles/makeStyles.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
@@ -32090,6 +32125,11 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
       _useState6 = _slicedToArray(_useState5, 2),
       groupName = _useState6[0],
       setGroupName = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      loading = _useState8[0],
+      setLoading = _useState8[1];
 
   var useStyles = (0,_mui_styles__WEBPACK_IMPORTED_MODULE_6__["default"])({
     root: {
@@ -32158,7 +32198,7 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
 
   var createGroup = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-      var groupData, response;
+      var groupData, response, res_group_id;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -32167,21 +32207,24 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
                 owner_id: user.id,
                 groupMembers: groupMembers,
                 groupName: groupName
-              };
-              console.log(groupData);
-              _context2.prev = 2;
-              _context2.next = 5;
+              }; // console.log(groupData);
+
+              _context2.prev = 1;
+              _context2.next = 4;
               return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)('/quick-create-group', groupData);
 
-            case 5:
+            case 4:
               response = _context2.sent;
-              console.log(response);
+              // console.log(response.data.group_id);
+              res_group_id = response.data.group_id;
+              props.setGroupId(res_group_id); // startSession(res_group_id);
+
               _context2.next = 12;
               break;
 
             case 9:
               _context2.prev = 9;
-              _context2.t0 = _context2["catch"](2);
+              _context2.t0 = _context2["catch"](1);
               console.log(_context2.t0.response);
 
             case 12:
@@ -32189,7 +32232,7 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[2, 9]]);
+      }, _callee2, null, [[1, 9]]);
     }));
 
     return function createGroup() {
@@ -32197,41 +32240,22 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
     };
   }();
 
-  var startSession = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-      var sessionData, response;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
-        while (1) {
-          switch (_context3.prev = _context3.next) {
-            case 0:
-              sessionData = {};
-              _context3.next = 3;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)('/start-session', sessionData);
+  var selectGroup = function selectGroup(groupId) {
+    props.setGroupId(groupId); // startSession(groupId);
+  }; // const launchGroupSession = (groupId) => {
+  //     groupId===0 ? createGroup();
+  //     // startSession();
+  // }
+  // const launchSoloSession = () => {
+  //     // setLoading(true)
+  //     createGroup();
+  //     startSession();
+  //     setLoading(false);
+  // }
 
-            case 3:
-              response = _context3.sent;
 
-            case 4:
-            case "end":
-              return _context3.stop();
-          }
-        }
-      }, _callee3);
-    }));
-
-    return function startSession() {
-      return _ref3.apply(this, arguments);
-    };
-  }();
-
-  var launch = function launch() {
-    createGroup();
-    startSession();
-  };
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", _objectSpread(_objectSpread({
-    className: "popup-bg"
-  }, props), {}, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    className: "popup-bg",
     ref: ref,
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
       "in": user && props.groupId === 0,
@@ -32242,29 +32266,36 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
         className: "popup",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("h2", {
           children: ["Welcome back, ", user.name]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          variant: "contained",
+          onClick: function onClick() {
+            return selectGroup(-1);
+          },
+          children: "Find out WHAT2DO for yourself ! (solo search only)"
         }), !user.groups.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
           children: "You are not in any group yet. Create a new one."
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
-            children: "Groups you are in :"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            children: "Select the group: "
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
             children: user.groups.map(function (group) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_11__["default"], {
                 alignItems: "flex-start",
                 disablePadding: true,
                 divider: true,
                 className: classes.root,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_11__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
                   onClick: function onClick() {
-                    return console.log('clicked');
+                    console.log('from onclick', group.id);
+                    selectGroup(group.id);
                   },
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_13__["default"], {
                     className: classes.avatars,
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material_AvatarGroup__WEBPACK_IMPORTED_MODULE_13__["default"], {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material_AvatarGroup__WEBPACK_IMPORTED_MODULE_14__["default"], {
                       className: classes.avatarsGroup,
                       max: group.users.length > 2 ? group.users.length : 2,
                       children: group.users.map(function (user) {
-                        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material_Avatar__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material_Avatar__WEBPACK_IMPORTED_MODULE_15__["default"], {
                           alt: user.name,
                           src: "/"
                         }, user.id);
@@ -32272,9 +32303,9 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
                     className: "users-list",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_15__["default"], {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_16__["default"], {
                       primary: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_16__["default"], {
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_17__["default"], {
                           sx: {
                             display: 'block',
                             fontWeight: 'bold'
@@ -32286,7 +32317,7 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
                         }, user.id)
                       }),
                       secondary: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_16__["default"] // key={user.id}
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_17__["default"] // key={user.id}
                         , {
                           sx: {
                             display: 'inline',
@@ -32300,7 +32331,7 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
                           return u.id !== user.id;
                         }) // group.users
                         .map(function (user) {
-                          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_16__["default"], {
+                          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_17__["default"], {
                             sx: {
                               display: 'inline',
                               margin: '0 0.5rem'
@@ -32320,12 +32351,12 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
           children: "Create A New Group"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_11__["default"], {
             disablePadding: true,
             divider: true,
             className: classes.root,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_17__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_18__["default"], {
               multiple: true,
               id: "tags-outlined",
               options: users,
@@ -32336,7 +32367,7 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
               filterSelectedOptions: true,
               onChange: getGroupArray,
               renderInput: function renderInput(params) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_18__["default"], _objectSpread(_objectSpread({
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_19__["default"], _objectSpread(_objectSpread({
                   color: "primary"
                 }, params), {}, {
                   label: "Search for friends",
@@ -32344,9 +32375,9 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
                 }));
               }
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_11__["default"], {
             className: classes.root,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_18__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_19__["default"], {
               required: true,
               color: "primary",
               label: "Group Name",
@@ -32354,15 +32385,15 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
               value: groupName
             })
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_19__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
           disabled: !(groupName && groupMembers.length),
           variant: "contained",
-          onClick: launch,
+          onClick: createGroup,
           children: groupName && groupMembers.length ? 'Create the group and find out WHAT2DO !' : 'Add at least one friend and give the group a name !'
         })]
       })
     })
-  }));
+  });
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SoloOrGroupPopup);
 
@@ -32781,7 +32812,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".popup-bg {\n  height: 100vh;\n  width: 100vw;\n  background: rgba(0, 0, 0, 0.6);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: fixed;\n  z-index: 1;\n}\n.popup-bg h2,\n.popup-bg h3 {\n  margin: 1rem 0;\n  padding: 0.5rem 0;\n  border: none;\n}\n\n.popup {\n  height: 80%;\n  width: 50%;\n  z-index: 2;\n  background: #dfb871;\n  padding: 1.5rem;\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n  overflow: hidden scroll;\n}\n.popup button {\n  align-self: center;\n}\n\n.users-list {\n  display: flex;\n  list-style-type: none !important;\n}", "",{"version":3,"sources":["webpack://./resources/js/SearchPage/components/SoloOrGroupPopup/SoloOrGroupPopup.scss"],"names":[],"mappings":"AAAA;EACI,aAAA;EACA,YAAA;EACA,8BAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EAIA,UAAA;AAFJ;AAGI;;EAEI,cAAA;EACA,iBAAA;EACA,YAAA;AADR;;AAMA;EACI,WAAA;EACA,UAAA;EACA,UAAA;EACA,mBAAA;EACA,eAAA;EACA,aAAA;EACA,sBAAA;EACA,oBAAA;EAIA,uBAAA;AANJ;AAGI;EACI,kBAAA;AADR;;AAOA;EACI,aAAA;EACA,gCAAA;AAJJ","sourcesContent":[".popup-bg {\r\n    height: 100vh;\r\n    width: 100vw;\r\n    background: rgba(0, 0, 0, 0.6);\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    position: fixed;\r\n    // &:hover {\r\n    //     cursor: pointer;\r\n    // }\r\n    z-index: 1;\r\n    h2,\r\n    h3 {\r\n        margin: 1rem 0;\r\n        padding: 0.5rem 0;\r\n        border: none;\r\n    }\r\n    // display: none;\r\n}\r\n\r\n.popup {\r\n    height: 80%;\r\n    width: 50%;\r\n    z-index: 2;\r\n    background: rgb(223, 184, 113);\r\n    padding: 1.5rem;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: stretch;\r\n    button {\r\n        align-self: center;\r\n    }\r\n    overflow: hidden scroll;\r\n    // display: none;\r\n}\r\n\r\n.users-list {\r\n    display: flex;\r\n    list-style-type: none !important;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".popup-bg {\n  height: 100vh;\n  width: 100vw;\n  background: rgba(0, 0, 0, 0.6);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: fixed;\n  z-index: 1;\n}\n.popup-bg h2,\n.popup-bg h3 {\n  margin: 1rem 0;\n  padding: 0.5rem 0;\n  border: none;\n}\n\n.popup {\n  height: 80%;\n  width: 50%;\n  z-index: 2;\n  background: #dfb871;\n  padding: 1.5rem;\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n  overflow: hidden scroll;\n  border-radius: 1rem;\n}\n.popup button {\n  align-self: center;\n}\n\n.users-list {\n  display: flex;\n  list-style-type: none !important;\n}", "",{"version":3,"sources":["webpack://./resources/js/SearchPage/components/SoloOrGroupPopup/SoloOrGroupPopup.scss"],"names":[],"mappings":"AAAA;EACI,aAAA;EACA,YAAA;EACA,8BAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EAIA,UAAA;AAFJ;AAGI;;EAEI,cAAA;EACA,iBAAA;EACA,YAAA;AADR;;AAMA;EACI,WAAA;EACA,UAAA;EACA,UAAA;EACA,mBAAA;EACA,eAAA;EACA,aAAA;EACA,sBAAA;EACA,oBAAA;EAIA,uBAAA;EAEA,mBAAA;AAPJ;AAEI;EACI,kBAAA;AAAR;;AAOA;EACI,aAAA;EACA,gCAAA;AAJJ","sourcesContent":[".popup-bg {\r\n    height: 100vh;\r\n    width: 100vw;\r\n    background: rgba(0, 0, 0, 0.6);\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    position: fixed;\r\n    // &:hover {\r\n    //     cursor: pointer;\r\n    // }\r\n    z-index: 1;\r\n    h2,\r\n    h3 {\r\n        margin: 1rem 0;\r\n        padding: 0.5rem 0;\r\n        border: none;\r\n    }\r\n    // display: none;\r\n}\r\n\r\n.popup {\r\n    height: 80%;\r\n    width: 50%;\r\n    z-index: 2;\r\n    background: rgb(223, 184, 113);\r\n    padding: 1.5rem;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: stretch;\r\n    button {\r\n        align-self: center;\r\n    }\r\n    overflow: hidden scroll;\r\n    // display: none;\r\n    border-radius: 1rem;\r\n}\r\n\r\n.users-list {\r\n    display: flex;\r\n    list-style-type: none !important;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
