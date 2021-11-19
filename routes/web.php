@@ -22,7 +22,7 @@ Route::get('/', function () {
 });
 
 // ADMIN PART
-Route::group(["middleware" => "can:admin, super_admin"], function() {
+Route::group(["middleware" => "can:admin"], function() {
     // admin - main page
     Route::get('/admin', 'AdminController@show');
     
