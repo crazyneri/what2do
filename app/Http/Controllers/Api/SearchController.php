@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class SearchController extends Controller
@@ -128,8 +129,19 @@ class SearchController extends Controller
     {
         $user = Auth::user();
 
-        return ['user' => $user];
+        $user->load(['groups', 'groups.users']);
 
+        return $user;
+
+    }
+
+    public function getAllUsers()
+    {
+        $users = User::all();
+
+        $userNames = $users->map->only(['id', 'name']);
+
+        return $userNames;
     }
 
 }

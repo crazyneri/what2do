@@ -19,7 +19,9 @@ class EventController extends Controller
         // get all user's venues with events as an array and sort events by date - FUTURE
         $venues = Venue::with([
                 'events' => function($query) {
-                    $query->orderBy('start_date')->whereDate('start_date', '>=', date('Y-m-d'));
+                    $query->orderBy('start_date')
+                            ->where('is_recurring', 0)
+                            ->whereDate('start_date', '>=', date('Y-m-d'));
                 }
                 ]
 
@@ -30,7 +32,8 @@ class EventController extends Controller
         // get all user's venues with events as an array and sort events by date - HISTORY
         $venues_hist = Venue::with([
                 'events' => function($query) {
-                    $query->orderBy('start_date')->whereDate('start_date', '<', date('Y-m-d'));
+                    $query->orderBy('start_date')
+                            ->whereDate('start_date', '<', date('Y-m-d'));
                 }
                 ]
 
@@ -38,9 +41,11 @@ class EventController extends Controller
                         ->where('admin_id', $user)
                         ->get();
         
+        // get all user's venues with events as an array and sort events by date - REPEATED
         $venues_repeat = Venue::with([
                 'events' => function($query) {
-                    $query->where('is_recurring', 1)->whereDate('start_date', '>=', date('Y-m-d'));
+                    $query->where('is_recurring', 1)
+                            ->whereDate('start_date', '>=', date('Y-m-d'));
                 }
                 ]
 
@@ -48,9 +53,11 @@ class EventController extends Controller
                         ->where('admin_id', $user)
                         ->get();
         
-        // DD($venues_repeat);
+        // return $venues_repeat;
 
-        return view('event/index', compact('venues', 'venues_hist'));
+        $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+
+        return view('event/index', compact('venues', 'venues_hist', 'venues_repeat', 'days'));
     }
 
     // CREATE A DATA FOR EVENT-CREATE FORM
