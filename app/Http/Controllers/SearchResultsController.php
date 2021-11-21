@@ -14,7 +14,7 @@ class SearchResultsController extends Controller
 {
     //
    
-
+    // ** matches categories to the available events
     public function getUserResults($set_of_choices, $possible_events)
     {
         // ** create an array of the categories
@@ -86,6 +86,7 @@ class SearchResultsController extends Controller
         return $events_match;
     }
 
+    // ** for the usort
     public function bestMatch($a, $b)
     {
         if($a['score'] == $b['score']) 
@@ -95,7 +96,8 @@ class SearchResultsController extends Controller
         return ($a['score'] > $b['score']) ? -1 : 1;
     }
 
-
+    // ** filters the possible events by date/day/time and retrieves the
+    // ** relevant user choices 
     public function findMatch($session_id)
     {
         // ** find the search session and matching user_choice tables
@@ -188,6 +190,8 @@ class SearchResultsController extends Controller
 
 
     // !! uncomment the below to plug in with front end
+
+    // // ** gets the request and gets/fills the tables to do the search
 
     // public function handleSearch(Request $request)
     // {
