@@ -1,5 +1,13 @@
 /node_modules
+
+# Added ignore for development
+/public/css/main.css
+/public/js/event-create.js
+/public/js/search.js
+/public/js/search.js.map
 /public/mix-manifest.json
+# End of added ignores
+
 /public/hot
 /public/storage
 /public
