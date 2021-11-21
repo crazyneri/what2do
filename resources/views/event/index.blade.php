@@ -37,7 +37,7 @@
                                     <td>{{$event->end_date}}</td>
                                     <td>{{$event->end_time}}</td>
                                     <td>{{$event->price . " CZK"}} </td>
-                                    <td><a href="/admin/event/{{$event->id}}">Edit</a></td>
+                                    <td><a href="/admin/event/{{$event->id}}">Edit</a> - Delete</td>
                                 </tr>
                             @endforeach
                         </tr>
