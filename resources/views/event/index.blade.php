@@ -28,7 +28,7 @@
                             <th>Date - end</th>
                             <th>Time - end</th>
                             <th>Price</th>
-                            <th>Action</th>
+                            <th>Actions</th>
                             @foreach ($venue->events as $event)
                                 <tr>
                                     <td>{{$event->name}}</td>
@@ -37,7 +37,14 @@
                                     <td>{{$event->end_date}}</td>
                                     <td>{{$event->end_time}}</td>
                                     <td>{{$event->price . " CZK"}} </td>
-                                    <td><a href="/admin/event/{{$event->id}}">Edit</a> - Delete</td>
+                                    <td><button><a href="/admin/event/{{$event->id}}">Edit</a></button>
+                                        <form action="/admin/event/{{$event->id}}" method="post">
+                                            @csrf
+                                            @method('delete')
+
+                                            <input type="submit" value="Delete"/>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tr>
@@ -67,7 +74,7 @@
                             <th>Time - start</th>
                             <th>Time - end</th>
                             <th>Price</th>
-                            <th>Action</th>
+                            <th>Actions</th>
                             @foreach ($venue->events as $event)
                                 <tr>
                                     <td>{{$event->name}}</td>
@@ -81,7 +88,14 @@
                                     <td>{{$event->start_time}}</td>
                                     <td>{{$event->end_time}}</td>
                                     <td>{{$event->price . " CZK"}} </td>
-                                    <td><a href="/admin/event/{{$event->id}}">Edit</a></td>
+                                    <td><button><a href="/admin/event/{{$event->id}}">Edit</a></button>
+                                        <form action="/admin/event/{{$event->id}}" method="post">
+                                            @csrf
+                                            @method('delete')
+
+                                            <input type="submit" value="Delete"/>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tr>
@@ -121,7 +135,7 @@
                                     <td>{{$event->end_date}}</td>
                                     <td>{{$event->end_time}}</td>
                                     <td>{{$event->price . " CZK"}} </td>
-                                    <td><a href="/admin/event/{{$event->id}}">Edit</a></td>
+                                    <td><button><a href="/admin/event/{{$event->id}}">Edit</a></td>
                                 </tr>
                             @endforeach
                         </tr>
