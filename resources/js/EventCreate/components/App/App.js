@@ -2,7 +2,7 @@ import axios from "axios"
 import { useState, useEffect } from "react";
 import CategorySelection from "../CategorySelection/CategorySelection";
 
-export default function App()
+export default function App({id})
 {
 
 // STATE FOR GETTING DATA FROM BACKEND
@@ -31,9 +31,9 @@ const [input, setInput] = useState({
     saturday: 0,
     sunday: 0,
     categories: null
-})
+});
 
-// GET DATA
+// GET DATA - venues and categories
 const getData = async() => {
     const response = await axios.get('/admin/event/data', {
         headers: {
@@ -43,6 +43,38 @@ const getData = async() => {
     });
     setVenues(response.data.venues);
     setCategories(response.data.categories);
+}
+
+// GET DATA - event with id
+const getDataEvents = async() => {
+    const response = await axios.get(`/admin/event/${id}/edit`, {
+        headers: {
+            'Accept': 'Application/json',
+            'Content-type': 'Application/json'
+        }
+    });
+    setInput({
+        name: response.data.name,
+        venue_id: response.data.venue_id,
+        start_date: response.data.start_date,
+        start_time: response.data.start_time,
+        end_date: response.data.end_date,
+        end_time: response.data.end_time,
+        description: response.data.description,
+        price: response.data.price,
+        is_recurring: response.data.is_recurring == 1, 
+        monday: response.data.monday == 1,
+        tuesday: response.data.tuesday == 1,
+        wednesday: response.data.wednesday == 1,
+        thursday: response.data.thursday == 1,
+        friday: response.data.friday == 1,
+        saturday: response.data.saturday == 1,
+        sunday: response.data.sunday == 1,
+        categories: response.data.categories.map((category)=>(category.id))
+    });
+    setSelectedMainCategory(
+        response.data.categories[0].parent_id
+    )
 }
 
 // DAYS OF WEEK
@@ -66,19 +98,35 @@ const getChecked = () => {
 // USE EFFECT
 useEffect(() => {
     getData();
+    if(id) {
+        getDataEvents();
+    }
 },[]);
 
 // SEND THE DATA TO THE DB
 const handleSubmit = async(event) => {
     event.preventDefault();
-
-    let response = await axios.post('/admin/event/store', {...input}, {
-        headers: {
+    try{
+        if(id) {
+            let response = await axios.put(`/admin/event/${id}/update`, {...input}, {
+            headers: {
                 'Accept': 'application/json'
             }
-    });
-    // redirect to the events page
-    window.location.replace("/admin/events");
+            });
+        }else {
+            let response = await axios.post('/admin/event/store', {...input}, {
+            headers: {
+                'Accept': 'application/json'
+            }
+            });
+        }
+        
+            // redirect to the events page
+            window.location.replace("/admin/events");
+
+        } catch (error) {
+            
+        }
 }
 
 // SAVE OTHER INPUTS
@@ -101,17 +149,13 @@ const saveCheckbox = (e) => {
     )
 }
 
-// console.log(selectedMainCategory);
-// console.log(selectedSubCategory);
-// console.log(recurring);
-// console.log(recDays);
-console.log(input);
-
     return(
         <div className="create-form">
-            <form action='/admin/event/data' method='post' onSubmit={handleSubmit}>
+            
+                <form action={{id} ? `/admin/event/${id}/update` : '/admin/event/data'}  method='post' onSubmit={handleSubmit}>
+            
                 <label htmlFor="name">Name:</label>
-                <input type="text" name="name" id="name" onChange={saveInput}/>
+                <input type="text" name="name" id="name" value={input.name} onChange={saveInput}/>
                 <br/>
                 <label>Venue:</label>
                 <select name="venue_id" onChange={saveInput}>
@@ -119,32 +163,34 @@ console.log(input);
                     {
                         venues &&
                         venues.map((venue, index) => (
-                                <option key={index} value={venue.id}>{venue.name}</option>
+                                <option key={index} selected={input.venue_id} value={venue.id}>{venue.name}</option>
                             
                     ))
                     }                
                 </select>
                 <br/>
                 <label htmlFor="start_date">Start date:</label>
-                <input type="date" name="start_date" id="start_date" onChange={saveInput}/>
+                <input type="date" name="start_date" id="start_date" value={input.start_date} onChange={saveInput}/>
                 <br/>
                 <label htmlFor="start_time">Start time:</label>
-                <input type="time" name="start_time" id="start_time" onChange={saveInput}/>
+                <input type="time" name="start_time" id="start_time" value={input.start_time} onChange={saveInput}/>
                 <br/>
                 <label htmlFor="end_date">End date:</label>
-                <input type="date" name="end_date" id="end_date" onChange={saveInput}/>
+                <input type="date" name="end_date" id="end_date" value={input.end_date} onChange={saveInput}/>
                 <br/>
                 <label htmlFor="end_time">End time:</label>
-                <input type="time" name="end_time" id="end_time" onChange={saveInput}/>
+                <input type="time" name="end_time" id="end_time" value={input.end_time} onChange={saveInput}/>
                 <br/>
-                <label htmlFor="description">Descriptiom:</label>
-                <textarea name="description" id="description" onChange={saveInput}></textarea>
+                <label htmlFor="description">Description:</label>
+                <textarea name="description" id="description" value={input.description} onChange={saveInput}></textarea>
                 <br/>
                 <label htmlFor="price">Price:</label>
-                <input type="number" name="price" id="price" onChange={saveInput}/>
+                <input type="number" name="price" id="price" value={input.price} onChange={saveInput}/>
                 <br/>
                     <CategorySelection
                         categories={categories}
+                        subcategories={input.categories}
+                        setSubcategories={(categories) => setInput({...input, categories})}
                         selectedMainCategory={selectedMainCategory}
                         setSelectedMainCategory={setSelectedMainCategory}
                         />
@@ -152,14 +198,14 @@ console.log(input);
 
                 <br/>
                 <label htmlFor="is_recurring">Do you want to create event that is recuring in time?</label>
-                <input type="checkbox" name="is_recurring" id="is_recurring" value={input.is_recurring} onChange={saveCheckbox}/>
+                <input type="checkbox" name="is_recurring" id="is_recurring" checked={input.is_recurring} onChange={saveCheckbox}/>
                 <br/>
                 {
                     days.map((day, index) => (
                         input.is_recurring == 1 ?
                         <div key={index}>
                         <label htmlFor="dayofweek">{day}</label>
-                        <input className="dayofweek" type="checkbox" name={day} value={input[day]} onChange={saveCheckbox}/>
+                        <input className="dayofweek" type="checkbox" checked={input[day]} name={day} value={input[day]} onChange={saveCheckbox}/>
                         <br/>
                         </div>
                         :
@@ -168,7 +214,14 @@ console.log(input);
                     ))
                     
                 }
-                <button onClick={() => getChecked()}>Create event</button>
+                {
+                    id ?
+                    <button onClick={() => getChecked()}>Edit event</button>
+                    :
+                    <button onClick={() => getChecked()}>Create event</button>
+
+                }
+                
 
             </form>
         </div>
