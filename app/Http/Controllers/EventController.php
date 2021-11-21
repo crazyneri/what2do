@@ -112,6 +112,19 @@ class EventController extends Controller
         session()->flash('success_message', 'The event has been updated!');
     }
 
+    // DELETE EVENT
+    public function deleteEvent($id) {
+        
+        $event = Event::findOrFail($id);
+
+        $event->categories()->detach();
+        $event->delete();
+
+        session()->flash('success_message', 'The event has been deleted!');
+
+        return redirect()->action('EventController@index');
+    }
+
 
      // VALIDATION FOR EVENT FORM
     public function eventValidate(Request $request){

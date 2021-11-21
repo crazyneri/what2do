@@ -34,6 +34,7 @@ Route::group(["middleware" => "can:admin"], function() {
     Route::get('/admin/event/{id}', 'EventController@displayForm');
     Route::get('/admin/event/{id}/edit', 'EventController@getEvent');
     Route::put('/admin/event/{id}/update', 'EventController@updateEvent');
+    Route::delete('/admin/event/{id}', 'EventController@deleteEvent');
 
     // admin - dipslay/create new venue
     Route::get('/admin/venue/create', 'VenueController@create');
