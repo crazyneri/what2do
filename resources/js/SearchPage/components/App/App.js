@@ -38,9 +38,11 @@ const App = () => {
     const [groupId, setGroupId] = useState(0);
     const [searchSessionId, setSearchSessionId] = useState(0);
 
+    const nonAnonymousSearch = user && user.id !== 0 && searchSessionId === 0
 
-    const showPopup = (user && searchSessionId === 0)
+    const showPopup = ((user && user.id !== 0 && searchSessionId === 0) || (user && user.id === 0))
     // || (user && user.id === 0)
+
 
 
     const updateSession = async () => {
@@ -100,6 +102,8 @@ const App = () => {
 
         setUser(u);
 
+
+        !u && window.location.assign('/login');
 
 
 
@@ -167,11 +171,10 @@ const App = () => {
         getSearchSessionDetails();
     }, [])
 
-
     return (
         <>
             <UserContext.Provider value={user}>
-                {showPopup &&
+                {nonAnonymousSearch &&
                     <SoloOrGroupPopup groupId={groupId} setGroupId={setGroupId} startSession={startSession} />
                 }
                 <Inputs
