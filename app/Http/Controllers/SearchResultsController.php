@@ -260,7 +260,9 @@ class SearchResultsController extends Controller
                 ->where('id', '=', $search_session->group_id)
                 ->get();
 
-        $group_number = count($group_info[0]->users);
+        $group_info = $group_info[0]->users;
+        
+        $group_number = count($group_info);
 
         // ** find out how many people have completed this session
         // ** HOW?!
@@ -269,15 +271,32 @@ class SearchResultsController extends Controller
                 ->get();
         $users_completed_number = count($user_info);
        
-        // ** if the numbers are the same, run the search
-        // ** if not return a message to say we are waiting for other 
-        // ** group members
+        
+        // ** If the numbers are the same, run the search.
+        // ** If the user is the first (i.e. they set up the search),
+        // ** send the others a notifcation to complete their choices. 
+        // ** If neither of the above, return a message to say we are waiting for other 
+        // ** group members.
 
         if($users_completed_number < $group_number)
         {
             if($users_completed_number == 1)
             {
-                // email and notify the other group members
+                // ** Find other group members and send their info to 
+                // ** the notications controller
+
+                $other_group_members = [];
+
+                for($i = 0; $i < count($group_info); $i++)
+                {
+                    if($user_choices->user_id != $group_info[$i]['id'])
+                    {
+                        $other_group_members[] = $group_info[$i];
+                    }
+                }
+
+                return action(NotifyController::Class, 'notify', ['id' => $other_group_members]);
+                return 'You seem lonely!';// email and notify the other group members
             }
             return "Thank you for your choices, when everyone has completed the search we'll let you know!";
         }
@@ -286,8 +305,14 @@ class SearchResultsController extends Controller
         {
                   
             $group_choices = $this->findMatch($search_session->id);
-            
+
+            // ** get winning event
+
             $event = Event::findOrFail($group_choices[0]['event_id']);
+
+            // ** add event to search session
+            $search_session->event_id = $group_choices[0]['event_id'];
+            $search_session->save();
     
             return view('search\result', compact('group_choices', 'event'));
         }
