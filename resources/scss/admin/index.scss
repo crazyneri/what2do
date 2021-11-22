@@ -1,0 +1,43 @@
+$table_font_size: 18px;
+
+.admin-container{
+    display: grid;
+    width: 100vw;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    column-gap: 10%;
+    justify-items: start;
+    margin: 2em;
+    
+    .left-side, .right-side{
+        .table-style {
+            border-collapse: collapse;
+            margin: 25px 0px;
+            font-size: $table_font_size;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+            thead tr {
+                background-color: rgb(228, 145, 159);
+                color: #ffffff;
+                text-align: left;
+            }
+
+            th, td {
+                padding: 10px 15px;
+            }
+
+            tbody tr {
+                border-bottom: 1px solid #dddddd;
+            }
+
+            tbody tr:nth-of-type(even){
+                background-color: #f3f3f3;
+            }
+
+            tbody tr:last-of-type {
+                border-bottom: 2px solid #009879;
+            }
+        }
+    }
+}
