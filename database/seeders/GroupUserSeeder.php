@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use DB;
 
 class GroupUserSeeder extends Seeder
 {
@@ -16,13 +17,14 @@ class GroupUserSeeder extends Seeder
                 // DELETE ALL DATA
         DB::table('group_user')->truncate();
 
-        $users = json_decode(file_get_contents(storage_path('group_user.json')));
+        $pair = json_decode(file_get_contents(storage_path('group_user.json')));
 
-        foreach ($pair as $match) {
-            $usr_grp = new GroupUser;
-            $usr_grp->user_id = $match->user_id;
-            $usr_grp->group_id = $match->group_id;
-            $usr_grp->save();
-        }//
+
+        foreach($pair as $match){
+            DB::table('group_user')->insert([
+                'user_id' => $match->user_id,
+                'group_id' => $match->group_id
+            ]);
+        }
     }
 }
