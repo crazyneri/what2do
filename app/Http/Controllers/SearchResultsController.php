@@ -275,6 +275,10 @@ class SearchResultsController extends Controller
 
         if($users_completed_number < $group_number)
         {
+            if($users_completed_number == 1)
+            {
+                // email and notify the other group members
+            }
             return "Thank you for your choices, when everyone has completed the search we'll let you know!";
         }
 
