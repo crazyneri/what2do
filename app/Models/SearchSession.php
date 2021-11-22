@@ -20,7 +20,7 @@ class SearchSession extends Model
         'start_time',
         'end_time',
         'city',
-        'user_id'
+        'user_id',
     ];
 
     public function user()

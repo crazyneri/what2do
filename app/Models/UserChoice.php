@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Models\Category;
 use App\Models\SearchSession;
 use App\Models\User;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,20 +12,7 @@ class UserChoice extends Model
 {
     use HasFactory;
 
-    protected $fillable = [        
-        'user_id',
-        'session_id',
-        'max_budget',
-        'category1',
-        'category2',
-        'category3',
-        'category4',
-        'category5',
-        'category6',
-        'category7',
-        'category8',
-        'category9'
-    ];
+    protected $guarded = [];
 
     public function user()
     {

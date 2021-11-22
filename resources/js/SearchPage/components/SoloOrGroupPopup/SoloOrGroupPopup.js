@@ -19,6 +19,8 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
 
     const [groupName, setGroupName] = useState('');
 
+
+
     const useStyles = makeStyles({
         root: {
             flexDirection: 'column',
@@ -50,7 +52,6 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
 
     const handleGroupName = (e) => {
 
-        console.log(e.target.value);
         setGroupName(e.target.value);
 
     }
@@ -64,9 +65,6 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
         }, ...value
         ];
 
-        console.log(array);
-        // console.log([...value]);
-
         setGroupMembers(array);
 
     }
@@ -79,36 +77,33 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
             groupName: groupName
         }
 
-        console.log(groupData);
         try {
-
             const response = await post('/quick-create-group', groupData);
-            console.log(response);
+
+            const res_group_id = response.data.group_id
+
+            props.setGroupId(res_group_id);
+
+            props.startSession(res_group_id);
+
         } catch (error) {
             console.log(error.response)
         }
 
+
+
     }
 
+    const selectGroup = (groupId) => {
+        props.setGroupId(groupId);
 
-
-    const startSession = async () => {
-
-        const sessionData = {
-
-        }
-
-        const response = await post('/start-session', sessionData);
+        props.startSession(groupId);
     }
 
-    const launch = () => {
-        createGroup();
-        startSession();
-    }
 
 
     return (
-        <div className='popup-bg' {...props} ref={ref}>
+        <div className='popup-bg' ref={ref}>
             <Zoom in={(user && props.groupId === 0)}
                 style={{
                     transitionDelay: (user && props.groupId === 0) ? '500ms' : '0ms',
@@ -117,18 +112,25 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
                     <h2>
                         Welcome back, {user.name}
                     </h2>
+                    <Button variant="contained" onClick={() => selectGroup(0)}>Find out WHAT2DO for yourself ! (solo search only)</Button>
+
                     {!user.groups.length ?
                         <h3>
                             You are not in any group yet. Create a new one.
                         </h3>
+
                         :
                         <>
-                            <h3>Groups you are in :</h3>
+                            <h3>Select the group: </h3>
                             <Divider />
                             <List>
                                 {user.groups.map(group =>
                                     <ListItem key={group.id} alignItems="flex-start" disablePadding divider className={classes.root}>
-                                        <ListItemButton onClick={() => console.log('clicked')}>
+                                        <ListItemButton onClick={() => {
+                                            console.log('from onclick', group.id)
+                                            selectGroup(group.id)
+                                        }
+                                        }>
                                             <ListItemAvatar className={classes.avatars}>
                                                 <AvatarGroup className={classes.avatarsGroup} max={group.users.length > 2 ? group.users.length : 2}>
                                                     {group.users.map(user =>
@@ -213,7 +215,7 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
                             />
                         </ListItem>
                     </List >
-                    <Button disabled={!(groupName && groupMembers.length)} variant="contained" onClick={launch}>{groupName && groupMembers.length ? 'Create the group and find out WHAT2DO !' : 'Add at least one friend and give the group a name !'}</Button>
+                    <Button disabled={!(groupName && groupMembers.length)} variant="contained" onClick={createGroup}>{groupName && groupMembers.length ? 'Create the group and find out WHAT2DO !' : 'Add at least one friend and give the group a name !'}</Button>
                 </div>
             </Zoom>
         </div >
