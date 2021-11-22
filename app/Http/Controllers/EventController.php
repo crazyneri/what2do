@@ -73,6 +73,8 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
+        $this->eventValidate($request);
         
         $event = Event::create($data);
         
@@ -83,8 +85,57 @@ class EventController extends Controller
 
     }
 
-    public function show($id){
+    public function displayForm($id){
         
-        return $id;
+        return view('event/form', compact('id'));
+    }
+
+    public function getEvent($id){
+
+        $event = Event::with('categories')->where('id', $id)->first();
+        
+        return $event;
+    }
+
+    public function updateEvent(Request $request, $id){
+
+        $event = Event::findOrFail($id);
+        $data = $request->all();
+
+        $this->eventValidate($request);
+
+        $event->update($data);
+
+        // save data to the pivot table
+        $event->categories()->sync($data['categories']);
+
+        session()->flash('success_message', 'The event has been updated!');
+    }
+
+    // DELETE EVENT
+    public function deleteEvent($id) {
+        
+        $event = Event::findOrFail($id);
+
+        $event->categories()->detach();
+        $event->delete();
+
+        session()->flash('success_message', 'The event has been deleted!');
+
+        return redirect()->action('EventController@index');
+    }
+
+
+     // VALIDATION FOR EVENT FORM
+    public function eventValidate(Request $request){
+        $this->validate($request, [
+            'name' => 'required|min:3',
+            'venue_id' => 'required',
+            'start_date' => 'required',
+            'start_time' => 'required',
+            'end_date' => 'required',
+            'end_time' => 'required',
+            'price' => 'required',
+        ]);
     }
 }

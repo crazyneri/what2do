@@ -26,12 +26,15 @@ Route::group(["middleware" => "can:admin"], function () {
     // admin - main page
     Route::get('/admin', 'AdminController@show');
 
-    // admin - create and display events
+    // admin - create/edit/display events
     Route::get('/admin/events', 'EventController@index');
     Route::view('/admin/event/create', 'event/form');
     Route::get('/admin/event/data', 'EventController@data');
     Route::post('/admin/event/store', 'EventController@store');
-    Route::get('/admin/event/{id}', 'EventController@show');
+    Route::get('/admin/event/{id}', 'EventController@displayForm');
+    Route::get('/admin/event/{id}/edit', 'EventController@getEvent');
+    Route::put('/admin/event/{id}/update', 'EventController@updateEvent');
+    Route::delete('/admin/event/{id}', 'EventController@deleteEvent');
 
     // admin - dipslay/create new venue
     Route::get('/admin/venue/create', 'VenueController@create');
@@ -64,7 +67,6 @@ Route::delete('/group/{id}/user/{user_id}', 'UserController@removeFriend');
 
 Route::post('/group/{id}', 'UserController@groupAddUser');
 
-// EMAIL PART
 // registration - CHANGE SENDING EMAIL AFTER THE REGISTRATION
 Route::get('/send-email', function () {
     Mail::to('user@email.com')->send(new TestEmail());
