@@ -538,7 +538,12 @@
         "price": 500,
         "is_recurring": 1,
         "monday": 1,
-        "thursday": 1
+        "tuesday": null,
+        "wednesday": null,
+        "thursday": 1,
+        "friday": null,
+        "saturday": null,
+        "sunday": null
     },
     {
         "venue_id": 8,
@@ -550,8 +555,12 @@
         "description": "The artistic composition is based on the cube motif, in all possible variants that surround us: houses, urban structures, building materials, paving, dice, ice cubes, sugar… Thanks to its structure and the possibility of 3D visualization, it is one of the main motifs Rubik's cube. With the help of very simple basic scenography and detailed precisely focused projection, it is possible to significantly change its perspective, movement and surface, and thus influence the overall space, dynamics and time. Modern and precise choreography supports the film illusion and, conversely, the film illusion supports the performer's movement on stage.",
         "price": 850,
         "is_recurring": 1,
+        "monday": null,
+        "tuesday": null,
         "wednesday": 1,
         "thursday": 1,
+        "friday": null,
+        "saturday": null,
         "sunday": 1
     },
     {
@@ -564,7 +573,12 @@
         "description": "Just a little moment and ordinary objects come to life. Crunch. Sand. Vrz. Rachtata. Tin heroes come from the dumpsters. Don't be fooled by their perhaps a little rough appearance, there is a gentle soul behind it. Embark on a world where even rusty cans tell fascinating stories.",
         "price": 350,
         "is_recurring": 1,
+        "monday": null,
         "tuesday": 1,
-        "friday": 1
+        "wednesday": null,
+        "thursday": null,
+        "friday": 1,
+        "saturday": null,
+        "sunday": null
     }
 ]

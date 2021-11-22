@@ -32373,6 +32373,64 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
     props.startSession(groupId);
   };
 
+  var createDefaultGroup = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+      var groupData, response, res_group_id, data, default_group_response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              groupData = {
+                owner_id: user.id,
+                groupMembers: [{
+                  id: user.id,
+                  name: user.name
+                }],
+                groupName: 'Myself'
+              };
+              _context3.prev = 1;
+              _context3.next = 4;
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)('/quick-create-group', groupData);
+
+            case 4:
+              response = _context3.sent;
+              res_group_id = response.data.group_id;
+              data = {
+                user_id: user.id,
+                default_group_id: res_group_id
+              };
+              _context3.next = 9;
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)('/user/change-default-group', data);
+
+            case 9:
+              default_group_response = _context3.sent;
+              props.setGroupId(res_group_id);
+              props.startSession(res_group_id);
+              _context3.next = 17;
+              break;
+
+            case 14:
+              _context3.prev = 14;
+              _context3.t0 = _context3["catch"](1);
+              console.log(_context3.t0.response);
+
+            case 17:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, null, [[1, 14]]);
+    }));
+
+    return function createDefaultGroup() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  var handleSoloSearch = function handleSoloSearch() {
+    user.default_group_id ? selectGroup(user.default_group_id) : createDefaultGroup();
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
     className: "popup-bg",
     ref: ref,
@@ -32388,7 +32446,7 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
           variant: "contained",
           onClick: function onClick() {
-            return selectGroup(0);
+            return handleSoloSearch();
           },
           children: "Find out WHAT2DO for yourself ! (solo search only)"
         }), !user.groups.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {

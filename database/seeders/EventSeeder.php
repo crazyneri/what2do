@@ -31,6 +31,16 @@ class EventSeeder extends Seeder
             $evn->description = $event->description;
             $evn->price = $event->price;
             $evn->is_recurring = $event->is_recurring;
+            if($event->is_recurring == 1){
+                $evn->monday = $event->monday;
+                $evn->tuesday = $event->tuesday;
+                $evn->wednesday = $event->wednesday;
+                $evn->thursday = $event->thursday;
+                $evn->friday = $event->friday;
+                $evn->saturday = $event->saturday;
+                $evn->sunday = $event->sunday;
+            }
+            
             $evn->save();
         }
     }
