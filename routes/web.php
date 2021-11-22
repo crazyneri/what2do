@@ -1,8 +1,6 @@
 <?php
 
 use App\Mail\TestEmail;
-use App\Models\User;
-use App\Notifications\InvoicePaid;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -72,20 +70,13 @@ Route::get('/send-email', function () {
     Mail::to('user@email.com')->send(new TestEmail());
 });
 
-// notification - GROUP and USERS NEEDS TO BE ADDED
-Route::get('/send-notification', function () {
-    $user = User::where('name', 'Jachym Pivonka')->first();
-
-    $user->notify(new InvoicePaid);
-});
 // dummy search
 
 // test search function
 // Route::get('/solo_search/{id}', 'SearchResultsController@singleSearch');
 
 // test search
-Route::get('/solo_search/{id}', 'SearchResultsController@handleSearch');
-Route::get('/solo_search', 'SearchResultsController@soloSearch');
+Route::get('/session_search/{session_id}/{choice_id}', 'UserChoiceController@handleSearch');
 
 // quick create group
 

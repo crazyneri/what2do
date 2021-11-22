@@ -13,7 +13,15 @@ class SearchSession extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'group_id'];
+    protected $fillable = [
+        'group_id',
+        'event_id',
+        'searched_date',
+        'start_time',
+        'end_time',
+        'city',
+        'user_id',
+    ];
 
     public function user()
     {

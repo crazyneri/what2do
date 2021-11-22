@@ -11,14 +11,16 @@ class InvoicePaid extends Notification
 {
     use Queueable;
 
+    private $session;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($search_session)
     {
-        //
+        $this->session = $search_session;
     }
 
     /**
@@ -40,9 +42,13 @@ class InvoicePaid extends Notification
      */
     public function toMail($notifiable)
     {
+        // dd($notifiable);
+        $url = url('/search/'.$this->session->id);
+
         return (new MailMessage)
+                    ->subject('Fun can begin!')
                     ->line('Your friend have started the session. Join now')
-                    ->action('Fill your preferences', url('/'))
+                    ->action('Fill your preferences', $url)
                     ->line('Looking forward.');
     }
 

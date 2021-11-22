@@ -1,0 +1,12 @@
+.login {
+    &__container {
+        width: 5em;
+        height: auto;
+    }
+    &__button {
+        margin: 1em;
+        border: none;
+        border-radius: 3px;
+        background-color: $login_button;
+    }
+}
