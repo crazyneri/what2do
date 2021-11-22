@@ -250,7 +250,7 @@ class SearchResultsController extends Controller
         // ** find out how many people are in the group
 
     // !! test function only as cannot get the request to test yet
-    public function test($session_id, $user_choices_id)
+    public function handleSearch($session_id, $user_choices_id)
     {
 
         $search_session = SearchSession::findOrFail($session_id);
@@ -295,7 +295,7 @@ class SearchResultsController extends Controller
                     }
                 }
 
-                return action(NotifyController::Class, 'notify', ['id' => $other_group_members]);
+               // return action(NotifyController::Class, 'notify', ['id' => $other_group_members]);
                 return 'You seem lonely!';// email and notify the other group members
             }
             return "Thank you for your choices, when everyone has completed the search we'll let you know!";
