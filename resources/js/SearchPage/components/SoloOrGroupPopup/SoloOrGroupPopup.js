@@ -101,6 +101,49 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
     }
 
 
+    const createDefaultGroup = async () => {
+
+        const groupData = {
+            owner_id: user.id,
+            groupMembers: [{
+                id: user.id,
+                name: user.name
+            }],
+            groupName: 'Myself'
+        }
+
+        try {
+            const response = await post('/quick-create-group', groupData);
+
+            const res_group_id = response.data.group_id;
+
+            const data = {
+                user_id: user.id,
+                default_group_id: res_group_id
+            }
+
+            const default_group_response = await post('/user/change-default-group', data)
+
+            props.setGroupId(res_group_id);
+
+            props.startSession(res_group_id);
+
+        } catch (error) {
+            console.log(error.response)
+        }
+
+
+
+    }
+
+    const handleSoloSearch = () => {
+
+        user.default_group_id ? selectGroup(default_group_id) : createDefaultGroup();
+
+
+    }
+
+
 
     return (
         <div className='popup-bg' ref={ref}>
@@ -112,7 +155,7 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
                     <h2>
                         Welcome back, {user.name}
                     </h2>
-                    <Button variant="contained" onClick={() => selectGroup(0)}>Find out WHAT2DO for yourself ! (solo search only)</Button>
+                    <Button variant="contained" onClick={() => handleSoloSearch()}>Find out WHAT2DO for yourself ! (solo search only)</Button>
 
                     {!user.groups.length ?
                         <h3>
