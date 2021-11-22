@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Models\User;
 use App\Models\Group;
+use App\Models\User;
 use Auth;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -39,7 +38,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        return view('user.edit',compact('user'));
+        return view('user.edit', compact('user'));
     }
     public function update(Request $request, $id)
     {
@@ -60,22 +59,21 @@ class UserController extends Controller
         //
     }
     // CREATE NEW GROUP & STORE IDs IN PIVOT
-        public function createGroup($id, Request $request)
+    public function createGroup($id, Request $request)
     {
         $data = $request->all();
         $data['owner_id'] = $id;
-        
-        if(Auth::id() == $id)
-        {
-        $group = Group::create($data);
-        $group->users()->attach($id);
+
+        if (Auth::id() == $id) {
+            $group = Group::create($data);
+            $group->users()->attach($id);
         }
-        
+
         // $user = User::findOrFail($id); // same result as above
         // $user->groups()->attach($group->id);
 
         return redirect()->back();
-        
+
     }
 
     // should be split in 2 methods (display + work with info)
@@ -88,22 +86,20 @@ class UserController extends Controller
     {
         // take a group, add a user to it
         $group = Group::findorFail($group_id);
-        
 
         // **security feature for when logged in
-        if(Auth::id() === $group->owner_id){
-        $user = User::where('email', $request->input('email-search'))->first(); // retrieve single record
-        
-        if($user && $group)
-        {
-            if($group->users()->find($user->id)){
-            echo 'Already a member.';
-            } else{
-            $group->users()->attach($user->id);
+        if (Auth::id() === $group->owner_id) {
+            $user = User::where('email', $request->input('email-search'))->first(); // retrieve single record
+
+            if ($user && $group) {
+                if ($group->users()->find($user->id)) {
+                    echo 'Already a member.';
+                } else {
+                    $group->users()->attach($user->id);
+                }
             }
         }
-      }
-        return view('group.show', compact('group','user'));
+        return view('group.show', compact('group', 'user'));
     }
 
     public function removeFriendget($group_id, $user_id)
@@ -118,5 +114,15 @@ class UserController extends Controller
         $user = User::findOrFail($user_id);
         $group->users()->detach($user_id);
         return redirect()->back();
+    }
+
+    public function anonymousLogin()
+    {
+        $user = [
+            'id' => 0,
+            'name' => "Anonymous user",
+        ];
+        session(['user' => $user]);
+
     }
 }
