@@ -31215,9 +31215,7 @@ var App = function App() {
       searchSessionId = _useState20[0],
       setSearchSessionId = _useState20[1];
 
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    console.log(values);
-  });
+  var hidePopup = user && searchSessionId === 0;
 
   var updateSession = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -31245,7 +31243,7 @@ var App = function App() {
             case 8:
               _context.prev = 8;
               _context.t0 = _context["catch"](1);
-              console.log(_context.t0.response.message);
+              console.log(_context.t0.response);
 
             case 11:
             case "end":
@@ -31307,7 +31305,7 @@ var App = function App() {
 
   var fetchUser = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-      var response;
+      var response, u;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
@@ -31317,10 +31315,15 @@ var App = function App() {
 
             case 2:
               response = _context3.sent;
-              console.log('logged in user', response.data);
-              setUser(response.data);
+              _context3.next = 5;
+              return response.data;
 
             case 5:
+              u = _context3.sent;
+              console.log('logged in user', u);
+              setUser(u);
+
+            case 8:
             case "end":
               return _context3.stop();
           }
@@ -31335,9 +31338,7 @@ var App = function App() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetchUser();
-  }, []); // useEffect(() => {
-  //     user && fetchUser();
-  // }, [user.groups]);
+  }, []);
 
   var startSession = /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(group_id) {
@@ -31359,21 +31360,22 @@ var App = function App() {
             case 5:
               response = _context4.sent;
               search_session_id = response.data;
+              console.log('session started, id: ', search_session_id);
               setSearchSessionId(search_session_id);
-              _context4.next = 13;
+              _context4.next = 14;
               break;
 
-            case 10:
-              _context4.prev = 10;
+            case 11:
+              _context4.prev = 11;
               _context4.t0 = _context4["catch"](2);
               console.log(_context4.t0.response);
 
-            case 13:
+            case 14:
             case "end":
               return _context4.stop();
           }
         }
-      }, _callee4, null, [[2, 10]]);
+      }, _callee4, null, [[2, 11]]);
     }));
 
     return function startSession(_x) {
@@ -31399,20 +31401,21 @@ var App = function App() {
               setGroupId(group_id);
               console.log('session details: ', response.data);
               setSearchSessionId(search_session_id);
-              _context5.next = 14;
+              user && user.id === 0 && search_session_id === 0 && startSession(group_id);
+              _context5.next = 15;
               break;
 
-            case 11:
-              _context5.prev = 11;
+            case 12:
+              _context5.prev = 12;
               _context5.t0 = _context5["catch"](0);
               console.log(_context5.t0.response);
 
-            case 14:
+            case 15:
             case "end":
               return _context5.stop();
           }
         }
-      }, _callee5, null, [[0, 11]]);
+      }, _callee5, null, [[0, 12]]);
     }));
 
     return function getSearchSessionDetails() {
@@ -31426,7 +31429,7 @@ var App = function App() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_util_UserContext__WEBPACK_IMPORTED_MODULE_5__["default"].Provider, {
       value: user,
-      children: [user && searchSessionId === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_SoloOrGroupPopup_SoloOrGroupPopup__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      children: [hidePopup && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_SoloOrGroupPopup_SoloOrGroupPopup__WEBPACK_IMPORTED_MODULE_6__["default"], {
         groupId: groupId,
         setGroupId: setGroupId,
         startSession: startSession

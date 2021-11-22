@@ -4,7 +4,10 @@
 
 <div>
     <h2>Without logging in you can't create group searches or save your results!</h2>
-    <button><a href="/anonymous-login">Continue without Login</a></button>
+    <form action="{{ route('anonymous-login') }}" method="post">
+        @csrf
+        <button>Continue without Login</button>
+    </form>
 </div>
 
 <form action="{{ route('login') }}" method="post">
