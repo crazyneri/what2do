@@ -25,7 +25,13 @@ class UserChoiceController extends Controller
             $userChoicesData[$string] = $id;
         };
 
+        $session_id = $request->input('session_id');
+
         $user_choice = UserChoice::create($userChoicesData);
+
+        $user_choices_id = $user_choice->id;
+
+        // handleSearch($session_id,$user_choices_id);
 
         return $user_choice;
     }

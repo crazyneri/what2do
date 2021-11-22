@@ -39,7 +39,8 @@ const App = () => {
     const [searchSessionId, setSearchSessionId] = useState(0);
 
 
-    const hidePopup = user && searchSessionId === 0
+    const showPopup = (user && searchSessionId === 0)
+    // || (user && user.id === 0)
 
 
     const updateSession = async () => {
@@ -170,7 +171,7 @@ const App = () => {
     return (
         <>
             <UserContext.Provider value={user}>
-                {hidePopup &&
+                {showPopup &&
                     <SoloOrGroupPopup groupId={groupId} setGroupId={setGroupId} startSession={startSession} />
                 }
                 <Inputs
