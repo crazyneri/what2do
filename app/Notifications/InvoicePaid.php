@@ -41,8 +41,9 @@ class InvoicePaid extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+                    ->subject('Hovno')
                     ->line('Your friend have started the session. Join now')
-                    ->action('Fill your preferences', url('/'))
+                    ->action('Fill your preferences', url(`/user/$notifiable->id`))
                     ->line('Looking forward.');
     }
 
