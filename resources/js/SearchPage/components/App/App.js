@@ -38,9 +38,8 @@ const App = () => {
     const [groupId, setGroupId] = useState(0);
     const [searchSessionId, setSearchSessionId] = useState(0);
 
-    useEffect(() => {
-        console.log(values);
-    })
+
+    const hidePopup = user && searchSessionId === 0
 
 
     const updateSession = async () => {
@@ -58,7 +57,7 @@ const App = () => {
             console.log(response.data);
 
         } catch (error) {
-            console.log(error.response.message)
+            console.log(error.response)
         }
 
 
@@ -94,17 +93,21 @@ const App = () => {
 
         const response = await get('/api/user');
 
-        console.log('logged in user', response.data);
-        setUser(response.data);
+
+        const u = await response.data;
+        console.log('logged in user', u);
+
+        setUser(u);
+
+
+
+
     }
 
     useEffect(() => {
         fetchUser();
     }, [])
 
-    // useEffect(() => {
-    //     user && fetchUser();
-    // }, [user.groups]);
 
 
     const startSession = async (group_id) => {
@@ -120,6 +123,8 @@ const App = () => {
             const response = await post('/session/store', sessionData);
 
             const search_session_id = response.data;
+
+            console.log('session started, id: ', search_session_id);
 
             setSearchSessionId(search_session_id);
 
@@ -146,6 +151,9 @@ const App = () => {
 
             setSearchSessionId(search_session_id);
 
+            user && user.id === 0 && search_session_id === 0 &&
+                startSession(group_id);
+
 
         } catch (error) {
             console.log(error.response)
@@ -162,7 +170,7 @@ const App = () => {
     return (
         <>
             <UserContext.Provider value={user}>
-                {(user && searchSessionId === 0) &&
+                {hidePopup &&
                     <SoloOrGroupPopup groupId={groupId} setGroupId={setGroupId} startSession={startSession} />
                 }
                 <Inputs

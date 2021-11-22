@@ -47,7 +47,7 @@ Route::group(["middleware" => "can:admin"], function () {
 });
 
 // SEARCH PART
-Route::get('/search', 'SearchController@index');
+Route::get('/search', 'SearchController@index')->name('search');
 
 // USER PART
 // can be limited by Auth
@@ -94,4 +94,4 @@ Route::post('/session/store', 'SearchSessionController@store');
 Route::post('/session/update', 'SearchSessionController@update');
 
 Route::post('/user-choice/store', 'UserChoiceController@store');
-Route::post('/anonymous-login', 'UserController@anonymousLogin');
+Route::post('/anonymous-login', 'UserController@anonymousLogin')->name('anonymous-login');

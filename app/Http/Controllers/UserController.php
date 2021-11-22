@@ -120,9 +120,12 @@ class UserController extends Controller
     {
         $user = [
             'id' => 0,
-            'name' => "Anonymous user",
+            'name' => "Anonymous User",
+            'groups' => [],
         ];
         session(['user' => $user]);
+
+        return redirect()->route('search');
 
     }
 }
