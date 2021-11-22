@@ -128,4 +128,17 @@ class UserController extends Controller
         return redirect()->route('search');
 
     }
+
+    public function updateDefaultGroup(Request $request)
+    {
+
+        $user_id = $request->input('user_id');
+        $default_group_id = $request->input('default_group_id');
+
+        $user = User::findOrFail($user_id);
+        $user->default_group_id = $default_group_id;
+
+        $user->save();
+
+    }
 }

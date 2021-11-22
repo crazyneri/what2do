@@ -86,3 +86,5 @@ Route::post('/session/update', 'SearchSessionController@update');
 
 Route::post('/user-choice/store', 'UserChoiceController@store');
 Route::post('/anonymous-login', 'UserController@anonymousLogin')->name('anonymous-login');
+
+Route::post('/user/change-default-group', 'UserController@anonymousLogin');
