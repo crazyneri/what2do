@@ -1,7 +1,6 @@
 <?php
 
 use App\Mail\TestEmail;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -79,9 +78,7 @@ Route::get('/send-notification', 'NotificationController@notify');
 // Route::get('/solo_search/{id}', 'SearchResultsController@singleSearch');
 
 // test search
-Route::get('/session_search/{session_id}/{user_choices_id}', 'SearchResultsController@handleSearch');
-Route::get('/solo_search/{id}', 'SearchResultsController@handleSearch');
-Route::get('/solo_search', 'SearchResultsController@soloSearch');
+Route::get('/session_search/{session_id}/{choice_id}', 'UserChoiceController@handleSearch');
 
 // quick create group
 

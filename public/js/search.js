@@ -31283,7 +31283,7 @@ var App = function App() {
             case 8:
               _context2.prev = 8;
               _context2.t0 = _context2["catch"](1);
-              console.log(_context2.t0.response.message);
+              console.log(_context2.t0.response);
 
             case 11:
             case "end":
