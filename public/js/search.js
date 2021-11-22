@@ -32428,7 +32428,7 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
   }();
 
   var handleSoloSearch = function handleSoloSearch() {
-    user.default_group_id ? selectGroup(default_group_id) : createDefaultGroup();
+    user.default_group_id ? selectGroup(user.default_group_id) : createDefaultGroup();
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {

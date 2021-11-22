@@ -138,7 +138,7 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
 
     const handleSoloSearch = () => {
 
-        user.default_group_id ? selectGroup(default_group_id) : createDefaultGroup();
+        user.default_group_id ? selectGroup(user.default_group_id) : createDefaultGroup();
 
 
     }
