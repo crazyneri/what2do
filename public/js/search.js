@@ -31151,7 +31151,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 var App = function App() {
   // input values
   var initialValues = {
@@ -31211,39 +31210,126 @@ var App = function App() {
       groupId = _useState18[0],
       setGroupId = _useState18[1];
 
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+      _useState20 = _slicedToArray(_useState19, 2),
+      searchSessionId = _useState20[0],
+      setSearchSessionId = _useState20[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     console.log(values);
   });
 
-  var search = function search() {
-    console.log(searchIds);
-  };
-
-  var fetchUser = /*#__PURE__*/function () {
+  var updateSession = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var response;
+      var sessionData, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.get)('/api/user');
+              sessionData = {
+                session_id: searchSessionId,
+                searched_date: values.date,
+                start_time: values.startTime,
+                end_time: endTime
+              };
+              _context.prev = 1;
+              _context.next = 4;
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)('/session/update', sessionData);
 
-            case 2:
+            case 4:
               response = _context.sent;
               console.log(response.data);
-              setUser(response.data);
+              _context.next = 11;
+              break;
 
-            case 5:
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](1);
+              console.log(_context.t0.response.message);
+
+            case 11:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee);
+      }, _callee, null, [[1, 8]]);
+    }));
+
+    return function updateSession() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  var sendSearchDetails = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var searchDetailsData, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              searchDetailsData = {
+                session_id: searchSessionId,
+                user_id: user.id,
+                category_ids: searchIds
+              };
+              _context2.prev = 1;
+              _context2.next = 4;
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)('/user-choice/store', searchDetailsData);
+
+            case 4:
+              response = _context2.sent;
+              console.log(response.data);
+              _context2.next = 11;
+              break;
+
+            case 8:
+              _context2.prev = 8;
+              _context2.t0 = _context2["catch"](1);
+              console.log(_context2.t0.response.message);
+
+            case 11:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[1, 8]]);
+    }));
+
+    return function sendSearchDetails() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  var search = function search() {
+    updateSession();
+    sendSearchDetails();
+  };
+
+  var fetchUser = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+      var response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.get)('/api/user');
+
+            case 2:
+              response = _context3.sent;
+              console.log('logged in user', response.data);
+              setUser(response.data);
+
+            case 5:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
     }));
 
     return function fetchUser() {
-      return _ref.apply(this, arguments);
+      return _ref3.apply(this, arguments);
     };
   }();
 
@@ -31254,11 +31340,11 @@ var App = function App() {
   // }, [user.groups]);
 
   var startSession = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(group_id) {
-      var sessionData, response;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(group_id) {
+      var sessionData, response, search_session_id;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
         while (1) {
-          switch (_context2.prev = _context2.next) {
+          switch (_context4.prev = _context4.next) {
             case 0:
               // setLoading(true)
               sessionData = {
@@ -31266,35 +31352,84 @@ var App = function App() {
                 group_id: group_id
               };
               console.log('starting session with group id', group_id);
-              _context2.next = 4;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)('/start-session', sessionData);
+              _context4.prev = 2;
+              _context4.next = 5;
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)('/session/store', sessionData);
 
-            case 4:
-              response = _context2.sent;
-              console.log(response.data); // setLoading(false);
+            case 5:
+              response = _context4.sent;
+              search_session_id = response.data;
+              setSearchSessionId(search_session_id);
+              _context4.next = 13;
+              break;
 
-            case 6:
+            case 10:
+              _context4.prev = 10;
+              _context4.t0 = _context4["catch"](2);
+              console.log(_context4.t0.response);
+
+            case 13:
             case "end":
-              return _context2.stop();
+              return _context4.stop();
           }
         }
-      }, _callee2);
+      }, _callee4, null, [[2, 10]]);
     }));
 
     return function startSession(_x) {
-      return _ref2.apply(this, arguments);
+      return _ref4.apply(this, arguments);
+    };
+  }();
+
+  var getSearchSessionDetails = /*#__PURE__*/function () {
+    var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+      var response, search_session_id, group_id;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              _context5.prev = 0;
+              _context5.next = 3;
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.get)('/api/session/details');
+
+            case 3:
+              response = _context5.sent;
+              search_session_id = response.data.search_session_id;
+              group_id = response.data.group_id;
+              setGroupId(group_id);
+              console.log('session details: ', response.data);
+              setSearchSessionId(search_session_id);
+              _context5.next = 14;
+              break;
+
+            case 11:
+              _context5.prev = 11;
+              _context5.t0 = _context5["catch"](0);
+              console.log(_context5.t0.response);
+
+            case 14:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5, null, [[0, 11]]);
+    }));
+
+    return function getSearchSessionDetails() {
+      return _ref5.apply(this, arguments);
     };
   }();
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    startSession(groupId);
-  }, [groupId]);
+    getSearchSessionDetails();
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_util_UserContext__WEBPACK_IMPORTED_MODULE_5__["default"].Provider, {
       value: user,
-      children: [user && groupId === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_SoloOrGroupPopup_SoloOrGroupPopup__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      children: [user && searchSessionId === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_SoloOrGroupPopup_SoloOrGroupPopup__WEBPACK_IMPORTED_MODULE_6__["default"], {
         groupId: groupId,
-        setGroupId: setGroupId
+        setGroupId: setGroupId,
+        startSession: startSession
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Inputs_Inputs__WEBPACK_IMPORTED_MODULE_3__["default"], {
         city: city,
         date: date,
@@ -32126,11 +32261,6 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
       groupName = _useState6[0],
       setGroupName = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState8 = _slicedToArray(_useState7, 2),
-      loading = _useState8[0],
-      setLoading = _useState8[1];
-
   var useStyles = (0,_mui_styles__WEBPACK_IMPORTED_MODULE_6__["default"])({
     root: {
       flexDirection: 'column',
@@ -32182,7 +32312,6 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
   }, []);
 
   var handleGroupName = function handleGroupName(e) {
-    console.log(e.target.value);
     setGroupName(e.target.value);
   };
 
@@ -32191,8 +32320,6 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
       id: user.id,
       name: user.name
     }].concat(_toConsumableArray(value));
-    console.log(array); // console.log([...value]);
-
     setGroupMembers(array);
   };
 
@@ -32207,32 +32334,30 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
                 owner_id: user.id,
                 groupMembers: groupMembers,
                 groupName: groupName
-              }; // console.log(groupData);
-
+              };
               _context2.prev = 1;
               _context2.next = 4;
               return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)('/quick-create-group', groupData);
 
             case 4:
               response = _context2.sent;
-              // console.log(response.data.group_id);
               res_group_id = response.data.group_id;
-              props.setGroupId(res_group_id); // startSession(res_group_id);
-
-              _context2.next = 12;
+              props.setGroupId(res_group_id);
+              props.startSession(res_group_id);
+              _context2.next = 13;
               break;
 
-            case 9:
-              _context2.prev = 9;
+            case 10:
+              _context2.prev = 10;
               _context2.t0 = _context2["catch"](1);
               console.log(_context2.t0.response);
 
-            case 12:
+            case 13:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[1, 9]]);
+      }, _callee2, null, [[1, 10]]);
     }));
 
     return function createGroup() {
@@ -32241,18 +32366,9 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
   }();
 
   var selectGroup = function selectGroup(groupId) {
-    props.setGroupId(groupId); // startSession(groupId);
-  }; // const launchGroupSession = (groupId) => {
-  //     groupId===0 ? createGroup();
-  //     // startSession();
-  // }
-  // const launchSoloSession = () => {
-  //     // setLoading(true)
-  //     createGroup();
-  //     startSession();
-  //     setLoading(false);
-  // }
-
+    props.setGroupId(groupId);
+    props.startSession(groupId);
+  };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
     className: "popup-bg",
@@ -32269,7 +32385,7 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
           variant: "contained",
           onClick: function onClick() {
-            return selectGroup(-1);
+            return selectGroup(0);
           },
           children: "Find out WHAT2DO for yourself ! (solo search only)"
         }), !user.groups.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {

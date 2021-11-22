@@ -6,7 +6,6 @@ import { get, post } from '../../../util/request';
 import UserContext from '../../../util/UserContext';
 import SoloOrGroupPopup from '../SoloOrGroupPopup/SoloOrGroupPopup';
 import { DateTime } from 'luxon';
-import { Zoom } from '@mui/material'
 
 
 const App = () => {
@@ -37,14 +36,56 @@ const App = () => {
     const [user, setUser] = useState(null);
 
     const [groupId, setGroupId] = useState(0);
+    const [searchSessionId, setSearchSessionId] = useState(0);
 
     useEffect(() => {
         console.log(values);
     })
 
 
+    const updateSession = async () => {
+
+        const sessionData = {
+
+            session_id: searchSessionId,
+            searched_date: values.date,
+            start_time: values.startTime,
+            end_time: endTime
+        }
+        try {
+            const response = await post('/session/update', sessionData);
+
+            console.log(response.data);
+
+        } catch (error) {
+            console.log(error.response.message)
+        }
+
+
+    }
+    const sendSearchDetails = async () => {
+
+        const searchDetailsData = {
+            session_id: searchSessionId,
+            user_id: user.id,
+            category_ids: searchIds,
+        };
+
+        try {
+            const response = await post('/user-choice/store', searchDetailsData);
+
+            console.log(response.data);
+
+        } catch (error) {
+            console.log(error.response.message)
+        }
+
+
+    }
+
     const search = () => {
-        console.log(searchIds);
+        updateSession();
+        sendSearchDetails();
     }
 
 
@@ -53,7 +94,7 @@ const App = () => {
 
         const response = await get('/api/user');
 
-        console.log(response.data);
+        console.log('logged in user', response.data);
         setUser(response.data);
     }
 
@@ -75,22 +116,54 @@ const App = () => {
         }
         console.log('starting session with group id', group_id)
 
-        const response = await post('/start-session', sessionData);
+        try {
+            const response = await post('/session/store', sessionData);
 
-        console.log(response.data)
+            const search_session_id = response.data;
+
+            setSearchSessionId(search_session_id);
+
+        } catch (error) {
+            console.log(error.response)
+        }
+
+        // setLoading(false);
+    }
+
+
+    const getSearchSessionDetails = async () => {
+
+        // setLoading(true)
+
+        try {
+            const response = await get('/api/session/details');
+
+            const search_session_id = response.data.search_session_id;
+            const group_id = response.data.group_id;
+            setGroupId(group_id);
+            console.log('session details: ', response.data);
+
+
+            setSearchSessionId(search_session_id);
+
+
+        } catch (error) {
+            console.log(error.response)
+        }
+
         // setLoading(false);
     }
 
     useEffect(() => {
-        startSession(groupId);
-    }, [groupId])
+        getSearchSessionDetails();
+    }, [])
 
 
     return (
         <>
             <UserContext.Provider value={user}>
-                {(user && groupId === 0) &&
-                    <SoloOrGroupPopup groupId={groupId} setGroupId={setGroupId} />
+                {(user && searchSessionId === 0) &&
+                    <SoloOrGroupPopup groupId={groupId} setGroupId={setGroupId} startSession={startSession} />
                 }
                 <Inputs
                     city={city}

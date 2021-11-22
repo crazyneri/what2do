@@ -88,4 +88,8 @@ Route::get('/solo_search', 'SearchResultsController@soloSearch');
 // quick create group
 
 Route::post('/quick-create-group', 'GroupController@store');
-Route::post('/start-session', 'SearchSessionController@store');
+Route::post('/session/store', 'SearchSessionController@store');
+Route::post('/session/update', 'SearchSessionController@update');
+
+Route::post('/user-choice/store', 'UserChoiceController@store');
+Route::post('/anonymous-login', 'UserController@anonymousLogin');

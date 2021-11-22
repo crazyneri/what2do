@@ -19,8 +19,6 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
 
     const [groupName, setGroupName] = useState('');
 
-    const [loading, setLoading] = useState(false);
-
 
 
     const useStyles = makeStyles({
@@ -54,7 +52,6 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
 
     const handleGroupName = (e) => {
 
-        console.log(e.target.value);
         setGroupName(e.target.value);
 
     }
@@ -68,9 +65,6 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
         }, ...value
         ];
 
-        console.log(array);
-        // console.log([...value]);
-
         setGroupMembers(array);
 
     }
@@ -83,18 +77,14 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
             groupName: groupName
         }
 
-        // console.log(groupData);
         try {
             const response = await post('/quick-create-group', groupData);
-
-
-            // console.log(response.data.group_id);
 
             const res_group_id = response.data.group_id
 
             props.setGroupId(res_group_id);
 
-            // startSession(res_group_id);
+            props.startSession(res_group_id);
 
         } catch (error) {
             console.log(error.response)
@@ -107,19 +97,8 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
     const selectGroup = (groupId) => {
         props.setGroupId(groupId);
 
-        // startSession(groupId);
+        props.startSession(groupId);
     }
-
-    // const launchGroupSession = (groupId) => {
-    //     groupId===0 ? createGroup();
-    //     // startSession();
-    // }
-    // const launchSoloSession = () => {
-    //     // setLoading(true)
-    //     createGroup();
-    //     startSession();
-    //     setLoading(false);
-    // }
 
 
 
@@ -133,7 +112,7 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
                     <h2>
                         Welcome back, {user.name}
                     </h2>
-                    <Button variant="contained" onClick={() => selectGroup(-1)}>Find out WHAT2DO for yourself ! (solo search only)</Button>
+                    <Button variant="contained" onClick={() => selectGroup(0)}>Find out WHAT2DO for yourself ! (solo search only)</Button>
 
                     {!user.groups.length ?
                         <h3>
