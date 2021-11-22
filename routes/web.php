@@ -70,8 +70,6 @@ Route::get('/send-email', function () {
     Mail::to('user@email.com')->send(new TestEmail());
 });
 
-// notification - GROUP and USERS NEEDS TO BE ADDED
-Route::get('/send-notification', 'NotificationController@notify');
 // dummy search
 
 // test search function

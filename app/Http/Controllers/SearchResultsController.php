@@ -6,6 +6,8 @@ use App\Models\Event;
 use App\Models\Group;
 use App\Models\SearchSession;
 use App\Models\UserChoice;
+use App\Notifications\InvoicePaid;
+use Notification;
 
 class SearchResultsController extends Controller
 {
@@ -265,7 +267,15 @@ class SearchResultsController extends Controller
                     }
                 }
 
-                // return action(NotifyController::Class, 'notify', ['id' => $other_group_members]);
+                // return action(NotificationController::Class, 'notify', ['id' => $other_group_members]);
+                // return redirect()->action('NotificationController@notify', ['ids_to' => [$other_group_members]]);
+
+                // foreach($other_group_members as $user){
+                //     $user->notify(new InvoicePaid);
+                // }
+
+                Notification::send($other_group_members, new InvoicePaid($search_session));
+
                 return 'You seem lonely!'; // email and notify the other group members
             }
             return "Thank you for your choices, when everyone has completed the search we'll let you know!";
