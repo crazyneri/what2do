@@ -1,5 +1,10 @@
 {
+<<<<<<< HEAD
     "/js/search.js": "/js/search.js?id=933ebbd1d5fd643924ab",
     "/js/event-create.js": "/js/event-create.js?id=b08ba51f977453f83768",
+=======
+    "/js/search.js": "/js/search.js?id=8000641ac08679f005e1",
+    "/js/event-create.js": "/js/event-create.js?id=ffa211e31eef00bb66c1",
+>>>>>>> feat/group_search
     "/css/main.css": "/css/main.css?id=919456901fc2cdc9524a"
 }

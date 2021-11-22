@@ -84,6 +84,7 @@ Route::get('/send-notification', function () {
 // Route::get('/solo_search/{id}', 'SearchResultsController@singleSearch');
 
 // test search
+Route::get('/session_search/{session_id}/{user_choices_id}', 'SearchResultsController@test');
 Route::get('/solo_search/{id}', 'SearchResultsController@handleSearch');
 Route::get('/solo_search', 'SearchResultsController@soloSearch');
 
