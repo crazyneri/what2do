@@ -28,6 +28,7 @@ class UserSeeder extends Seeder
             $usr->password = bcrypt($user->password);
             $usr->phone = $user->phone;
             $usr->gender = $user->gender;
+            $usr->default_group_id = $user->default_group_id;
             $usr->save();
         }
     }
