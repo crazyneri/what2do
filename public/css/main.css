@@ -24,7 +24,6 @@
 .form-create-group_item {
   width: 80%;
 }
-<<<<<<< Updated upstream
 .admin-container {
   display: grid;
   width: 100vw;
@@ -58,7 +57,8 @@
 }
 .admin-container .left-side .table-style tbody tr:last-of-type, .admin-container .right-side .table-style tbody tr:last-of-type {
   border-bottom: 2px solid #009879;
-=======
+}
+
 .nav-container {
   width: 100%;
   height: 5vh;
@@ -94,7 +94,6 @@
 }
 .btn__log-out:hover {
   border-bottom: solid 1px #222;
->>>>>>> Stashed changes
 }
 
 * {

@@ -9243,7 +9243,6 @@ const chipClasses = (0,_mui_base__WEBPACK_IMPORTED_MODULE_1__["default"])('MuiCh
 
 /***/ }),
 
-<<<<<<< Updated upstream
 /***/ "./node_modules/@mui/material/Divider/Divider.js":
 /*!*******************************************************!*\
   !*** ./node_modules/@mui/material/Divider/Divider.js ***!
@@ -9555,8 +9554,6 @@ const dividerClasses = (0,_mui_base__WEBPACK_IMPORTED_MODULE_1__["default"])('Mu
 
 /***/ }),
 
-=======
->>>>>>> Stashed changes
 /***/ "./node_modules/@mui/material/Fade/Fade.js":
 /*!*************************************************!*\
   !*** ./node_modules/@mui/material/Fade/Fade.js ***!
@@ -19794,7 +19791,6 @@ const typographyClasses = (0,_mui_base__WEBPACK_IMPORTED_MODULE_1__["default"])(
 
 /***/ }),
 
-<<<<<<< Updated upstream
 /***/ "./node_modules/@mui/material/Zoom/Zoom.js":
 /*!*************************************************!*\
   !*** ./node_modules/@mui/material/Zoom/Zoom.js ***!
@@ -20047,8 +20043,6 @@ const Zoom = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function
 
 /***/ }),
 
-=======
->>>>>>> Stashed changes
 /***/ "./node_modules/@mui/material/colors/blue.js":
 /*!***************************************************!*\
   !*** ./node_modules/@mui/material/colors/blue.js ***!
@@ -31156,16 +31150,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-<<<<<<< Updated upstream
-
-var App = function App() {
-  // input values
-  var initialValues = {
-    city: 'Prague',
-    date: luxon__WEBPACK_IMPORTED_MODULE_8__.DateTime.now().toFormat('yyyy-MM-dd'),
-    startTime: '12:00:00',
-    endTime: '12:00:00'
-=======
 var App = function App() {
   // input values
   var initialValues = {
@@ -31173,7 +31157,6 @@ var App = function App() {
     date: luxon__WEBPACK_IMPORTED_MODULE_8__.DateTime.now().toFormat("yyyy-MM-dd"),
     startTime: "12:00:00",
     endTime: "12:00:00"
->>>>>>> Stashed changes
   };
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(initialValues),
@@ -31216,17 +31199,6 @@ var App = function App() {
       searchIds = _useState14[0],
       setSearchIds = _useState14[1];
 
-<<<<<<< Updated upstream
-=======
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    console.log(values);
-  });
-
-  var search = function search() {
-    console.log(searchIds);
-  };
-
->>>>>>> Stashed changes
   var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState16 = _slicedToArray(_useState15, 2),
       user = _useState16[0],
@@ -31237,7 +31209,6 @@ var App = function App() {
       groupId = _useState18[0],
       setGroupId = _useState18[1];
 
-<<<<<<< Updated upstream
   var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
       _useState20 = _slicedToArray(_useState19, 2),
       searchSessionId = _useState20[0],
@@ -31249,16 +31220,10 @@ var App = function App() {
   var updateSession = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       var sessionData, response;
-=======
-  var fetchUser = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var response;
->>>>>>> Stashed changes
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-<<<<<<< Updated upstream
               sessionData = {
                 session_id: searchSessionId,
                 searched_date: values.date,
@@ -31267,7 +31232,7 @@ var App = function App() {
               };
               _context.prev = 1;
               _context.next = 4;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)('/session/update', sessionData);
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)("/session/update", sessionData);
 
             case 4:
               response = _context.sent;
@@ -31307,7 +31272,7 @@ var App = function App() {
               };
               _context2.prev = 1;
               _context2.next = 4;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)('/user-choice/store', searchDetailsData);
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)("/user-choice/store", searchDetailsData);
 
             case 4:
               response = _context2.sent;
@@ -31346,7 +31311,7 @@ var App = function App() {
           switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.get)('/api/user');
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.get)("/api/user");
 
             case 2:
               response = _context3.sent;
@@ -31355,9 +31320,9 @@ var App = function App() {
 
             case 5:
               u = _context3.sent;
-              console.log('logged in user', u);
+              console.log("logged in user", u);
               setUser(u);
-              !u && window.location.assign('/login');
+              !u && window.location.assign("/login");
 
             case 9:
             case "end":
@@ -31369,32 +31334,11 @@ var App = function App() {
 
     return function fetchUser() {
       return _ref3.apply(this, arguments);
-=======
-              _context.next = 2;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.get)("/api/user");
-
-            case 2:
-              response = _context.sent;
-              console.log(response.data);
-              setUser(response.data);
-
-            case 5:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-
-    return function fetchUser() {
-      return _ref.apply(this, arguments);
->>>>>>> Stashed changes
     };
   }();
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetchUser();
-<<<<<<< Updated upstream
   }, []);
 
   var startSession = /*#__PURE__*/function () {
@@ -31409,15 +31353,15 @@ var App = function App() {
                 user_id: user.id,
                 group_id: group_id
               };
-              console.log('starting session with group id', group_id);
+              console.log("starting session with group id", group_id);
               _context4.prev = 2;
               _context4.next = 5;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)('/session/store', sessionData);
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)("/session/store", sessionData);
 
             case 5:
               response = _context4.sent;
               search_session_id = response.data;
-              console.log('session started, id: ', search_session_id);
+              console.log("session started, id: ", search_session_id);
               setSearchSessionId(search_session_id);
               _context4.next = 14;
               break;
@@ -31449,14 +31393,14 @@ var App = function App() {
             case 0:
               _context5.prev = 0;
               _context5.next = 3;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.get)('/api/session/details');
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.get)("/api/session/details");
 
             case 3:
               response = _context5.sent;
               search_session_id = response.data.search_session_id;
               group_id = response.data.group_id;
               setGroupId(group_id);
-              console.log('session details: ', response.data);
+              console.log("session details: ", response.data);
               setSearchSessionId(search_session_id);
               user && user.id === 0 && search_session_id === 0 && startSession(group_id);
               _context5.next = 15;
@@ -31483,25 +31427,14 @@ var App = function App() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     getSearchSessionDetails();
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+    className: "search-grid",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_util_UserContext__WEBPACK_IMPORTED_MODULE_5__["default"].Provider, {
       value: user,
       children: [nonAnonymousSearch && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_SoloOrGroupPopup_SoloOrGroupPopup__WEBPACK_IMPORTED_MODULE_6__["default"], {
         groupId: groupId,
         setGroupId: setGroupId,
         startSession: startSession
-=======
-  }, []); // useEffect(() => {
-  //     user && fetchUser();
-  // }, [user.groups]);
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-    className: "search-grid",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_util_UserContext__WEBPACK_IMPORTED_MODULE_5__["default"].Provider, {
-      value: user,
-      children: [user && groupId === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_SoloOrGroupPopup_SoloOrGroupPopup__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        setGroupId: setGroupId
->>>>>>> Stashed changes
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Inputs_Inputs__WEBPACK_IMPORTED_MODULE_3__["default"], {
         city: city,
         date: date,
@@ -31521,11 +31454,6 @@ var App = function App() {
         setColumnsToRender: setColumnsToRender,
         searchIds: searchIds,
         setSearchIds: setSearchIds
-<<<<<<< Updated upstream
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-        onClick: search,
-        children: "Search"
-=======
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
         className: "btn-search-container",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
@@ -31533,7 +31461,6 @@ var App = function App() {
           onClick: search,
           children: "Search"
         })
->>>>>>> Stashed changes
       })]
     })
   });
@@ -31597,43 +31524,12 @@ function CategoryBox(_ref) {
       beingDragged = _useState2[0],
       setBeingDragged = _useState2[1];
 
-<<<<<<< Updated upstream
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('list'),
-=======
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("list"),
->>>>>>> Stashed changes
       _useState4 = _slicedToArray(_useState3, 2),
       draggingClass = _useState4[0],
       setDraggingClass = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-<<<<<<< Updated upstream
-    beingDragged ? setDraggingClass('list dragging') : setDraggingClass('list');
-  }, [beingDragged]);
-
-  var showRefinements = function showRefinements() {
-    if (!showCinemaSubCats && category.id === 'cinema') {
-      setShowCinemaSubCats(true);
-    }
-
-    if (showCinemaSubCats && category.id === 'cinema') {
-      setShowCinemaSubCats(false);
-    }
-
-    if (!showTheatreSubCats && (category.id === 'theater' || category.id === 'theatre')) {
-      setShowTheatreSubCats(true);
-    }
-
-    if (showTheatreSubCats && (category.id === 'theater' || category.id === 'theatre')) {
-      setShowTheatreSubCats(false);
-    }
-
-    if (!showMusicSubCats && category.id === 'music') {
-      setShowMusicSubCats(true);
-    }
-
-    if (showMusicSubCats && category.id === 'music') {
-=======
     beingDragged ? setDraggingClass("list dragging") : setDraggingClass("list");
   }, [beingDragged]);
 
@@ -31659,7 +31555,6 @@ function CategoryBox(_ref) {
     }
 
     if (showMusicSubCats && category.id === "music") {
->>>>>>> Stashed changes
       setShowMusicSubCats(false);
     }
   };
@@ -31673,11 +31568,7 @@ function CategoryBox(_ref) {
     children: function children(provided, snapshot) {
       return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", _objectSpread(_objectSpread({
         onChange: setBeingDragged(snapshot.draggingOver),
-<<<<<<< Updated upstream
-        className: "inner-column ".concat(draggingClass) // we must apply the properties from 'provided to the
-=======
         className: category.parent_id === 0 ? "inner-column ".concat(draggingClass) : "inner-column sub-category-box ".concat(draggingClass) // we must apply the properties from 'provided to the
->>>>>>> Stashed changes
         // draggable element
 
       }, provided.draggableProps), {}, {
@@ -31756,21 +31647,13 @@ function Column(_ref) {
       beingDraggedOver = _useState2[0],
       setBeingDraggedOver = _useState2[1];
 
-<<<<<<< Updated upstream
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
-=======
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
->>>>>>> Stashed changes
       _useState4 = _slicedToArray(_useState3, 2),
       draggedOverClass = _useState4[0],
       setDraggedOverClass = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-<<<<<<< Updated upstream
-    beingDraggedOver ? setDraggedOverClass('dragged-over') : setDraggedOverClass('');
-=======
     beingDraggedOver ? setDraggedOverClass("dragged-over") : setDraggedOverClass("");
->>>>>>> Stashed changes
   }, [beingDraggedOver]);
 
   var closeSubCats = function closeSubCats() {
@@ -31786,20 +31669,6 @@ function Column(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "column ".concat(draggedOverClass),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
-<<<<<<< Updated upstream
-      style: {
-        borderBottom: '1px solid black'
-      },
-      children: column.title
-    }), column.columnType === 'sub' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-      type: "button",
-      onClick: closeSubCats,
-      className: "refine",
-      children: "close sub-categories"
-    }), column.id === 'empty-sub-categories' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_EmptyRefinements__WEBPACK_IMPORTED_MODULE_2__["default"], {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_4__.Droppable, {
-      droppableId: column.id,
-      type: column.columnType === 'sub' ? 'sub' : 'main',
-=======
       children: column.title
     }), column.columnType === "sub" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
       type: "button",
@@ -31809,7 +31678,6 @@ function Column(_ref) {
     }), column.id === "empty-sub-categories" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_EmptyRefinements__WEBPACK_IMPORTED_MODULE_2__["default"], {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_4__.Droppable, {
       droppableId: column.id,
       type: column.columnType === "sub" ? "sub" : "main",
->>>>>>> Stashed changes
       children: function children(provided, snapshot) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", _objectSpread(_objectSpread({
           className: "drag-space",
@@ -31850,18 +31718,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-<<<<<<< Updated upstream
-/* harmony import */ var react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-beautiful-dnd */ "./node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./resources/js/SearchPage/components/DragAndDrop/style.scss");
-/* harmony import */ var _Column__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Column */ "./resources/js/SearchPage/components/DragAndDrop/Column.js");
-/* harmony import */ var _util_request__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../util/request */ "./resources/js/util/request.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-=======
 /* harmony import */ var react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-beautiful-dnd */ "./node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js");
 /* harmony import */ var _Column__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Column */ "./resources/js/SearchPage/components/DragAndDrop/Column.js");
 /* harmony import */ var _util_request__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../util/request */ "./resources/js/util/request.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
->>>>>>> Stashed changes
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -31887,11 +31747,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
-<<<<<<< Updated upstream
-
-=======
  // import './style.scss';
->>>>>>> Stashed changes
 
 
 
@@ -31914,22 +31770,14 @@ function DragAndDrop(_ref) {
   var renderColumns = function renderColumns() {
     if (showCinemaSubCats) {
       var columns = state.columnOrder.filter(function (category) {
-<<<<<<< Updated upstream
-        return category === 'categories' || category.includes('cinema');
-=======
         return category === "categories" || category.includes("cinema");
->>>>>>> Stashed changes
       });
       setColumnsToRender(columns);
     }
 
     if (showTheatreSubCats) {
       var _columns = state.columnOrder.filter(function (category) {
-<<<<<<< Updated upstream
-        return category === 'categories' || category.includes('theater') || category.includes('theatre');
-=======
         return category === "categories" || category.includes("theater") || category.includes("theatre");
->>>>>>> Stashed changes
       });
 
       setColumnsToRender(_columns);
@@ -31937,11 +31785,7 @@ function DragAndDrop(_ref) {
 
     if (showMusicSubCats) {
       var _columns2 = state.columnOrder.filter(function (category) {
-<<<<<<< Updated upstream
-        return category === 'categories' || category.includes('music');
-=======
         return category === "categories" || category.includes("music");
->>>>>>> Stashed changes
       });
 
       setColumnsToRender(_columns2);
@@ -31949,11 +31793,7 @@ function DragAndDrop(_ref) {
 
     if (!showCinemaSubCats && !showMusicSubCats && !showTheatreSubCats) {
       var _columns3 = state.columnOrder.filter(function (category) {
-<<<<<<< Updated upstream
-        return category === 'categories' || category === 'what2do' || category === 'empty-sub-categories';
-=======
         return category === "categories" || category === "what2do" || category === "empty-sub-categories";
->>>>>>> Stashed changes
       });
 
       setColumnsToRender(_columns3);
@@ -32081,11 +31921,7 @@ function DragAndDrop(_ref) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-<<<<<<< Updated upstream
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.get)('/api/search');
-=======
               return (0,_util_request__WEBPACK_IMPORTED_MODULE_3__.get)("/api/search");
->>>>>>> Stashed changes
 
             case 2:
               response = _context.sent;
@@ -32111,37 +31947,22 @@ function DragAndDrop(_ref) {
   }, []);
 
   if (!state) {
-<<<<<<< Updated upstream
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
-=======
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
->>>>>>> Stashed changes
       children: "loading"
     });
   }
 
-<<<<<<< Updated upstream
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_6__.DragDropContext // see notes on this
-  , {
-    onDragEnd: onDragEnd,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-=======
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_5__.DragDropContext // see notes on this
   , {
     onDragEnd: onDragEnd,
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
->>>>>>> Stashed changes
       className: "container",
       children: columnsToRender.map(function (columnId, key) {
         var column = state.columns[columnId];
         var categories = column.categoryIds.map(function (categoryId) {
           return state.categories[categoryId];
         });
-<<<<<<< Updated upstream
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Column__WEBPACK_IMPORTED_MODULE_3__["default"], {
-=======
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Column__WEBPACK_IMPORTED_MODULE_2__["default"], {
->>>>>>> Stashed changes
           column: column,
           categories: categories,
           index: key,
@@ -32179,20 +32000,6 @@ function EmptyRefinements() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
     className: "drag-space",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ol", {
-<<<<<<< Updated upstream
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-        children: "Choose what you would like to do from the categories column."
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-        children: "Drag your chosen activity into the 'what2do' column."
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-        children: "Refine your search by clicking on the 'refine' button under the category name."
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-        children: "Drag any sub-categories you would like into the 'chosen sub-categories' column in the centre."
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-        children: "Press the close sub-categories' button when you have finished."
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-        children: "When you have decided what to do - press search!"
-=======
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
           className: "instructions-bold",
@@ -32223,7 +32030,6 @@ function EmptyRefinements() {
           className: "instructions-bold",
           children: "search"
         }), "!"]
->>>>>>> Stashed changes
       })]
     })
   });
@@ -32314,11 +32120,7 @@ var Inputs = function Inputs(_ref) {
       setValues = _ref.setValues;
 
   var convertToHoursAndMinutes = function convertToHoursAndMinutes(timeString) {
-<<<<<<< Updated upstream
-    var formated = luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromFormat(timeString, 'hh:mm').toFormat('HH:mm:ss');
-=======
     var formated = luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromFormat(timeString, "hh:mm").toFormat("HH:mm:ss");
->>>>>>> Stashed changes
     console.log(formated);
     return formated;
   };
@@ -32326,22 +32128,14 @@ var Inputs = function Inputs(_ref) {
   var handleChange = function handleChange(e) {
     var name = e.target.name;
     var inputValue = e.target.value;
-<<<<<<< Updated upstream
-    var valueToStore = name === 'startTime' || name === 'endTime' ? convertToHoursAndMinutes(inputValue) : inputValue;
-=======
     var valueToStore = name === "startTime" || name === "endTime" ? convertToHoursAndMinutes(inputValue) : inputValue;
->>>>>>> Stashed changes
     setValues(function (prev_values) {
       return _objectSpread(_objectSpread({}, prev_values), {}, _defineProperty({}, name, valueToStore));
     });
   };
 
   var convertToObject = function convertToObject(timeString) {
-<<<<<<< Updated upstream
-    var object = luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromFormat(timeString, 'hh:mm:ss').toObject(); // console.log(object);
-=======
     var object = luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromFormat(timeString, "hh:mm:ss").toObject(); // console.log(object);
->>>>>>> Stashed changes
 
     return object;
   };
@@ -32350,51 +32144,13 @@ var Inputs = function Inputs(_ref) {
     if (convertToObject(endTime).hour <= convertToObject(startTime).hour || convertToObject(endTime).hour === convertToObject(startTime).hour && convertToObject(endTime).minute <= convertToObject(startTime).minute) {
       setValues(function (prev_values) {
         return _objectSpread(_objectSpread({}, prev_values), {}, {
-<<<<<<< Updated upstream
-          endTime: '23:59:00'
-=======
           endTime: "23:59:00"
->>>>>>> Stashed changes
         });
       });
     }
   }, [startTime, endTime]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: "inputs",
-<<<<<<< Updated upstream
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-      htmlFor: "city",
-      children: "Location:"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      type: "text",
-      name: "city",
-      value: city,
-      onChange: handleChange
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-      htmlFor: "date",
-      children: "When:"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      type: "date",
-      name: "date",
-      value: date,
-      onChange: handleChange
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-      htmlFor: "startTime",
-      children: "Start Time:"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      type: "time",
-      name: "startTime",
-      value: startTime,
-      onChange: handleChange
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-      htmlFor: "endTime",
-      children: "End Time:"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      type: "time",
-      name: "endTime",
-      value: endTime,
-      onChange: handleChange
-=======
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
       className: "inputs-item",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
@@ -32439,7 +32195,6 @@ var Inputs = function Inputs(_ref) {
         value: endTime,
         onChange: handleChange
       })]
->>>>>>> Stashed changes
     })]
   });
 };
@@ -32463,40 +32218,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _util_UserContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../util/UserContext */ "./resources/js/util/UserContext.js");
-<<<<<<< Updated upstream
-/* harmony import */ var _SoloOrGroupPopup_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SoloOrGroupPopup.scss */ "./resources/js/SearchPage/components/SoloOrGroupPopup/SoloOrGroupPopup.scss");
-/* harmony import */ var _mui_material_Avatar__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @mui/material/Avatar */ "./node_modules/@mui/material/Avatar/Avatar.js");
-/* harmony import */ var _mui_material_AvatarGroup__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @mui/material/AvatarGroup */ "./node_modules/@mui/material/AvatarGroup/AvatarGroup.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Zoom/Zoom.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Button/Button.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Divider/Divider.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/List/List.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItem/ListItem.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItemButton/ListItemButton.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItemAvatar/ListItemAvatar.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItemText/ListItemText.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Typography/Typography.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Autocomplete/Autocomplete.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/TextField/TextField.js");
-/* harmony import */ var _util_request__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../util/request */ "./resources/js/util/request.js");
-/* harmony import */ var _mui_styles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/styles */ "./node_modules/@mui/styles/makeStyles/makeStyles.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-=======
-/* harmony import */ var _mui_material_Avatar__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @mui/material/Avatar */ "./node_modules/@mui/material/Avatar/Avatar.js");
-/* harmony import */ var _mui_material_AvatarGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/material/AvatarGroup */ "./node_modules/@mui/material/AvatarGroup/AvatarGroup.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/List/List.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItem/ListItem.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItemButton/ListItemButton.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItemAvatar/ListItemAvatar.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItemText/ListItemText.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Typography/Typography.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Autocomplete/Autocomplete.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/TextField/TextField.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Button/Button.js");
+/* harmony import */ var _mui_material_Avatar__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @mui/material/Avatar */ "./node_modules/@mui/material/Avatar/Avatar.js");
+/* harmony import */ var _mui_material_AvatarGroup__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @mui/material/AvatarGroup */ "./node_modules/@mui/material/AvatarGroup/AvatarGroup.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Zoom/Zoom.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Button/Button.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Divider/Divider.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/List/List.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItem/ListItem.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItemButton/ListItemButton.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItemAvatar/ListItemAvatar.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItemText/ListItemText.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Typography/Typography.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Autocomplete/Autocomplete.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/TextField/TextField.js");
 /* harmony import */ var _util_request__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../util/request */ "./resources/js/util/request.js");
 /* harmony import */ var _mui_styles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/styles */ "./node_modules/@mui/styles/makeStyles/makeStyles.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
->>>>>>> Stashed changes
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -32530,10 +32267,7 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
-<<<<<<< Updated upstream
-=======
  // import './SoloOrGroupPopup.scss'
->>>>>>> Stashed changes
 
 
 
@@ -32543,12 +32277,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
-<<<<<<< Updated upstream
 var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwardRef)(function (props, ref) {
-=======
-var SoloOrGroupPopup = function SoloOrGroupPopup() {
->>>>>>> Stashed changes
   var user = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_util_UserContext__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
@@ -32561,34 +32290,22 @@ var SoloOrGroupPopup = function SoloOrGroupPopup() {
       groupMembers = _useState4[0],
       setGroupMembers = _useState4[1];
 
-<<<<<<< Updated upstream
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
-=======
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
->>>>>>> Stashed changes
       _useState6 = _slicedToArray(_useState5, 2),
       groupName = _useState6[0],
       setGroupName = _useState6[1];
 
-<<<<<<< Updated upstream
-  var useStyles = (0,_mui_styles__WEBPACK_IMPORTED_MODULE_6__["default"])({
-    root: {
-      flexDirection: 'column',
-      alignItems: 'stretch !important',
-      padding: '8px 0 !important'
-    },
-    avatars: {
-      width: '20%'
-    },
-    avatarsGroup: {
-      justifyContent: 'flex-end'
-=======
   var useStyles = (0,_mui_styles__WEBPACK_IMPORTED_MODULE_5__["default"])({
     root: {
       flexDirection: "column",
       alignItems: "stretch !important",
-      margin: "1.5rem 0"
->>>>>>> Stashed changes
+      padding: "8px 0 !important"
+    },
+    avatars: {
+      width: "20%"
+    },
+    avatarsGroup: {
+      justifyContent: "flex-end"
     }
   });
   var classes = useStyles();
@@ -32601,11 +32318,7 @@ var SoloOrGroupPopup = function SoloOrGroupPopup() {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-<<<<<<< Updated upstream
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.get)('/api/users');
-=======
               return (0,_util_request__WEBPACK_IMPORTED_MODULE_3__.get)("/api/users");
->>>>>>> Stashed changes
 
             case 2:
               response = _context.sent;
@@ -32633,37 +32346,20 @@ var SoloOrGroupPopup = function SoloOrGroupPopup() {
   }, []);
 
   var handleGroupName = function handleGroupName(e) {
-<<<<<<< Updated upstream
-=======
-    console.log(e.target.value);
->>>>>>> Stashed changes
     setGroupName(e.target.value);
   };
 
   var getGroupArray = function getGroupArray(e, value) {
-<<<<<<< Updated upstream
     var array = [{
       id: user.id,
       name: user.name
     }].concat(_toConsumableArray(value));
-=======
-    var array = [].concat(_toConsumableArray(value), [{
-      id: user.id,
-      name: user.name
-    }]);
-    console.log(array); // console.log([...value]);
-
->>>>>>> Stashed changes
     setGroupMembers(array);
   };
 
   var createGroup = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-<<<<<<< Updated upstream
       var groupData, response, res_group_id;
-=======
-      var groupData, response;
->>>>>>> Stashed changes
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -32673,10 +32369,9 @@ var SoloOrGroupPopup = function SoloOrGroupPopup() {
                 groupMembers: groupMembers,
                 groupName: groupName
               };
-<<<<<<< Updated upstream
               _context2.prev = 1;
               _context2.next = 4;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)('/quick-create-group', groupData);
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_3__.post)("/quick-create-group", groupData);
 
             case 4:
               response = _context2.sent;
@@ -32692,34 +32387,11 @@ var SoloOrGroupPopup = function SoloOrGroupPopup() {
               console.log(_context2.t0.response);
 
             case 13:
-=======
-              console.log(groupData);
-              _context2.prev = 2;
-              _context2.next = 5;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_3__.post)("/quick-create-group", groupData);
-
-            case 5:
-              response = _context2.sent;
-              console.log(response);
-              _context2.next = 12;
-              break;
-
-            case 9:
-              _context2.prev = 9;
-              _context2.t0 = _context2["catch"](2);
-              console.log(_context2.t0.response);
-
-            case 12:
->>>>>>> Stashed changes
             case "end":
               return _context2.stop();
           }
         }
-<<<<<<< Updated upstream
       }, _callee2, null, [[1, 10]]);
-=======
-      }, _callee2, null, [[2, 9]]);
->>>>>>> Stashed changes
     }));
 
     return function createGroup() {
@@ -32727,7 +32399,6 @@ var SoloOrGroupPopup = function SoloOrGroupPopup() {
     };
   }();
 
-<<<<<<< Updated upstream
   var selectGroup = function selectGroup(groupId) {
     props.setGroupId(groupId);
     props.startSession(groupId);
@@ -32736,27 +32407,21 @@ var SoloOrGroupPopup = function SoloOrGroupPopup() {
   var createDefaultGroup = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
       var groupData, response, res_group_id, data, default_group_response;
-=======
-  var startSession = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-      var sessionData, response;
->>>>>>> Stashed changes
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-<<<<<<< Updated upstream
               groupData = {
                 owner_id: user.id,
                 groupMembers: [{
                   id: user.id,
                   name: user.name
                 }],
-                groupName: 'Myself'
+                groupName: "Myself"
               };
               _context3.prev = 1;
               _context3.next = 4;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)('/quick-create-group', groupData);
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_3__.post)("/quick-create-group", groupData);
 
             case 4:
               response = _context3.sent;
@@ -32766,7 +32431,7 @@ var SoloOrGroupPopup = function SoloOrGroupPopup() {
                 default_group_id: res_group_id
               };
               _context3.next = 9;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)('/user/change-default-group', data);
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_3__.post)("/user/change-default-group", data);
 
             case 9:
               default_group_response = _context3.sent;
@@ -32781,95 +32446,77 @@ var SoloOrGroupPopup = function SoloOrGroupPopup() {
               console.log(_context3.t0.response);
 
             case 17:
-=======
-              sessionData = {};
-              _context3.next = 3;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_3__.post)("/start-session", sessionData);
-
-            case 3:
-              response = _context3.sent;
-
-            case 4:
->>>>>>> Stashed changes
             case "end":
               return _context3.stop();
           }
         }
-<<<<<<< Updated upstream
       }, _callee3, null, [[1, 14]]);
     }));
 
     return function createDefaultGroup() {
-=======
-      }, _callee3);
-    }));
-
-    return function startSession() {
->>>>>>> Stashed changes
       return _ref3.apply(this, arguments);
     };
   }();
 
-<<<<<<< Updated upstream
   var handleSoloSearch = function handleSoloSearch() {
     user.default_group_id ? selectGroup(user.default_group_id) : createDefaultGroup();
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "popup-bg",
     ref: ref,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
       "in": user && props.groupId === 0,
       style: {
-        transitionDelay: user && props.groupId === 0 ? '500ms' : '0ms'
+        transitionDelay: user && props.groupId === 0 ? "500ms" : "0ms"
       },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "popup",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("h2", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("h2", {
           children: ["Welcome back, ", user.name]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
           variant: "contained",
           onClick: function onClick() {
             return handleSoloSearch();
           },
           children: "Find out WHAT2DO for yourself ! (solo search only)"
-        }), !user.groups.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
+        }), !user.groups.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
           children: "You are not in any group yet. Create a new one."
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
             children: "Select the group: "
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
             children: user.groups.map(function (group) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_11__["default"], {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
                 alignItems: "flex-start",
                 disablePadding: true,
                 divider: true,
                 className: classes.root,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_11__["default"], {
                   onClick: function onClick() {
-                    console.log('from onclick', group.id);
+                    console.log("from onclick", group.id);
                     selectGroup(group.id);
                   },
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_13__["default"], {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
                     className: classes.avatars,
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material_AvatarGroup__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material_AvatarGroup__WEBPACK_IMPORTED_MODULE_13__["default"], {
                       className: classes.avatarsGroup,
                       max: group.users.length > 2 ? group.users.length : 2,
                       children: group.users.map(function (user) {
-                        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material_Avatar__WEBPACK_IMPORTED_MODULE_15__["default"], {
+                        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material_Avatar__WEBPACK_IMPORTED_MODULE_14__["default"], {
                           alt: user.name,
                           src: "/"
                         }, user.id);
                       })
                     })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
                     className: "users-list",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_16__["default"], {
-                      primary: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_17__["default"], {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_15__["default"], {
+                      primary: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_16__["default"], {
                           sx: {
-                            display: 'block',
-                            fontWeight: 'bold'
+                            display: "block",
+                            fontWeight: "bold"
                           },
                           component: "span",
                           variant: "body2",
@@ -32877,12 +32524,12 @@ var SoloOrGroupPopup = function SoloOrGroupPopup() {
                           children: group.name
                         }, user.id)
                       }),
-                      secondary: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_17__["default"] // key={user.id}
+                      secondary: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_16__["default"] // key={user.id}
                         , {
                           sx: {
-                            display: 'inline',
-                            margin: '0 0.5rem'
+                            display: "inline",
+                            margin: "0 0.5rem"
                           },
                           component: "span",
                           variant: "body2",
@@ -32892,10 +32539,10 @@ var SoloOrGroupPopup = function SoloOrGroupPopup() {
                           return u.id !== user.id;
                         }) // group.users
                         .map(function (user) {
-                          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_17__["default"], {
+                          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_16__["default"], {
                             sx: {
-                              display: 'inline',
-                              margin: '0 0.5rem'
+                              display: "inline",
+                              margin: "0 0.5rem"
                             },
                             component: "span",
                             variant: "body2",
@@ -32910,14 +32557,14 @@ var SoloOrGroupPopup = function SoloOrGroupPopup() {
               }, group.id);
             })
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
           children: "Create A New Group"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
             disablePadding: true,
             divider: true,
             className: classes.root,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_18__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_17__["default"], {
               multiple: true,
               id: "tags-outlined",
               options: users,
@@ -32928,7 +32575,7 @@ var SoloOrGroupPopup = function SoloOrGroupPopup() {
               filterSelectedOptions: true,
               onChange: getGroupArray,
               renderInput: function renderInput(params) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_19__["default"], _objectSpread(_objectSpread({
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_18__["default"], _objectSpread(_objectSpread({
                   color: "primary"
                 }, params), {}, {
                   label: "Search for friends",
@@ -32936,9 +32583,9 @@ var SoloOrGroupPopup = function SoloOrGroupPopup() {
                 }));
               }
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_11__["default"], {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
             className: classes.root,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_19__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_18__["default"], {
               required: true,
               color: "primary",
               label: "Group Name",
@@ -32946,132 +32593,16 @@ var SoloOrGroupPopup = function SoloOrGroupPopup() {
               value: groupName
             })
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
           disabled: !(groupName && groupMembers.length),
           variant: "contained",
           onClick: createGroup,
-          children: groupName && groupMembers.length ? 'Create the group and find out WHAT2DO !' : 'Add at least one friend and give the group a name !'
+          children: groupName && groupMembers.length ? "Create the group and find out WHAT2DO !" : "Add at least one friend and give the group a name !"
         })]
       })
     })
   });
 });
-=======
-  var launch = function launch() {
-    createGroup();
-    startSession();
-  };
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-    className: "popup-bg",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "popup",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("h2", {
-        children: ["Welcome back, ", user.name]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
-        children: "Groups you are in :"
-      }), !user.groups.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-        children: "no groups"
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        children: [user.groups.map(function (group) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
-            alignItems: "flex-start",
-            disablePadding: true,
-            divider: true,
-            className: classes.root,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
-              onClick: function onClick() {
-                return console.log("clicked");
-              },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material_AvatarGroup__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                  max: group.users.length > 2 ? group.users.length : 2,
-                  children: group.users.map(function (user) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material_Avatar__WEBPACK_IMPORTED_MODULE_11__["default"], {
-                      alt: user.name,
-                      src: "/"
-                    }, user.id);
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
-                className: "users-list",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-                  primary: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_13__["default"], {
-                      sx: {
-                        display: "block",
-                        fontWeight: "bold"
-                      },
-                      component: "span",
-                      variant: "body2",
-                      color: "text.primary",
-                      children: group.name
-                    }, user.id)
-                  }),
-                  secondary: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-                    children: group.users.map(function (user) {
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_13__["default"], {
-                        sx: {
-                          display: "inline",
-                          margin: "0 0.5rem"
-                        },
-                        component: "span",
-                        variant: "body2",
-                        color: "text.primary",
-                        children: user.name
-                      }, user.id);
-                    })
-                  })
-                })
-              })]
-            })
-          }, group.id);
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
-          children: "Create A New Group"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
-          disablePadding: true,
-          divider: true,
-          className: classes.root,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
-            multiple: true,
-            id: "tags-outlined",
-            options: users,
-            getOptionLabel: function getOptionLabel(user) {
-              return user.name;
-            },
-            defaultValue: [],
-            filterSelectedOptions: true,
-            onChange: getGroupArray,
-            renderInput: function renderInput(params) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_15__["default"], _objectSpread(_objectSpread({
-                color: "primary"
-              }, params), {}, {
-                label: "Search for people",
-                placeholder: "Add more..."
-              }));
-            }
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
-          className: classes.root,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_15__["default"], {
-            required: true,
-            color: "primary",
-            label: "Group Name",
-            onChange: handleGroupName,
-            value: groupName
-          })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_16__["default"], {
-        disabled: !(groupName && groupMembers.length),
-        variant: "contained",
-        onClick: launch,
-        children: groupName && groupMembers.length ? "Create" : "The group must include people and have a name~"
-      })]
-    })
-  });
-};
-
->>>>>>> Stashed changes
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SoloOrGroupPopup);
 
 /***/ }),
@@ -33442,185 +32973,6 @@ var getBox = function getBox(el) {
 
 /***/ }),
 
-<<<<<<< Updated upstream
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/js/SearchPage/components/DragAndDrop/style.scss":
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/js/SearchPage/components/DragAndDrop/style.scss ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
-// Imports
-
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n  box-sizing: border-box;\n}\n\nbody {\n  width: 100vw;\n  min-height: 100vh;\n  margin: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n\ndiv p {\n  margin: 0.1rem;\n  font-size: 0.8rem;\n  font-weight: 600;\n}\n\n.refine {\n  cursor: pointer;\n}\n\n.container {\n  width: 100vw;\n  height: auto;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.list {\n  padding: 5px;\n  border-radius: 5px;\n  background-color: white;\n  color: black;\n  font-weight: bold;\n}\n\nh2 {\n  border-bottom: 1px solid black;\n  margin: 0.1rem;\n  text-align: center;\n}\n\nh3 {\n  border-bottom: 1px solid black;\n  margin: 0.1rem;\n  text-align: center;\n}\n\nh5 {\n  border-bottom: 1px solid black;\n  margin: 0.1rem;\n  text-align: center;\n}\n\n.drag-space {\n  width: 90%;\n  min-height: 400px;\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: flex-start;\n  align-items: center;\n  border-radius: 20px;\n  background-color: darkcyan;\n  overflow: hidden auto;\n}\n\n.dragging {\n  background-color: #72b0b3;\n  box-shadow: 5px 5px 5px black;\n}\n\n.dragged-over {\n  background-color: red;\n  color: white;\n}\n\n.column {\n  width: 300px;\n  height: 500px;\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: center;\n  align-items: center;\n  margin: 5%;\n  padding: 10px;\n  border: 1px solid black;\n  border-radius: 15px;\n  background-color: cadetblue;\n  font-family: sans-serif;\n}\n\n.inner-column {\n  width: 95%;\n  height: auto;\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: center;\n  align-items: center;\n  margin: 5%;\n  padding: 10px;\n  border: 1px solid black;\n  border-radius: 15px;\n  font-family: sans-serif;\n}\n\n.hidden {\n  display: none;\n}\n\nol {\n  font-size: 0.8em;\n}", "",{"version":3,"sources":["webpack://./resources/js/SearchPage/components/DragAndDrop/style.scss"],"names":[],"mappings":"AAAA;EACI,sBAAA;AACJ;;AAEA;EACI,YAAA;EACA,iBAAA;EACA,SAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,yBAAA;KAAA,sBAAA;MAAA,qBAAA;UAAA,iBAAA;AACJ;;AAEA;EACI,cAAA;EACA,iBAAA;EACA,gBAAA;AACJ;;AAEA;EACI,eAAA;AACJ;;AAEA;EACI,YAAA;EACA,YAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;AACJ;;AAEA;EACI,YAAA;EACA,kBAAA;EACA,uBAAA;EACA,YAAA;EACA,iBAAA;AACJ;;AAEA;EACI,8BAAA;EACA,cAAA;EACA,kBAAA;AACJ;;AAEA;EACI,8BAAA;EACA,cAAA;EACA,kBAAA;AACJ;;AAEA;EACI,8BAAA;EACA,cAAA;EACA,kBAAA;AACJ;;AAEA;EACI,UAAA;EACA,iBAAA;EACA,aAAA;EACA,wBAAA;EACA,2BAAA;EACA,mBAAA;EACA,mBAAA;EACA,0BAAA;EACA,qBAAA;AACJ;;AAEA;EACI,yBAAA;EACA,6BAAA;AACJ;;AAEA;EACI,qBAAA;EACA,YAAA;AACJ;;AAEA;EACI,YAAA;EACA,aAAA;EACA,aAAA;EACA,wBAAA;EACA,uBAAA;EACA,mBAAA;EACA,UAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,2BAAA;EAEA,uBAAA;AAAJ;;AAGA;EACI,UAAA;EACA,YAAA;EACA,aAAA;EACA,wBAAA;EACA,uBAAA;EACA,mBAAA;EACA,UAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,uBAAA;AAAJ;;AAGA;EACI,aAAA;AAAJ;;AAGA;EACI,gBAAA;AAAJ","sourcesContent":["* {\r\n    box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n    width: 100vw;\r\n    min-height: 100vh;\r\n    margin: 0;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    user-select: none;\r\n}\r\n\r\ndiv p {\r\n    margin: 0.1rem;\r\n    font-size: 0.8rem;\r\n    font-weight: 600;\r\n}\r\n\r\n.refine {\r\n    cursor: pointer;\r\n}\r\n\r\n.container {\r\n    width: 100vw;\r\n    height: auto;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.list {\r\n    padding: 5px;\r\n    border-radius: 5px;\r\n    background-color: white;\r\n    color: black;\r\n    font-weight: bold;\r\n}\r\n\r\nh2 {\r\n    border-bottom: 1px solid black;\r\n    margin: 0.1rem;\r\n    text-align: center;\r\n}\r\n\r\nh3 {\r\n    border-bottom: 1px solid black;\r\n    margin: 0.1rem;\r\n    text-align: center;\r\n}\r\n\r\nh5 {\r\n    border-bottom: 1px solid black;\r\n    margin: 0.1rem;\r\n    text-align: center;\r\n}\r\n\r\n.drag-space {\r\n    width: 90%;\r\n    min-height: 400px;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    justify-content: flex-start;\r\n    align-items: center;\r\n    border-radius: 20px;\r\n    background-color: darkcyan;\r\n    overflow: hidden auto;\r\n}\r\n\r\n.dragging {\r\n    background-color: rgb(114, 176, 179);\r\n    box-shadow: 5px 5px 5px black;\r\n}\r\n\r\n.dragged-over {\r\n    background-color: red;\r\n    color: white;\r\n}\r\n\r\n.column {\r\n    width: 300px;\r\n    height: 500px;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin: 5%;\r\n    padding: 10px;\r\n    border: 1px solid black;\r\n    border-radius: 15px;\r\n    background-color: cadetblue;\r\n\r\n    font-family: sans-serif;\r\n}\r\n\r\n.inner-column {\r\n    width: 95%;\r\n    height: auto;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin: 5%;\r\n    padding: 10px;\r\n    border: 1px solid black;\r\n    border-radius: 15px;\r\n    font-family: sans-serif;\r\n}\r\n\r\n.hidden {\r\n    display: none;\r\n}\r\n\r\nol {\r\n    font-size: 0.8em;\r\n}\r\n"],"sourceRoot":""}]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/js/SearchPage/components/SoloOrGroupPopup/SoloOrGroupPopup.scss":
-/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/js/SearchPage/components/SoloOrGroupPopup/SoloOrGroupPopup.scss ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
-// Imports
-
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, ".popup-bg {\n  height: 100vh;\n  width: 100vw;\n  background: rgba(0, 0, 0, 0.6);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: fixed;\n  z-index: 1;\n}\n.popup-bg h2,\n.popup-bg h3 {\n  margin: 1rem 0;\n  padding: 0.5rem 0;\n  border: none;\n}\n\n.popup {\n  height: 80%;\n  width: 50%;\n  z-index: 2;\n  background: #dfb871;\n  padding: 1.5rem;\n  display: flex;\n  flex-direction: column;\n  align-items: stretch;\n  overflow: hidden scroll;\n  border-radius: 1rem;\n}\n.popup button {\n  align-self: center;\n}\n\n.users-list {\n  display: flex;\n  list-style-type: none !important;\n}", "",{"version":3,"sources":["webpack://./resources/js/SearchPage/components/SoloOrGroupPopup/SoloOrGroupPopup.scss"],"names":[],"mappings":"AAAA;EACI,aAAA;EACA,YAAA;EACA,8BAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EAIA,UAAA;AAFJ;AAGI;;EAEI,cAAA;EACA,iBAAA;EACA,YAAA;AADR;;AAMA;EACI,WAAA;EACA,UAAA;EACA,UAAA;EACA,mBAAA;EACA,eAAA;EACA,aAAA;EACA,sBAAA;EACA,oBAAA;EAIA,uBAAA;EAEA,mBAAA;AAPJ;AAEI;EACI,kBAAA;AAAR;;AAOA;EACI,aAAA;EACA,gCAAA;AAJJ","sourcesContent":[".popup-bg {\r\n    height: 100vh;\r\n    width: 100vw;\r\n    background: rgba(0, 0, 0, 0.6);\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    position: fixed;\r\n    // &:hover {\r\n    //     cursor: pointer;\r\n    // }\r\n    z-index: 1;\r\n    h2,\r\n    h3 {\r\n        margin: 1rem 0;\r\n        padding: 0.5rem 0;\r\n        border: none;\r\n    }\r\n    // display: none;\r\n}\r\n\r\n.popup {\r\n    height: 80%;\r\n    width: 50%;\r\n    z-index: 2;\r\n    background: rgb(223, 184, 113);\r\n    padding: 1.5rem;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: stretch;\r\n    button {\r\n        align-self: center;\r\n    }\r\n    overflow: hidden scroll;\r\n    // display: none;\r\n    border-radius: 1rem;\r\n}\r\n\r\n.users-list {\r\n    display: flex;\r\n    list-style-type: none !important;\r\n}\r\n"],"sourceRoot":""}]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/runtime/api.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/css-loader/dist/runtime/api.js ***!
-  \*****************************************************/
-/***/ ((module) => {
-
-"use strict";
-
-
-/*
-  MIT License http://www.opensource.org/licenses/mit-license.php
-  Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-// eslint-disable-next-line func-names
-module.exports = function (cssWithMappingToString) {
-  var list = []; // return the list of modules as css string
-
-  list.toString = function toString() {
-    return this.map(function (item) {
-      var content = cssWithMappingToString(item);
-
-      if (item[2]) {
-        return "@media ".concat(item[2], " {").concat(content, "}");
-      }
-
-      return content;
-    }).join("");
-  }; // import a list of modules into the list
-  // eslint-disable-next-line func-names
-
-
-  list.i = function (modules, mediaQuery, dedupe) {
-    if (typeof modules === "string") {
-      // eslint-disable-next-line no-param-reassign
-      modules = [[null, modules, ""]];
-    }
-
-    var alreadyImportedModules = {};
-
-    if (dedupe) {
-      for (var i = 0; i < this.length; i++) {
-        // eslint-disable-next-line prefer-destructuring
-        var id = this[i][0];
-
-        if (id != null) {
-          alreadyImportedModules[id] = true;
-        }
-      }
-    }
-
-    for (var _i = 0; _i < modules.length; _i++) {
-      var item = [].concat(modules[_i]);
-
-      if (dedupe && alreadyImportedModules[item[0]]) {
-        // eslint-disable-next-line no-continue
-        continue;
-      }
-
-      if (mediaQuery) {
-        if (!item[2]) {
-          item[2] = mediaQuery;
-        } else {
-          item[2] = "".concat(mediaQuery, " and ").concat(item[2]);
-        }
-      }
-
-      list.push(item);
-    }
-  };
-
-  return list;
-};
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js":
-/*!************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/runtime/cssWithMappingToString.js ***!
-  \************************************************************************/
-/***/ ((module) => {
-
-"use strict";
-
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-module.exports = function cssWithMappingToString(item) {
-  var _item = _slicedToArray(item, 4),
-      content = _item[1],
-      cssMapping = _item[3];
-
-  if (!cssMapping) {
-    return content;
-  }
-
-  if (typeof btoa === "function") {
-    // eslint-disable-next-line no-undef
-    var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(cssMapping))));
-    var data = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(base64);
-    var sourceMapping = "/*# ".concat(data, " */");
-    var sourceURLs = cssMapping.sources.map(function (source) {
-      return "/*# sourceURL=".concat(cssMapping.sourceRoot || "").concat(source, " */");
-    });
-    return [content].concat(sourceURLs).concat([sourceMapping]).join("\n");
-  }
-
-  return [content].join("\n");
-};
-
-/***/ }),
-
-=======
->>>>>>> Stashed changes
 /***/ "./node_modules/css-vendor/dist/css-vendor.esm.js":
 /*!********************************************************!*\
   !*** ./node_modules/css-vendor/dist/css-vendor.esm.js ***!
@@ -91536,348 +90888,6 @@ if (false) {} else {
 
 /***/ }),
 
-<<<<<<< Updated upstream
-/***/ "./resources/js/SearchPage/components/DragAndDrop/style.scss":
-/*!*******************************************************************!*\
-  !*** ./resources/js/SearchPage/components/DragAndDrop/style.scss ***!
-  \*******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./style.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/js/SearchPage/components/DragAndDrop/style.scss");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_style_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_style_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
-/***/ "./resources/js/SearchPage/components/SoloOrGroupPopup/SoloOrGroupPopup.scss":
-/*!***********************************************************************************!*\
-  !*** ./resources/js/SearchPage/components/SoloOrGroupPopup/SoloOrGroupPopup.scss ***!
-  \***********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_SoloOrGroupPopup_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./SoloOrGroupPopup.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/js/SearchPage/components/SoloOrGroupPopup/SoloOrGroupPopup.scss");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_SoloOrGroupPopup_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_SoloOrGroupPopup_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
-/***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
-/*!****************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
-  \****************************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-
-var isOldIE = function isOldIE() {
-  var memo;
-  return function memorize() {
-    if (typeof memo === 'undefined') {
-      // Test for IE <= 9 as proposed by Browserhacks
-      // @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
-      // Tests for existence of standard globals is to allow style-loader
-      // to operate correctly into non-standard environments
-      // @see https://github.com/webpack-contrib/style-loader/issues/177
-      memo = Boolean(window && document && document.all && !window.atob);
-    }
-
-    return memo;
-  };
-}();
-
-var getTarget = function getTarget() {
-  var memo = {};
-  return function memorize(target) {
-    if (typeof memo[target] === 'undefined') {
-      var styleTarget = document.querySelector(target); // Special case to return head of iframe instead of iframe itself
-
-      if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
-        try {
-          // This will throw an exception if access to iframe is blocked
-          // due to cross-origin restrictions
-          styleTarget = styleTarget.contentDocument.head;
-        } catch (e) {
-          // istanbul ignore next
-          styleTarget = null;
-        }
-      }
-
-      memo[target] = styleTarget;
-    }
-
-    return memo[target];
-  };
-}();
-
-var stylesInDom = [];
-
-function getIndexByIdentifier(identifier) {
-  var result = -1;
-
-  for (var i = 0; i < stylesInDom.length; i++) {
-    if (stylesInDom[i].identifier === identifier) {
-      result = i;
-      break;
-    }
-  }
-
-  return result;
-}
-
-function modulesToDom(list, options) {
-  var idCountMap = {};
-  var identifiers = [];
-
-  for (var i = 0; i < list.length; i++) {
-    var item = list[i];
-    var id = options.base ? item[0] + options.base : item[0];
-    var count = idCountMap[id] || 0;
-    var identifier = "".concat(id, " ").concat(count);
-    idCountMap[id] = count + 1;
-    var index = getIndexByIdentifier(identifier);
-    var obj = {
-      css: item[1],
-      media: item[2],
-      sourceMap: item[3]
-    };
-
-    if (index !== -1) {
-      stylesInDom[index].references++;
-      stylesInDom[index].updater(obj);
-    } else {
-      stylesInDom.push({
-        identifier: identifier,
-        updater: addStyle(obj, options),
-        references: 1
-      });
-    }
-
-    identifiers.push(identifier);
-  }
-
-  return identifiers;
-}
-
-function insertStyleElement(options) {
-  var style = document.createElement('style');
-  var attributes = options.attributes || {};
-
-  if (typeof attributes.nonce === 'undefined') {
-    var nonce =  true ? __webpack_require__.nc : 0;
-
-    if (nonce) {
-      attributes.nonce = nonce;
-    }
-  }
-
-  Object.keys(attributes).forEach(function (key) {
-    style.setAttribute(key, attributes[key]);
-  });
-
-  if (typeof options.insert === 'function') {
-    options.insert(style);
-  } else {
-    var target = getTarget(options.insert || 'head');
-
-    if (!target) {
-      throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.");
-    }
-
-    target.appendChild(style);
-  }
-
-  return style;
-}
-
-function removeStyleElement(style) {
-  // istanbul ignore if
-  if (style.parentNode === null) {
-    return false;
-  }
-
-  style.parentNode.removeChild(style);
-}
-/* istanbul ignore next  */
-
-
-var replaceText = function replaceText() {
-  var textStore = [];
-  return function replace(index, replacement) {
-    textStore[index] = replacement;
-    return textStore.filter(Boolean).join('\n');
-  };
-}();
-
-function applyToSingletonTag(style, index, remove, obj) {
-  var css = remove ? '' : obj.media ? "@media ".concat(obj.media, " {").concat(obj.css, "}") : obj.css; // For old IE
-
-  /* istanbul ignore if  */
-
-  if (style.styleSheet) {
-    style.styleSheet.cssText = replaceText(index, css);
-  } else {
-    var cssNode = document.createTextNode(css);
-    var childNodes = style.childNodes;
-
-    if (childNodes[index]) {
-      style.removeChild(childNodes[index]);
-    }
-
-    if (childNodes.length) {
-      style.insertBefore(cssNode, childNodes[index]);
-    } else {
-      style.appendChild(cssNode);
-    }
-  }
-}
-
-function applyToTag(style, options, obj) {
-  var css = obj.css;
-  var media = obj.media;
-  var sourceMap = obj.sourceMap;
-
-  if (media) {
-    style.setAttribute('media', media);
-  } else {
-    style.removeAttribute('media');
-  }
-
-  if (sourceMap && typeof btoa !== 'undefined') {
-    css += "\n/*# sourceMappingURL=data:application/json;base64,".concat(btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))), " */");
-  } // For old IE
-
-  /* istanbul ignore if  */
-
-
-  if (style.styleSheet) {
-    style.styleSheet.cssText = css;
-  } else {
-    while (style.firstChild) {
-      style.removeChild(style.firstChild);
-    }
-
-    style.appendChild(document.createTextNode(css));
-  }
-}
-
-var singleton = null;
-var singletonCounter = 0;
-
-function addStyle(obj, options) {
-  var style;
-  var update;
-  var remove;
-
-  if (options.singleton) {
-    var styleIndex = singletonCounter++;
-    style = singleton || (singleton = insertStyleElement(options));
-    update = applyToSingletonTag.bind(null, style, styleIndex, false);
-    remove = applyToSingletonTag.bind(null, style, styleIndex, true);
-  } else {
-    style = insertStyleElement(options);
-    update = applyToTag.bind(null, style, options);
-
-    remove = function remove() {
-      removeStyleElement(style);
-    };
-  }
-
-  update(obj);
-  return function updateStyle(newObj) {
-    if (newObj) {
-      if (newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap) {
-        return;
-      }
-
-      update(obj = newObj);
-    } else {
-      remove();
-    }
-  };
-}
-
-module.exports = function (list, options) {
-  options = options || {}; // Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-  // tags it will allow on a page
-
-  if (!options.singleton && typeof options.singleton !== 'boolean') {
-    options.singleton = isOldIE();
-  }
-
-  list = list || [];
-  var lastIdentifiers = modulesToDom(list, options);
-  return function update(newList) {
-    newList = newList || [];
-
-    if (Object.prototype.toString.call(newList) !== '[object Array]') {
-      return;
-    }
-
-    for (var i = 0; i < lastIdentifiers.length; i++) {
-      var identifier = lastIdentifiers[i];
-      var index = getIndexByIdentifier(identifier);
-      stylesInDom[index].references--;
-    }
-
-    var newLastIdentifiers = modulesToDom(newList, options);
-
-    for (var _i = 0; _i < lastIdentifiers.length; _i++) {
-      var _identifier = lastIdentifiers[_i];
-
-      var _index = getIndexByIdentifier(_identifier);
-
-      if (stylesInDom[_index].references === 0) {
-        stylesInDom[_index].updater();
-
-        stylesInDom.splice(_index, 1);
-      }
-    }
-
-    lastIdentifiers = newLastIdentifiers;
-  };
-};
-
-/***/ }),
-
-=======
->>>>>>> Stashed changes
 /***/ "./node_modules/tiny-invariant/dist/tiny-invariant.esm.js":
 /*!****************************************************************!*\
   !*** ./node_modules/tiny-invariant/dist/tiny-invariant.esm.js ***!
@@ -93387,11 +92397,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\web\\\\codingbootc
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
-<<<<<<< Updated upstream
-/******/ 			id: moduleId,
-=======
 /******/ 			// no module.id needed
->>>>>>> Stashed changes
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};

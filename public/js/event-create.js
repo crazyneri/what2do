@@ -2112,13 +2112,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-<<<<<<< Updated upstream
 function App(_ref) {
   var id = _ref.id;
 
-=======
-function App() {
->>>>>>> Stashed changes
   // STATE FOR GETTING DATA FROM BACKEND
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
@@ -2158,19 +2154,11 @@ function App() {
   }),
       _useState8 = _slicedToArray(_useState7, 2),
       input = _useState8[0],
-<<<<<<< Updated upstream
       setInput = _useState8[1]; // GET DATA - venues and categories
 
 
   var getData = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-=======
-      setInput = _useState8[1]; // GET DATA
-
-
-  var getData = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
->>>>>>> Stashed changes
       var response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
@@ -2198,7 +2186,6 @@ function App() {
     }));
 
     return function getData() {
-<<<<<<< Updated upstream
       return _ref2.apply(this, arguments);
     };
   }(); // GET DATA - event with id
@@ -2254,9 +2241,6 @@ function App() {
 
     return function getDataEvents() {
       return _ref3.apply(this, arguments);
-=======
-      return _ref.apply(this, arguments);
->>>>>>> Stashed changes
     };
   }(); // DAYS OF WEEK
 
@@ -2279,7 +2263,6 @@ function App() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
     getData();
-<<<<<<< Updated upstream
 
     if (id) {
       getDataEvents();
@@ -2316,26 +2299,12 @@ function App() {
 
             case 8:
               _context3.next = 10;
-=======
-  }, []); // SEND THE DATA TO THE DB
-
-  var handleSubmit = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(event) {
-      var response;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              event.preventDefault();
-              _context2.next = 3;
->>>>>>> Stashed changes
               return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/admin/event/store', _objectSpread({}, input), {
                 headers: {
                   'Accept': 'application/json'
                 }
               });
 
-<<<<<<< Updated upstream
             case 10:
               _response = _context3.sent;
 
@@ -2359,22 +2328,6 @@ function App() {
 
     return function handleSubmit(_x) {
       return _ref4.apply(this, arguments);
-=======
-            case 3:
-              response = _context2.sent;
-              console.log(response);
-
-            case 5:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2);
-    }));
-
-    return function handleSubmit(_x) {
-      return _ref2.apply(this, arguments);
->>>>>>> Stashed changes
     };
   }(); // SAVE OTHER INPUTS
 
@@ -2390,7 +2343,6 @@ function App() {
     var value = e.target.checked ? 1 : 0;
     var name = e.target.name;
     setInput(_objectSpread(_objectSpread({}, input), {}, _defineProperty({}, name, value)));
-<<<<<<< Updated upstream
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
@@ -2399,19 +2351,6 @@ function App() {
       action: {
         id: id
       } ? "/admin/event/".concat(id, "/update") : '/admin/event/data',
-=======
-  }; // console.log(selectedMainCategory);
-  // console.log(selectedSubCategory);
-  // console.log(recurring);
-  // console.log(recDays);
-
-
-  console.log(input);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-    className: "create-form",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
-      action: "/admin/event/data",
->>>>>>> Stashed changes
       method: "post",
       onSubmit: handleSubmit,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
@@ -2421,10 +2360,7 @@ function App() {
         type: "text",
         name: "name",
         id: "name",
-<<<<<<< Updated upstream
         value: input.name,
-=======
->>>>>>> Stashed changes
         onChange: saveInput
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), "\xA0 \xA0 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
         children: "Venue:"
@@ -2435,10 +2371,7 @@ function App() {
           children: "-- select your venue --"
         }), venues && venues.map(function (venue, index) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-<<<<<<< Updated upstream
             selected: input.venue_id,
-=======
->>>>>>> Stashed changes
             value: venue.id,
             children: venue.name
           }, index);
@@ -2450,10 +2383,7 @@ function App() {
         type: "date",
         name: "start_date",
         id: "start_date",
-<<<<<<< Updated upstream
         value: input.start_date,
-=======
->>>>>>> Stashed changes
         onChange: saveInput
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
         htmlFor: "start_time",
@@ -2462,10 +2392,7 @@ function App() {
         type: "time",
         name: "start_time",
         id: "start_time",
-<<<<<<< Updated upstream
         value: input.start_time,
-=======
->>>>>>> Stashed changes
         onChange: saveInput
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
         htmlFor: "end_date",
@@ -2474,10 +2401,7 @@ function App() {
         type: "date",
         name: "end_date",
         id: "end_date",
-<<<<<<< Updated upstream
         value: input.end_date,
-=======
->>>>>>> Stashed changes
         onChange: saveInput
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
         htmlFor: "end_time",
@@ -2486,7 +2410,6 @@ function App() {
         type: "time",
         name: "end_time",
         id: "end_time",
-<<<<<<< Updated upstream
         value: input.end_time,
         onChange: saveInput
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
@@ -2496,15 +2419,6 @@ function App() {
         name: "description",
         id: "description",
         value: input.description,
-=======
-        onChange: saveInput
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-        htmlFor: "description",
-        children: "Descriptiom:"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("textarea", {
-        name: "description",
-        id: "description",
->>>>>>> Stashed changes
         onChange: saveInput
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
         htmlFor: "price",
@@ -2513,7 +2427,6 @@ function App() {
         type: "number",
         name: "price",
         id: "price",
-<<<<<<< Updated upstream
         value: input.price,
         onChange: saveInput
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_CategorySelection_CategorySelection__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -2524,11 +2437,6 @@ function App() {
             categories: categories
           }));
         },
-=======
-        onChange: saveInput
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_CategorySelection_CategorySelection__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        categories: categories,
->>>>>>> Stashed changes
         selectedMainCategory: selectedMainCategory,
         setSelectedMainCategory: setSelectedMainCategory
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
@@ -2538,11 +2446,7 @@ function App() {
         type: "checkbox",
         name: "is_recurring",
         id: "is_recurring",
-<<<<<<< Updated upstream
         checked: input.is_recurring,
-=======
-        value: input.is_recurring,
->>>>>>> Stashed changes
         onChange: saveCheckbox
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), days.map(function (day, index) {
         return input.is_recurring == 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -2552,25 +2456,18 @@ function App() {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
             className: "dayofweek",
             type: "checkbox",
-<<<<<<< Updated upstream
             checked: input[day],
-=======
->>>>>>> Stashed changes
             name: day,
             value: input[day],
             onChange: saveCheckbox
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {})]
         }, index) : '';
-<<<<<<< Updated upstream
       }), id ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         onClick: function onClick() {
           return getChecked();
         },
         children: "Edit event"
       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-=======
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
->>>>>>> Stashed changes
         onClick: function onClick() {
           return getChecked();
         },
@@ -2594,7 +2491,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ CategorySelection)
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-<<<<<<< Updated upstream
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2607,27 +2503,19 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-=======
->>>>>>> Stashed changes
 
 
 function CategorySelection(_ref) {
   var categories = _ref.categories,
-<<<<<<< Updated upstream
       subcategories = _ref.subcategories,
       setSubcategories = _ref.setSubcategories,
-=======
->>>>>>> Stashed changes
       selectedMainCategory = _ref.selectedMainCategory,
       setSelectedMainCategory = _ref.setSelectedMainCategory;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: "dynamic_inputs",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("select", {
       name: "category",
-<<<<<<< Updated upstream
       value: selectedMainCategory,
-=======
->>>>>>> Stashed changes
       onChange: function onChange(e) {
         return setSelectedMainCategory(e.target.value);
       },
@@ -2644,7 +2532,6 @@ function CategorySelection(_ref) {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
           htmlFor: "subcategory",
           children: subcategory.name
-<<<<<<< Updated upstream
         }), !subcategories ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
           className: "checkbox",
           name: "subcategory",
@@ -2665,12 +2552,6 @@ function CategorySelection(_ref) {
             }
           },
           value: subcategory.id
-=======
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-          className: "checkbox",
-          type: "checkbox",
-          value: subcategory.id
->>>>>>> Stashed changes
         })]
       }, index) : '';
     })]
@@ -34800,13 +34681,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-<<<<<<< Updated upstream
 react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_App_App__WEBPACK_IMPORTED_MODULE_2__["default"], {
   id: document.getElementById('app').dataset.id
 }), document.getElementById('app'));
-=======
-react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_App_App__WEBPACK_IMPORTED_MODULE_2__["default"], {}), document.getElementById('app'));
->>>>>>> Stashed changes
 })();
 
 /******/ })()
