@@ -30938,6 +30938,11 @@ var App = function App() {
       searchSessionId = _useState20[0],
       setSearchSessionId = _useState20[1];
 
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState22 = _slicedToArray(_useState21, 2),
+      searchSession = _useState22[0],
+      setSearchSession = _useState22[1];
+
   var nonAnonymousSearch = user && user.id !== 0 && searchSessionId === 0;
   var showPopup = user && user.id !== 0 && searchSessionId === 0 || user && user.id === 0; // || (user && user.id === 0)
 
@@ -30994,27 +30999,28 @@ var App = function App() {
                 user_id: user.id,
                 category_ids: searchIds
               };
-              _context2.prev = 1;
-              _context2.next = 4;
+              console.log(searchDetailsData);
+              _context2.prev = 2;
+              _context2.next = 5;
               return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)("/user-choice/store", searchDetailsData);
 
-            case 4:
+            case 5:
               response = _context2.sent;
               console.log(response.data);
-              _context2.next = 11;
+              _context2.next = 12;
               break;
 
-            case 8:
-              _context2.prev = 8;
-              _context2.t0 = _context2["catch"](1);
+            case 9:
+              _context2.prev = 9;
+              _context2.t0 = _context2["catch"](2);
               console.log(_context2.t0.response);
 
-            case 11:
+            case 12:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[1, 8]]);
+      }, _callee2, null, [[2, 9]]);
     }));
 
     return function sendSearchDetails() {
@@ -31025,6 +31031,7 @@ var App = function App() {
   var search = function search() {
     updateSession();
     sendSearchDetails();
+    getSearchSessionDetails();
   };
 
   var fetchUser = /*#__PURE__*/function () {
@@ -31150,7 +31157,7 @@ var App = function App() {
 
   var getSearchSessionDetails = /*#__PURE__*/function () {
     var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
-      var response, search_session_id, group_id;
+      var response, session_id, group_id;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
         while (1) {
           switch (_context6.prev = _context6.next) {
@@ -31161,26 +31168,27 @@ var App = function App() {
 
             case 3:
               response = _context6.sent;
-              search_session_id = response.data.search_session_id;
+              session_id = response.data.id;
               group_id = response.data.group_id;
               setGroupId(group_id);
               console.log("session details: ", response.data);
-              setSearchSessionId(search_session_id);
-              user && user.id === 0 && search_session_id === 0 && startSession(group_id);
-              _context6.next = 15;
+              setSearchSession(response.data);
+              setSearchSessionId(session_id);
+              user && user.id === 0 && session_id === 0 && startSession(group_id);
+              _context6.next = 16;
               break;
 
-            case 12:
-              _context6.prev = 12;
+            case 13:
+              _context6.prev = 13;
               _context6.t0 = _context6["catch"](0);
               console.log(_context6.t0.response);
 
-            case 15:
+            case 16:
             case "end":
               return _context6.stop();
           }
         }
-      }, _callee6, null, [[0, 12]]);
+      }, _callee6, null, [[0, 13]]);
     }));
 
     return function getSearchSessionDetails() {
@@ -31191,6 +31199,10 @@ var App = function App() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     getSearchSessionDetails();
   }, []);
+  var alreadyResponded = user && user.id && searchSession && searchSessionId !== 0 && searchSession.user_choices && searchSession.user_choices.some(function (user_choice) {
+    return user_choice.user_id === user.id;
+  });
+  console.log(alreadyResponded);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
     className: "search-grid",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_util_UserContext__WEBPACK_IMPORTED_MODULE_5__["default"].Provider, {
@@ -31219,9 +31231,13 @@ var App = function App() {
         setColumnsToRender: setColumnsToRender,
         searchIds: searchIds,
         setSearchIds: setSearchIds
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-        onClick: search,
-        children: "Search"
+      }), !alreadyResponded && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        className: "btn-search-container",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+          className: "btn-search-results",
+          onClick: search,
+          children: "Search"
+        })
       })]
     })
   });
