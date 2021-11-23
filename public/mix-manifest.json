@@ -1,5 +1,11 @@
 {
+<<<<<<< Updated upstream
     "/js/search.js": "/js/search.js?id=a7ec81c4bf9e0d032f28",
     "/js/event-create.js": "/js/event-create.js?id=516c06dc0e3334f82416",
     "/css/main.css": "/css/main.css?id=7dd7be89f05da554a833"
+=======
+    "/js/search.js": "/js/search.js?id=4d643663e9be674cd8c4",
+    "/js/event-create.js": "/js/event-create.js?id=f65c3fbe7535f2871f0d",
+    "/css/main.css": "/css/main.css?id=affea1168ef92a3d4e5a"
+>>>>>>> Stashed changes
 }

@@ -9,13 +9,14 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index(Request $request)
+    public function index($id)
     {
-        // $searchEmail = $request->input('email-search');
-        // $users = User::where('email', 'like', '%' . $searchEmail . '%')->get();
-
+        $users = User::orderBy('name')->get();
+        if(Auth::user() === null){
+            return 'Hello';
+        }
         // dd($users);
-        // return view('user.index', compact('users'));
+        return view('user.index', compact('users'));
     }
     public function create()
     {

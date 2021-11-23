@@ -9243,6 +9243,7 @@ const chipClasses = (0,_mui_base__WEBPACK_IMPORTED_MODULE_1__["default"])('MuiCh
 
 /***/ }),
 
+<<<<<<< Updated upstream
 /***/ "./node_modules/@mui/material/Divider/Divider.js":
 /*!*******************************************************!*\
   !*** ./node_modules/@mui/material/Divider/Divider.js ***!
@@ -9554,6 +9555,8 @@ const dividerClasses = (0,_mui_base__WEBPACK_IMPORTED_MODULE_1__["default"])('Mu
 
 /***/ }),
 
+=======
+>>>>>>> Stashed changes
 /***/ "./node_modules/@mui/material/Fade/Fade.js":
 /*!*************************************************!*\
   !*** ./node_modules/@mui/material/Fade/Fade.js ***!
@@ -19791,6 +19794,7 @@ const typographyClasses = (0,_mui_base__WEBPACK_IMPORTED_MODULE_1__["default"])(
 
 /***/ }),
 
+<<<<<<< Updated upstream
 /***/ "./node_modules/@mui/material/Zoom/Zoom.js":
 /*!*************************************************!*\
   !*** ./node_modules/@mui/material/Zoom/Zoom.js ***!
@@ -20043,6 +20047,8 @@ const Zoom = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function
 
 /***/ }),
 
+=======
+>>>>>>> Stashed changes
 /***/ "./node_modules/@mui/material/colors/blue.js":
 /*!***************************************************!*\
   !*** ./node_modules/@mui/material/colors/blue.js ***!
@@ -31150,6 +31156,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+<<<<<<< Updated upstream
 
 var App = function App() {
   // input values
@@ -31158,6 +31165,15 @@ var App = function App() {
     date: luxon__WEBPACK_IMPORTED_MODULE_8__.DateTime.now().toFormat('yyyy-MM-dd'),
     startTime: '12:00:00',
     endTime: '12:00:00'
+=======
+var App = function App() {
+  // input values
+  var initialValues = {
+    city: "Prague",
+    date: luxon__WEBPACK_IMPORTED_MODULE_8__.DateTime.now().toFormat("yyyy-MM-dd"),
+    startTime: "12:00:00",
+    endTime: "12:00:00"
+>>>>>>> Stashed changes
   };
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(initialValues),
@@ -31200,6 +31216,17 @@ var App = function App() {
       searchIds = _useState14[0],
       setSearchIds = _useState14[1];
 
+<<<<<<< Updated upstream
+=======
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    console.log(values);
+  });
+
+  var search = function search() {
+    console.log(searchIds);
+  };
+
+>>>>>>> Stashed changes
   var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState16 = _slicedToArray(_useState15, 2),
       user = _useState16[0],
@@ -31210,6 +31237,7 @@ var App = function App() {
       groupId = _useState18[0],
       setGroupId = _useState18[1];
 
+<<<<<<< Updated upstream
   var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
       _useState20 = _slicedToArray(_useState19, 2),
       searchSessionId = _useState20[0],
@@ -31221,10 +31249,16 @@ var App = function App() {
   var updateSession = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       var sessionData, response;
+=======
+  var fetchUser = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var response;
+>>>>>>> Stashed changes
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+<<<<<<< Updated upstream
               sessionData = {
                 session_id: searchSessionId,
                 searched_date: values.date,
@@ -31335,11 +31369,32 @@ var App = function App() {
 
     return function fetchUser() {
       return _ref3.apply(this, arguments);
+=======
+              _context.next = 2;
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.get)("/api/user");
+
+            case 2:
+              response = _context.sent;
+              console.log(response.data);
+              setUser(response.data);
+
+            case 5:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function fetchUser() {
+      return _ref.apply(this, arguments);
+>>>>>>> Stashed changes
     };
   }();
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetchUser();
+<<<<<<< Updated upstream
   }, []);
 
   var startSession = /*#__PURE__*/function () {
@@ -31435,6 +31490,18 @@ var App = function App() {
         groupId: groupId,
         setGroupId: setGroupId,
         startSession: startSession
+=======
+  }, []); // useEffect(() => {
+  //     user && fetchUser();
+  // }, [user.groups]);
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+    className: "search-grid",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_util_UserContext__WEBPACK_IMPORTED_MODULE_5__["default"].Provider, {
+      value: user,
+      children: [user && groupId === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_SoloOrGroupPopup_SoloOrGroupPopup__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        setGroupId: setGroupId
+>>>>>>> Stashed changes
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Inputs_Inputs__WEBPACK_IMPORTED_MODULE_3__["default"], {
         city: city,
         date: date,
@@ -31454,9 +31521,19 @@ var App = function App() {
         setColumnsToRender: setColumnsToRender,
         searchIds: searchIds,
         setSearchIds: setSearchIds
+<<<<<<< Updated upstream
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
         onClick: search,
         children: "Search"
+=======
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        className: "btn-search-container",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+          className: "btn btn-search-results",
+          onClick: search,
+          children: "Search"
+        })
+>>>>>>> Stashed changes
       })]
     })
   });
@@ -31520,12 +31597,17 @@ function CategoryBox(_ref) {
       beingDragged = _useState2[0],
       setBeingDragged = _useState2[1];
 
+<<<<<<< Updated upstream
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('list'),
+=======
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("list"),
+>>>>>>> Stashed changes
       _useState4 = _slicedToArray(_useState3, 2),
       draggingClass = _useState4[0],
       setDraggingClass = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+<<<<<<< Updated upstream
     beingDragged ? setDraggingClass('list dragging') : setDraggingClass('list');
   }, [beingDragged]);
 
@@ -31551,6 +31633,33 @@ function CategoryBox(_ref) {
     }
 
     if (showMusicSubCats && category.id === 'music') {
+=======
+    beingDragged ? setDraggingClass("list dragging") : setDraggingClass("list");
+  }, [beingDragged]);
+
+  var showRefinements = function showRefinements() {
+    if (!showCinemaSubCats && category.id === "cinema") {
+      setShowCinemaSubCats(true);
+    }
+
+    if (showCinemaSubCats && category.id === "cinema") {
+      setShowCinemaSubCats(false);
+    }
+
+    if (!showTheatreSubCats && (category.id === "theater" || category.id === "theatre")) {
+      setShowTheatreSubCats(true);
+    }
+
+    if (showTheatreSubCats && (category.id === "theater" || category.id === "theatre")) {
+      setShowTheatreSubCats(false);
+    }
+
+    if (!showMusicSubCats && category.id === "music") {
+      setShowMusicSubCats(true);
+    }
+
+    if (showMusicSubCats && category.id === "music") {
+>>>>>>> Stashed changes
       setShowMusicSubCats(false);
     }
   };
@@ -31564,7 +31673,11 @@ function CategoryBox(_ref) {
     children: function children(provided, snapshot) {
       return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", _objectSpread(_objectSpread({
         onChange: setBeingDragged(snapshot.draggingOver),
+<<<<<<< Updated upstream
         className: "inner-column ".concat(draggingClass) // we must apply the properties from 'provided to the
+=======
+        className: category.parent_id === 0 ? "inner-column ".concat(draggingClass) : "inner-column sub-category-box ".concat(draggingClass) // we must apply the properties from 'provided to the
+>>>>>>> Stashed changes
         // draggable element
 
       }, provided.draggableProps), {}, {
@@ -31643,13 +31756,21 @@ function Column(_ref) {
       beingDraggedOver = _useState2[0],
       setBeingDraggedOver = _useState2[1];
 
+<<<<<<< Updated upstream
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+=======
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+>>>>>>> Stashed changes
       _useState4 = _slicedToArray(_useState3, 2),
       draggedOverClass = _useState4[0],
       setDraggedOverClass = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+<<<<<<< Updated upstream
     beingDraggedOver ? setDraggedOverClass('dragged-over') : setDraggedOverClass('');
+=======
+    beingDraggedOver ? setDraggedOverClass("dragged-over") : setDraggedOverClass("");
+>>>>>>> Stashed changes
   }, [beingDraggedOver]);
 
   var closeSubCats = function closeSubCats() {
@@ -31665,6 +31786,7 @@ function Column(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "column ".concat(draggedOverClass),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
+<<<<<<< Updated upstream
       style: {
         borderBottom: '1px solid black'
       },
@@ -31677,6 +31799,17 @@ function Column(_ref) {
     }), column.id === 'empty-sub-categories' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_EmptyRefinements__WEBPACK_IMPORTED_MODULE_2__["default"], {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_4__.Droppable, {
       droppableId: column.id,
       type: column.columnType === 'sub' ? 'sub' : 'main',
+=======
+      children: column.title
+    }), column.columnType === "sub" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+      type: "button",
+      onClick: closeSubCats,
+      className: "refine close",
+      children: "close"
+    }), column.id === "empty-sub-categories" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_EmptyRefinements__WEBPACK_IMPORTED_MODULE_2__["default"], {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_4__.Droppable, {
+      droppableId: column.id,
+      type: column.columnType === "sub" ? "sub" : "main",
+>>>>>>> Stashed changes
       children: function children(provided, snapshot) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", _objectSpread(_objectSpread({
           className: "drag-space",
@@ -31717,11 +31850,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+<<<<<<< Updated upstream
 /* harmony import */ var react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-beautiful-dnd */ "./node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js");
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./resources/js/SearchPage/components/DragAndDrop/style.scss");
 /* harmony import */ var _Column__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Column */ "./resources/js/SearchPage/components/DragAndDrop/Column.js");
 /* harmony import */ var _util_request__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../util/request */ "./resources/js/util/request.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+=======
+/* harmony import */ var react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-beautiful-dnd */ "./node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js");
+/* harmony import */ var _Column__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Column */ "./resources/js/SearchPage/components/DragAndDrop/Column.js");
+/* harmony import */ var _util_request__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../util/request */ "./resources/js/util/request.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+>>>>>>> Stashed changes
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -31747,7 +31887,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
+<<<<<<< Updated upstream
 
+=======
+ // import './style.scss';
+>>>>>>> Stashed changes
 
 
 
@@ -31770,14 +31914,22 @@ function DragAndDrop(_ref) {
   var renderColumns = function renderColumns() {
     if (showCinemaSubCats) {
       var columns = state.columnOrder.filter(function (category) {
+<<<<<<< Updated upstream
         return category === 'categories' || category.includes('cinema');
+=======
+        return category === "categories" || category.includes("cinema");
+>>>>>>> Stashed changes
       });
       setColumnsToRender(columns);
     }
 
     if (showTheatreSubCats) {
       var _columns = state.columnOrder.filter(function (category) {
+<<<<<<< Updated upstream
         return category === 'categories' || category.includes('theater') || category.includes('theatre');
+=======
+        return category === "categories" || category.includes("theater") || category.includes("theatre");
+>>>>>>> Stashed changes
       });
 
       setColumnsToRender(_columns);
@@ -31785,7 +31937,11 @@ function DragAndDrop(_ref) {
 
     if (showMusicSubCats) {
       var _columns2 = state.columnOrder.filter(function (category) {
+<<<<<<< Updated upstream
         return category === 'categories' || category.includes('music');
+=======
+        return category === "categories" || category.includes("music");
+>>>>>>> Stashed changes
       });
 
       setColumnsToRender(_columns2);
@@ -31793,7 +31949,11 @@ function DragAndDrop(_ref) {
 
     if (!showCinemaSubCats && !showMusicSubCats && !showTheatreSubCats) {
       var _columns3 = state.columnOrder.filter(function (category) {
+<<<<<<< Updated upstream
         return category === 'categories' || category === 'what2do' || category === 'empty-sub-categories';
+=======
+        return category === "categories" || category === "what2do" || category === "empty-sub-categories";
+>>>>>>> Stashed changes
       });
 
       setColumnsToRender(_columns3);
@@ -31921,7 +32081,11 @@ function DragAndDrop(_ref) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
+<<<<<<< Updated upstream
               return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.get)('/api/search');
+=======
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_3__.get)("/api/search");
+>>>>>>> Stashed changes
 
             case 2:
               response = _context.sent;
@@ -31947,22 +32111,37 @@ function DragAndDrop(_ref) {
   }, []);
 
   if (!state) {
+<<<<<<< Updated upstream
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
+=======
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
+>>>>>>> Stashed changes
       children: "loading"
     });
   }
 
+<<<<<<< Updated upstream
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_6__.DragDropContext // see notes on this
   , {
     onDragEnd: onDragEnd,
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+=======
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_5__.DragDropContext // see notes on this
+  , {
+    onDragEnd: onDragEnd,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+>>>>>>> Stashed changes
       className: "container",
       children: columnsToRender.map(function (columnId, key) {
         var column = state.columns[columnId];
         var categories = column.categoryIds.map(function (categoryId) {
           return state.categories[categoryId];
         });
+<<<<<<< Updated upstream
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Column__WEBPACK_IMPORTED_MODULE_3__["default"], {
+=======
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Column__WEBPACK_IMPORTED_MODULE_2__["default"], {
+>>>>>>> Stashed changes
           column: column,
           categories: categories,
           index: key,
@@ -32000,6 +32179,7 @@ function EmptyRefinements() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
     className: "drag-space",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ol", {
+<<<<<<< Updated upstream
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
         children: "Choose what you would like to do from the categories column."
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
@@ -32012,6 +32192,38 @@ function EmptyRefinements() {
         children: "Press the close sub-categories' button when you have finished."
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
         children: "When you have decided what to do - press search!"
+=======
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+          className: "instructions-bold",
+          children: "Choose"
+        }), " what you would like to do from the categories column."]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+          className: "instructions-bold",
+          children: "Drag"
+        }), " your chosen activity into the 'what2do' column."]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+          className: "instructions-bold",
+          children: "Refine"
+        }), " your search by clicking on the 'refine' button under the category name."]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+          className: "instructions-bold",
+          children: "Drag"
+        }), " any sub-categories you would like into the 'chosen sub-categories' column in the centre."]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+          className: "instructions-bold",
+          children: "Press"
+        }), " the close sub-categories' button when you have finished."]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+        children: ["When you have decided what to do - press", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+          className: "instructions-bold",
+          children: "search"
+        }), "!"]
+>>>>>>> Stashed changes
       })]
     })
   });
@@ -32102,7 +32314,11 @@ var Inputs = function Inputs(_ref) {
       setValues = _ref.setValues;
 
   var convertToHoursAndMinutes = function convertToHoursAndMinutes(timeString) {
+<<<<<<< Updated upstream
     var formated = luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromFormat(timeString, 'hh:mm').toFormat('HH:mm:ss');
+=======
+    var formated = luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromFormat(timeString, "hh:mm").toFormat("HH:mm:ss");
+>>>>>>> Stashed changes
     console.log(formated);
     return formated;
   };
@@ -32110,14 +32326,22 @@ var Inputs = function Inputs(_ref) {
   var handleChange = function handleChange(e) {
     var name = e.target.name;
     var inputValue = e.target.value;
+<<<<<<< Updated upstream
     var valueToStore = name === 'startTime' || name === 'endTime' ? convertToHoursAndMinutes(inputValue) : inputValue;
+=======
+    var valueToStore = name === "startTime" || name === "endTime" ? convertToHoursAndMinutes(inputValue) : inputValue;
+>>>>>>> Stashed changes
     setValues(function (prev_values) {
       return _objectSpread(_objectSpread({}, prev_values), {}, _defineProperty({}, name, valueToStore));
     });
   };
 
   var convertToObject = function convertToObject(timeString) {
+<<<<<<< Updated upstream
     var object = luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromFormat(timeString, 'hh:mm:ss').toObject(); // console.log(object);
+=======
+    var object = luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromFormat(timeString, "hh:mm:ss").toObject(); // console.log(object);
+>>>>>>> Stashed changes
 
     return object;
   };
@@ -32126,13 +32350,18 @@ var Inputs = function Inputs(_ref) {
     if (convertToObject(endTime).hour <= convertToObject(startTime).hour || convertToObject(endTime).hour === convertToObject(startTime).hour && convertToObject(endTime).minute <= convertToObject(startTime).minute) {
       setValues(function (prev_values) {
         return _objectSpread(_objectSpread({}, prev_values), {}, {
+<<<<<<< Updated upstream
           endTime: '23:59:00'
+=======
+          endTime: "23:59:00"
+>>>>>>> Stashed changes
         });
       });
     }
   }, [startTime, endTime]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: "inputs",
+<<<<<<< Updated upstream
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
       htmlFor: "city",
       children: "Location:"
@@ -32165,6 +32394,52 @@ var Inputs = function Inputs(_ref) {
       name: "endTime",
       value: endTime,
       onChange: handleChange
+=======
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "inputs-item",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+        htmlFor: "city",
+        children: "Location:"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        type: "text",
+        name: "city",
+        value: city,
+        onChange: handleChange
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "inputs-item",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+        htmlFor: "date",
+        children: "When:"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        type: "date",
+        name: "date",
+        value: date,
+        onChange: handleChange
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "inputs-item",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+        htmlFor: "startTime",
+        children: "Start Time:"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        type: "time",
+        name: "startTime",
+        value: startTime,
+        onChange: handleChange
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "inputs-item",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+        htmlFor: "endTime",
+        children: "End Time:"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        type: "time",
+        name: "endTime",
+        value: endTime,
+        onChange: handleChange
+      })]
+>>>>>>> Stashed changes
     })]
   });
 };
@@ -32188,6 +32463,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _util_UserContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../util/UserContext */ "./resources/js/util/UserContext.js");
+<<<<<<< Updated upstream
 /* harmony import */ var _SoloOrGroupPopup_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SoloOrGroupPopup.scss */ "./resources/js/SearchPage/components/SoloOrGroupPopup/SoloOrGroupPopup.scss");
 /* harmony import */ var _mui_material_Avatar__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @mui/material/Avatar */ "./node_modules/@mui/material/Avatar/Avatar.js");
 /* harmony import */ var _mui_material_AvatarGroup__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @mui/material/AvatarGroup */ "./node_modules/@mui/material/AvatarGroup/AvatarGroup.js");
@@ -32205,6 +32481,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_request__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../util/request */ "./resources/js/util/request.js");
 /* harmony import */ var _mui_styles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/styles */ "./node_modules/@mui/styles/makeStyles/makeStyles.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+=======
+/* harmony import */ var _mui_material_Avatar__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @mui/material/Avatar */ "./node_modules/@mui/material/Avatar/Avatar.js");
+/* harmony import */ var _mui_material_AvatarGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/material/AvatarGroup */ "./node_modules/@mui/material/AvatarGroup/AvatarGroup.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/List/List.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItem/ListItem.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItemButton/ListItemButton.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItemAvatar/ListItemAvatar.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/ListItemText/ListItemText.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Typography/Typography.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Autocomplete/Autocomplete.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/TextField/TextField.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Button/Button.js");
+/* harmony import */ var _util_request__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../util/request */ "./resources/js/util/request.js");
+/* harmony import */ var _mui_styles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/styles */ "./node_modules/@mui/styles/makeStyles/makeStyles.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+>>>>>>> Stashed changes
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -32238,6 +32530,10 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
+<<<<<<< Updated upstream
+=======
+ // import './SoloOrGroupPopup.scss'
+>>>>>>> Stashed changes
 
 
 
@@ -32248,7 +32544,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+<<<<<<< Updated upstream
 var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwardRef)(function (props, ref) {
+=======
+var SoloOrGroupPopup = function SoloOrGroupPopup() {
+>>>>>>> Stashed changes
   var user = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_util_UserContext__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
@@ -32261,11 +32561,16 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
       groupMembers = _useState4[0],
       setGroupMembers = _useState4[1];
 
+<<<<<<< Updated upstream
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+=======
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+>>>>>>> Stashed changes
       _useState6 = _slicedToArray(_useState5, 2),
       groupName = _useState6[0],
       setGroupName = _useState6[1];
 
+<<<<<<< Updated upstream
   var useStyles = (0,_mui_styles__WEBPACK_IMPORTED_MODULE_6__["default"])({
     root: {
       flexDirection: 'column',
@@ -32277,6 +32582,13 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
     },
     avatarsGroup: {
       justifyContent: 'flex-end'
+=======
+  var useStyles = (0,_mui_styles__WEBPACK_IMPORTED_MODULE_5__["default"])({
+    root: {
+      flexDirection: "column",
+      alignItems: "stretch !important",
+      margin: "1.5rem 0"
+>>>>>>> Stashed changes
     }
   });
   var classes = useStyles();
@@ -32289,7 +32601,11 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
+<<<<<<< Updated upstream
               return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.get)('/api/users');
+=======
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_3__.get)("/api/users");
+>>>>>>> Stashed changes
 
             case 2:
               response = _context.sent;
@@ -32317,20 +32633,37 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
   }, []);
 
   var handleGroupName = function handleGroupName(e) {
+<<<<<<< Updated upstream
+=======
+    console.log(e.target.value);
+>>>>>>> Stashed changes
     setGroupName(e.target.value);
   };
 
   var getGroupArray = function getGroupArray(e, value) {
+<<<<<<< Updated upstream
     var array = [{
       id: user.id,
       name: user.name
     }].concat(_toConsumableArray(value));
+=======
+    var array = [].concat(_toConsumableArray(value), [{
+      id: user.id,
+      name: user.name
+    }]);
+    console.log(array); // console.log([...value]);
+
+>>>>>>> Stashed changes
     setGroupMembers(array);
   };
 
   var createGroup = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+<<<<<<< Updated upstream
       var groupData, response, res_group_id;
+=======
+      var groupData, response;
+>>>>>>> Stashed changes
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -32340,6 +32673,7 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
                 groupMembers: groupMembers,
                 groupName: groupName
               };
+<<<<<<< Updated upstream
               _context2.prev = 1;
               _context2.next = 4;
               return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)('/quick-create-group', groupData);
@@ -32358,11 +32692,34 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
               console.log(_context2.t0.response);
 
             case 13:
+=======
+              console.log(groupData);
+              _context2.prev = 2;
+              _context2.next = 5;
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_3__.post)("/quick-create-group", groupData);
+
+            case 5:
+              response = _context2.sent;
+              console.log(response);
+              _context2.next = 12;
+              break;
+
+            case 9:
+              _context2.prev = 9;
+              _context2.t0 = _context2["catch"](2);
+              console.log(_context2.t0.response);
+
+            case 12:
+>>>>>>> Stashed changes
             case "end":
               return _context2.stop();
           }
         }
+<<<<<<< Updated upstream
       }, _callee2, null, [[1, 10]]);
+=======
+      }, _callee2, null, [[2, 9]]);
+>>>>>>> Stashed changes
     }));
 
     return function createGroup() {
@@ -32370,6 +32727,7 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
     };
   }();
 
+<<<<<<< Updated upstream
   var selectGroup = function selectGroup(groupId) {
     props.setGroupId(groupId);
     props.startSession(groupId);
@@ -32378,10 +32736,16 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
   var createDefaultGroup = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
       var groupData, response, res_group_id, data, default_group_response;
+=======
+  var startSession = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+      var sessionData, response;
+>>>>>>> Stashed changes
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
+<<<<<<< Updated upstream
               groupData = {
                 owner_id: user.id,
                 groupMembers: [{
@@ -32417,18 +32781,36 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
               console.log(_context3.t0.response);
 
             case 17:
+=======
+              sessionData = {};
+              _context3.next = 3;
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_3__.post)("/start-session", sessionData);
+
+            case 3:
+              response = _context3.sent;
+
+            case 4:
+>>>>>>> Stashed changes
             case "end":
               return _context3.stop();
           }
         }
+<<<<<<< Updated upstream
       }, _callee3, null, [[1, 14]]);
     }));
 
     return function createDefaultGroup() {
+=======
+      }, _callee3);
+    }));
+
+    return function startSession() {
+>>>>>>> Stashed changes
       return _ref3.apply(this, arguments);
     };
   }();
 
+<<<<<<< Updated upstream
   var handleSoloSearch = function handleSoloSearch() {
     user.default_group_id ? selectGroup(user.default_group_id) : createDefaultGroup();
   };
@@ -32574,6 +32956,122 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
     })
   });
 });
+=======
+  var launch = function launch() {
+    createGroup();
+    startSession();
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    className: "popup-bg",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "popup",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("h2", {
+        children: ["Welcome back, ", user.name]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
+        children: "Groups you are in :"
+      }), !user.groups.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+        children: "no groups"
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        children: [user.groups.map(function (group) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
+            alignItems: "flex-start",
+            disablePadding: true,
+            divider: true,
+            className: classes.root,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              onClick: function onClick() {
+                return console.log("clicked");
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material_AvatarGroup__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  max: group.users.length > 2 ? group.users.length : 2,
+                  children: group.users.map(function (user) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material_Avatar__WEBPACK_IMPORTED_MODULE_11__["default"], {
+                      alt: user.name,
+                      src: "/"
+                    }, user.id);
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
+                className: "users-list",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
+                  primary: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_13__["default"], {
+                      sx: {
+                        display: "block",
+                        fontWeight: "bold"
+                      },
+                      component: "span",
+                      variant: "body2",
+                      color: "text.primary",
+                      children: group.name
+                    }, user.id)
+                  }),
+                  secondary: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+                    children: group.users.map(function (user) {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_13__["default"], {
+                        sx: {
+                          display: "inline",
+                          margin: "0 0.5rem"
+                        },
+                        component: "span",
+                        variant: "body2",
+                        color: "text.primary",
+                        children: user.name
+                      }, user.id);
+                    })
+                  })
+                })
+              })]
+            })
+          }, group.id);
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
+          children: "Create A New Group"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          disablePadding: true,
+          divider: true,
+          className: classes.root,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_14__["default"], {
+            multiple: true,
+            id: "tags-outlined",
+            options: users,
+            getOptionLabel: function getOptionLabel(user) {
+              return user.name;
+            },
+            defaultValue: [],
+            filterSelectedOptions: true,
+            onChange: getGroupArray,
+            renderInput: function renderInput(params) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_15__["default"], _objectSpread(_objectSpread({
+                color: "primary"
+              }, params), {}, {
+                label: "Search for people",
+                placeholder: "Add more..."
+              }));
+            }
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          className: classes.root,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_15__["default"], {
+            required: true,
+            color: "primary",
+            label: "Group Name",
+            onChange: handleGroupName,
+            value: groupName
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_16__["default"], {
+        disabled: !(groupName && groupMembers.length),
+        variant: "contained",
+        onClick: launch,
+        children: groupName && groupMembers.length ? "Create" : "The group must include people and have a name~"
+      })]
+    })
+  });
+};
+
+>>>>>>> Stashed changes
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SoloOrGroupPopup);
 
 /***/ }),
@@ -32944,6 +33442,7 @@ var getBox = function getBox(el) {
 
 /***/ }),
 
+<<<<<<< Updated upstream
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/js/SearchPage/components/DragAndDrop/style.scss":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/js/SearchPage/components/DragAndDrop/style.scss ***!
@@ -33120,6 +33619,8 @@ module.exports = function cssWithMappingToString(item) {
 
 /***/ }),
 
+=======
+>>>>>>> Stashed changes
 /***/ "./node_modules/css-vendor/dist/css-vendor.esm.js":
 /*!********************************************************!*\
   !*** ./node_modules/css-vendor/dist/css-vendor.esm.js ***!
@@ -91035,6 +91536,7 @@ if (false) {} else {
 
 /***/ }),
 
+<<<<<<< Updated upstream
 /***/ "./resources/js/SearchPage/components/DragAndDrop/style.scss":
 /*!*******************************************************************!*\
   !*** ./resources/js/SearchPage/components/DragAndDrop/style.scss ***!
@@ -91374,6 +91876,8 @@ module.exports = function (list, options) {
 
 /***/ }),
 
+=======
+>>>>>>> Stashed changes
 /***/ "./node_modules/tiny-invariant/dist/tiny-invariant.esm.js":
 /*!****************************************************************!*\
   !*** ./node_modules/tiny-invariant/dist/tiny-invariant.esm.js ***!
@@ -92883,7 +93387,11 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\web\\\\codingbootc
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
+<<<<<<< Updated upstream
 /******/ 			id: moduleId,
+=======
+/******/ 			// no module.id needed
+>>>>>>> Stashed changes
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React, { useEffect, useState } from 'react';
 import DragAndDrop from '../DragAndDrop/DragAndDrop';
 import Inputs from '../Inputs/Inputs';
@@ -5,15 +6,31 @@ import { get, post } from '../../../util/request';
 import UserContext from '../../../util/UserContext';
 import SoloOrGroupPopup from '../SoloOrGroupPopup/SoloOrGroupPopup';
 import { DateTime } from 'luxon';
+=======
+import React, { useEffect, useState } from "react";
+import DragAndDrop from "../DragAndDrop/DragAndDrop";
+import Inputs from "../Inputs/Inputs";
+import { get } from "../../../util/request";
+import UserContext from "../../../util/UserContext";
+import SoloOrGroupPopup from "../SoloOrGroupPopup/SoloOrGroupPopup";
+import { DateTime } from "luxon";
+>>>>>>> Stashed changes
 
 const App = () => {
     // input values
 
     const initialValues = {
+<<<<<<< Updated upstream
         city: 'Prague',
         date: DateTime.now().toFormat('yyyy-MM-dd'),
         startTime: '12:00:00',
         endTime: '12:00:00',
+=======
+        city: "Prague",
+        date: DateTime.now().toFormat("yyyy-MM-dd"),
+        startTime: "12:00:00",
+        endTime: "12:00:00",
+>>>>>>> Stashed changes
     };
 
     const [values, setValues] = useState(initialValues);
@@ -29,6 +46,17 @@ const App = () => {
 
     const [searchIds, setSearchIds] = useState([]);
 
+<<<<<<< Updated upstream
+=======
+    useEffect(() => {
+        console.log(values);
+    });
+
+    const search = () => {
+        console.log(searchIds);
+    };
+
+>>>>>>> Stashed changes
     const [user, setUser] = useState(null);
 
     const [groupId, setGroupId] = useState(0);
@@ -75,6 +103,7 @@ const App = () => {
         }
     };
 
+<<<<<<< Updated upstream
     const search = () => {
         updateSession();
         sendSearchDetails();
@@ -89,11 +118,19 @@ const App = () => {
         setUser(u);
 
         !u && window.location.assign('/login');
+=======
+    const fetchUser = async () => {
+        const response = await get("/api/user");
+
+        console.log(response.data);
+        setUser(response.data);
+>>>>>>> Stashed changes
     };
 
     useEffect(() => {
         fetchUser();
     }, []);
+<<<<<<< Updated upstream
 
     const startSession = async (group_id) => {
         // setLoading(true)
@@ -105,9 +142,12 @@ const App = () => {
 
         try {
             const response = await post('/session/store', sessionData);
+=======
+>>>>>>> Stashed changes
 
             const search_session_id = response.data;
 
+<<<<<<< Updated upstream
             console.log('session started, id: ', search_session_id);
 
             setSearchSessionId(search_session_id);
@@ -146,15 +186,22 @@ const App = () => {
         getSearchSessionDetails();
     }, []);
 
+=======
+>>>>>>> Stashed changes
     return (
-        <>
+        <div className="search-grid">
             <UserContext.Provider value={user}>
+<<<<<<< Updated upstream
                 {nonAnonymousSearch && (
                     <SoloOrGroupPopup
                         groupId={groupId}
                         setGroupId={setGroupId}
                         startSession={startSession}
                     />
+=======
+                {user && groupId === 0 && (
+                    <SoloOrGroupPopup setGroupId={setGroupId} />
+>>>>>>> Stashed changes
                 )}
                 <Inputs
                     city={city}
@@ -177,9 +224,17 @@ const App = () => {
                     searchIds={searchIds}
                     setSearchIds={setSearchIds}
                 />
-                <button onClick={search}>Search</button>
+                <div className="btn-search-container">
+                    <button className="btn btn-search-results" onClick={search}>
+                        Search
+                    </button>
+                </div>
             </UserContext.Provider>
+<<<<<<< Updated upstream
         </>
+=======
+        </div>
+>>>>>>> Stashed changes
     );
 };
 
