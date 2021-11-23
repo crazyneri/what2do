@@ -24,39 +24,59 @@
 .form-create-group_item {
   width: 80%;
 }
+h1 {
+  font-style: "Comfortaa", cursive;
+}
+
 .admin-container {
   display: grid;
   width: 100vw;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr;
-  -moz-column-gap: 10%;
-       column-gap: 10%;
   justify-items: start;
   margin: 2em;
+  font-family: "Comfortaa", cursive;
 }
-.admin-container .left-side .table-style, .admin-container .right-side .table-style {
+
+.left-side h2,
+.right-side h2 {
+  text-align: left;
+}
+.left-side button,
+.right-side button {
+  text-align: center;
+}
+.left-side .table-style,
+.right-side .table-style {
   border-collapse: collapse;
   margin: 25px 0px;
   font-size: 18px;
-  min-width: 400px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  min-width: 300px;
+  box-shadow: 0px 1px 5px #adadad;
 }
-.admin-container .left-side .table-style thead tr, .admin-container .right-side .table-style thead tr {
-  background-color: #e4919f;
+.left-side .table-style thead tr,
+.right-side .table-style thead tr {
+  background-color: #edae49;
   color: #ffffff;
   text-align: left;
 }
-.admin-container .left-side .table-style th, .admin-container .left-side .table-style td, .admin-container .right-side .table-style th, .admin-container .right-side .table-style td {
+.left-side .table-style th,
+.left-side .table-style td,
+.right-side .table-style th,
+.right-side .table-style td {
   padding: 10px 15px;
 }
-.admin-container .left-side .table-style tbody tr, .admin-container .right-side .table-style tbody tr {
+.left-side .table-style tbody tr,
+.right-side .table-style tbody tr {
   border-bottom: 1px solid #dddddd;
 }
-.admin-container .left-side .table-style tbody tr:nth-of-type(even), .admin-container .right-side .table-style tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
+.left-side .table-style tbody tr:nth-of-type(even),
+.right-side .table-style tbody tr:nth-of-type(even) {
+  background-color: #fffaf1;
 }
-.admin-container .left-side .table-style tbody tr:last-of-type, .admin-container .right-side .table-style tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
+.left-side .table-style tbody tr:last-of-type,
+.right-side .table-style tbody tr:last-of-type {
+  border-bottom: 2px solid #edae49;
 }
 
 .nav-container {

@@ -240,9 +240,21 @@ class UserChoiceController extends Controller
                 }
 
                 // return action(NotifyController::Class, 'notify', ['id' => $other_group_members]);
-                return 'You seem lonely!'; // email and notify the other group members
+                // email and notify the other group members
+                $group_choices = null;
+                $event = null;
+                $status = 'started';
+                $message = "You're the first, now you just need to wait for your friends. You can check the progress of searches on your user page.";
+
+                return ['group_choices' => $group_choices, 'event' => $event, 'status' => $status, 'message' => $message];
             }
-            return "Thank you for your choices, when everyone has completed the search we'll let you know!";
+            
+                $group_choices = null;
+                $event = null;
+                $status = 'waiting';
+                $message = "Thank you for your choices, when everyone has completed the search we'll let you know! You can check the progress of searches on your user page.";
+
+                return ['group_choices' => $group_choices, 'event' => $event, 'status' => $status, 'message' => $message];
         }
 
         if ($users_completed_number == $group_number) {
@@ -250,15 +262,27 @@ class UserChoiceController extends Controller
             $group_choices = $this->findMatch($search_session->id, $users_completed_number);
             
             // ** get winning event
-            $event = Event::findOrFail($group_choices[0]['event_id']);
-            // ** add event to search session
-            $search_session->event_id = $group_choices[0]['event_id'];
-            $search_session->save();
+            if(!empty($group_choices[0]['event_id']))
+            {
+                $event = Event::findOrFail($group_choices[0]['event_id']);
+                // ** add event to search session
+                $search_session->event_id = $group_choices[0]['event_id'];
+                $search_session->save();
 
-            return view('search\result', compact('group_choices', 'event'));
-            // if(!empty($group_choices[0]['event_id']))
-            // {
-            // }
+                $status = 'complete';
+                $message = 'The results are in, have a good one!';
+
+                return ['group_choices' => $group_choices, 'event' => $event, 'status' => $status, 'message' => $message];
+            }
+                $group_choices = null;
+                $event = null;
+                $status = 'nothing';
+                $message = "Sorry, you need to try again - we couldn't find a match this time :(";
+
+                return ['group_choices' => $group_choices, 'event' => $event, 'status' => $status, 'message' => $message];
+            // return view('search\result', compact('group_choices', 'event'));
+            // return ['url' => "/session/{search_session->id}"];
+            // return view('search\result', compact('group_choices', 'event'));
             // return "Ooops, maybe try to be less fussy!";
         }
     }
