@@ -14,6 +14,10 @@
     <button><a href="/user/{{$user->id}}/edit">Edit</a></button>
      @endif
 
+     @can('admin')
+         <button><a href="/admin">Manage venues and events</a></button>
+     @endcan
+     
 <hr>
     @if(Auth::id() == $user->id)
     <h3>My groups:</h3>

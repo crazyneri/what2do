@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
  */
 
 // HOME PAGE
-Route::get('/', function () {
-    return view('home/index');
-});
+Route::get('/', 'HomeController@redirect');
 
 // ADMIN PART
 Route::group(["middleware" => "can:admin"], function () {
