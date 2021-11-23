@@ -86,7 +86,7 @@ h1 {
 .nav-container-list a {
   color: #606567;
   text-decoration: none;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Comfortaa", cursive;
 }
 .nav-container-list a:hover {
   border-bottom: solid 1px #222;
@@ -97,9 +97,11 @@ h1 {
 .btn__log-out {
   padding: 0;
   font-size: 1em;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Comfortaa", cursive;
   color: #222;
   border: none;
+  background-color: #fff;
+  cursor: pointer;
 }
 .btn__log-out:hover {
   border-bottom: solid 1px #222;
@@ -110,23 +112,30 @@ h1 {
   margin: 0;
 }
 
+#search {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 main {
   width: 100vw;
   height: 100%;
   margin-top: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
 }
 
 .search-grid {
+  position: relative;
   margin-top: 15px;
   box-shadow: 0px 1px 5px #adadad;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
 }
 
 div p {
@@ -331,6 +340,7 @@ button.refine.close {
   background-color: #fffaf1;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 75vw;
   margin-top: 0;
   padding: 0 15%;
   color: #222;
@@ -365,7 +375,7 @@ button.refine.close {
 
 .btn-search-container {
   background-color: #fffaf1;
-  width: 100%;
+  width: 75vw;
   display: flex;
   justify-content: center;
 }
@@ -391,7 +401,12 @@ button.refine.close {
   width: 100vw;
   background: rgba(0, 0, 0, 0.6);
   position: fixed;
+  position: absolute;
   z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
 }
 .popup-bg h2,
 .popup-bg h3 {
@@ -403,9 +418,10 @@ button.refine.close {
 .popup {
   height: 80%;
   width: 60%;
+  padding: 0 20px;
   z-index: 3;
   background: #dfb871;
-  position: absolute;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: stretch;
