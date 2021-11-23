@@ -1,34 +1,5 @@
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "/js/search.js": "/js/search.js?id=38cb34ff522f51474f4b",
-    "/js/event-create.js": "/js/event-create.js?id=e7b76b04760414bd25e1",
-    "/css/main.css": "/css/main.css?id=7df5e7c7ffb171d017dd"
-=======
-=======
->>>>>>> be6efceabf5d1af3368bdf5c92ccf29a978002d5
-<<<<<<< HEAD
-    "/js/search.js": "/js/search.js?id=a7b5681e7271620c170e",
-    "/js/event-create.js": "/js/event-create.js?id=ca0f9f1fe977263cb721",
-    "/css/main.css": "/css/main.css?id=068e4689a720e2ca3df7"
-=======
-    "/js/search.js": "/js/search.js?id=8b81e9e2a27fb5f771c8",
+    "/js/search.js": "/js/search.js?id=cda1ae26f11d089d62db",
     "/js/event-create.js": "/js/event-create.js?id=b08ba51f977453f83768",
-    "/css/main.css": "/css/main.css?id=7df5e7c7ffb171d017dd"
->>>>>>> a2a6d3588b98180b59f31baba541471ccec90b4e
-<<<<<<< HEAD
->>>>>>> 9a09595475ce4ea72701f3aad51e5da58cfc52f6
-=======
-=======
-    "/js/search.js": "/js/search.js?id=944cdd560b644c008a51",
-    "/js/event-create.js": "/js/event-create.js?id=516c06dc0e3334f82416",
-    "/css/main.css": "/css/main.css?id=ac9978767007654c090e"
->>>>>>> user-page
->>>>>>> be6efceabf5d1af3368bdf5c92ccf29a978002d5
-=======
-    "/js/search.js": "/js/search.js?id=0313ea1956c16e06be5d",
-    "/js/event-create.js": "/js/event-create.js?id=e7b76b04760414bd25e1",
-    "/css/main.css": "/css/main.css?id=7df5e7c7ffb171d017dd"
->>>>>>> feat/sessions-page
+    "/css/main.css": "/css/main.css?id=6ba19d45f7b3146118cc"
 }
