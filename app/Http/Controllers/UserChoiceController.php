@@ -255,7 +255,8 @@ class UserChoiceController extends Controller
             $search_session->event_id = $group_choices[0]['event_id'];
             $search_session->save();
 
-            return view('search\result', compact('group_choices', 'event'));
+            return ['url' => "/session_search/{$search_session->id}"];
+            // return view('search\result', compact('group_choices', 'event'));
             // if(!empty($group_choices[0]['event_id']))
             // {
             // }
