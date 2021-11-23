@@ -240,7 +240,7 @@ class UserChoiceController extends Controller
                 }
 
                 // return action(NotifyController::Class, 'notify', ['id' => $other_group_members]);
-                return 'You seem lonely!'; // email and notify the other group members
+                return 'You\'re the first, wait for your friends'; // email and notify the other group members
             }
             return "Thank you for your choices, when everyone has completed the search we'll let you know!";
         }
@@ -250,16 +250,20 @@ class UserChoiceController extends Controller
             $group_choices = $this->findMatch($search_session->id, $users_completed_number);
             
             // ** get winning event
-            $event = Event::findOrFail($group_choices[0]['event_id']);
-            // ** add event to search session
-            $search_session->event_id = $group_choices[0]['event_id'];
-            $search_session->save();
+            if(!empty($group_choices[0]['event_id']))
+            {
+                $event = Event::findOrFail($group_choices[0]['event_id']);
+                // ** add event to search session
+                $search_session->event_id = $group_choices[0]['event_id'];
+                $search_session->save();
 
-            return ['url' => "/session_search/{$search_session->id}"];
+                return ['group_choices' => $group_choices, 'event' => $event];
+            }
+
+            return "sorry, nothing to offer!";
             // return view('search\result', compact('group_choices', 'event'));
-            // if(!empty($group_choices[0]['event_id']))
-            // {
-            // }
+            // return ['url' => "/session/{search_session->id}"];
+            // return view('search\result', compact('group_choices', 'event'));
             // return "Ooops, maybe try to be less fussy!";
         }
     }

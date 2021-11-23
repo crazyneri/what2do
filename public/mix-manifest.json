@@ -1,6 +1,7 @@
 {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "/js/search.js": "/js/search.js?id=38cb34ff522f51474f4b",
     "/js/event-create.js": "/js/event-create.js?id=e7b76b04760414bd25e1",
     "/css/main.css": "/css/main.css?id=7df5e7c7ffb171d017dd"
@@ -25,4 +26,9 @@
     "/css/main.css": "/css/main.css?id=ac9978767007654c090e"
 >>>>>>> user-page
 >>>>>>> be6efceabf5d1af3368bdf5c92ccf29a978002d5
+=======
+    "/js/search.js": "/js/search.js?id=0313ea1956c16e06be5d",
+    "/js/event-create.js": "/js/event-create.js?id=e7b76b04760414bd25e1",
+    "/css/main.css": "/css/main.css?id=7df5e7c7ffb171d017dd"
+>>>>>>> feat/sessions-page
 }
