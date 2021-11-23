@@ -1,6 +1,6 @@
-import RefinementBox from './RefinementBox';
-import { useState, useEffect } from 'react';
-import { Draggable } from 'react-beautiful-dnd';
+import RefinementBox from "./RefinementBox";
+import { useState, useEffect } from "react";
+import { Draggable } from "react-beautiful-dnd";
 
 export default function CategoryBox({
     keyValue,
@@ -14,32 +14,37 @@ export default function CategoryBox({
     setShowMusicSubCats,
 }) {
     const [beingDragged, setBeingDragged] = useState(false);
-    const [draggingClass, setDraggingClass] = useState('list');
+    const [draggingClass, setDraggingClass] = useState("list");
 
     useEffect(() => {
         beingDragged
-            ? setDraggingClass('list dragging')
-            : setDraggingClass('list');
+            ? setDraggingClass("list dragging")
+            : setDraggingClass("list");
     }, [beingDragged]);
 
     const showRefinements = () => {
-
-        if (!showCinemaSubCats && category.id === 'cinema') {
+        if (!showCinemaSubCats && category.id === "cinema") {
             setShowCinemaSubCats(true);
         }
-        if (showCinemaSubCats && category.id === 'cinema') {
+        if (showCinemaSubCats && category.id === "cinema") {
             setShowCinemaSubCats(false);
         }
-        if (!showTheatreSubCats && (category.id === 'theater' || category.id === 'theatre')) {
+        if (
+            !showTheatreSubCats &&
+            (category.id === "theater" || category.id === "theatre")
+        ) {
             setShowTheatreSubCats(true);
         }
-        if (showTheatreSubCats && (category.id === 'theater' || category.id === 'theatre')) {
+        if (
+            showTheatreSubCats &&
+            (category.id === "theater" || category.id === "theatre")
+        ) {
             setShowTheatreSubCats(false);
         }
-        if (!showMusicSubCats && category.id === 'music') {
+        if (!showMusicSubCats && category.id === "music") {
             setShowMusicSubCats(true);
         }
-        if (showMusicSubCats && category.id === 'music') {
+        if (showMusicSubCats && category.id === "music") {
             setShowMusicSubCats(false);
         }
     };
@@ -53,7 +58,11 @@ export default function CategoryBox({
             {(provided, snapshot) => (
                 <div
                     onChange={setBeingDragged(snapshot.draggingOver)}
-                    className={`inner-column ${draggingClass}`}
+                    className={
+                        category.parent_id === 0
+                            ? `inner-column ${draggingClass}`
+                            : `inner-column sub-category-box ${draggingClass}`
+                    }
                     // we must apply the properties from 'provided to the
                     // draggable element
                     {...provided.draggableProps} // applied to the component that we want to move

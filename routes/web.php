@@ -81,6 +81,7 @@ Route::get('/session_search/{session_id}/{choice_id}', 'UserChoiceController@han
 Route::post('/quick-create-group', 'GroupController@store');
 Route::post('/session/store', 'SearchSessionController@store');
 Route::post('/session/update', 'SearchSessionController@update');
+Route::post('/session/save-session-to-cookies', 'SearchSessionController@saveSessionToCookies');
 
 Route::post('/user-choice/store', 'UserChoiceController@store');
 Route::post('/anonymous-login', 'UserController@anonymousLogin')->name('anonymous-login');

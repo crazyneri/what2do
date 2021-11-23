@@ -12,7 +12,7 @@
 
 <form action="{{ route('login') }}" method="post">
     @csrf
-
+    
     <label for="email">Email: </label>
     <input type="email" name="email" id="email" value="{{ old('email') }}">
     <br>
@@ -20,7 +20,6 @@
     <input type="password" name="password" id="pass" value="">
     <br>
     <button>Login</button>
-
 </form>
 
 <div><button><a href="/register">Create an account</a></button></div>

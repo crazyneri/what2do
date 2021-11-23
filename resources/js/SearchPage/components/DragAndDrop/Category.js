@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
-import { Draggable } from 'react-beautiful-dnd';
-import Refinement from './Refinement';
-import CategoryBox from './CategoryBox';
+import { useEffect, useState } from "react";
+import { Draggable } from "react-beautiful-dnd";
+import Refinement from "./Refinement";
+import CategoryBox from "./CategoryBox";
 
 export default function Category({ key, category, index }) {
     const [beingDragged, setBeingDragged] = useState(false);
-    const [draggingClass, setDraggingClass] = useState('list');
+    const [draggingClass, setDraggingClass] = useState("list");
 
     useEffect(() => {
         beingDragged
-            ? setDraggingClass('list dragging')
-            : setDraggingClass('list');
+            ? setDraggingClass("list dragging")
+            : setDraggingClass("list");
     }, [beingDragged]);
     // console.log(category.id);
     // console.log(category.refinements);
@@ -20,15 +20,16 @@ export default function Category({ key, category, index }) {
 
     return (
         <div
-            style={{
-                width: 'auto',
-                height: 'auto',
-                margin: '5%',
-                padding: '10px',
-                border: '1px solid black',
-                borderRadius: '15px',
-                fontFamily: 'sans-serif',
-            }}
+            className="category-"
+            // style={{
+            //     width: 'auto',
+            //     height: 'auto',
+            //     margin: '5%',
+            //     padding: '10px',
+            //     border: '1px solid black',
+            //     borderRadius: '15px',
+            //     fontFamily: 'sans-serif',
+            // }}
         >
             <h4>{category.id}</h4>
             {Object.values(category.categoryBoxes).map((box, i) => {

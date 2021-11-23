@@ -18,7 +18,7 @@ class SearchSessionController extends Controller
 
         $search_session_id = $search_session->id;
 
-        session(['search_session_id' => $search_session_id]);
+        session(['session_id' => $search_session_id]);
 
         return $search_session_id;
     }
@@ -37,5 +37,15 @@ class SearchSessionController extends Controller
         $search_session->save();
 
         return $search_session;
+    }
+
+    public function saveSessionToCookies(Request $request)
+    {
+        $search_session_id = $request->input('session_id');
+
+        session(['session_id' => $search_session_id]);
+
+        return $search_session_id;
+
     }
 }
