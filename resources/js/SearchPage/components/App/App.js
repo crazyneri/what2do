@@ -199,8 +199,9 @@ const App = () => {
                         saveSessionToCookies={saveSessionToCookies}
                     />
                 )}
-                <Router>
+                <Router >
                     <Routes>
+                        <Route exact path='/search/results' element={<SearchResults />} />
                         <Route exact path='/search' element={
                             <SearchControls
                                 values={values}
@@ -221,7 +222,6 @@ const App = () => {
                                 searchSessionId={searchSessionId}
                                 search={search}
                             />}>
-                            <Route path='/search/results' element={<SearchResults />} />
                         </Route>
                     </Routes>
                 </Router>
