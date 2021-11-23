@@ -2,7 +2,10 @@ import React, { useEffect } from "react";
 
 import { DateTime } from "luxon";
 
-const Inputs = ({ city, date, startTime, endTime, setValues }) => {
+const Inputs = ({ values: { city, date, startTime, endTime }, setValues }) => {
+
+    // const { city, date, startTime, endTime } = values;
+
     const convertToHoursAndMinutes = (timeString) => {
         const formated = DateTime.fromFormat(timeString, "hh:mm").toFormat(
             "HH:mm:ss"
@@ -44,7 +47,7 @@ const Inputs = ({ city, date, startTime, endTime, setValues }) => {
             (convertToObject(endTime).hour ===
                 convertToObject(startTime).hour &&
                 convertToObject(endTime).minute <=
-                    convertToObject(startTime).minute)
+                convertToObject(startTime).minute)
         ) {
             setValues((prev_values) => {
                 return {
