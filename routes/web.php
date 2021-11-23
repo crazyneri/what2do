@@ -73,8 +73,8 @@ Route::get('/send-email', function () {
 // test search function
 // Route::get('/solo_search/{id}', 'SearchResultsController@singleSearch');
 
-// test search
-Route::get('/session_search/{session_id}/{choice_id}', 'UserChoiceController@handleSearch');
+// session search
+Route::get('/session/{session_id}/', 'SearchResultsController@show');
 
 // quick create group
 
