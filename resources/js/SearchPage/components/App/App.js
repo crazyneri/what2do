@@ -44,6 +44,8 @@ const App = () => {
 
     const nonAnonymousSearch = user && user.id !== 0 && searchSessionId === 0;
 
+    const [popupOpen, setPopupOpen] = useState(true);
+
     const showPopup =
         (user && user.id !== 0 && searchSessionId === 0) ||
         (user && user.id === 0);
@@ -168,15 +170,11 @@ const App = () => {
             setGroupId(group_id);
             console.log("session details: ", response.data);
 
-
-            setSearchSession(response.data)
+            setSearchSession(response.data);
 
             setSearchSessionId(session_id);
 
-            user &&
-                user.id === 0 &&
-                session_id === 0 &&
-                startSession(group_id);
+            user && user.id === 0 && session_id === 0 && startSession(group_id);
         } catch (error) {
             console.log(error.response);
         }
@@ -192,11 +190,10 @@ const App = () => {
 
 
 
-
     return (
         <div className="search-grid">
             <UserContext.Provider value={user}>
-                {nonAnonymousSearch && (
+                {nonAnonymousSearch && popupOpen && (
                     <SoloOrGroupPopup
                         groupId={groupId}
                         setGroupId={setGroupId}
@@ -204,8 +201,9 @@ const App = () => {
                         saveSessionToCookies={saveSessionToCookies}
                     />
                 )}
-                <Router>
+                <Router >
                     <Routes>
+                        <Route exact path='/search/results' element={<SearchResults />} />
                         <Route exact path='/search' element={
                             <SearchControls
                                 values={values}
@@ -226,7 +224,6 @@ const App = () => {
                                 searchSessionId={searchSessionId}
                                 search={search}
                             />}>
-                            <Route path='/search/results' element={<SearchResults />} />
                         </Route>
                     </Routes>
                 </Router>
