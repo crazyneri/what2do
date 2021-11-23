@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import DragAndDrop from '../DragAndDrop/DragAndDrop';
-import Inputs from '../Inputs/Inputs';
-import { get, post } from '../../../util/request';
-import UserContext from '../../../util/UserContext';
-import SoloOrGroupPopup from '../SoloOrGroupPopup/SoloOrGroupPopup';
-import { DateTime } from 'luxon';
+import React, { useEffect, useState } from "react";
+import DragAndDrop from "../DragAndDrop/DragAndDrop";
+import Inputs from "../Inputs/Inputs";
+import { get, post } from "../../../util/request";
+import UserContext from "../../../util/UserContext";
+import SoloOrGroupPopup from "../SoloOrGroupPopup/SoloOrGroupPopup";
+import { DateTime } from "luxon";
 
 const App = () => {
     // input values
 
     const initialValues = {
-        city: 'Prague',
-        date: DateTime.now().toFormat('yyyy-MM-dd'),
-        startTime: '12:00:00',
-        endTime: '12:00:00',
+        city: "Prague",
+        date: DateTime.now().toFormat("yyyy-MM-dd"),
+        startTime: "12:00:00",
+        endTime: "12:00:00",
     };
 
     const [values, setValues] = useState(initialValues);
@@ -49,7 +49,7 @@ const App = () => {
             end_time: endTime,
         };
         try {
-            const response = await post('/session/update', sessionData);
+            const response = await post("/session/update", sessionData);
 
             console.log(response.data);
         } catch (error) {
@@ -65,7 +65,7 @@ const App = () => {
 
         try {
             const response = await post(
-                '/user-choice/store',
+                "/user-choice/store",
                 searchDetailsData
             );
 
@@ -81,14 +81,14 @@ const App = () => {
     };
 
     const fetchUser = async () => {
-        const response = await get('/api/user');
+        const response = await get("/api/user");
 
         const u = await response.data;
-        console.log('logged in user', u);
+        console.log("logged in user", u);
 
         setUser(u);
 
-        !u && window.location.assign('/login');
+        !u && window.location.assign("/login");
     };
 
     useEffect(() => {
@@ -101,14 +101,14 @@ const App = () => {
             user_id: user.id,
             group_id: group_id,
         };
-        console.log('starting session with group id', group_id);
+        console.log("starting session with group id", group_id);
 
         try {
-            const response = await post('/session/store', sessionData);
+            const response = await post("/session/store", sessionData);
 
             const search_session_id = response.data;
 
-            console.log('session started, id: ', search_session_id);
+            console.log("session started, id: ", search_session_id);
 
             setSearchSessionId(search_session_id);
         } catch (error) {
@@ -118,17 +118,19 @@ const App = () => {
         // setLoading(false);
     };
 
-
     const saveSessionToCookies = async (session_id) => {
         // setLoading(true)
         const sessionData = {
-            session_id: session_id
+            session_id: session_id,
         };
 
         try {
-            const response = await post('/session/save-session-to-cookies', sessionData);
+            const response = await post(
+                "/session/save-session-to-cookies",
+                sessionData
+            );
 
-            console.log('session started, id: ', session_id);
+            console.log("session started, id: ", session_id);
 
             setSearchSessionId(session_id);
         } catch (error) {
@@ -138,17 +140,16 @@ const App = () => {
         // setLoading(false);
     };
 
-
     const getSearchSessionDetails = async () => {
         // setLoading(true)
 
         try {
-            const response = await get('/api/session/details');
+            const response = await get("/api/session/details");
 
             const search_session_id = response.data.search_session_id;
             const group_id = response.data.group_id;
             setGroupId(group_id);
-            console.log('session details: ', response.data);
+            console.log("session details: ", response.data);
 
             setSearchSessionId(search_session_id);
 
@@ -168,7 +169,7 @@ const App = () => {
     }, []);
 
     return (
-        <>
+        <div className="search-grid">
             <UserContext.Provider value={user}>
                 {nonAnonymousSearch && (
                     <SoloOrGroupPopup
@@ -201,7 +202,7 @@ const App = () => {
                 />
                 <button onClick={search}>Search</button>
             </UserContext.Provider>
-        </>
+        </div>
     );
 };
 

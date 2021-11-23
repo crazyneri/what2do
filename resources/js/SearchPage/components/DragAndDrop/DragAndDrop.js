@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
-import { DragDropContext } from 'react-beautiful-dnd';
-import './style.scss';
-import Column from './Column';
-import { get } from '../../../util/request';
+import { useEffect } from "react";
+import { DragDropContext } from "react-beautiful-dnd";
+// import './style.scss';
+import Column from "./Column";
+import { get } from "../../../util/request";
 
 function DragAndDrop({
     state,
@@ -16,36 +16,37 @@ function DragAndDrop({
     columnsToRender,
     setColumnsToRender,
     searchIds,
-    setSearchIds
+    setSearchIds,
 }) {
-
     const renderColumns = () => {
         if (showCinemaSubCats) {
             const columns = state.columnOrder.filter((category) => {
-                return category === 'categories' || category.includes('cinema');
+                return category === "categories" || category.includes("cinema");
             });
             setColumnsToRender(columns);
         }
         if (showTheatreSubCats) {
             const columns = state.columnOrder.filter((category) => {
                 return (
-                    category === 'categories' || category.includes('theater') || category.includes('theatre')
+                    category === "categories" ||
+                    category.includes("theater") ||
+                    category.includes("theatre")
                 );
             });
             setColumnsToRender(columns);
         }
         if (showMusicSubCats) {
             const columns = state.columnOrder.filter((category) => {
-                return category === 'categories' || category.includes('music');
+                return category === "categories" || category.includes("music");
             });
             setColumnsToRender(columns);
         }
         if (!showCinemaSubCats && !showMusicSubCats && !showTheatreSubCats) {
             const columns = state.columnOrder.filter((category) => {
                 return (
-                    category === 'categories' ||
-                    category === 'what2do' ||
-                    category === 'empty-sub-categories'
+                    category === "categories" ||
+                    category === "what2do" ||
+                    category === "empty-sub-categories"
                 );
             });
             setColumnsToRender(columns);
@@ -145,64 +146,54 @@ function DragAndDrop({
             // ? need to decide how to update the server
             // one way is to call an 'end-point' to let the server now a change has occurred
         }
-
-
     };
 
     const updatePreferences = () => {
-
         // finding selected category ids (string names of the category)
         const categoryIds = state.columns.what2do.categoryIds;
 
         let preferencesIds = [];
 
-        categoryIds.forEach((categoryId => {
+        categoryIds.forEach((categoryId) => {
             const preferencesString = `${categoryId}-preferences`;
             // finding the corresponding items in state.columns array under category-preferences key and retrieving its categoryIds array (still in string/name format)
 
-            const subcategoriesArray = state.columns[preferencesString].categoryIds;
+            const subcategoriesArray =
+                state.columns[preferencesString].categoryIds;
             // pushing the result to an array that then contains all preferences, i.e. subcategories chosen by the user under any main category (still in string/name format)
             preferencesIds.push(...subcategoriesArray);
-
-        }))
+        });
 
         // finding the corresponding unique keys of the subcategoriesArray items in state.categories object and creating a matching array containing those keys
-        const categoryNumberIds = preferencesIds.map(preferenceId => {
+        const categoryNumberIds = preferencesIds.map((preferenceId) => {
             const categoryNumberId = state.categories[preferenceId].categoryId;
             return categoryNumberId;
         });
 
         // updating the searchIds state array to reflect the current user preferences
         setSearchIds(categoryNumberIds);
-    }
+    };
 
     useEffect(() => {
-
         // on state update (and once the data has been loaded, i.e. state is not null), we need to update state variable searchIds = array which includes preferences,i.e. subcategories chosen by the user - this array is to be used once the user clicks on the search button
         if (state) {
             updatePreferences();
         }
-
     }, [state]);
 
-
-
     const fetchData = async () => {
-
-        const response = await get('/api/search');
+        const response = await get("/api/search");
 
         console.log(response.data);
         setState(response.data);
-    }
+    };
     useEffect(() => {
         // on page reload, fetch categories data from database to populate the DragAndDrop component
         fetchData();
-
-    }, [])
-
+    }, []);
 
     if (!state) {
-        return <h1>loading</h1>
+        return <h1>loading</h1>;
     }
 
     return (

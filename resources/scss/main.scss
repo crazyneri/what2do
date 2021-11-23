@@ -1,7 +1,22 @@
 @import "group/show.scss";
 @import "user/show.scss";
 @import "admin/index.scss";
+<<<<<<< HEAD
+@import "navigation/nav.scss";
+// @import "../js/SearchPage/components/DragAndDrop/style-ver1.scss";
+// @import "../js/SearchPage/components/DragAndDrop/style-ver2.scss";
+// @import "../js/SearchPage/components/DragAndDrop/style-ver3.scss";
+@import "../js/SearchPage/components/DragAndDrop/style-ver4.scss";
+@import "../js/SearchPage/components/SoloOrGroupPopup/SearchPopUp-ver1.scss";
+=======
+>>>>>>> main
 
 * {
     box-sizing: border-box;
+}
+body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 }

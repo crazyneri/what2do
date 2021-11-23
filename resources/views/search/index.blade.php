@@ -2,7 +2,9 @@
 
 @section('content')
 
-<div id='search'></div>
+<main>
+<div id='search' ></div>
+</main>
 
 <script src="{{mix('js/search.js')}}"></script>
 
