@@ -1,12 +1,13 @@
-@import 'group/show.scss';
-@import 'user/show.scss';
-@import 'admin/index.scss';
-@import 'navigation/nav.scss';
+@import "group/show.scss";
+@import "user/show.scss";
+@import "admin/index.scss";
+@import "navigation/nav.scss";
 // @import "../js/SearchPage/components/DragAndDrop/style-ver1.scss";
 // @import "../js/SearchPage/components/DragAndDrop/style-ver2.scss";
 // @import "../js/SearchPage/components/DragAndDrop/style-ver3.scss";
-@import '../js/SearchPage/components/DragAndDrop/style-ver4.scss';
-@import '../js/SearchPage/components/SoloOrGroupPopup/SearchPopUp-ver1.scss';
+@import "../js/SearchPage/components/DragAndDrop/style-ver4.scss";
+@import "../js/SearchPage/components/SoloOrGroupPopup/SearchPopUp-ver1.scss";
+@import "login/login.scss";
 
 * {
     box-sizing: border-box;

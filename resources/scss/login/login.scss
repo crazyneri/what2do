@@ -1,3 +1,5 @@
+@import "../colors.scss";
+// not sure what this is
 .login {
     &__container {
         width: 5em;
@@ -7,6 +9,103 @@
         margin: 1em;
         border: none;
         border-radius: 3px;
-        background-color: $login_button;
+        // background-color: $login_button;
     }
+}
+
+// Login page css
+* {
+    box-sizing: border-box;
+}
+.login {
+    width: 60vw;
+    height: 60vh;
+    margin: 0 auto;
+    margin-top: 15px;
+    background-color: $background;
+    box-shadow: $main-shadow;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    align-items: center;
+    &-message__no-login {
+        background-color: $background;
+        width: 50vw;
+    }
+    // continue without login
+    .login-message__no-login {
+        h2 {
+            font-family: "Comfortaa", cursive;
+            font-size: 16px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid $pop-border;
+        }
+        form {
+            padding: 5px 0;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .btn-login__no-login {
+            width: 40%;
+            margin: 0 15px;
+        }
+    }
+}
+
+// login
+.login-form {
+    background-color: $background;
+    width: 50vw;
+    padding: 10px 0 0;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    // grid-row-gap: 10%;
+    border: 1px solid $pop-border;
+    box-shadow: 1px 1px 5px $pop-border;
+    &-input {
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        label {
+            font-family: "Comfortaa", cursive;
+        }
+        input {
+            width: 100%;
+            padding: 7px 0;
+            border: 1px solid $headers;
+            &:focus {
+                border: 1px solid $headers;
+            }
+        }
+    }
+}
+.btn-container {
+    width: 80%;
+    margin: 0 auto;
+}
+.btn-login {
+    font-family: "Comfortaa", cursive;
+    font-size: 0.9rem;
+    background-color: #5f709e;
+    color: #fff;
+    padding: 7px;
+    &__login {
+        width: 100%;
+        background-color: $headers;
+    }
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+}
+
+.btn-create {
+    width: 50vw;
+    display: flex;
+    justify-content: flex-end;
 }

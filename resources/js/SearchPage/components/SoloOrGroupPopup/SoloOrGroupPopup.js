@@ -8,7 +8,6 @@ import {
     List,
     ListItem,
     ListItemAvatar,
-    ListItemButton,
     TextField,
     ListItemText,
     Typography,
@@ -133,24 +132,30 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
         user.default_group_id
             ? startNewSession(user.default_group_id)
             : createDefaultGroup();
+        props.setSearchIds([]);
+
+        props.setPopupOpen(false);
     };
 
     const startNewSession = (groupId) => {
         props.setGroupId(groupId);
 
         props.startSession(groupId);
+        props.setPopupOpen(false);
+
     };
 
     const selectSession = (groupId, session_id) => {
         props.setGroupId(groupId);
 
         props.saveSessionToCookies(session_id);
+        props.setPopupOpen(false)
     };
 
     return (
         <div className="popup-bg" ref={ref}>
             <Zoom
-                in={user && props.groupId === 0}
+                in={true}
                 style={{
                     transitionDelay:
                         user && props.groupId === 0 ? "500ms" : "0ms",

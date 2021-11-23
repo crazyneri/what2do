@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Navigate, useNavigate } from 'react-router-dom';
 import UserContext from '../../../util/UserContext';
 import DragAndDrop from '../DragAndDrop/DragAndDrop';
 import Inputs from '../Inputs/Inputs';
@@ -23,9 +24,12 @@ const SearchControls = (
         search }
 ) => {
 
+    const navigate = useNavigate();
+
     const user = useContext(UserContext);
 
     const alreadyResponded = user && user.id && searchSession && searchSessionId !== 0 && searchSession.user_choices && searchSession.user_choices.some(user_choice => user_choice.user_id === user.id)
+
 
     return (
         <>
@@ -49,7 +53,7 @@ const SearchControls = (
             />
             {
                 (!alreadyResponded && searchIds && searchIds.length !== 0) &&
-                <button onClick={search}>Search</button>
+                <button onClick={() => { search(); navigate("/search/results"); }}>Search</button>
             }
         </>
     )
