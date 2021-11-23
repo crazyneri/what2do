@@ -266,6 +266,8 @@ class UserChoiceController extends Controller
                 $status = 'complete';
                 $message = 'The results are in, have a good one!';
 
+                $event->load('venue');
+
                 return ['group_choices' => $group_choices, 'event' => $event, 'status' => $status, 'message' => $message];
             }
             $group_choices = null;
