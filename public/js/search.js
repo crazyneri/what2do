@@ -30957,6 +30957,12 @@ var App = function App() {
       setLoading = _useState24[1];
 
   var nonAnonymousSearch = user && user.id !== 0 && searchSessionId === 0;
+
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+      _useState26 = _slicedToArray(_useState25, 2),
+      popupOpen = _useState26[0],
+      setPopupOpen = _useState26[1];
+
   var showPopup = user && user.id !== 0 && searchSessionId === 0 || user && user.id === 0; // || (user && user.id === 0)
 
   var updateSession = /*#__PURE__*/function () {
@@ -31226,7 +31232,7 @@ var App = function App() {
     className: "search-grid",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_util_UserContext__WEBPACK_IMPORTED_MODULE_5__["default"].Provider, {
       value: user,
-      children: [nonAnonymousSearch && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_SoloOrGroupPopup_SoloOrGroupPopup__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      children: [nonAnonymousSearch && popupOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_SoloOrGroupPopup_SoloOrGroupPopup__WEBPACK_IMPORTED_MODULE_6__["default"], {
         groupId: groupId,
         setGroupId: setGroupId,
         startSession: startSession,

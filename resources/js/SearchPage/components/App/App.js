@@ -44,6 +44,8 @@ const App = () => {
 
     const nonAnonymousSearch = user && user.id !== 0 && searchSessionId === 0;
 
+    const [popupOpen, setPopupOpen] = useState(true);
+
     const showPopup =
         (user && user.id !== 0 && searchSessionId === 0) ||
         (user && user.id === 0);
@@ -191,7 +193,7 @@ const App = () => {
     return (
         <div className="search-grid">
             <UserContext.Provider value={user}>
-                {nonAnonymousSearch && (
+                {nonAnonymousSearch && popupOpen && (
                     <SoloOrGroupPopup
                         groupId={groupId}
                         setGroupId={setGroupId}
