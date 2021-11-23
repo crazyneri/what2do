@@ -314,5 +314,57 @@
     {
         "category_id": 47,
         "event_id": 45
+    },
+    {
+        "category_id": 4,
+        "event_id": 46
+    },
+    {
+        "category_id": 5,
+        "event_id": 46
+    },
+    {
+        "category_id": 13,
+        "event_id": 46
+    },
+    {
+        "category_id": 4,
+        "event_id": 47
+    },
+    {
+        "category_id": 11,
+        "event_id": 47
+    },
+    {
+        "category_id": 26,
+        "event_id": 47
+    },
+    {
+        "category_id": 4,
+        "event_id": 48
+    },
+    {
+        "category_id": 8,
+        "event_id": 48 
+    },
+    {
+        "category_id": 9,
+        "event_id": 48
+    },
+    {
+        "category_id": 45,
+        "event_id": 49
+    },
+    {
+        "category_id": 45,
+        "event_id": 50
+    },
+    {
+        "category_id": 47,
+        "event_id": 50 
+    },
+    {
+        "category_id": 48,
+        "event_id": 51
     }
 ]
