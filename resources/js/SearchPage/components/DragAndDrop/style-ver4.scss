@@ -1,0 +1,309 @@
+$background: #fffaf1;
+$background-draggable: #f9edcc;
+$inputs: #f9edcc;
+$dark-brown: #61210f;
+$columns: #f9edcc;
+$pop-border: #ea2b1f;
+$search: #edae49;
+$light-yellow: #f9df74;
+$headers: #414c6b;
+$main-shadow: 0px 1px 5px rgb(173, 173, 173);
+// $font-headers: "Laila", sans-serif;
+$font-headers: "Nunito", sans-serif;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+main {
+    width: 100vw;
+    height: 100%;
+    margin-top: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    user-select: none;
+    // font-family: "Comfortaa", cursive;
+}
+.search-grid {
+    margin-top: 15px;
+    box-shadow: 0px 1px 5px rgb(173, 173, 173);
+}
+div p {
+    margin: 0.1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.refine {
+    cursor: pointer;
+}
+
+.container {
+    background-color: $background;
+    width: 75vw;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+
+.column {
+    background-color: $columns;
+    width: 25%;
+    height: 50vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5%;
+    padding: 10px;
+    border: 2.5px solid $pop-border;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px $pop-border;
+    position: absolute;
+    // flex: 1;
+    &:nth-child(1) {
+        left: 20px;
+        h2 {
+            font-size: 2em;
+        }
+    }
+    &:nth-child(2) {
+        background-color: $columns;
+        width: 30%;
+        height: 55vh;
+        box-shadow: 1.5px 1.5px 6px $pop-border;
+        // flex: 2;
+        position: relative;
+        h2 {
+            font-size: 2.6em;
+            font-weight: 900;
+        }
+    }
+    &:nth-child(3) {
+        right: 20px;
+        h2 {
+            font-size: 2em;
+        }
+    }
+}
+
+.list {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+
+h2 {
+    // border-bottom: 1px solid black;
+    margin: 0.1rem;
+    text-align: center;
+}
+
+h3 {
+    // border-bottom: 1px solid black;
+    margin: 0.1rem;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+h5 {
+    border-bottom: 1px solid black;
+    margin: 0.1rem;
+    text-align: center;
+}
+
+.drag-space {
+    background-color: $background-draggable;
+    width: 90%;
+    height: 90%;
+    margin-top: 10px;
+    padding: 5px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    // border-radius: 5px;
+    border-top: 2.5px solid $pop-border;
+    overflow: hidden auto;
+    // box-shadow: 3px 3px 5px #222;
+    ol {
+        margin: 20px;
+        padding: 0;
+    }
+    li {
+        font-size: 1em;
+        margin: 6px;
+        font-family: "Comfortaa", cursive;
+    }
+    .instructions-bold {
+        font-weight: 900;
+    }
+    &::-webkit-scrollbar {
+        background-color: $columns;
+        width: 0.9em;
+        cursor: auto;
+    }
+    &::-webkit-scrollbar-button {
+        // background: $headers;
+        border: 1px solid $headers;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: $search;
+    }
+    &::-webkit-scrollbar-track-piece {
+        // background-color: red;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba($pop-border, 0.6);
+        height: 30%;
+        &:hover {
+            background-color: rgba($headers, 0.8);
+        }
+    }
+}
+
+.dragging {
+    background-color: #ff6951;
+    box-shadow: 5px 5px 5px black;
+}
+
+.dragged-over {
+    background-color: $pop-border;
+    color: red;
+}
+
+.column h2 {
+    color: $headers;
+    // text-shadow: 3px 0 5px #222;
+    font-family: $font-headers;
+    font-weight: 700;
+}
+
+.inner-column {
+    background-color: $light-yellow;
+    width: 90%;
+    height: 20%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+    padding: 10px;
+    // border-top: 2px dashed grey;
+    border-bottom: 2px solid grey;
+    border-radius: 5px;
+    font-family: "Comfortaa", cursive;
+    box-shadow: 3px 2px 5px #222;
+    button {
+        margin: 0;
+    }
+}
+
+.inner-column:hover {
+    transition: transform 0.3s ease-in;
+    transform: rotate(1deg);
+    // transform: translateX(10px);
+    // width: 87%;
+}
+
+.sub-category-box {
+    background-color: $search;
+    font-size: 0.8em;
+    width: 75%;
+    border: none;
+}
+
+.hidden {
+    display: none;
+}
+
+ol {
+    font-size: 0.8em;
+}
+
+button.refine {
+    background-color: $headers;
+    // font-size:
+    color: #ffffff;
+    width: 60px;
+    height: 24px;
+    border-color: rgba(187, 99, 72, 0.8);
+    border-radius: 6px;
+    // border-width: 1px;
+    box-shadow: 1px 0px 0px #222;
+    // text-shadow: 1px 0px 0px;
+    &.close {
+        background-color: $pop-border;
+        color: #fff;
+        font-weight: 600;
+    }
+}
+
+// INPUTS
+.inputs {
+    background-color: $background;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    // grid-column-gap: 2px;
+    margin-top: 0;
+    padding: 0 15%;
+    color: #222;
+    // position: relative;
+    &-item {
+        width: 90%;
+        margin-left: 10px;
+        margin-top: 15px;
+        padding: 5px 0 10px 10px;
+        display: grid;
+        grid-template-rows: 45% 1fr;
+        font-weight: 700;
+        background-color: $search;
+        border-radius: 5px;
+        box-shadow: $main-shadow;
+        position: relative;
+        z-index: 1;
+    }
+    label {
+        padding-left: 3px;
+        padding-bottom: 0;
+        margin: 0;
+    }
+
+    input {
+        width: 80%;
+        height: 100%;
+        padding: 3px;
+        border-radius: 5px;
+        border: none;
+        background-color: $inputs;
+    }
+}
+
+.btn-search-container {
+    background-color: $background;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.btn-search-results {
+    background-color: $search;
+    color: #222;
+    width: 50%;
+    border: $background-draggable;
+    box-shadow: 2px 2px 5px rgb(155, 154, 154);
+    padding: 5px;
+    font-size: 1.3em;
+    font-weight: 600;
+    border-radius: 5px;
+    margin: 0 0 20px;
+    position: relative;
+    z-index: 1;
+    bottom: 30px;
+}

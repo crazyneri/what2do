@@ -1,73 +1,100 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 
-import { DateTime } from 'luxon';
-
+import { DateTime } from "luxon";
 
 const Inputs = ({ city, date, startTime, endTime, setValues }) => {
-
-
     const convertToHoursAndMinutes = (timeString) => {
-        const formated = DateTime.fromFormat(timeString, 'hh:mm').toFormat('HH:mm:ss')
+        const formated = DateTime.fromFormat(timeString, "hh:mm").toFormat(
+            "HH:mm:ss"
+        );
 
         console.log(formated);
 
         return formated;
-    }
+    };
 
     const handleChange = (e) => {
-
         const name = e.target.name;
 
         const inputValue = e.target.value;
 
-        const valueToStore = (name === 'startTime' || name === 'endTime') ? convertToHoursAndMinutes(inputValue) : inputValue
+        const valueToStore =
+            name === "startTime" || name === "endTime"
+                ? convertToHoursAndMinutes(inputValue)
+                : inputValue;
 
-
-        setValues(prev_values => {
-            return ({
+        setValues((prev_values) => {
+            return {
                 ...prev_values,
-                [name]: valueToStore
-
-            });
+                [name]: valueToStore,
+            };
         });
-
-    }
+    };
 
     const convertToObject = (timeString) => {
-        const object = DateTime.fromFormat(timeString, 'hh:mm:ss').toObject();
+        const object = DateTime.fromFormat(timeString, "hh:mm:ss").toObject();
 
         // console.log(object);
         return object;
-    }
-
-
+    };
 
     useEffect(() => {
-
-        if (convertToObject(endTime).hour <= convertToObject(startTime).hour || (convertToObject(endTime).hour === convertToObject(startTime).hour && convertToObject(endTime).minute <= convertToObject(startTime).minute)) {
-            setValues(prev_values => {
-                return ({
+        if (
+            convertToObject(endTime).hour <= convertToObject(startTime).hour ||
+            (convertToObject(endTime).hour ===
+                convertToObject(startTime).hour &&
+                convertToObject(endTime).minute <=
+                    convertToObject(startTime).minute)
+        ) {
+            setValues((prev_values) => {
+                return {
                     ...prev_values,
-                    endTime: '23:59:00'
-                })
-
+                    endTime: "23:59:00",
+                };
             });
         }
-    }, [startTime, endTime])
-
+    }, [startTime, endTime]);
 
     return (
-        <div className='inputs'>
-            <label htmlFor="city">Location:</label>
-            <input type="text" name='city' value={city} onChange={handleChange} />
-            <label htmlFor="date">When:</label>
-            <input type="date" name='date' value={date} onChange={handleChange} />
-            <label htmlFor="startTime">Start Time:</label>
-            <input type="time" name='startTime' value={startTime} onChange={handleChange} />
-            <label htmlFor="endTime">End Time:</label>
-            <input type="time" name='endTime' value={endTime} onChange={handleChange} />
+        <div className="inputs">
+            <div className="inputs-item">
+                <label htmlFor="city">Location:</label>
+                <input
+                    type="text"
+                    name="city"
+                    value={city}
+                    onChange={handleChange}
+                />
+            </div>
+            <div className="inputs-item">
+                <label htmlFor="date">When:</label>
+                <input
+                    type="date"
+                    name="date"
+                    value={date}
+                    onChange={handleChange}
+                />
+            </div>
+            <div className="inputs-item">
+                <label htmlFor="startTime">Start Time:</label>
+                <input
+                    type="time"
+                    name="startTime"
+                    value={startTime}
+                    onChange={handleChange}
+                />
+            </div>
+            <div className="inputs-item">
+                <label htmlFor="endTime">End Time:</label>
+                <input
+                    type="time"
+                    name="endTime"
+                    value={endTime}
+                    onChange={handleChange}
+                />
+            </div>
         </div>
-    )
-}
+    );
+};
 
-export default Inputs
+export default Inputs;

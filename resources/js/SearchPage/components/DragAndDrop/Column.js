@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 // import Task from './Category';
-import { Droppable } from 'react-beautiful-dnd';
-import { useEffect, useState } from 'react';
-import CategoryBox from './CategoryBox';
-import EmptyRefinements from './EmptyRefinements';
+import { Droppable } from "react-beautiful-dnd";
+import { useEffect, useState } from "react";
+import CategoryBox from "./CategoryBox";
+import EmptyRefinements from "./EmptyRefinements";
 
 export default function Column({
     key,
@@ -17,12 +17,12 @@ export default function Column({
     setShowMusicSubCats,
 }) {
     const [beingDraggedOver, setBeingDraggedOver] = useState(false);
-    const [draggedOverClass, setDraggedOverClass] = useState('');
+    const [draggedOverClass, setDraggedOverClass] = useState("");
 
     useEffect(() => {
         beingDraggedOver
-            ? setDraggedOverClass('dragged-over')
-            : setDraggedOverClass('');
+            ? setDraggedOverClass("dragged-over")
+            : setDraggedOverClass("");
     }, [beingDraggedOver]);
 
     const closeSubCats = () => {
@@ -35,22 +35,24 @@ export default function Column({
         return <EmptyRefinements />;
     };
 
-
-
     return (
         <div className={`column ${draggedOverClass}`} key={key}>
-            <h2 style={{ borderBottom: '1px solid black' }}>{column.title}</h2>
-            {column.columnType === 'sub' && (
-                <button type="button" onClick={closeSubCats} className="refine">
-                    close sub-categories
+            <h2>{column.title}</h2>
+            {column.columnType === "sub" && (
+                <button
+                    type="button"
+                    onClick={closeSubCats}
+                    className="refine close"
+                >
+                    close
                 </button>
             )}
-            {column.id === 'empty-sub-categories' ? (
+            {column.id === "empty-sub-categories" ? (
                 <EmptyRefinements />
             ) : (
                 <Droppable
                     droppableId={column.id}
-                    type={column.columnType === 'sub' ? 'sub' : 'main'}
+                    type={column.columnType === "sub" ? "sub" : "main"}
                 >
                     {(provided, snapshot) => (
                         <div
