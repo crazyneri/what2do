@@ -1,6 +1,7 @@
 /node_modules
 
 # Added ignore for development
+/public/
 /public/css/main.css
 /public/js/event-create.js
 /public/js/search.js
