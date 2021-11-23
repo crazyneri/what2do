@@ -155,15 +155,11 @@ const App = () => {
             setGroupId(group_id);
             console.log("session details: ", response.data);
 
-
-            setSearchSession(response.data)
+            setSearchSession(response.data);
 
             setSearchSessionId(session_id);
 
-            user &&
-                user.id === 0 &&
-                session_id === 0 &&
-                startSession(group_id);
+            user && user.id === 0 && session_id === 0 && startSession(group_id);
         } catch (error) {
             console.log(error.response);
         }
@@ -175,8 +171,15 @@ const App = () => {
         getSearchSessionDetails();
     }, []);
 
-    const alreadyResponded = user && user.id && searchSession && searchSessionId !== 0 && searchSession.user_choices && searchSession.user_choices.some(user_choice => user_choice.user_id === user.id)
-
+    const alreadyResponded =
+        user &&
+        user.id &&
+        searchSession &&
+        searchSessionId !== 0 &&
+        searchSession.user_choices &&
+        searchSession.user_choices.some(
+            (user_choice) => user_choice.user_id === user.id
+        );
 
     console.log(alreadyResponded);
 
@@ -212,10 +215,13 @@ const App = () => {
                     searchIds={searchIds}
                     setSearchIds={setSearchIds}
                 />
-                {
-                    !alreadyResponded &&
-                    <button onClick={search}>Search</button>
-                }
+                {!alreadyResponded && (
+                    <div className="btn-search-container">
+                        <button className="btn-search-results" onClick={search}>
+                            Search
+                        </button>
+                    </div>
+                )}
             </UserContext.Provider>
         </div>
     );

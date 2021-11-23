@@ -22,7 +22,7 @@ $line-color: #ea2b1f;
             color: rgba(96, 101, 103, 1);
             text-decoration: none;
             // font-size: 1.05em;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-family: "Comfortaa", cursive;
             &:hover {
                 border-bottom: solid 1px #222;
             }
@@ -40,9 +40,11 @@ $line-color: #ea2b1f;
     // background-color: rgb(221, 211, 211);
     padding: 0;
     font-size: 1em;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Comfortaa", cursive;
     color: #222;
     border: none;
+    background-color: #fff;
+    cursor: pointer;
     &:hover {
         border-bottom: solid 1px #222;
     }
