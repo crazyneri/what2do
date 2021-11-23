@@ -37,34 +37,45 @@ h1 {
   margin: 2em;
   font-family: "Comfortaa", cursive;
 }
-.admin-container .left-side h2, .admin-container .right-side h2 {
+
+.left-side h2,
+.right-side h2 {
   text-align: left;
 }
-.admin-container .left-side button, .admin-container .right-side button {
+.left-side button,
+.right-side button {
   text-align: center;
 }
-.admin-container .left-side .table-style, .admin-container .right-side .table-style {
+.left-side .table-style,
+.right-side .table-style {
   border-collapse: collapse;
   margin: 25px 0px;
   font-size: 18px;
   min-width: 300px;
   box-shadow: 0px 1px 5px #adadad;
 }
-.admin-container .left-side .table-style thead tr, .admin-container .right-side .table-style thead tr {
+.left-side .table-style thead tr,
+.right-side .table-style thead tr {
   background-color: #edae49;
   color: #ffffff;
   text-align: left;
 }
-.admin-container .left-side .table-style th, .admin-container .left-side .table-style td, .admin-container .right-side .table-style th, .admin-container .right-side .table-style td {
+.left-side .table-style th,
+.left-side .table-style td,
+.right-side .table-style th,
+.right-side .table-style td {
   padding: 10px 15px;
 }
-.admin-container .left-side .table-style tbody tr, .admin-container .right-side .table-style tbody tr {
+.left-side .table-style tbody tr,
+.right-side .table-style tbody tr {
   border-bottom: 1px solid #dddddd;
 }
-.admin-container .left-side .table-style tbody tr:nth-of-type(even), .admin-container .right-side .table-style tbody tr:nth-of-type(even) {
+.left-side .table-style tbody tr:nth-of-type(even),
+.right-side .table-style tbody tr:nth-of-type(even) {
   background-color: #fffaf1;
 }
-.admin-container .left-side .table-style tbody tr:last-of-type, .admin-container .right-side .table-style tbody tr:last-of-type {
+.left-side .table-style tbody tr:last-of-type,
+.right-side .table-style tbody tr:last-of-type {
   border-bottom: 2px solid #edae49;
 }
 
