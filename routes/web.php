@@ -43,7 +43,7 @@ Route::group(["middleware" => "can:admin"], function () {
 });
 
 // SEARCH PART
-Route::get('/search', 'SearchController@index')->name('search');
+Route::get('/search/{param?}', 'SearchController@index')->name('search');
 
 // USER PART
 // can be limited by Auth
