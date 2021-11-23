@@ -23,10 +23,9 @@ class GroupController extends Controller
             $group->users()->attach($member['id']);
         };
 
-        // return $group->id;
-
-        // return redirect()->back();
-
-        return ['success' => 'successfuly saved'];
+        return [
+            'message' => 'group successfuly saved',
+            'group_id' => $group->id,
+        ];
     }
 }

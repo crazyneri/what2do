@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Joseph Stalin",
+        "owner_id": 1
+    },
+    {
+        "name": "Albert Einstein",
+        "owner_id": 2
+    },
+    {
+        "name": "Cleopatra",
+        "owner_id": 3
+    },
+    {
+        "name": "Jana Flaskova",
+        "owner_id": 4
+    },
+    {
+        "name": "Jon Doig",
+        "owner_id": 5
+    },
+    {
+        "name": "Petr Zofak",
+        "owner_id": 6
+    },
+    {
+        "name": "Jachym Pivonka",
+        "owner_id": 7
+    },
+    {
+        "name": "Robinson Crusoe",
+        "owner_id": 8
+    },
+    {
+        "name": "Britney Spears",
+        "owner_id": 9
+    }
+]

@@ -17,11 +17,11 @@ class CreateSearchSessionsTable extends Migration
             $table->id();
             $table->foreignId('group_id');
             $table->foreignId('event_id')->nullable();
-            $table->date('searched_date');
-            $table->time('start_time', $precision = 0);
-            $table->time('end_time', $precision = 0);
-            $table->string('city');
-            $table->foreignId('user_id')->nullable();
+            $table->date('searched_date')->nullable();
+            $table->time('start_time', $precision = 0)->nullable();
+            $table->time('end_time', $precision = 0)->nullable();
+            $table->string('city')->nullable();
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

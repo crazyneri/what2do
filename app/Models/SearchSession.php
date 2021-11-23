@@ -13,6 +13,16 @@ class SearchSession extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'group_id',
+        'event_id',
+        'searched_date',
+        'start_time',
+        'end_time',
+        'city',
+        'user_id',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

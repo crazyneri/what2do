@@ -24,3 +24,6 @@ Route::get('/search', 'Api\SearchController@fetchData');
 
 Route::get('/user', 'Api\SearchController@getUser');
 Route::get('/users', 'Api\SearchController@getAllUsers');
+
+// session
+Route::get('/session/details', 'Api\SearchSessionController@getSearchSessionDetails');

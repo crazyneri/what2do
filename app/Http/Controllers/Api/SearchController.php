@@ -129,7 +129,11 @@ class SearchController extends Controller
     {
         $user = Auth::user();
 
-        $user->load(['groups', 'groups.users']);
+        if (isset($user)) {
+            $user->load(['groups', 'groups.users', 'groups.search_sessions']);
+        } else {
+            $user = session('user') ?? null;
+        };
 
         return $user;
 
