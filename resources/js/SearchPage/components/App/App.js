@@ -6,7 +6,7 @@ import { DateTime } from "luxon";
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import SearchControls from "../SearchControls/SearchControls";
 import SearchResults from "../SearchResults/SearchResults";
-import SelectSessionButton from "../SelectSessionButton/SelectSessionButton";
+import SessionControls from "../SessionControls/SessionControls";
 
 const App = () => {
     // input values
@@ -37,17 +37,22 @@ const App = () => {
     const [searchSessionId, setSearchSessionId] = useState(0);
     const [searchSession, setSearchSession] = useState(null);
 
-    const [results, setResults] = useState({ event: false, group_choices: [] });
+    const [results, setResults] = useState(null);
 
     const { city, date, startTime, endTime } = values;
 
     const [loading, setLoading] = useState(false);
 
+
+    const [users, setUsers] = useState([]);
+
+    const [groupMembers, setGroupMembers] = useState([]);
+
+    const [groupName, setGroupName] = useState("");
+
     const nonAnonymousSearch = user && user.id !== 0;
 
     const [popupOpen, setPopupOpen] = useState(true);
-
-    // const navigate = useNavigate();
 
 
 
@@ -88,7 +93,6 @@ const App = () => {
 
             setResults(results);
 
-            // navigate("/search/results");
 
 
         } catch (error) {
@@ -103,9 +107,9 @@ const App = () => {
         sendSearchDetails();
     };
 
-    useEffect(() => {
-        getSearchSessionDetails();
-    }, [loading])
+    // useEffect(() => {
+    //     getSearchSessionDetails();
+    // }, [])
 
     const fetchUser = async () => {
         const response = await get("/api/user");
@@ -138,6 +142,7 @@ const App = () => {
             console.log("session started, id: ", search_session_id);
 
             setSearchSessionId(search_session_id);
+            getSearchSessionDetails();
         } catch (error) {
             console.log(error.response);
         }
@@ -211,12 +216,23 @@ const App = () => {
                             popupOpen={popupOpen}
                             setPopupOpen={setPopupOpen}
                             setSearchIds={setSearchIds}
+                            setUsers={setUsers}
+                            setGroupMembers={setGroupMembers}
+                            setGroupName={setGroupName}
+                            users={users}
+                            groupMembers={groupMembers}
+                            groupName={groupName}
+                            getSearchSessionDetails={getSearchSessionDetails}
                         />
                     )}
-                    <SelectSessionButton setPopupOpen={setPopupOpen} />
+                    <SessionControls
+                        setPopupOpen={setPopupOpen}
+                        searchSession={searchSession}
+                        groupMembers={groupMembers}
+                    />
                     <Routes>
 
-                        <Route exact path='/search/results' element={<SearchResults event={results.event} group_choices={results.group_choices} />} />
+                        <Route exact path='/search/results' element={<SearchResults results={results} />} />
 
                         <Route exact path='/search' element={
                             <SearchControls
@@ -237,6 +253,7 @@ const App = () => {
                                 searchSession={searchSession}
                                 searchSessionId={searchSessionId}
                                 search={search}
+                                results={results}
                             />}>
                         </Route>
                     </Routes>
