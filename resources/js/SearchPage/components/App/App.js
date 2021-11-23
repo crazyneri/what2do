@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import DragAndDrop from "../DragAndDrop/DragAndDrop";
-import Inputs from "../Inputs/Inputs";
 import { get, post } from "../../../util/request";
 import UserContext from "../../../util/UserContext";
 import SoloOrGroupPopup from "../SoloOrGroupPopup/SoloOrGroupPopup";
 import { DateTime } from "luxon";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import SearchControls from "../SearchControls/SearchControls";
 import SearchResults from "../SearchResults/SearchResults";
+import SelectSessionButton from "../SelectSessionButton/SelectSessionButton";
 
 const App = () => {
     // input values
@@ -38,18 +37,19 @@ const App = () => {
     const [searchSessionId, setSearchSessionId] = useState(0);
     const [searchSession, setSearchSession] = useState(null);
 
+    const [results, setResults] = useState({ event: false, group_choices: [] });
+
     const { city, date, startTime, endTime } = values;
 
     const [loading, setLoading] = useState(false);
 
-    const nonAnonymousSearch = user && user.id !== 0 && searchSessionId === 0;
+    const nonAnonymousSearch = user && user.id !== 0;
 
     const [popupOpen, setPopupOpen] = useState(true);
 
-    const showPopup =
-        (user && user.id !== 0 && searchSessionId === 0) ||
-        (user && user.id === 0);
-    // || (user && user.id === 0)
+    // const navigate = useNavigate();
+
+
 
     const updateSession = async () => {
         const sessionData = {
@@ -82,7 +82,15 @@ const App = () => {
                 searchDetailsData
             );
 
-            console.log(response.data);
+            const results = response.data
+
+            console.log(results)
+
+            setResults(results);
+
+            // navigate("/search/results");
+
+
         } catch (error) {
             console.log(error.response);
         }
@@ -188,22 +196,28 @@ const App = () => {
 
 
 
-
+    console.log(nonAnonymousSearch);
 
     return (
         <div className="search-grid">
             <UserContext.Provider value={user}>
-                {nonAnonymousSearch && popupOpen && (
-                    <SoloOrGroupPopup
-                        groupId={groupId}
-                        setGroupId={setGroupId}
-                        startSession={startSession}
-                        saveSessionToCookies={saveSessionToCookies}
-                    />
-                )}
                 <Router >
+                    {nonAnonymousSearch && popupOpen && (
+                        <SoloOrGroupPopup
+                            groupId={groupId}
+                            setGroupId={setGroupId}
+                            startSession={startSession}
+                            saveSessionToCookies={saveSessionToCookies}
+                            popupOpen={popupOpen}
+                            setPopupOpen={setPopupOpen}
+                            setSearchIds={setSearchIds}
+                        />
+                    )}
+                    <SelectSessionButton setPopupOpen={setPopupOpen} />
                     <Routes>
-                        <Route exact path='/search/results' element={<SearchResults />} />
+
+                        <Route exact path='/search/results' element={<SearchResults event={results.event} group_choices={results.group_choices} />} />
+
                         <Route exact path='/search' element={
                             <SearchControls
                                 values={values}
