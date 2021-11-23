@@ -1,5 +1,10 @@
 {
+<<<<<<< HEAD
     "/js/search.js": "/js/search.js?id=c814ead74bccb47c55fe",
     "/js/event-create.js": "/js/event-create.js?id=516c06dc0e3334f82416",
+=======
+    "/js/search.js": "/js/search.js?id=93d0bd28cfd42be796fd",
+    "/js/event-create.js": "/js/event-create.js?id=3000abcd3ec8af3e80e1",
+>>>>>>> 542d8236a56aef6533ae2ba697803909d86625d2
     "/css/main.css": "/css/main.css?id=7dd7be89f05da554a833"
 }
