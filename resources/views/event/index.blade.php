@@ -147,4 +147,6 @@
 {{-- DISPLAY MESSAGE NO FUTURE EVENTS --}}
 <p>Note: If you can't see some of your venue it means there are no historical events!</p>
 
+@endsection
+
 

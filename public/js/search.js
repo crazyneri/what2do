@@ -30938,6 +30938,11 @@ var App = function App() {
       searchSessionId = _useState20[0],
       setSearchSessionId = _useState20[1];
 
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState22 = _slicedToArray(_useState21, 2),
+      searchSession = _useState22[0],
+      setSearchSession = _useState22[1];
+
   var nonAnonymousSearch = user && user.id !== 0 && searchSessionId === 0;
   var showPopup = user && user.id !== 0 && searchSessionId === 0 || user && user.id === 0; // || (user && user.id === 0)
 
@@ -30994,27 +30999,33 @@ var App = function App() {
                 user_id: user.id,
                 category_ids: searchIds
               };
+<<<<<<< HEAD
               _context2.prev = 1;
               _context2.next = 4;
+=======
+              console.log(searchDetailsData);
+              _context2.prev = 2;
+              _context2.next = 5;
+>>>>>>> 9a09595475ce4ea72701f3aad51e5da58cfc52f6
               return (0,_util_request__WEBPACK_IMPORTED_MODULE_4__.post)("/user-choice/store", searchDetailsData);
 
-            case 4:
+            case 5:
               response = _context2.sent;
               console.log(response.data);
-              _context2.next = 11;
+              _context2.next = 12;
               break;
 
-            case 8:
-              _context2.prev = 8;
-              _context2.t0 = _context2["catch"](1);
+            case 9:
+              _context2.prev = 9;
+              _context2.t0 = _context2["catch"](2);
               console.log(_context2.t0.response);
 
-            case 11:
+            case 12:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[1, 8]]);
+      }, _callee2, null, [[2, 9]]);
     }));
 
     return function sendSearchDetails() {
@@ -31025,6 +31036,7 @@ var App = function App() {
   var search = function search() {
     updateSession();
     sendSearchDetails();
+    getSearchSessionDetails();
   };
 
   var fetchUser = /*#__PURE__*/function () {
@@ -31150,7 +31162,7 @@ var App = function App() {
 
   var getSearchSessionDetails = /*#__PURE__*/function () {
     var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
-      var response, search_session_id, group_id;
+      var response, session_id, group_id;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
         while (1) {
           switch (_context6.prev = _context6.next) {
@@ -31161,26 +31173,33 @@ var App = function App() {
 
             case 3:
               response = _context6.sent;
-              search_session_id = response.data.search_session_id;
+              session_id = response.data.id;
               group_id = response.data.group_id;
               setGroupId(group_id);
               console.log("session details: ", response.data);
+<<<<<<< HEAD
               setSearchSessionId(search_session_id);
               user && user.id === 0 && search_session_id === 0 && startSession(group_id);
               _context6.next = 15;
+=======
+              setSearchSession(response.data);
+              setSearchSessionId(session_id);
+              user && user.id === 0 && session_id === 0 && startSession(group_id);
+              _context6.next = 16;
+>>>>>>> 9a09595475ce4ea72701f3aad51e5da58cfc52f6
               break;
 
-            case 12:
-              _context6.prev = 12;
+            case 13:
+              _context6.prev = 13;
               _context6.t0 = _context6["catch"](0);
               console.log(_context6.t0.response);
 
-            case 15:
+            case 16:
             case "end":
               return _context6.stop();
           }
         }
-      }, _callee6, null, [[0, 12]]);
+      }, _callee6, null, [[0, 13]]);
     }));
 
     return function getSearchSessionDetails() {
@@ -31191,6 +31210,13 @@ var App = function App() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     getSearchSessionDetails();
   }, []);
+<<<<<<< HEAD
+=======
+  var alreadyResponded = user && user.id && searchSession && searchSessionId !== 0 && searchSession.user_choices && searchSession.user_choices.some(function (user_choice) {
+    return user_choice.user_id === user.id;
+  });
+  console.log(alreadyResponded);
+>>>>>>> 9a09595475ce4ea72701f3aad51e5da58cfc52f6
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
     className: "search-grid",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_util_UserContext__WEBPACK_IMPORTED_MODULE_5__["default"].Provider, {
@@ -31219,7 +31245,11 @@ var App = function App() {
         setColumnsToRender: setColumnsToRender,
         searchIds: searchIds,
         setSearchIds: setSearchIds
+<<<<<<< HEAD
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+=======
+      }), !alreadyResponded && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+>>>>>>> 9a09595475ce4ea72701f3aad51e5da58cfc52f6
         onClick: search,
         children: "Search"
       })]
@@ -92623,7 +92653,11 @@ function combine (array, callback) {
 /***/ ((module) => {
 
 "use strict";
+<<<<<<< HEAD
 module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"axios@^0.21","name":"axios","escapedName":"axios","rawSpec":"^0.21","saveSpec":null,"fetchSpec":"^0.21"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_shasum":"c67b90dc0568e5c1cf2b0b858c43ba28e2eda575","_spec":"axios@^0.21","_where":"C:\\\\web\\\\codingbootcamp\\\\what2do","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundleDependencies":false,"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"deprecated":false,"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+=======
+module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\web\\\\codingbootcamp\\\\exercises\\\\_projects\\\\what2do"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/","/localtunnel"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\web\\\\codingbootcamp\\\\exercises\\\\_projects\\\\what2do","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+>>>>>>> 9a09595475ce4ea72701f3aad51e5da58cfc52f6
 
 /***/ })
 
