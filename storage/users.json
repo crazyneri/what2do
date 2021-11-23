@@ -5,7 +5,8 @@
         "email": "josephstalin@hotmail.com",
         "password": "Im_the_boss_here",
         "phone": "666 666 666",
-        "gender": "Neutral"        
+        "gender": "Neutral",
+        "default_group_id": 1
     },
     {
         "role": "admin",
@@ -13,7 +14,8 @@
         "email": "albert@bum.com",
         "password": "Im_clever",
         "phone": "123 456 789",
-        "gender": "Male"        
+        "gender": "Male",
+        "default_group_id": 2
     },
     {
         "role": "admin",
@@ -21,7 +23,8 @@
         "email": "cleo@patra.com",
         "password": "Psss",
         "phone": "111 222 333",
-        "gender": "Female"        
+        "gender": "Female",
+        "default_group_id": 3
     },
     {
         "role": "super_admin",
@@ -29,7 +32,8 @@
         "email": "flaskova.jana@gmail.com",
         "password": "janajana",
         "phone": null,
-        "gender": "Female"      
+        "gender": "Female",
+        "default_group_id": 4
     },
     {
         "role": "super_admin",
@@ -37,7 +41,8 @@
         "email": "jonathan_doig@hotmail.com",
         "password": "jonjon",
         "phone": null,
-        "gender": "Male"
+        "gender": "Male",
+        "default_group_id": 5
     },
     {
         "role": "super_admin",
@@ -45,7 +50,8 @@
         "email": "petr.zofak@gmail.com",
         "password": "petrpetr",
         "phone": null,
-        "gender": "Male"     
+        "gender": "Male",
+        "default_group_id": 6
     },
     {
         "role": "super_admin",
@@ -53,7 +59,8 @@
         "email": "jachympivonka@gmail.com",
         "password": "jachymjachym",
         "phone": null,
-        "gender": "Male"     
+        "gender": "Male",
+        "default_group_id": 7
     },
     {
         "role": null,
@@ -61,7 +68,8 @@
         "email": "robinson@crusoe.com",
         "password": "robinsonrobinson",
         "phone": null,
-        "gender": "Male"     
+        "gender": "Male",
+        "default_group_id": 8
     },
     {
         "role": null,
@@ -69,8 +77,7 @@
         "email": "britney@spears.com",
         "password": "britneybritney",
         "phone": null,
-        "gender": "Female"     
+        "gender": "Female",
+        "default_group_id": 9
     }
 ]
-
-

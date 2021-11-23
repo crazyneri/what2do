@@ -3,6 +3,7 @@
 @section('content')
 
 <h2>{{$event->name}}</h2>
+<h4>Event match score: {{$group_choices[0]['score']}}</h4>
 <p>Venue: {{$event->venue->name}}</p>
 <p>{{$event->description}}</p>
 <p>Starts at: {{$event->start_time}}</p>

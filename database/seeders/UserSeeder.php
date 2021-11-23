@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\User;
-
 use DB;
+use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
@@ -21,7 +20,7 @@ class UserSeeder extends Seeder
 
         $users = json_decode(file_get_contents(storage_path('users.json')));
 
-        foreach($users as $user){
+        foreach ($users as $user) {
             $usr = new User;
             $usr->role = $user->role;
             $usr->name = $user->name;
@@ -29,6 +28,7 @@ class UserSeeder extends Seeder
             $usr->password = bcrypt($user->password);
             $usr->phone = $user->phone;
             $usr->gender = $user->gender;
+            $usr->default_group_id = $user->default_group_id;
             $usr->save();
         }
     }

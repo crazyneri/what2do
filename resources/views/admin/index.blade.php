@@ -17,19 +17,23 @@
     <div class="admin-container">
         <div class="left-side">
             <h2>List of your venues:</h2>
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Future events</th>
-                    <th>Edit</th>
-                    @foreach ($venues_events as $venue)
-                        <tr>
-                            <td>{{$venue->name}}</td>
-                            <td>{{count($venue->events)}}</td>
-                            <td><a href="/admin/venue/{{$venue->id}}">Edit</a></td>
-                        </tr>
-                    @endforeach
-                </tr>
+            <table class="table-style">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Future events</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        @foreach ($venues_events as $venue)
+                            <tr>
+                                <td>{{$venue->name}}</td>
+                                <td>{{count($venue->events)}}</td>
+                                <td><a href="/admin/venue/{{$venue->id}}">Edit</a></td>
+                            </tr>
+                        @endforeach
+                    </tbody>
             </table>
 
             {{-- EVERY USER CAN HAVE 6 VENUES AT MAX --}}
@@ -44,27 +48,31 @@
         {{-- LIST OF COMMING EVENTS (limit 5)--}}
         <div class="right-side">
             <h2>Coming soon:</h2>
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Venue</th>
-                    <th>Date - start</th>
-                    <th>Time - start</th>
-                    <th>Date - end</th>
-                    <th>Time - end</th>
-                    <th>Price</th>
-                    @foreach ($events as $event)
-                        <tr>
-                            <td>{{$event->name}}</td>
-                            <td>{{$event->venue->name}}</td>
-                            <td>{{$event->start_date}}</td>
-                            <td>{{$event->start_time}}</td>
-                            <td>{{$event->end_date}}</td>
-                            <td>{{$event->end_time}}</td>
-                            <td>{{$event->price . " CZK"}} </td>
-                        </tr>
-                    @endforeach
-                </tr>
+            <table class="table-style">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Venue</th>
+                        <th>Date - start</th>
+                        <th>Time - start</th>
+                        <th>Date - end</th>
+                        <th>Time - end</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        @foreach ($events as $event)
+                            <tr>
+                                <td>{{$event->name}}</td>
+                                <td>{{$event->venue->name}}</td>
+                                <td>{{$event->start_date}}</td>
+                                <td>{{$event->start_time}}</td>
+                                <td>{{$event->end_date}}</td>
+                                <td>{{$event->end_time}}</td>
+                                <td>{{$event->price . " CZK"}} </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
             </table>
     
             <button><a href="/admin/events">See all events</a></button>

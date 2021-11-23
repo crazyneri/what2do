@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './components/App/App';
 
 ReactDOM.render(
-    <App/>,
+    <App
+        id={document.getElementById('app').dataset.id}
+    />,
     document.getElementById('app')
 );
