@@ -118,6 +118,28 @@ const App = () => {
         // setLoading(false);
     };
 
+    const saveSessionToCookies = async (session_id) => {
+        // setLoading(true)
+        const sessionData = {
+            session_id: session_id,
+        };
+
+        try {
+            const response = await post(
+                "/session/save-session-to-cookies",
+                sessionData
+            );
+
+            console.log("session started, id: ", session_id);
+
+            setSearchSessionId(session_id);
+        } catch (error) {
+            console.log(error.response);
+        }
+
+        // setLoading(false);
+    };
+
     const getSearchSessionDetails = async () => {
         // setLoading(true)
 
@@ -154,6 +176,7 @@ const App = () => {
                         groupId={groupId}
                         setGroupId={setGroupId}
                         startSession={startSession}
+                        saveSessionToCookies={saveSessionToCookies}
                     />
                 )}
                 <Inputs
@@ -177,11 +200,7 @@ const App = () => {
                     searchIds={searchIds}
                     setSearchIds={setSearchIds}
                 />
-                <div className="btn-search-container">
-                    <button className="btn btn-search-results" onClick={search}>
-                        Search
-                    </button>
-                </div>
+                <button onClick={search}>Search</button>
             </UserContext.Provider>
         </div>
     );
