@@ -5,13 +5,13 @@ $input-colort: #f9edcc;
 $thead-color: #edae49;
 $button-color: #414c6b;
 $main-shadow: 0px 1px 5px rgb(173, 173, 173);
-$font-text: "Comfortaa", cursive;
+$font-text: 'Comfortaa', cursive;
 
 h1 {
     font-style: $font-text;
 }
 
-.admin-container{
+.admin-container {
     display: grid;
     width: 100vw;
     grid-template-columns: 1fr 2fr;
@@ -19,42 +19,43 @@ h1 {
     justify-items: start;
     margin: 2em;
     font-family: $font-text;
-    
-    .left-side, .right-side{
-        h2 {
+}
+.left-side,
+.right-side {
+    h2 {
+        text-align: left;
+    }
+    button {
+        text-align: center;
+    }
+    .table-style {
+        border-collapse: collapse;
+        margin: 25px 0px;
+        font-size: $table_font_size;
+        min-width: 300px;
+        box-shadow: $main-shadow;
+
+        thead tr {
+            background-color: $thead-color;
+            color: #ffffff;
             text-align: left;
         }
-        button {
-           text-align: center;
+
+        th,
+        td {
+            padding: 10px 15px;
         }
-        .table-style {
-            border-collapse: collapse;
-            margin: 25px 0px;
-            font-size: $table_font_size;
-            min-width: 300px;
-            box-shadow: $main-shadow;
 
-            thead tr {
-                background-color: $thead-color;
-                color: #ffffff;
-                text-align: left;
-            }
+        tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
 
-            th, td {
-                padding: 10px 15px;
-            }
+        tbody tr:nth-of-type(even) {
+            background-color: $background;
+        }
 
-            tbody tr {
-                border-bottom: 1px solid #dddddd;
-            }
-
-            tbody tr:nth-of-type(even){
-                background-color: $background;
-            }
-
-            tbody tr:last-of-type {
-                border-bottom: 2px solid $thead-color;
-            }
+        tbody tr:last-of-type {
+            border-bottom: 2px solid $thead-color;
         }
     }
 }

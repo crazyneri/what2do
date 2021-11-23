@@ -32429,6 +32429,7 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
 
   var handleSoloSearch = function handleSoloSearch() {
     user.default_group_id ? startNewSession(user.default_group_id) : createDefaultGroup();
+    props.setSearchIds([]);
     props.setPopupOpen(false);
   };
 

@@ -74,7 +74,7 @@ Route::get('/send-email', function () {
 // Route::get('/solo_search/{id}', 'SearchResultsController@singleSearch');
 
 // session search
-Route::get('/session/{session_id}/', 'SearchResultsController@show');
+Route::get('/session-results/{user_id}/', 'SearchResultsController@show');
 
 // quick create group
 

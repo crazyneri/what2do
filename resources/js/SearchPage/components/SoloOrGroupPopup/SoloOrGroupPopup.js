@@ -14,7 +14,6 @@ import {
     Button,
     Zoom,
     Divider,
-    setPopupOpen
 } from "@mui/material";
 
 import { get, post } from "../../../util/request";
@@ -133,6 +132,7 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
         user.default_group_id
             ? startNewSession(user.default_group_id)
             : createDefaultGroup();
+        props.setSearchIds([]);
 
         props.setPopupOpen(false);
     };
