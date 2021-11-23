@@ -1,17 +1,5 @@
 {
-<<<<<<< HEAD
-    "/js/search.js": "/js/search.js?id=944cdd560b644c008a51",
-    "/js/event-create.js": "/js/event-create.js?id=516c06dc0e3334f82416",
-    "/css/main.css": "/css/main.css?id=2cf818cf09738085916c"
-=======
-<<<<<<< HEAD
-    "/js/search.js": "/js/search.js?id=5dbdeb0dc290e8020859",
-    "/js/event-create.js": "/js/event-create.js?id=19fdbd171cf3f7f8652e",
-    "/css/main.css": "/css/main.css?id=e53b6206da9ff96b3cc0"
-=======
-    "/js/search.js": "/js/search.js?id=83bb3c052e22322ac1df",
+    "/js/search.js": "/js/search.js?id=e8f3b2a69798d3b01780",
     "/js/event-create.js": "/js/event-create.js?id=e7b76b04760414bd25e1",
-    "/css/main.css": "/css/main.css?id=f3069faa139d3e0ea773"
->>>>>>> feat/sessions-page
->>>>>>> eb98c135f77b2c4cb24482fae0ffb9bc620fa254
+    "/css/main.css": "/css/main.css?id=408eaf27e779ea38bd3f"
 }
