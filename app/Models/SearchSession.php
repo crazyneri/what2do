@@ -33,7 +33,7 @@ class SearchSession extends Model
     }
     public function user_choices()
     {
-        return $this->hasMany(UserChoice::class);
+        return $this->hasMany(UserChoice::class, 'session_id', 'id');
     }
     public function events()
     {

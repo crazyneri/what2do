@@ -11,19 +11,24 @@ class SearchSessionController extends Controller
     public function getSearchSessionDetails()
     {
 
-        $search_session_id = session('search_session_id');
+        $search_session_id = session('session_id');
 
         if (isset($search_session_id)) {
 
             $search_session = SearchSession::findOrFail($search_session_id);
 
-            $data = [
-                'search_session_id' => $search_session->id,
-                'group_id' => $search_session->group_id,
-            ];
+            $search_session->load(['user_choices', 'group', 'group.users']);
+
+            return $search_session;
+
+            // $data = [
+            //     'session_id' => $search_session->id,
+            //     'group_id' => $search_session->group_id,
+            //     'user_choices' => $search_session->user_choices,
+            // ];
         } else {
             $data = [
-                'search_session_id' => 0,
+                'id' => 0,
                 'group_id' => 0,
             ];
 

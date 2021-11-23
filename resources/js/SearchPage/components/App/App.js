@@ -33,6 +33,7 @@ const App = () => {
 
     const [groupId, setGroupId] = useState(0);
     const [searchSessionId, setSearchSessionId] = useState(0);
+    const [searchSession, setSearchSession] = useState(null);
 
     const nonAnonymousSearch = user && user.id !== 0 && searchSessionId === 0;
 
@@ -63,6 +64,8 @@ const App = () => {
             category_ids: searchIds,
         };
 
+        console.log(searchDetailsData);
+
         try {
             const response = await post(
                 '/user-choice/store',
@@ -78,6 +81,7 @@ const App = () => {
     const search = () => {
         updateSession();
         sendSearchDetails();
+        getSearchSessionDetails();
     };
 
     const fetchUser = async () => {
@@ -145,16 +149,19 @@ const App = () => {
         try {
             const response = await get('/api/session/details');
 
-            const search_session_id = response.data.search_session_id;
+            const session_id = response.data.id;
             const group_id = response.data.group_id;
             setGroupId(group_id);
             console.log('session details: ', response.data);
 
-            setSearchSessionId(search_session_id);
+
+            setSearchSession(response.data)
+
+            setSearchSessionId(session_id);
 
             user &&
                 user.id === 0 &&
-                search_session_id === 0 &&
+                session_id === 0 &&
                 startSession(group_id);
         } catch (error) {
             console.log(error.response);
@@ -166,6 +173,11 @@ const App = () => {
     useEffect(() => {
         getSearchSessionDetails();
     }, []);
+
+    const alreadyResponded = user && user.id && searchSession && searchSessionId !== 0 && searchSession.user_choices && searchSession.user_choices.some(user_choice => user_choice.user_id === user.id)
+
+
+    console.log(alreadyResponded);
 
     return (
         <>
@@ -199,7 +211,10 @@ const App = () => {
                     searchIds={searchIds}
                     setSearchIds={setSearchIds}
                 />
-                <button onClick={search}>Search</button>
+                {
+                    !alreadyResponded &&
+                    <button onClick={search}>Search</button>
+                }
             </UserContext.Provider>
         </>
     );
