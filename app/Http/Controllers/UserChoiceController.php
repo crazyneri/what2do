@@ -211,6 +211,8 @@ class UserChoiceController extends Controller
             ->get();
         $users_completed_number = count($user_info);
 
+
+        
         // ** If the numbers are the same, run the search.
         // ** If the user is the first (i.e. they set up the search),
         // ** send the others a notifcation to complete their choices.
@@ -236,19 +238,21 @@ class UserChoiceController extends Controller
             return "Thank you for your choices, when everyone has completed the search we'll let you know!";
         }
 
-        if ($users_completed_number = $group_number) {
+        if ($users_completed_number == $group_number) {
 
             $group_choices = $this->findMatch($search_session->id);
 
             // ** get winning event
-
-            $event = Event::findOrFail($group_choices[0]['event_id']);
-
-            // ** add event to search session
-            $search_session->event_id = $group_choices[0]['event_id'];
-            $search_session->save();
-
-            return view('search\result', compact('group_choices', 'event'));
+            if(!empty($group_choices[0]['event_id']))
+            {
+                $event = Event::findOrFail($group_choices[0]['event_id']);
+                // ** add event to search session
+                $search_session->event_id = $group_choices[0]['event_id'];
+                $search_session->save();
+    
+                return view('search\result', compact('group_choices', 'event'));
+            }
+            return "Ooops, maybe try to be less fussy!";
         }
     }
 

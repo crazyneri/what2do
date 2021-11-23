@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UserChoiceSeeder::class);
         $this->call(SearchSessionSeeder::class);
         $this->call(GroupUserSeeder::class);
+        $this->call(GroupSeeder::class);
+
 
 
 
