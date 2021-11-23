@@ -24,24 +24,45 @@
 .form-create-group_item {
   width: 80%;
 }
+body {
+  font-family: "Comfortaa", cursive;
+}
+
 h1 {
-  font-style: "Comfortaa", cursive;
+  margin: 2rem;
+}
+
+a {
+  text-decoration: none;
 }
 
 .admin-container {
   display: grid;
   width: 100vw;
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: 1fr 1fr;
   justify-items: start;
-  margin: 2em;
-  font-family: "Comfortaa", cursive;
+  margin: 2rem;
 }
 .admin-container .left-side h2, .admin-container .right-side h2 {
   text-align: left;
 }
 .admin-container .left-side button, .admin-container .right-side button {
-  text-align: center;
+  margin: 0 auto;
+  display: block;
+  background-color: #414c6b;
+  width: 12rem;
+  height: 2rem;
+}
+.admin-container .left-side button a, .admin-container .right-side button a {
+  color: white;
+  font-family: "Comfortaa", cursive;
+}
+.admin-container .left-side .events-btn, .admin-container .right-side .events-btn {
+  display: flex;
+  margin: 0 auto;
+  width: 50%;
+  padding: 0;
 }
 .admin-container .left-side .table-style, .admin-container .right-side .table-style {
   border-collapse: collapse;

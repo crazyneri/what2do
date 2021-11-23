@@ -75,8 +75,10 @@
                     </tbody>
             </table>
     
-            <button><a href="/admin/events">See all events</a></button>
-            <button><a href="/admin/event/create">Create event</a></button>
+            <div class="events-btn">
+                <button><a href="/admin/events">See all events</a></button>
+                <button><a href="/admin/event/create">Create event</a></button>
+            </div>
         </div>
     </div>
     
