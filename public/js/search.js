@@ -31253,9 +31253,11 @@ var App = function App() {
               startSession(group_id);
 
             case 22:
-              console.log('navigate?', session);
+              console.log('navigate?', session, 'user choices', session.user_choices); // if (session && session.event_id && session.event_id !== null)
 
-              if (session && session.event_id && session.event_id !== null) {
+              if (session && session.user_choices.some(function (c) {
+                return c.user_id === user.id;
+              })) {
                 navigate('/search/results');
                 setPopupOpen(false);
               }
@@ -31283,7 +31285,16 @@ var App = function App() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     getSearchSessionDetails();
-  }, []);
+  }, []); // setInterval to dynamically update the session every 5 seconds to show users the session has finished
+  // useEffect(() => {
+  //     setInterval(async () => {
+  //         await getSearchSessionDetails();
+  //         if (searchSession && searchSession.event_id && searchSession.event_id !== null) {
+  //             navigate('/search/results');
+  //         }
+  //     }, 10000)
+  // }, []);
+
   console.log(nonAnonymousSearch);
   return (
     /*#__PURE__*/
@@ -31652,7 +31663,8 @@ function DragAndDrop(_ref) {
       columnsToRender = _ref.columnsToRender,
       setColumnsToRender = _ref.setColumnsToRender,
       searchIds = _ref.searchIds,
-      setSearchIds = _ref.setSearchIds;
+      setSearchIds = _ref.setSearchIds,
+      searchSessionId = _ref.searchSessionId;
 
   var renderColumns = function renderColumns() {
     if (showCinemaSubCats) {
@@ -31831,10 +31843,15 @@ function DragAndDrop(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     // on page reload, fetch categories data from database to populate the DragAndDrop component
     fetchData();
-  }, []);
+    setShowCinemaSubCats(false);
+    setShowMusicSubCats(false);
+    setShowTheatreSubCats(false);
+  }, [searchSessionId]);
 
   if (!state) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_spinners_kit__WEBPACK_IMPORTED_MODULE_4__.RotateSpinner, {});
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_spinners_kit__WEBPACK_IMPORTED_MODULE_4__.RotateSpinner, {
+      color: "#ea2b1f"
+    });
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_6__.DragDropContext // see notes on this
@@ -31882,41 +31899,44 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function EmptyRefinements() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: "drag-space",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ol", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+      className: "instructions-bold",
+      children: "Decide what you want to do - the closer to the top, the more you want to do it!"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ol", {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
           className: "instructions-bold",
           children: "Choose"
-        }), " what you would like to do from the categories column."]
+        }), " the main category."]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
           className: "instructions-bold",
           children: "Drag"
-        }), " your chosen activity into the 'what2do' column."]
+        }), " it into 'what2do'."]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
           className: "instructions-bold",
-          children: "Refine"
-        }), " your search by clicking on the 'refine' button under the category name."]
+          children: "Click"
+        }), " the refine button."]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
           className: "instructions-bold",
-          children: "Drag"
-        }), " any sub-categories you would like into the 'chosen sub-categories' column in the centre."]
+          children: "Choose"
+        }), " your sub-categories."]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
           className: "instructions-bold",
-          children: "Press"
-        }), " the close sub-categories' button when you have finished."]
+          children: "Close"
+        }), " the sub-categories' when you have finished."]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-        children: ["When you have decided what to do - press", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        children: ["Press ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
           className: "instructions-bold",
           children: "search"
         }), "!"]
       })]
-    })
+    })]
   });
 }
 
@@ -32180,12 +32200,20 @@ var SearchControls = function SearchControls(_ref) {
       columnsToRender: columnsToRender,
       setColumnsToRender: setColumnsToRender,
       searchIds: searchIds,
-      setSearchIds: setSearchIds
-    }), !alreadyResponded && searchIds && searchIds.length !== 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-      onClick: function onClick() {
-        search();
-      },
-      children: "Search"
+      setSearchIds: setSearchIds,
+      searchSessionId: searchSessionId
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "btn-search-container",
+      children: !alreadyResponded && searchIds && searchIds.length !== 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+        className: "btn-search-results",
+        onClick: function onClick() {
+          search();
+        },
+        children: "Search"
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+        className: "btn-search-results btn-search-results--empty",
+        children: "You must refine your choices before you can search!"
+      })
     })]
   });
 };
@@ -32219,10 +32247,10 @@ var SearchResults = function SearchResults(_ref) {
       score = _ref$searchSession.score,
       event = _ref$searchSession.event,
       message = _ref$searchSession.message;
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    !event ? navigate('/search') : console.log(event);
-  }, []); // if (!event) {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)(); // useEffect(() => {
+  //     !event ? navigate('/search') : console.log(event);
+  // }, []);
+  // if (!event) {
   //     return null
   // }
 
@@ -32254,7 +32282,11 @@ var SearchResults = function SearchResults(_ref) {
       allowFullScreen: true // loading="lazy"
 
     })]
-  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {});
+  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+      children: message
+    })
+  });
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SearchResults);

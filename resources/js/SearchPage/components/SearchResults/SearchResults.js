@@ -7,9 +7,9 @@ const SearchResults = ({
 }) => {
     const navigate = useNavigate();
 
-    useEffect(() => {
-        !event ? navigate('/search') : console.log(event);
-    }, []);
+    // useEffect(() => {
+    //     !event ? navigate('/search') : console.log(event);
+    // }, []);
 
     // if (!event) {
     //     return null
@@ -34,12 +34,12 @@ const SearchResults = ({
                     // style="border:0;"
                     allowFullScreen
 
-                    // loading="lazy"
+                // loading="lazy"
                 ></iframe>
             )}
         </>
     ) : (
-        <></>
+        <><h3>{message}</h3></>
     );
 };
 

@@ -188,6 +188,7 @@ body {
   margin: 1rem auto;
 }
 
+<<<<<<< HEAD
 .create-form {
   display: flex;
   justify-content: center;
@@ -283,6 +284,8 @@ body {
   bottom: 1px;
 }
 
+=======
+>>>>>>> b5bced342fc2c553c165f923ec62673dbd116966
 .nav-container {
   width: 100%;
   height: 5vh;
@@ -609,6 +612,11 @@ button.refine.close {
   position: relative;
   z-index: 1;
   bottom: 30px;
+  text-align: center;
+}
+.btn-search-results--empty {
+  background-color: #ea2b1f;
+  color: white;
 }
 
 .popup-bg {

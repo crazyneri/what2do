@@ -1,32 +1,33 @@
 export default function EmptyRefinements() {
     return (
         <div className="drag-space">
+            <p className="instructions-bold">
+                Decide what you want to do - the closer to the top, the more you
+                want to do it!
+            </p>
             <ol>
                 <li>
-                    <span className="instructions-bold">Choose</span> what you
-                    would like to do from the categories column.
+                    <span className="instructions-bold">Choose</span> the main
+                    category.
                 </li>
                 <li>
-                    <span className="instructions-bold">Drag</span> your chosen
-                    activity into the 'what2do' column.
+                    <span className="instructions-bold">Drag</span> it into
+                    'what2do'.
                 </li>
                 <li>
-                    <span className="instructions-bold">Refine</span> your
-                    search by clicking on the 'refine' button under the category
-                    name.
+                    <span className="instructions-bold">Click</span> the refine
+                    button.
                 </li>
                 <li>
-                    <span className="instructions-bold">Drag</span> any
-                    sub-categories you would like into the 'chosen
-                    sub-categories' column in the centre.
+                    <span className="instructions-bold">Choose</span> your
+                    sub-categories.
                 </li>
                 <li>
-                    <span className="instructions-bold">Press</span> the close
-                    sub-categories' button when you have finished.
+                    <span className="instructions-bold">Close</span> the
+                    sub-categories' when you have finished.
                 </li>
                 <li>
-                    When you have decided what to do - press{" "}
-                    <span className="instructions-bold">search</span>!
+                    Press <span className="instructions-bold">search</span>!
                 </li>
             </ol>
         </div>
