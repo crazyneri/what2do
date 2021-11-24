@@ -38,15 +38,15 @@ a {
 
 .admin-container {
   display: grid;
-  width: 100vw;
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr;
   justify-items: start;
   margin: 2rem;
 }
 
 .left-side h2, .right-side h2 {
   text-align: left;
+  padding: 0;
 }
 .left-side button, .right-side button {
   margin: 0 auto;
