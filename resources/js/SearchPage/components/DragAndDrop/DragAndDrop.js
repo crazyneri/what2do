@@ -198,7 +198,7 @@ function DragAndDrop({
     }, [searchSessionId]);
 
     if (!state) {
-        return <RotateSpinner />;
+        return <RotateSpinner color='#ea2b1f' />;
     }
 
     return (

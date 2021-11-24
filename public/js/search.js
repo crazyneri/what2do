@@ -31253,9 +31253,11 @@ var App = function App() {
               startSession(group_id);
 
             case 22:
-              console.log('navigate?', session);
+              console.log('navigate?', session, 'user choices', session.user_choices); // if (session && session.event_id && session.event_id !== null)
 
-              if (session && session.event_id && session.event_id !== null) {
+              if (session && session.user_choices.some(function (c) {
+                return c.user_id === user.id;
+              })) {
                 navigate('/search/results');
                 setPopupOpen(false);
               }
@@ -31283,7 +31285,16 @@ var App = function App() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     getSearchSessionDetails();
-  }, []);
+  }, []); // setInterval to dynamically update the session every 5 seconds to show users the session has finished
+  // useEffect(() => {
+  //     setInterval(async () => {
+  //         await getSearchSessionDetails();
+  //         if (searchSession && searchSession.event_id && searchSession.event_id !== null) {
+  //             navigate('/search/results');
+  //         }
+  //     }, 10000)
+  // }, []);
+
   console.log(nonAnonymousSearch);
   return (
     /*#__PURE__*/
@@ -31838,7 +31849,9 @@ function DragAndDrop(_ref) {
   }, [searchSessionId]);
 
   if (!state) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_spinners_kit__WEBPACK_IMPORTED_MODULE_4__.RotateSpinner, {});
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_spinners_kit__WEBPACK_IMPORTED_MODULE_4__.RotateSpinner, {
+      color: "#ea2b1f"
+    });
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_6__.DragDropContext // see notes on this
@@ -32224,10 +32237,10 @@ var SearchResults = function SearchResults(_ref) {
       score = _ref$searchSession.score,
       event = _ref$searchSession.event,
       message = _ref$searchSession.message;
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    !event ? navigate('/search') : console.log(event);
-  }, []); // if (!event) {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)(); // useEffect(() => {
+  //     !event ? navigate('/search') : console.log(event);
+  // }, []);
+  // if (!event) {
   //     return null
   // }
 
@@ -32259,7 +32272,11 @@ var SearchResults = function SearchResults(_ref) {
       allowFullScreen: true // loading="lazy"
 
     })]
-  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {});
+  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+      children: message
+    })
+  });
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SearchResults);
