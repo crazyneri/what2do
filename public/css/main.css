@@ -101,43 +101,64 @@ h2 {
   padding: 2rem 0 0 2rem;
 }
 
-.future-container, .repeated-container, .historical-container {
+.future-container,
+.repeated-container,
+.historical-container {
   display: flex;
   padding: 2rem;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.future-event, .repeated-event, .historical-event {
+.future-event,
+.repeated-event,
+.historical-event {
   width: 49%;
 }
-.future-event table, .repeated-event table, .historical-event table {
+.future-event table,
+.repeated-event table,
+.historical-event table {
   border-collapse: collapse;
   margin: 25px 0px;
   font-size: 18px;
   min-width: 300px;
   box-shadow: 0px 1px 5px #adadad;
 }
-.future-event table thead tr, .repeated-event table thead tr, .historical-event table thead tr {
+.future-event table thead tr,
+.repeated-event table thead tr,
+.historical-event table thead tr {
   background-color: #edae49;
   color: #ffffff;
   text-align: left;
 }
-.future-event table th, .future-event table td, .repeated-event table th, .repeated-event table td, .historical-event table th, .historical-event table td {
+.future-event table th,
+.future-event table td,
+.repeated-event table th,
+.repeated-event table td,
+.historical-event table th,
+.historical-event table td {
   padding: 10px 15px;
 }
-.future-event table tbody tr, .repeated-event table tbody tr, .historical-event table tbody tr {
+.future-event table tbody tr,
+.repeated-event table tbody tr,
+.historical-event table tbody tr {
   border-bottom: 1px solid #dddddd;
 }
-.future-event table tbody tr:nth-of-type(even), .repeated-event table tbody tr:nth-of-type(even), .historical-event table tbody tr:nth-of-type(even) {
+.future-event table tbody tr:nth-of-type(even),
+.repeated-event table tbody tr:nth-of-type(even),
+.historical-event table tbody tr:nth-of-type(even) {
   background-color: #fffaf1;
 }
-.future-event table tr:hover td, .repeated-event table tr:hover td, .historical-event table tr:hover td {
+.future-event table tr:hover td,
+.repeated-event table tr:hover td,
+.historical-event table tr:hover td {
   color: black;
   border-top: 1px solid grey;
   border-bottom: 1px solid grey;
 }
-.future-event table tbody tr:last-of-type, .repeated-event table tbody tr:last-of-type, .historical-event table tbody tr:last-of-type {
+.future-event table tbody tr:last-of-type,
+.repeated-event table tbody tr:last-of-type,
+.historical-event table tbody tr:last-of-type {
   border-bottom: 2px solid #edae49;
 }
 
@@ -147,7 +168,8 @@ h2 {
   margin: 1rem auto;
 }
 
-button, input {
+button,
+input {
   margin: 0 auto;
   display: block;
   background-color: #414c6b;
@@ -157,7 +179,8 @@ button, input {
   color: white;
   font-family: "Comfortaa", cursive;
 }
-button a, input a {
+button a,
+input a {
   color: white;
   font-family: "Comfortaa", cursive;
 }
@@ -532,6 +555,110 @@ button.refine.close {
 .users-list {
   display: flex;
   list-style-type: none !important;
+}
+
+.login__container {
+  width: 5em;
+  height: auto;
+}
+.login__button {
+  margin: 1em;
+  border: none;
+  border-radius: 3px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.login {
+  width: 60vw;
+  height: 60vh;
+  margin: 0 auto;
+  margin-top: 15px;
+  background-color: #fffaf1;
+  box-shadow: 0px 1px 5px #adadad;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.login-message__no-login {
+  background-color: #fffaf1;
+  width: 50vw;
+}
+.login .login-message__no-login h2 {
+  font-family: "Comfortaa", cursive;
+  font-size: 16px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ea2b1f;
+}
+.login .login-message__no-login form {
+  padding: 5px 0;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+.login .login-message__no-login .btn-login__no-login {
+  width: 40%;
+  margin: 0 15px;
+}
+
+.login-form {
+  background-color: #fffaf1;
+  width: 50vw;
+  padding: 10px 0 0;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  border: 1px solid #ea2b1f;
+  box-shadow: 1px 1px 5px #ea2b1f;
+}
+.login-form-input {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.login-form-input label {
+  font-family: "Comfortaa", cursive;
+}
+.login-form-input input {
+  width: 100%;
+  padding: 7px 5px;
+  border: 1px solid #414c6b;
+}
+.login-form-input input:focus {
+  border: 1px solid #414c6b;
+}
+
+.btn-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.btn-login {
+  font-family: "Comfortaa", cursive;
+  font-size: 0.9rem;
+  background-color: #5f709e;
+  color: #fff;
+  padding: 7px;
+}
+.btn-login__login {
+  width: 100%;
+  background-color: #414c6b;
+}
+.btn-login a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.btn-create {
+  width: 50vw;
+  display: flex;
+  justify-content: flex-end;
 }
 
 * {

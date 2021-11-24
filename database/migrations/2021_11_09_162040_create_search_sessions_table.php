@@ -21,6 +21,9 @@ class CreateSearchSessionsTable extends Migration
             $table->time('start_time', $precision = 0)->nullable();
             $table->time('end_time', $precision = 0)->nullable();
             $table->string('city')->nullable();
+            $table->integer('score')->nullable();
+            $table->string('status')->nullable();
+            $table->text('message')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();
         });

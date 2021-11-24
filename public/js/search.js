@@ -32215,7 +32215,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var SearchResults = function SearchResults(_ref) {
-  var event = _ref.searchSession.event;
+  var _ref$searchSession = _ref.searchSession,
+      score = _ref$searchSession.score,
+      event = _ref$searchSession.event,
+      message = _ref$searchSession.message;
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     !event ? navigate('/search') : console.log(event);
@@ -32224,10 +32227,12 @@ var SearchResults = function SearchResults(_ref) {
   // }
 
   return event ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
-      children: "We have found you a match - now you know WHAT2DO!"
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+      children: message
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h2", {
       children: [" ", event.name]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h4", {
+      children: ["Event match score: ", score, "%"]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
       children: ["Venue: ", event.venue.name]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {

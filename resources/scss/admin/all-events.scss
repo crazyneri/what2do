@@ -7,7 +7,9 @@ h2 {
 }
 
 // containers
-.future-container, .repeated-container, .historical-container{
+.future-container,
+.repeated-container,
+.historical-container {
     display: flex;
     padding: 2rem;
     flex-wrap: wrap;
@@ -15,52 +17,56 @@ h2 {
 }
 
 // content
-.future-event, .repeated-event, .historical-event {
+.future-event,
+.repeated-event,
+.historical-event {
     width: 49%;
     table {
-            border-collapse: collapse;
-            margin: 25px 0px;
-            font-size: $table_font_size;
-            min-width: 300px;
-            box-shadow: $main-shadow;
+        border-collapse: collapse;
+        margin: 25px 0px;
+        font-size: $table_font_size;
+        min-width: 300px;
+        box-shadow: $main-shadow;
 
-            thead tr {
-                background-color: $thead-color;
-                color: #ffffff;
-                text-align: left;
-            }
-
-            th, td {
-                padding: 10px 15px;
-            }
-
-            tbody tr {
-                border-bottom: 1px solid #dddddd;
-            }
-
-            tbody tr:nth-of-type(even){
-                background-color: $background;
-            }
-
-            tr:hover td{
-                color:black;
-                border-top: 1px solid grey;
-                border-bottom: 1px solid grey;
-            }
-  
-            tbody tr:last-of-type {
-                border-bottom: 2px solid $thead-color;
-            }
+        thead tr {
+            background-color: $thead-color;
+            color: #ffffff;
+            text-align: left;
         }
+
+        th,
+        td {
+            padding: 10px 15px;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        tbody tr:nth-of-type(even) {
+            background-color: $background;
+        }
+
+        tr:hover td {
+            color: black;
+            border-top: 1px solid grey;
+            border-bottom: 1px solid grey;
+        }
+
+        tbody tr:last-of-type {
+            border-bottom: 2px solid $thead-color;
+        }
+    }
 }
 
-.line{
+.line {
     width: 30%;
     border: 1px dashed #b6b5b5;
     margin: 1rem auto;
 }
 
-button, input {
+button,
+input {
     margin: 0 auto;
     display: block;
     background-color: $button-color;
@@ -79,4 +85,3 @@ button, input {
 p {
     padding-left: 2rem;
 }
-

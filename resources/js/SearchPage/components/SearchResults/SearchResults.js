@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const SearchResults = ({
     // results: { event, group_choices }
-    searchSession: { event },
+    searchSession: { score, event, message },
 }) => {
     const navigate = useNavigate();
 
@@ -17,9 +17,9 @@ const SearchResults = ({
 
     return event ? (
         <>
-            <h2>We have found you a match - now you know WHAT2DO!</h2>
+            <h3>{message}</h3>
             <h2> {event.name}</h2>
-            {/* <h4>Event match score: {group_choices[0].score}</h4> */}
+            <h4>Event match score: {score}%</h4>
             <p>Venue: {event.venue.name}</p>
             <p>{event.description}</p>
             <p>Starts at: {event.start_time}</p>

@@ -242,20 +242,18 @@ class UserChoiceController extends Controller
 
                 // return action(NotifyController::Class, 'notify', ['id' => $other_group_members]);
                 // email and notify the other group members
-                $group_choices = null;
-                $event = null;
-                $status = 'started';
-                $message = "You're the first, now you just need to wait for your friends. You can check the progress of searches on your user page.";
 
-                return ['group_choices' => $group_choices, 'event' => $event, 'status' => $status, 'message' => $message];
+                $search_session->status = 'started';
+                $search_session->message = "You're the first, now you just need to wait for your friends. You can check the progress of searches on your user page.";
+                $search_session->save();
+                
+                return $search_session;
             }
             
-                $group_choices = null;
-                $event = null;
-                $status = 'waiting';
-                $message = "Thank you for your choices, when everyone has completed the search we'll let you know! You can check the progress of searches on your user page.";
+                $search_session->status = 'waiting';
+                $search_session->message = "Thank you for your choices, when everyone has completed the search we'll let you know! You can check the progress of searches on your user page.";
 
-                return ['group_choices' => $group_choices, 'event' => $event, 'status' => $status, 'message' => $message];
+                return $search_session;
         }
 
         if ($users_completed_number == $group_number) {
@@ -268,24 +266,22 @@ class UserChoiceController extends Controller
                 $event = Event::findOrFail($group_choices[0]['event_id']);
                 // ** add event to search session
                 $search_session->event_id = $group_choices[0]['event_id'];
+                // ** calculate score
+                $max_score = ($group_number*9)+(($group_number-1)*2);
+                $search_session->score = $group_choices[0]['score'] / $max_score * 100;
+                
+                $search_session->status = 'complete';
+                $search_session->message = 'The results are in, have a good one!';
+                $search_session->save();
+               
+                return $search_session;
+            }
+
+                $search_session->status = 'nothing';
+                $search_session->message = "Sorry, you need to try again - we couldn't find a match this time :(";
                 $search_session->save();
 
-                $max_score = ($group_number*9)+(($group_number-1)*2);
-                $score = $group_choices[0]['score'] / $max_score * 100;
-
-                $venue = Venue::findOrFail($event->venue_id);
-
-                $status = 'complete';
-                $message = 'The results are in, have a good one!';
-               
-                return ['score' => $score, 'group_choices' => $group_choices, 'event' => $event, 'venue' => $venue, 'status' => $status, 'message' => $message];
-            }
-                $group_choices = null;
-                $event = null;
-                $status = 'nothing';
-                $message = "Sorry, you need to try again - we couldn't find a match this time :(";
-
-                return ['group_choices' => $group_choices, 'event' => $event, 'status' => $status, 'message' => $message];
+                return $search_session;
             // return view('search\result', compact('group_choices', 'event'));
             // return ['url' => "/session/{search_session->id}"];
             // return view('search\result', compact('group_choices', 'event'));
