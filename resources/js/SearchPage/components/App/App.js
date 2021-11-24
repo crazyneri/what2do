@@ -3,7 +3,7 @@ import { get, post } from "../../../util/request";
 import UserContext from "../../../util/UserContext";
 import SoloOrGroupPopup from "../SoloOrGroupPopup/SoloOrGroupPopup";
 import { DateTime } from "luxon";
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import SearchControls from "../SearchControls/SearchControls";
 import SearchResults from "../SearchResults/SearchResults";
 import SessionControls from "../SessionControls/SessionControls";
