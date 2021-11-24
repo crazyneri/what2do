@@ -12,15 +12,13 @@ const App = () => {
     // input values
 
     const initialValues = {
-        city: "Prague",
-        date: DateTime.now().toFormat("yyyy-MM-dd"),
-        startTime: "12:00:00",
-        endTime: "12:00:00",
+        city: 'Prague',
+        date: DateTime.now().toFormat('yyyy-MM-dd'),
+        startTime: '12:00:00',
+        endTime: '12:00:00',
     };
 
     const [values, setValues] = useState(initialValues);
-
-
 
     // drag and drop states
     const [state, setState] = useState(null);
@@ -43,18 +41,15 @@ const App = () => {
 
     const [loading, setLoading] = useState(false);
 
-
     const [users, setUsers] = useState([]);
 
     const [groupMembers, setGroupMembers] = useState([]);
 
-    const [groupName, setGroupName] = useState("");
+    const [groupName, setGroupName] = useState('');
 
     const nonAnonymousSearch = user && user.id !== 0;
 
     const [popupOpen, setPopupOpen] = useState(true);
-
-
 
     const navigate = useNavigate();
 
@@ -66,7 +61,7 @@ const App = () => {
             end_time: endTime,
         };
         try {
-            const response = await post("/session/update", sessionData);
+            const response = await post('/session/update', sessionData);
 
             console.log(response.data);
         } catch (error) {
@@ -85,18 +80,17 @@ const App = () => {
 
         try {
             const response = await post(
-                "/user-choice/store",
+                '/user-choice/store',
                 searchDetailsData
             );
 
-            const results = response.data
+            const results = response.data;
 
-            console.log(results)
+            console.log(results);
 
             setResults(results);
 
             getSearchSessionDetails();
-
         } catch (error) {
             console.log(error.response);
         }
@@ -114,14 +108,14 @@ const App = () => {
     // }, [])
 
     const fetchUser = async () => {
-        const response = await get("/api/user");
+        const response = await get('/api/user');
 
         const u = await response.data;
-        console.log("logged in user", u);
+        console.log('logged in user', u);
 
         setUser(u);
 
-        !u && window.location.assign("/login");
+        !u && window.location.assign('/login');
     };
 
     useEffect(() => {
@@ -134,14 +128,14 @@ const App = () => {
             user_id: user.id,
             group_id: group_id,
         };
-        console.log("starting session with group id", group_id);
+        console.log('starting session with group id', group_id);
 
         try {
-            const response = await post("/session/store", sessionData);
+            const response = await post('/session/store', sessionData);
 
             const search_session_id = response.data;
 
-            console.log("session started, id: ", search_session_id);
+            console.log('session started, id: ', search_session_id);
 
             setSearchSessionId(search_session_id);
             getSearchSessionDetails();
@@ -160,11 +154,11 @@ const App = () => {
 
         try {
             const response = await post(
-                "/session/save-session-to-cookies",
+                '/session/save-session-to-cookies',
                 sessionData
             );
 
-            console.log("saving session to cookies: ", session_id);
+            console.log('saving session to cookies: ', session_id);
 
             setSearchSessionId(session_id);
         } catch (error) {
@@ -178,20 +172,23 @@ const App = () => {
         // setLoading(true)
 
         try {
-            const response = await get("/api/session/details");
+            const response = await get('/api/session/details');
 
             const session_id = response.data.id;
             const group_id = response.data.group_id;
             setGroupId(group_id);
-            console.log("session details: ", response.data);
+            console.log('session details: ', response.data);
 
-            const session = response.data
+            const session = response.data;
 
             setSearchSession(session);
 
             setSearchSessionId(session_id);
 
-            await user && user.id === 0 && session_id === 0 && startSession(group_id);
+            (await user) &&
+                user.id === 0 &&
+                session_id === 0 &&
+                startSession(group_id);
 
             console.log('navigate?', session);
 
@@ -199,7 +196,6 @@ const App = () => {
                 navigate('/search/results');
                 setPopupOpen(false);
             }
-
         } catch (error) {
             console.log(error.response);
         }
@@ -208,11 +204,8 @@ const App = () => {
     };
 
     useEffect(() => {
-        getSearchSessionDetails()
-
+        getSearchSessionDetails();
     }, []);
-
-
 
     console.log(nonAnonymousSearch);
 
@@ -244,35 +237,43 @@ const App = () => {
                     groupMembers={groupMembers}
                 />
                 <Routes>
+                    <Route
+                        exact
+                        path="/search/results"
+                        element={
+                            <SearchResults
+                                results={results}
+                                searchSession={searchSession}
+                            />
+                        }
+                    />
 
-                    <Route exact path='/search/results'
-                        element={<SearchResults
-                            results={results}
-                            searchSession={searchSession}
-                        />} />
-
-                    <Route exact path='/search' element={
-                        <SearchControls
-                            values={values}
-                            setValues={setValues}
-                            state={state}
-                            setState={setState}
-                            showCinemaSubCats={showCinemaSubCats}
-                            setShowCinemaSubCats={setShowCinemaSubCats}
-                            showTheatreSubCats={showTheatreSubCats}
-                            setShowTheatreSubCats={setShowTheatreSubCats}
-                            showMusicSubCats={showMusicSubCats}
-                            setShowMusicSubCats={setShowMusicSubCats}
-                            columnsToRender={columnsToRender}
-                            setColumnsToRender={setColumnsToRender}
-                            searchIds={searchIds}
-                            setSearchIds={setSearchIds}
-                            searchSession={searchSession}
-                            searchSessionId={searchSessionId}
-                            search={search}
-                            results={results}
-                        />}>
-                    </Route>
+                    <Route
+                        exact
+                        path="/search"
+                        element={
+                            <SearchControls
+                                values={values}
+                                setValues={setValues}
+                                state={state}
+                                setState={setState}
+                                showCinemaSubCats={showCinemaSubCats}
+                                setShowCinemaSubCats={setShowCinemaSubCats}
+                                showTheatreSubCats={showTheatreSubCats}
+                                setShowTheatreSubCats={setShowTheatreSubCats}
+                                showMusicSubCats={showMusicSubCats}
+                                setShowMusicSubCats={setShowMusicSubCats}
+                                columnsToRender={columnsToRender}
+                                setColumnsToRender={setColumnsToRender}
+                                searchIds={searchIds}
+                                setSearchIds={setSearchIds}
+                                searchSession={searchSession}
+                                searchSessionId={searchSessionId}
+                                search={search}
+                                results={results}
+                            />
+                        }
+                    ></Route>
                 </Routes>
             </UserContext.Provider>
         </div>
