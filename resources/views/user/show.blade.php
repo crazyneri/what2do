@@ -11,7 +11,7 @@
     @if(Auth::id() == $user->id)
     <p>Email: {{$user->email}}</p>
     <p>Phone number: {{$user->phone}}</p>
-    <button><a href="/user/{{$user->id}}/edit">Edit</a></button>
+    <button><a href="/user/{{$user->id}}/edit">Edit Details</a></button>
      @endif
 
      @can('admin')
