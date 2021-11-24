@@ -533,6 +533,8 @@ button.refine.close {
   margin: 1rem 0;
   padding: 0.5rem 0;
   border: none;
+  font-family: "Nunito", sans-serif;
+  color: #414c6b;
 }
 
 .popup {
@@ -540,7 +542,7 @@ button.refine.close {
   width: 60%;
   padding: 0 20px;
   z-index: 3;
-  background: #dfb871;
+  background: #f9edcc;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
@@ -641,7 +643,7 @@ button.refine.close {
 .btn-login {
   font-family: "Comfortaa", cursive;
   font-size: 0.9rem;
-  background-color: #5f709e;
+  background-color: #1565c0;
   color: #fff;
   padding: 7px;
 }
