@@ -22,7 +22,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Future events</th>
-                        <th>Edit</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                     <tbody>
@@ -57,7 +57,7 @@
                         <th>Time - start</th>
                         <th>Date - end</th>
                         <th>Time - end</th>
-                        <th>Price</th>
+                        <th>Price (CZK)</th>
                     </tr>
                 </thead>
                     <tbody>
@@ -69,14 +69,16 @@
                                 <td>{{$event->start_time}}</td>
                                 <td>{{$event->end_date}}</td>
                                 <td>{{$event->end_time}}</td>
-                                <td>{{$event->price . " CZK"}} </td>
+                                <td>{{$event->price}} </td>
                             </tr>
                         @endforeach
                     </tbody>
             </table>
     
-            <button><a href="/admin/events">See all events</a></button>
-            <button><a href="/admin/event/create">Create event</a></button>
+            <div class="events-btn">
+                <button><a href="/admin/events">See all events</a></button>
+                <button><a href="/admin/event/create">Create event</a></button>
+            </div>
         </div>
     </div>
     
