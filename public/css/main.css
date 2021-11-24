@@ -188,30 +188,6 @@ body {
   margin: 1rem auto;
 }
 
-<<<<<<< HEAD
-=======
-button,
-input {
-  margin: 0 auto;
-  display: block;
-  background-color: #414c6b;
-  width: 4rem;
-  height: 1.5rem;
-  margin: 0.2rem;
-  color: white;
-  font-family: "Comfortaa", cursive;
-}
-button a,
-input a {
-  color: white;
-  font-family: "Comfortaa", cursive;
-}
-
-p {
-  padding-left: 2rem;
-}
-
->>>>>>> ad2c22e20d42f26bfe11e7e7148bffc7592c1120
 .nav-container {
   width: 100%;
   height: 5vh;
