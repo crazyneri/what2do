@@ -9,7 +9,7 @@ $light-yellow: #f9df74;
 $headers: #414c6b;
 $main-shadow: 0px 1px 5px rgb(173, 173, 173);
 // $font-headers: "Laila", sans-serif;
-$font-headers: "Nunito", sans-serif;
+$font-headers: 'Nunito', sans-serif;
 
 * {
     box-sizing: border-box;
@@ -153,7 +153,7 @@ h5 {
     li {
         font-size: 1em;
         margin: 6px;
-        font-family: "Comfortaa", cursive;
+        font-family: 'Comfortaa', cursive;
     }
     .instructions-bold {
         font-weight: 900;
@@ -212,7 +212,7 @@ h5 {
     // border-top: 2px dashed grey;
     border-bottom: 2px solid grey;
     border-radius: 5px;
-    font-family: "Comfortaa", cursive;
+    font-family: 'Comfortaa', cursive;
     box-shadow: 3px 2px 5px #222;
     button {
         margin: 0;
@@ -320,4 +320,9 @@ button.refine {
     position: relative;
     z-index: 1;
     bottom: 30px;
+    text-align: center;
+    &--empty {
+        background-color: $pop-border;
+        color: white;
+    }
 }

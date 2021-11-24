@@ -68,8 +68,8 @@ const SearchControls = ({
                 setSearchIds={setSearchIds}
                 searchSessionId={searchSessionId}
             />
-            {!alreadyResponded && searchIds && searchIds.length !== 0 && (
-                <div className="btn-search-container">
+            <div className="btn-search-container">
+                {!alreadyResponded && searchIds && searchIds.length !== 0 ? (
                     <button
                         className="btn-search-results"
                         onClick={() => {
@@ -78,8 +78,12 @@ const SearchControls = ({
                     >
                         Search
                     </button>
-                </div>
-            )}
+                ) : (
+                    <p className="btn-search-results btn-search-results--empty">
+                        You must refine your choices before you can search!
+                    </p>
+                )}
+            </div>
         </>
     );
 };
