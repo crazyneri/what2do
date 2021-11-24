@@ -1,14 +1,20 @@
 import React, { useEffect } from 'react'
 
-const SearchResults = ({ results: { event, group_choices } }) => {
+const SearchResults = (
+    {
+        // results: { event, group_choices }
+        searchSession: { event }
+
+    }) => {
     useEffect(() => {
         console.log(event)
     }, [event])
     return (
         event ?
             <>
+                <h2>We have found you a match - now you know WHAT2DO!</h2>
                 <h2> {event.name}</h2>
-                <h4>Event match score: {group_choices[0].score}</h4>
+                {/* <h4>Event match score: {group_choices[0].score}</h4> */}
                 <p>Venue: {event.venue.name}</p>
                 <p>{event.description}</p>
                 <p>Starts at: {event.start_time}</p>

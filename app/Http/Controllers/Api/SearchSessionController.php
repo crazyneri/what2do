@@ -19,6 +19,10 @@ class SearchSessionController extends Controller
 
             $search_session->load(['user_choices', 'group', 'group.users']);
 
+            if (isset($search_session->event_id)) {
+                $search_session->load(['event', 'event.venue']);
+            }
+
             return $search_session;
 
             // $data = [
