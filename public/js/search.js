@@ -31652,7 +31652,8 @@ function DragAndDrop(_ref) {
       columnsToRender = _ref.columnsToRender,
       setColumnsToRender = _ref.setColumnsToRender,
       searchIds = _ref.searchIds,
-      setSearchIds = _ref.setSearchIds;
+      setSearchIds = _ref.setSearchIds,
+      searchSessionId = _ref.searchSessionId;
 
   var renderColumns = function renderColumns() {
     if (showCinemaSubCats) {
@@ -31831,7 +31832,10 @@ function DragAndDrop(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     // on page reload, fetch categories data from database to populate the DragAndDrop component
     fetchData();
-  }, []);
+    setShowCinemaSubCats(false);
+    setShowMusicSubCats(false);
+    setShowTheatreSubCats(false);
+  }, [searchSessionId]);
 
   if (!state) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_spinners_kit__WEBPACK_IMPORTED_MODULE_4__.RotateSpinner, {});
@@ -32180,7 +32184,8 @@ var SearchControls = function SearchControls(_ref) {
       columnsToRender: columnsToRender,
       setColumnsToRender: setColumnsToRender,
       searchIds: searchIds,
-      setSearchIds: setSearchIds
+      setSearchIds: setSearchIds,
+      searchSessionId: searchSessionId
     }), !alreadyResponded && searchIds && searchIds.length !== 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
       onClick: function onClick() {
         search();
