@@ -32494,21 +32494,22 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
             case 8:
               props.getSearchSessionDetails();
               props.setGroupName('');
+              navigate("/search");
               props.setPopupOpen(false);
-              _context2.next = 16;
+              _context2.next = 17;
               break;
 
-            case 13:
-              _context2.prev = 13;
+            case 14:
+              _context2.prev = 14;
               _context2.t0 = _context2["catch"](1);
               console.log(_context2.t0.response);
 
-            case 16:
+            case 17:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[1, 13]]);
+      }, _callee2, null, [[1, 14]]);
     }));
 
     return function createGroup() {
