@@ -98,6 +98,8 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
 
             props.setGroupName('');
 
+            navigate("/search")
+
             props.setPopupOpen(false);
         } catch (error) {
             console.log(error.response);
