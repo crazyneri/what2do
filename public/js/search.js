@@ -31832,6 +31832,9 @@ function DragAndDrop(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     // on page reload, fetch categories data from database to populate the DragAndDrop component
     fetchData();
+    setShowCinemaSubCats(false);
+    setShowMusicSubCats(false);
+    setShowTheatreSubCats(false);
   }, [searchSessionId]);
 
   if (!state) {
