@@ -3,6 +3,7 @@ import { DragDropContext } from "react-beautiful-dnd";
 // import './style.scss';
 import Column from "./Column";
 import { get } from "../../../util/request";
+import { RotateSpinner } from "react-spinners-kit";
 
 function DragAndDrop({
     state,
@@ -193,7 +194,7 @@ function DragAndDrop({
     }, []);
 
     if (!state) {
-        return <h1>loading</h1>;
+        return <RotateSpinner />;
     }
 
     return (

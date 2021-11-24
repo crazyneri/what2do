@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\Group;
+use App\Models\User;
 use App\Models\SearchSession;
 use App\Models\UserChoice;
 use App\Notifications\InvoicePaid;
@@ -14,13 +15,23 @@ class SearchResultsController extends Controller
     //
 
     // ** matches categories to the available events
-    public function show($session_id)
+    public function show($user_id)
     {
-        $search_session = SearchSession::with('user_choices')
-            ->where('id', $session_id)
-            ->get();
+        $user_info = User::findOrFail($user_id);
+        $user_sessions = [];
+        foreach($user_info->user_choices as $choice)
+        {
+            $user_sessions[] = SearchSession::find($choice->session_id);
+        }
 
-        return $search_session;
+
+        // $user_session_info = User::with(['user_choices', 'user_choices.search_sessions', 'user_choices.search_sessions.group'])
+        //     ->where('id', $user_id)
+        //     ->get();
+        // $user_sessions = $user_session_info[0];
+        return $user_sessions;
+        return $user_info->user_choices;
+        return view('search.sessions', compact('user_sessions'));
         return 'bollocks';
     }
 

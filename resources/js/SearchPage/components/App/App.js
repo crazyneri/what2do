@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import DragAndDrop from "../DragAndDrop/DragAndDrop";
-import Inputs from "../Inputs/Inputs";
 import { get, post } from "../../../util/request";
 import UserContext from "../../../util/UserContext";
 import SoloOrGroupPopup from "../SoloOrGroupPopup/SoloOrGroupPopup";
 import { DateTime } from "luxon";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import SearchControls from "../SearchControls/SearchControls";
+import SearchResults from "../SearchResults/SearchResults";
+import SessionControls from "../SessionControls/SessionControls";
 
 const App = () => {
     // input values
@@ -18,7 +20,7 @@ const App = () => {
 
     const [values, setValues] = useState(initialValues);
 
-    const { city, date, startTime, endTime } = values;
+
 
     // drag and drop states
     const [state, setState] = useState(null);
@@ -35,12 +37,26 @@ const App = () => {
     const [searchSessionId, setSearchSessionId] = useState(0);
     const [searchSession, setSearchSession] = useState(null);
 
-    const nonAnonymousSearch = user && user.id !== 0 && searchSessionId === 0;
+    const [results, setResults] = useState(null);
 
-    const showPopup =
-        (user && user.id !== 0 && searchSessionId === 0) ||
-        (user && user.id === 0);
-    // || (user && user.id === 0)
+    const { city, date, startTime, endTime } = values;
+
+    const [loading, setLoading] = useState(false);
+
+
+    const [users, setUsers] = useState([]);
+
+    const [groupMembers, setGroupMembers] = useState([]);
+
+    const [groupName, setGroupName] = useState("");
+
+    const nonAnonymousSearch = user && user.id !== 0;
+
+    const [popupOpen, setPopupOpen] = useState(true);
+
+
+
+    const navigate = useNavigate();
 
     const updateSession = async () => {
         const sessionData = {
@@ -58,6 +74,7 @@ const App = () => {
         }
     };
     const sendSearchDetails = async () => {
+        // setLoading(true);
         const searchDetailsData = {
             session_id: searchSessionId,
             user_id: user.id,
@@ -72,17 +89,29 @@ const App = () => {
                 searchDetailsData
             );
 
-            console.log(response.data);
+            const results = response.data
+
+            console.log(results)
+
+            setResults(results);
+
+            getSearchSessionDetails();
+
         } catch (error) {
             console.log(error.response);
         }
+
+        // setLoading(false);
     };
 
     const search = () => {
         updateSession();
         sendSearchDetails();
-        getSearchSessionDetails();
     };
+
+    // useEffect(() => {
+    //     getSearchSessionDetails();
+    // }, [])
 
     const fetchUser = async () => {
         const response = await get("/api/user");
@@ -115,6 +144,7 @@ const App = () => {
             console.log("session started, id: ", search_session_id);
 
             setSearchSessionId(search_session_id);
+            getSearchSessionDetails();
         } catch (error) {
             console.log(error.response);
         }
@@ -134,7 +164,7 @@ const App = () => {
                 sessionData
             );
 
-            console.log("session started, id: ", session_id);
+            console.log("saving session to cookies: ", session_id);
 
             setSearchSessionId(session_id);
         } catch (error) {
@@ -155,11 +185,21 @@ const App = () => {
             setGroupId(group_id);
             console.log("session details: ", response.data);
 
-            setSearchSession(response.data);
+            const session = response.data
+
+            setSearchSession(session);
 
             setSearchSessionId(session_id);
 
-            user && user.id === 0 && session_id === 0 && startSession(group_id);
+            await user && user.id === 0 && session_id === 0 && startSession(group_id);
+
+            console.log('navigate?', session);
+
+            if (session && session.event_id && session.event_id !== null) {
+                navigate('/search/results');
+                setPopupOpen(false);
+            }
+
         } catch (error) {
             console.log(error.response);
         }
@@ -168,62 +208,75 @@ const App = () => {
     };
 
     useEffect(() => {
-        getSearchSessionDetails();
+        getSearchSessionDetails()
+
     }, []);
 
-    const alreadyResponded =
-        user &&
-        user.id &&
-        searchSession &&
-        searchSessionId !== 0 &&
-        searchSession.user_choices &&
-        searchSession.user_choices.some(
-            (user_choice) => user_choice.user_id === user.id
-        );
 
-    console.log(alreadyResponded);
+
+    console.log(nonAnonymousSearch);
 
     return (
+        // <Router>
         <div className="search-grid">
             <UserContext.Provider value={user}>
-                {nonAnonymousSearch && (
+                {nonAnonymousSearch && popupOpen && (
                     <SoloOrGroupPopup
                         groupId={groupId}
                         setGroupId={setGroupId}
                         startSession={startSession}
                         saveSessionToCookies={saveSessionToCookies}
+                        popupOpen={popupOpen}
+                        setPopupOpen={setPopupOpen}
+                        setSearchIds={setSearchIds}
+                        setUsers={setUsers}
+                        setGroupMembers={setGroupMembers}
+                        setGroupName={setGroupName}
+                        users={users}
+                        groupMembers={groupMembers}
+                        groupName={groupName}
+                        getSearchSessionDetails={getSearchSessionDetails}
                     />
                 )}
-                <Inputs
-                    city={city}
-                    date={date}
-                    startTime={startTime}
-                    endTime={endTime}
-                    setValues={setValues}
+                <SessionControls
+                    setPopupOpen={setPopupOpen}
+                    searchSession={searchSession}
+                    groupMembers={groupMembers}
                 />
-                <DragAndDrop
-                    state={state}
-                    setState={setState}
-                    showCinemaSubCats={showCinemaSubCats}
-                    setShowCinemaSubCats={setShowCinemaSubCats}
-                    showTheatreSubCats={showTheatreSubCats}
-                    setShowTheatreSubCats={setShowTheatreSubCats}
-                    showMusicSubCats={showMusicSubCats}
-                    setShowMusicSubCats={setShowMusicSubCats}
-                    columnsToRender={columnsToRender}
-                    setColumnsToRender={setColumnsToRender}
-                    searchIds={searchIds}
-                    setSearchIds={setSearchIds}
-                />
-                {!alreadyResponded && (
-                    <div className="btn-search-container">
-                        <button className="btn-search-results" onClick={search}>
-                            Search
-                        </button>
-                    </div>
-                )}
+                <Routes>
+
+                    <Route exact path='/search/results'
+                        element={<SearchResults
+                            results={results}
+                            searchSession={searchSession}
+                        />} />
+
+                    <Route exact path='/search' element={
+                        <SearchControls
+                            values={values}
+                            setValues={setValues}
+                            state={state}
+                            setState={setState}
+                            showCinemaSubCats={showCinemaSubCats}
+                            setShowCinemaSubCats={setShowCinemaSubCats}
+                            showTheatreSubCats={showTheatreSubCats}
+                            setShowTheatreSubCats={setShowTheatreSubCats}
+                            showMusicSubCats={showMusicSubCats}
+                            setShowMusicSubCats={setShowMusicSubCats}
+                            columnsToRender={columnsToRender}
+                            setColumnsToRender={setColumnsToRender}
+                            searchIds={searchIds}
+                            setSearchIds={setSearchIds}
+                            searchSession={searchSession}
+                            searchSessionId={searchSessionId}
+                            search={search}
+                            results={results}
+                        />}>
+                    </Route>
+                </Routes>
             </UserContext.Provider>
         </div>
+        // </Router>
     );
 };
 

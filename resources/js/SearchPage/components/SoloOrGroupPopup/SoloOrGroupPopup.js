@@ -8,7 +8,6 @@ import {
     List,
     ListItem,
     ListItemAvatar,
-    ListItemButton,
     TextField,
     ListItemText,
     Typography,
@@ -17,18 +16,22 @@ import {
     Divider,
 } from "@mui/material";
 
+
 import { get, post } from "../../../util/request";
 
 import { makeStyles } from "@mui/styles";
+import { useNavigate } from "react-router-dom";
 
 const SoloOrGroupPopup = forwardRef((props, ref) => {
     const user = useContext(UserContext);
 
-    const [users, setUsers] = useState([]);
+    // const [users, setUsers] = useState([]);
 
-    const [groupMembers, setGroupMembers] = useState([]);
+    // const [groupMembers, setGroupMembers] = useState([]);
 
-    const [groupName, setGroupName] = useState("");
+    // const [groupName, setGroupName] = useState("");
+
+    const navigate = useNavigate();
 
     const useStyles = makeStyles({
         root: {
@@ -51,7 +54,7 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
         const allUsers = response.data;
 
         const otherUsers = allUsers.filter((u) => u.id !== user.id);
-        setUsers(otherUsers);
+        props.setUsers(otherUsers);
     };
 
     useEffect(() => {
@@ -59,7 +62,7 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
     }, []);
 
     const handleGroupName = (e) => {
-        setGroupName(e.target.value);
+        props.setGroupName(e.target.value);
     };
 
     const getGroupArray = (e, value) => {
@@ -71,14 +74,15 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
             ...value,
         ];
 
-        setGroupMembers(array);
+        props.setGroupMembers(array);
     };
+
 
     const createGroup = async () => {
         const groupData = {
             owner_id: user.id,
-            groupMembers: groupMembers,
-            groupName: groupName,
+            groupMembers: props.groupMembers,
+            groupName: props.groupName,
         };
 
         try {
@@ -86,9 +90,15 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
 
             const res_group_id = response.data.group_id;
 
-            props.setGroupId(res_group_id);
+            await Promise.all([props.setGroupId(res_group_id),
 
-            props.startSession(res_group_id);
+            props.startSession(res_group_id)]);
+
+            props.getSearchSessionDetails();
+
+            props.setGroupName('');
+
+            props.setPopupOpen(false);
         } catch (error) {
             console.log(error.response);
         }
@@ -123,34 +133,57 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
 
             props.setGroupId(res_group_id);
 
-            props.startSession(res_group_id);
+            await props.startSession(res_group_id);
+
+            props.getSearchSessionDetails();
         } catch (error) {
             console.log(error.response);
         }
     };
 
-    const handleSoloSearch = () => {
-        user.default_group_id
-            ? selectGroup(user.default_group_id)
-            : createDefaultGroup();
+    const handleSoloSearch = async () => {
+        if (user.default_group_id) {
+
+            await startNewSession(user.default_group_id)
+        }
+        else {
+            await createDefaultGroup();
+        }
+        props.setSearchIds([]);
+
+        props.getSearchSessionDetails();
+
+        props.setPopupOpen(false);
     };
 
-    const startNewSession = (groupId) => {
-        props.setGroupId(groupId);
+    const startNewSession = async (groupId) => {
+        await Promise.all(
+            [props.setGroupId(groupId), props.startSession(groupId)]
+        )
+        // props.saveSessionToCookies(props.sessionId);
+        props.setPopupOpen(false);
 
-        props.startSession(groupId);
+        navigate("/search")
+
     };
 
-    const selectSession = (groupId, session_id) => {
+
+
+    const selectSession = async (groupId, session_id) => {
         props.setGroupId(groupId);
 
-        props.saveSessionToCookies(session_id);
+        await props.saveSessionToCookies(session_id);
+
+        props.getSearchSessionDetails();
+        props.setPopupOpen(false);
+
+        navigate("/search")
     };
 
     return (
         <div className="popup-bg" ref={ref}>
             <Zoom
-                in={user && props.groupId === 0}
+                in={true}
                 style={{
                     transitionDelay:
                         user && props.groupId === 0 ? "500ms" : "0ms",
@@ -340,7 +373,7 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
                             <Autocomplete
                                 multiple
                                 id="tags-outlined"
-                                options={users}
+                                options={props.users}
                                 getOptionLabel={(user) => user.name}
                                 defaultValue={[]}
                                 filterSelectedOptions
@@ -361,16 +394,16 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
                                 color="primary"
                                 label="Group Name"
                                 onChange={handleGroupName}
-                                value={groupName}
+                                value={props.groupName}
                             />
                         </ListItem>
                     </List>
                     <Button
-                        disabled={!(groupName && groupMembers.length)}
+                        disabled={!(props.groupName && props.groupMembers.length)}
                         variant="contained"
                         onClick={createGroup}
                     >
-                        {groupName && groupMembers.length
+                        {props.groupName && props.groupMembers.length
                             ? "Create the group and find out WHAT2DO !"
                             : "Add at least one friend and give the group a name !"}
                     </Button>

@@ -43,7 +43,7 @@ Route::group(["middleware" => "can:admin"], function () {
 });
 
 // SEARCH PART
-Route::get('/search', 'SearchController@index')->name('search');
+Route::get('/search/{param?}', 'SearchController@index')->name('search');
 
 // USER PART
 // can be limited by Auth
@@ -74,7 +74,7 @@ Route::get('/send-email', function () {
 // Route::get('/solo_search/{id}', 'SearchResultsController@singleSearch');
 
 // session search
-Route::get('/session/{session_id}/', 'SearchResultsController@show');
+Route::get('/session-results/{user_id}/', 'SearchResultsController@show');
 
 // quick create group
 
