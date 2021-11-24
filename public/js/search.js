@@ -31557,8 +31557,14 @@ function Column(_ref) {
 
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    className: column.columnType !== 'sub' ? "column ".concat(draggedOverClass) : "column refinement-box ".concat(draggedOverClass),
-    id: column.columnType === 'sub' && column.categoryId === 0 ? 'refinement-box-1' : column.columnType === 'sub' && column.categoryId === 1 ? 'refinement-box-2' : '',
+    className: column.columnType !== 'sub' ? "column ".concat(draggedOverClass) : "column refinement-box ".concat(draggedOverClass) // id={
+    //     column.columnType === 'sub' && column.categoryId === 0
+    //         ? 'refinement-box-1'
+    //         : column.columnType === 'sub' && column.categoryId !== 0
+    //         ? 'refinement-box-2'
+    //         : ''
+    // }
+    ,
     onClick: column.columnType === 'sub' && closeSubCats,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
       id: column.columnType === 'sub' && 'refinement-box__title',

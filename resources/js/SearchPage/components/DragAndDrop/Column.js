@@ -42,13 +42,13 @@ export default function Column({
                     ? `column ${draggedOverClass}`
                     : `column refinement-box ${draggedOverClass}`
             }
-            id={
-                column.columnType === 'sub' && column.categoryId === 0
-                    ? 'refinement-box-1'
-                    : column.columnType === 'sub' && column.categoryId === 1
-                    ? 'refinement-box-2'
-                    : ''
-            }
+            // id={
+            //     column.columnType === 'sub' && column.categoryId === 0
+            //         ? 'refinement-box-1'
+            //         : column.columnType === 'sub' && column.categoryId !== 0
+            //         ? 'refinement-box-2'
+            //         : ''
+            // }
             key={key}
             onClick={column.columnType === 'sub' && closeSubCats}
         >

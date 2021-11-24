@@ -78,7 +78,7 @@ div p {
     border: 2.5px solid $pop-border;
     border-radius: 5px;
     box-shadow: 1px 1px 5px $pop-border;
-    position: static;
+    position: absolute;
 
     // flex: 1;
     &:nth-child(1) {
@@ -93,7 +93,7 @@ div p {
         height: 55vh;
         box-shadow: 1.5px 1.5px 6px $pop-border;
         // flex: 2;
-        position: static;
+        position: relative;
         h2 {
             font-size: 2.6em;
             font-weight: 900;
@@ -331,28 +331,36 @@ button.refine {
 
 .refinement-box {
     width: 20%;
-    height: 60%;
-    background-color: $light-yellow;
-}
-
-h2#refinement-box__title {
-    font-size: 0.8em;
-}
-
-#refinement-box-1 {
-    width: 20%;
     height: 40%;
     position: fixed;
-    right: 10em;
     z-index: 1;
     background-color: $light-yellow;
+    &:nth-child(4) {
+        left: 38%;
+    }
+    &:nth-child(5) {
+        left: 60%;
+    }
 }
 
-#refinement-box {
-    width: 20%;
-    height: 40%;
-    position: fixed;
-    right: 5em;
-    background-color: $light-yellow;
-    z-index: 1;
-}
+// h2#refinement-box__title {
+//     font-size: 0.8em;
+// }
+
+// #refinement-box-2 {
+//     width: 20%;
+//     height: 40%;
+//     position: fixed;
+//     right: 10em;
+//     z-index: 1;
+//     background-color: $light-yellow;
+// }
+
+// #refinement-box {
+//     width: 20%;
+//     height: 40%;
+//     position: fixed;
+//     right: 5em;
+//     background-color: $light-yellow;
+//     z-index: 1;
+// }
