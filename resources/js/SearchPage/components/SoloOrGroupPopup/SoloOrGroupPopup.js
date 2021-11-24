@@ -90,9 +90,11 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
 
             const res_group_id = response.data.group_id;
 
-            props.setGroupId(res_group_id);
+            await Promise.all([props.setGroupId(res_group_id),
 
-            props.startSession(res_group_id);
+            props.startSession(res_group_id)]);
+
+            props.getSearchSessionDetails();
 
             props.setPopupOpen(false);
         } catch (error) {
