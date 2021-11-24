@@ -18,6 +18,7 @@ function DragAndDrop({
     setColumnsToRender,
     searchIds,
     setSearchIds,
+    searchSessionId
 }) {
     const renderColumns = () => {
         if (showCinemaSubCats) {
@@ -191,7 +192,7 @@ function DragAndDrop({
     useEffect(() => {
         // on page reload, fetch categories data from database to populate the DragAndDrop component
         fetchData();
-    }, []);
+    }, [searchSessionId]);
 
     if (!state) {
         return <RotateSpinner />;

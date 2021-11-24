@@ -63,6 +63,7 @@ const SearchControls = (
                 setColumnsToRender={setColumnsToRender}
                 searchIds={searchIds}
                 setSearchIds={setSearchIds}
+                searchSessionId={searchSessionId}
             />
             {
                 (!alreadyResponded && searchIds && searchIds.length !== 0) &&
