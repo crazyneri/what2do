@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const SearchResults = (
     {
@@ -6,9 +7,19 @@ const SearchResults = (
         searchSession: { event }
 
     }) => {
+
+
+    const navigate = useNavigate();
+
     useEffect(() => {
-        console.log(event)
-    }, [event])
+        !event ? navigate('/search') : console.log(event);
+    }, [])
+
+    // if (!event) {
+    //     return null
+    // }
+
+
     return (
         event ?
             <>

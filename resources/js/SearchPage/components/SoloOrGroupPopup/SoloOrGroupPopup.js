@@ -96,6 +96,8 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
 
             props.getSearchSessionDetails();
 
+            props.setGroupName('');
+
             props.setPopupOpen(false);
         } catch (error) {
             console.log(error.response);
