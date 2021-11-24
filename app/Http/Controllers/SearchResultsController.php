@@ -24,6 +24,7 @@ class SearchResultsController extends Controller
             $user_sessions[] = SearchSession::find($choice->session_id);
         }
 
+       // return $user_sessions;
 //         $user_choices = [];
 // foreach($user_sessions as $session)
 // {

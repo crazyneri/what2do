@@ -35,7 +35,7 @@
                                 {{$user->user->name}}</br>
                                 @endforeach
                                 </td>
-                                <td>{{$session->event_id}}</td>
+                                <td>{{$session->event->name}}</td>
                             </tr>
                       @endif
                   @endforeach

@@ -27,9 +27,9 @@ class Event extends Model
     {
         return $this->belongsTo(Venue::class);
     }
-    public function search_session()
+    public function search_sessions()
     {
-        return $this->belongsTo(SearchSession::class);
+        return $this->hasMany(SearchSession::class);
     }
 
 }
