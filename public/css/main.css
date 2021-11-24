@@ -281,6 +281,7 @@ div p {
 .column {
   background-color: #f9edcc;
   width: 25%;
+  position: relative;
   height: 50vh;
   display: flex;
   flex-flow: column nowrap;
@@ -291,7 +292,7 @@ div p {
   border: 2.5px solid #ea2b1f;
   border-radius: 5px;
   box-shadow: 1px 1px 5px #ea2b1f;
-  position: absolute;
+  position: static;
 }
 .column:nth-child(1) {
   left: 20px;
@@ -304,7 +305,7 @@ div p {
   width: 30%;
   height: 55vh;
   box-shadow: 1.5px 1.5px 6px #ea2b1f;
-  position: relative;
+  position: static;
 }
 .column:nth-child(2) h2 {
   font-size: 2.6em;
@@ -519,6 +520,34 @@ button.refine.close {
 .btn-search-results--empty {
   background-color: #ea2b1f;
   color: white;
+}
+
+.refinement-box {
+  width: 20%;
+  height: 60%;
+  background-color: #f9df74;
+}
+
+h2#refinement-box__title {
+  font-size: 0.8em;
+}
+
+#refinement-box-1 {
+  width: 20%;
+  height: 40%;
+  position: fixed;
+  right: 10em;
+  z-index: 1;
+  background-color: #f9df74;
+}
+
+#refinement-box {
+  width: 20%;
+  height: 40%;
+  position: fixed;
+  right: 5em;
+  background-color: #f9df74;
+  z-index: 1;
 }
 
 .popup-bg {

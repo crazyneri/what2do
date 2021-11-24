@@ -67,6 +67,7 @@ div p {
 .column {
     background-color: $columns;
     width: 25%;
+    position: relative;
     height: 50vh;
     display: flex;
     flex-flow: column nowrap;
@@ -77,7 +78,8 @@ div p {
     border: 2.5px solid $pop-border;
     border-radius: 5px;
     box-shadow: 1px 1px 5px $pop-border;
-    position: absolute;
+    position: static;
+
     // flex: 1;
     &:nth-child(1) {
         left: 20px;
@@ -91,7 +93,7 @@ div p {
         height: 55vh;
         box-shadow: 1.5px 1.5px 6px $pop-border;
         // flex: 2;
-        position: relative;
+        position: static;
         h2 {
             font-size: 2.6em;
             font-weight: 900;
@@ -170,9 +172,9 @@ h5 {
     &::-webkit-scrollbar-track {
         background-color: $search;
     }
-    &::-webkit-scrollbar-track-piece {
-        // background-color: red;
-    }
+    // &::-webkit-scrollbar-track-piece {
+    //     // background-color: red;
+    // }
     &::-webkit-scrollbar-thumb {
         background-color: rgba($pop-border, 0.6);
         height: 30%;
@@ -325,4 +327,32 @@ button.refine {
         background-color: $pop-border;
         color: white;
     }
+}
+
+.refinement-box {
+    width: 20%;
+    height: 60%;
+    background-color: $light-yellow;
+}
+
+h2#refinement-box__title {
+    font-size: 0.8em;
+}
+
+#refinement-box-1 {
+    width: 20%;
+    height: 40%;
+    position: fixed;
+    right: 10em;
+    z-index: 1;
+    background-color: $light-yellow;
+}
+
+#refinement-box {
+    width: 20%;
+    height: 40%;
+    position: fixed;
+    right: 5em;
+    background-color: $light-yellow;
+    z-index: 1;
 }
