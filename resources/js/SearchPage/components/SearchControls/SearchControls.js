@@ -33,16 +33,16 @@ const SearchControls = (
 
 
     useEffect(() => {
-        const responded = user && user.id && searchSession && searchSessionId !== 0 && searchSession.user_choices && searchSession.user_choices.some(user_choice => user_choice.user_id === user.id);
+        const responded = user && user.id && searchSession && searchSession.id && searchSessionId !== 0 && searchSessionId === searchSession.id && searchSession.user_choices && searchSession.user_choices.some(user_choice => user_choice.user_id === user.id);
 
         setAlreadyResponded(responded);
 
     }, [searchSessionId])
 
 
-    useEffect(() => {
-        results && navigate("/search/results");
-    }, [results])
+    // useEffect(() => {
+    //     results && navigate("/search/results");
+    // }, [results])
 
     return (
         <>

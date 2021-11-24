@@ -56,6 +56,8 @@ const App = () => {
 
 
 
+    const navigate = useNavigate();
+
     const updateSession = async () => {
         const sessionData = {
             session_id: searchSessionId,
@@ -72,7 +74,7 @@ const App = () => {
         }
     };
     const sendSearchDetails = async () => {
-        setLoading(true);
+        // setLoading(true);
         const searchDetailsData = {
             session_id: searchSessionId,
             user_id: user.id,
@@ -93,13 +95,13 @@ const App = () => {
 
             setResults(results);
 
-
+            getSearchSessionDetails();
 
         } catch (error) {
             console.log(error.response);
         }
 
-        setLoading(false);
+        // setLoading(false);
     };
 
     const search = () => {
@@ -151,7 +153,7 @@ const App = () => {
     };
 
     const saveSessionToCookies = async (session_id) => {
-        setLoading(true)
+        // setLoading(true)
         const sessionData = {
             session_id: session_id,
         };
@@ -162,14 +164,14 @@ const App = () => {
                 sessionData
             );
 
-            console.log("session started, id: ", session_id);
+            console.log("saving session to cookies: ", session_id);
 
             setSearchSessionId(session_id);
         } catch (error) {
             console.log(error.response);
         }
 
-        setLoading(false);
+        // setLoading(false);
     };
 
     const getSearchSessionDetails = async () => {
@@ -183,11 +185,21 @@ const App = () => {
             setGroupId(group_id);
             console.log("session details: ", response.data);
 
-            setSearchSession(response.data);
+            const session = response.data
+
+            setSearchSession(session);
 
             setSearchSessionId(session_id);
 
-            user && user.id === 0 && session_id === 0 && startSession(group_id);
+            await user && user.id === 0 && session_id === 0 && startSession(group_id);
+
+            console.log('navigate?', session);
+
+            if (session && session.event_id && session.event_id !== null) {
+                navigate('/search/results');
+                setPopupOpen(false);
+            }
+
         } catch (error) {
             console.log(error.response);
         }
@@ -196,7 +208,8 @@ const App = () => {
     };
 
     useEffect(() => {
-        getSearchSessionDetails();
+        getSearchSessionDetails()
+
     }, []);
 
 
@@ -204,62 +217,66 @@ const App = () => {
     console.log(nonAnonymousSearch);
 
     return (
+        // <Router>
         <div className="search-grid">
             <UserContext.Provider value={user}>
-                <Router >
-                    {nonAnonymousSearch && popupOpen && (
-                        <SoloOrGroupPopup
-                            groupId={groupId}
-                            setGroupId={setGroupId}
-                            startSession={startSession}
-                            saveSessionToCookies={saveSessionToCookies}
-                            popupOpen={popupOpen}
-                            setPopupOpen={setPopupOpen}
-                            setSearchIds={setSearchIds}
-                            setUsers={setUsers}
-                            setGroupMembers={setGroupMembers}
-                            setGroupName={setGroupName}
-                            users={users}
-                            groupMembers={groupMembers}
-                            groupName={groupName}
-                            getSearchSessionDetails={getSearchSessionDetails}
-                        />
-                    )}
-                    <SessionControls
+                {nonAnonymousSearch && popupOpen && (
+                    <SoloOrGroupPopup
+                        groupId={groupId}
+                        setGroupId={setGroupId}
+                        startSession={startSession}
+                        saveSessionToCookies={saveSessionToCookies}
+                        popupOpen={popupOpen}
                         setPopupOpen={setPopupOpen}
-                        searchSession={searchSession}
+                        setSearchIds={setSearchIds}
+                        setUsers={setUsers}
+                        setGroupMembers={setGroupMembers}
+                        setGroupName={setGroupName}
+                        users={users}
                         groupMembers={groupMembers}
+                        groupName={groupName}
+                        getSearchSessionDetails={getSearchSessionDetails}
                     />
-                    <Routes>
+                )}
+                <SessionControls
+                    setPopupOpen={setPopupOpen}
+                    searchSession={searchSession}
+                    groupMembers={groupMembers}
+                />
+                <Routes>
 
-                        <Route exact path='/search/results' element={<SearchResults results={results} />} />
+                    <Route exact path='/search/results'
+                        element={<SearchResults
+                            results={results}
+                            searchSession={searchSession}
+                        />} />
 
-                        <Route exact path='/search' element={
-                            <SearchControls
-                                values={values}
-                                setValues={setValues}
-                                state={state}
-                                setState={setState}
-                                showCinemaSubCats={showCinemaSubCats}
-                                setShowCinemaSubCats={setShowCinemaSubCats}
-                                showTheatreSubCats={showTheatreSubCats}
-                                setShowTheatreSubCats={setShowTheatreSubCats}
-                                showMusicSubCats={showMusicSubCats}
-                                setShowMusicSubCats={setShowMusicSubCats}
-                                columnsToRender={columnsToRender}
-                                setColumnsToRender={setColumnsToRender}
-                                searchIds={searchIds}
-                                setSearchIds={setSearchIds}
-                                searchSession={searchSession}
-                                searchSessionId={searchSessionId}
-                                search={search}
-                                results={results}
-                            />}>
-                        </Route>
-                    </Routes>
-                </Router>
+                    <Route exact path='/search' element={
+                        <SearchControls
+                            values={values}
+                            setValues={setValues}
+                            state={state}
+                            setState={setState}
+                            showCinemaSubCats={showCinemaSubCats}
+                            setShowCinemaSubCats={setShowCinemaSubCats}
+                            showTheatreSubCats={showTheatreSubCats}
+                            setShowTheatreSubCats={setShowTheatreSubCats}
+                            showMusicSubCats={showMusicSubCats}
+                            setShowMusicSubCats={setShowMusicSubCats}
+                            columnsToRender={columnsToRender}
+                            setColumnsToRender={setColumnsToRender}
+                            searchIds={searchIds}
+                            setSearchIds={setSearchIds}
+                            searchSession={searchSession}
+                            searchSessionId={searchSessionId}
+                            search={search}
+                            results={results}
+                        />}>
+                    </Route>
+                </Routes>
             </UserContext.Provider>
         </div>
+        // </Router>
     );
 };
 

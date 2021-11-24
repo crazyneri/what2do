@@ -11,7 +11,7 @@
         </form>
     </div>
     
-    <form class="login-form action="{{ route('login') }}" method="post">
+    <form class="login-form" action="{{ route('login') }}" method="post">
         @csrf
         
             <div class="login-form-input">

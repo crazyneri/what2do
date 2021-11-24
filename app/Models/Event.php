@@ -15,7 +15,7 @@ class Event extends Model
     protected $fillable = [
         'name', 'venue_id', 'start_date', 'start_time',
         'end_date', 'end_time', 'description', 'price', 'is_recurring',
-        'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'
+        'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday',
     ];
 
     public function categories()
@@ -27,9 +27,9 @@ class Event extends Model
     {
         return $this->belongsTo(Venue::class);
     }
-    public function search_session()
+    public function search_sessions()
     {
-        return $this->belongsTo(SearchSession::class);
+        return $this->hasMany(SearchSession::class);
     }
 
 }

@@ -12,6 +12,7 @@ const SessionControls = ({ setPopupOpen, searchSession, groupMembers }) => {
         <div className='session-controls'>
             {searchSession && searchSession.group && searchSession.group.users.length !== 1 &&
                 <>
+                    <h5>{searchSession.group.name}</h5>
                     <AvatarGroup
                         // className={
                         //     classes.avatarsGroup
@@ -33,6 +34,7 @@ const SessionControls = ({ setPopupOpen, searchSession, groupMembers }) => {
                     <p>{searchSession.user_choices.length}</p>
                     <p>/</p>
                     <p>{searchSession.group.users.length}</p>
+                    {searchSession.user_choices.length === searchSession.group.users.length ? <p>the session has finished</p> : <p>waiting for others to respond</p>}
                 </>
             }
             <Button variant="contained" onClick={() => setPopupOpen(true)}>Select a different session

@@ -1,14 +1,31 @@
 import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 
-const SearchResults = ({ results: { event, group_choices } }) => {
+const SearchResults = (
+    {
+        // results: { event, group_choices }
+        searchSession: { event }
+
+    }) => {
+
+
+    const navigate = useNavigate();
+
     useEffect(() => {
-        console.log(event)
-    }, [event])
+        !event ? navigate('/search') : console.log(event);
+    }, [])
+
+    // if (!event) {
+    //     return null
+    // }
+
+
     return (
         event ?
             <>
+                <h2>We have found you a match - now you know WHAT2DO!</h2>
                 <h2> {event.name}</h2>
-                <h4>Event match score: {group_choices[0].score}</h4>
+                {/* <h4>Event match score: {group_choices[0].score}</h4> */}
                 <p>Venue: {event.venue.name}</p>
                 <p>{event.description}</p>
                 <p>Starts at: {event.start_time}</p>

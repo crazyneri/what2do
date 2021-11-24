@@ -90,9 +90,13 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
 
             const res_group_id = response.data.group_id;
 
-            props.setGroupId(res_group_id);
+            await Promise.all([props.setGroupId(res_group_id),
 
-            props.startSession(res_group_id);
+            props.startSession(res_group_id)]);
+
+            props.getSearchSessionDetails();
+
+            props.setGroupName('');
 
             props.setPopupOpen(false);
         } catch (error) {
@@ -156,7 +160,7 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
         await Promise.all(
             [props.setGroupId(groupId), props.startSession(groupId)]
         )
-        props.saveSessionToCookies(props.sessionId);
+        // props.saveSessionToCookies(props.sessionId);
         props.setPopupOpen(false);
 
         navigate("/search")
