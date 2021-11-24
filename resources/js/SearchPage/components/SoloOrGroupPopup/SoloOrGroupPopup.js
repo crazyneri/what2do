@@ -156,7 +156,7 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
         await Promise.all(
             [props.setGroupId(groupId), props.startSession(groupId)]
         )
-        props.saveSessionToCookies(props.sessionId);
+        // props.saveSessionToCookies(props.sessionId);
         props.setPopupOpen(false);
 
         navigate("/search")

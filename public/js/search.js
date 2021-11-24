@@ -30843,8 +30843,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_UserContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../util/UserContext */ "./resources/js/util/UserContext.js");
 /* harmony import */ var _SoloOrGroupPopup_SoloOrGroupPopup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../SoloOrGroupPopup/SoloOrGroupPopup */ "./resources/js/SearchPage/components/SoloOrGroupPopup/SoloOrGroupPopup.js");
 /* harmony import */ var luxon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! luxon */ "./node_modules/luxon/build/cjs-browser/luxon.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var _SearchControls_SearchControls__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../SearchControls/SearchControls */ "./resources/js/SearchPage/components/SearchControls/SearchControls.js");
 /* harmony import */ var _SearchResults_SearchResults__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../SearchResults/SearchResults */ "./resources/js/SearchPage/components/SearchResults/SearchResults.js");
 /* harmony import */ var _SessionControls_SessionControls__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../SessionControls/SessionControls */ "./resources/js/SearchPage/components/SessionControls/SessionControls.js");
@@ -30981,6 +30980,8 @@ var App = function App() {
       popupOpen = _useState34[0],
       setPopupOpen = _useState34[1];
 
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_10__.useNavigate)();
+
   var updateSession = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       var sessionData, response;
@@ -31030,39 +31031,37 @@ var App = function App() {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              setLoading(true);
+              // setLoading(true);
               searchDetailsData = {
                 session_id: searchSessionId,
                 user_id: user.id,
                 category_ids: searchIds
               };
               console.log(searchDetailsData);
-              _context2.prev = 3;
-              _context2.next = 6;
+              _context2.prev = 2;
+              _context2.next = 5;
               return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.post)("/user-choice/store", searchDetailsData);
 
-            case 6:
+            case 5:
               response = _context2.sent;
               _results = response.data;
               console.log(_results);
               setResults(_results);
+              getSearchSessionDetails();
               _context2.next = 15;
               break;
 
             case 12:
               _context2.prev = 12;
-              _context2.t0 = _context2["catch"](3);
+              _context2.t0 = _context2["catch"](2);
               console.log(_context2.t0.response);
 
             case 15:
-              setLoading(false);
-
-            case 16:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[3, 12]]);
+      }, _callee2, null, [[2, 12]]);
     }));
 
     return function sendSearchDetails() {
@@ -31167,35 +31166,32 @@ var App = function App() {
         while (1) {
           switch (_context5.prev = _context5.next) {
             case 0:
-              setLoading(true);
+              // setLoading(true)
               sessionData = {
                 session_id: session_id
               };
-              _context5.prev = 2;
-              _context5.next = 5;
+              _context5.prev = 1;
+              _context5.next = 4;
               return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.post)("/session/save-session-to-cookies", sessionData);
 
-            case 5:
+            case 4:
               response = _context5.sent;
-              console.log("session started, id: ", session_id);
+              console.log("saving session to cookies: ", session_id);
               setSearchSessionId(session_id);
-              _context5.next = 13;
+              _context5.next = 12;
               break;
 
-            case 10:
-              _context5.prev = 10;
-              _context5.t0 = _context5["catch"](2);
+            case 9:
+              _context5.prev = 9;
+              _context5.t0 = _context5["catch"](1);
               console.log(_context5.t0.response);
 
-            case 13:
-              setLoading(false);
-
-            case 14:
+            case 12:
             case "end":
               return _context5.stop();
           }
         }
-      }, _callee5, null, [[2, 10]]);
+      }, _callee5, null, [[1, 9]]);
     }));
 
     return function saveSessionToCookies(_x2) {
@@ -31205,7 +31201,7 @@ var App = function App() {
 
   var getSearchSessionDetails = /*#__PURE__*/function () {
     var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
-      var response, session_id, group_id;
+      var response, session_id, group_id, session;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
         while (1) {
           switch (_context6.prev = _context6.next) {
@@ -31220,23 +31216,64 @@ var App = function App() {
               group_id = response.data.group_id;
               setGroupId(group_id);
               console.log("session details: ", response.data);
-              setSearchSession(response.data);
+              session = response.data;
+              setSearchSession(session);
               setSearchSessionId(session_id);
-              user && user.id === 0 && session_id === 0 && startSession(group_id);
-              _context6.next = 16;
-              break;
+              _context6.next = 13;
+              return user;
 
             case 13:
-              _context6.prev = 13;
-              _context6.t0 = _context6["catch"](0);
-              console.log(_context6.t0.response);
+              _context6.t1 = _context6.sent;
+
+              if (!_context6.t1) {
+                _context6.next = 16;
+                break;
+              }
+
+              _context6.t1 = user.id === 0;
 
             case 16:
+              _context6.t0 = _context6.t1;
+
+              if (!_context6.t0) {
+                _context6.next = 19;
+                break;
+              }
+
+              _context6.t0 = session_id === 0;
+
+            case 19:
+              _context6.t2 = _context6.t0;
+
+              if (!_context6.t2) {
+                _context6.next = 22;
+                break;
+              }
+
+              startSession(group_id);
+
+            case 22:
+              console.log('navigate?', session);
+
+              if (session && session.event_id && session.event_id !== null) {
+                navigate('/search/results');
+                setPopupOpen(false);
+              }
+
+              _context6.next = 29;
+              break;
+
+            case 26:
+              _context6.prev = 26;
+              _context6.t3 = _context6["catch"](0);
+              console.log(_context6.t3.response);
+
+            case 29:
             case "end":
               return _context6.stop();
           }
         }
-      }, _callee6, null, [[0, 13]]);
+      }, _callee6, null, [[0, 26]]);
     }));
 
     return function getSearchSessionDetails() {
@@ -31248,11 +31285,13 @@ var App = function App() {
     getSearchSessionDetails();
   }, []);
   console.log(nonAnonymousSearch);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-    className: "search-grid",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_util_UserContext__WEBPACK_IMPORTED_MODULE_3__["default"].Provider, {
-      value: user,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.BrowserRouter, {
+  return (
+    /*#__PURE__*/
+    // <Router>
+    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+      className: "search-grid",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_util_UserContext__WEBPACK_IMPORTED_MODULE_3__["default"].Provider, {
+        value: user,
         children: [nonAnonymousSearch && popupOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_SoloOrGroupPopup_SoloOrGroupPopup__WEBPACK_IMPORTED_MODULE_4__["default"], {
           groupId: groupId,
           setGroupId: setGroupId,
@@ -31272,14 +31311,15 @@ var App = function App() {
           setPopupOpen: setPopupOpen,
           searchSession: searchSession,
           groupMembers: groupMembers
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Routes, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Routes, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
             exact: true,
             path: "/search/results",
             element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_SearchResults_SearchResults__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              results: results
+              results: results,
+              searchSession: searchSession
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
             exact: true,
             path: "/search",
             element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_SearchControls_SearchControls__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -31305,8 +31345,9 @@ var App = function App() {
           })]
         })]
       })
-    })
-  });
+    }) // </Router>
+
+  );
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
@@ -32114,14 +32155,14 @@ var SearchControls = function SearchControls(_ref) {
       setAlreadyResponded = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var responded = user && user.id && searchSession && searchSessionId !== 0 && searchSession.user_choices && searchSession.user_choices.some(function (user_choice) {
+    var responded = user && user.id && searchSession && searchSession.id && searchSessionId !== 0 && searchSessionId === searchSession.id && searchSession.user_choices && searchSession.user_choices.some(function (user_choice) {
       return user_choice.user_id === user.id;
     });
     setAlreadyResponded(responded);
-  }, [searchSessionId]);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    results && navigate("/search/results");
-  }, [results]);
+  }, [searchSessionId]); // useEffect(() => {
+  //     results && navigate("/search/results");
+  // }, [results])
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Inputs_Inputs__WEBPACK_IMPORTED_MODULE_3__["default"], {
       values: values,
@@ -32171,17 +32212,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var SearchResults = function SearchResults(_ref) {
-  var _ref$results = _ref.results,
-      event = _ref$results.event,
-      group_choices = _ref$results.group_choices;
+  var event = _ref.searchSession.event;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     console.log(event);
   }, [event]);
   return event ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h2", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+      children: "We have found you a match - now you know WHAT2DO!"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h2", {
       children: [" ", event.name]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h4", {
-      children: ["Event match score: ", group_choices[0].score]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
       children: ["Venue: ", event.venue.name]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
@@ -32261,6 +32300,10 @@ var SessionControls = function SessionControls(_ref) {
         children: "/"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
         children: searchSession.group.users.length
+      }), searchSession.user_choices.length === searchSession.group.users.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+        children: "the session has finished"
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+        children: "waiting for others to respond"
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
       variant: "contained",
@@ -32563,11 +32606,11 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
               return Promise.all([props.setGroupId(groupId), props.startSession(groupId)]);
 
             case 2:
-              props.saveSessionToCookies(props.sessionId);
+              // props.saveSessionToCookies(props.sessionId);
               props.setPopupOpen(false);
               navigate("/search");
 
-            case 5:
+            case 4:
             case "end":
               return _context5.stop();
           }
@@ -32783,13 +32826,17 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var _components_App_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/App/App */ "./resources/js/SearchPage/components/App/App.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
 
-react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_App_App__WEBPACK_IMPORTED_MODULE_2__["default"], {}), document.getElementById('search'));
+
+react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.BrowserRouter, {
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_App_App__WEBPACK_IMPORTED_MODULE_2__["default"], {})
+}), document.getElementById('search'));
 
 /***/ }),
 
