@@ -12,6 +12,7 @@ const SessionControls = ({ setPopupOpen, searchSession, groupMembers }) => {
         <div className='session-controls'>
             {searchSession && searchSession.group && searchSession.group.users.length !== 1 &&
                 <>
+                    <h5>{searchSession.group.name}</h5>
                     <AvatarGroup
                         // className={
                         //     classes.avatarsGroup
