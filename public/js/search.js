@@ -31899,41 +31899,44 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function EmptyRefinements() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: "drag-space",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ol", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+      className: "instructions-bold",
+      children: "Decide what you want to do - the closer to the top, the more you want to do it!"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ol", {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
           className: "instructions-bold",
           children: "Choose"
-        }), " what you would like to do from the categories column."]
+        }), " the main category."]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
           className: "instructions-bold",
           children: "Drag"
-        }), " your chosen activity into the 'what2do' column."]
+        }), " it into 'what2do'."]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
           className: "instructions-bold",
-          children: "Refine"
-        }), " your search by clicking on the 'refine' button under the category name."]
+          children: "Click"
+        }), " the refine button."]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
           className: "instructions-bold",
-          children: "Drag"
-        }), " any sub-categories you would like into the 'chosen sub-categories' column in the centre."]
+          children: "Choose"
+        }), " your sub-categories."]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
           className: "instructions-bold",
-          children: "Press"
-        }), " the close sub-categories' button when you have finished."]
+          children: "Close"
+        }), " the sub-categories' when you have finished."]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-        children: ["When you have decided what to do - press", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        children: ["Press ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
           className: "instructions-bold",
           children: "search"
         }), "!"]
       })]
-    })
+    })]
   });
 }
 
@@ -32199,11 +32202,18 @@ var SearchControls = function SearchControls(_ref) {
       searchIds: searchIds,
       setSearchIds: setSearchIds,
       searchSessionId: searchSessionId
-    }), !alreadyResponded && searchIds && searchIds.length !== 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-      onClick: function onClick() {
-        search();
-      },
-      children: "Search"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "btn-search-container",
+      children: !alreadyResponded && searchIds && searchIds.length !== 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+        className: "btn-search-results",
+        onClick: function onClick() {
+          search();
+        },
+        children: "Search"
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+        className: "btn-search-results btn-search-results--empty",
+        children: "You must refine your choices before you can search!"
+      })
     })]
   });
 };

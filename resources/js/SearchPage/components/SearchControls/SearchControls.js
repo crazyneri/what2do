@@ -1,44 +1,50 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import UserContext from '../../../util/UserContext';
 import DragAndDrop from '../DragAndDrop/DragAndDrop';
 import Inputs from '../Inputs/Inputs';
 
-const SearchControls = (
-    { values,
-        setValues,
-        state,
-        setState,
-        showCinemaSubCats,
-        setShowCinemaSubCats,
-        showTheatreSubCats,
-        setShowTheatreSubCats,
-        showMusicSubCats,
-        setShowMusicSubCats,
-        columnsToRender,
-        setColumnsToRender,
-        searchIds,
-        setSearchIds,
-        searchSession,
-        searchSessionId,
-        search,
-        results }
-) => {
-
+const SearchControls = ({
+    values,
+    setValues,
+    state,
+    setState,
+    showCinemaSubCats,
+    setShowCinemaSubCats,
+    showTheatreSubCats,
+    setShowTheatreSubCats,
+    showMusicSubCats,
+    setShowMusicSubCats,
+    columnsToRender,
+    setColumnsToRender,
+    searchIds,
+    setSearchIds,
+    searchSession,
+    searchSessionId,
+    search,
+    results,
+}) => {
     const navigate = useNavigate();
 
     const user = useContext(UserContext);
 
     const [alreadyResponded, setAlreadyResponded] = useState(false);
 
-
     useEffect(() => {
-        const responded = user && user.id && searchSession && searchSession.id && searchSessionId !== 0 && searchSessionId === searchSession.id && searchSession.user_choices && searchSession.user_choices.some(user_choice => user_choice.user_id === user.id);
+        const responded =
+            user &&
+            user.id &&
+            searchSession &&
+            searchSession.id &&
+            searchSessionId !== 0 &&
+            searchSessionId === searchSession.id &&
+            searchSession.user_choices &&
+            searchSession.user_choices.some(
+                (user_choice) => user_choice.user_id === user.id
+            );
 
         setAlreadyResponded(responded);
-
-    }, [searchSessionId])
-
+    }, [searchSessionId]);
 
     // useEffect(() => {
     //     results && navigate("/search/results");
@@ -46,10 +52,7 @@ const SearchControls = (
 
     return (
         <>
-            <Inputs
-                values={values}
-                setValues={setValues}
-            />
+            <Inputs values={values} setValues={setValues} />
             <DragAndDrop
                 state={state}
                 setState={setState}
@@ -65,12 +68,24 @@ const SearchControls = (
                 setSearchIds={setSearchIds}
                 searchSessionId={searchSessionId}
             />
-            {
-                (!alreadyResponded && searchIds && searchIds.length !== 0) &&
-                <button onClick={() => { search() }}>Search</button>
-            }
+            <div className="btn-search-container">
+                {!alreadyResponded && searchIds && searchIds.length !== 0 ? (
+                    <button
+                        className="btn-search-results"
+                        onClick={() => {
+                            search();
+                        }}
+                    >
+                        Search
+                    </button>
+                ) : (
+                    <p className="btn-search-results btn-search-results--empty">
+                        You must refine your choices before you can search!
+                    </p>
+                )}
+            </div>
         </>
-    )
-}
+    );
+};
 
-export default SearchControls
+export default SearchControls;

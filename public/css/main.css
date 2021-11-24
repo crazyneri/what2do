@@ -514,6 +514,11 @@ button.refine.close {
   position: relative;
   z-index: 1;
   bottom: 30px;
+  text-align: center;
+}
+.btn-search-results--empty {
+  background-color: #ea2b1f;
+  color: white;
 }
 
 .popup-bg {
