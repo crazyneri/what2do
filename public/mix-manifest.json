@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
     "/js/search.js": "/js/search.js?id=402dd42a7530af10f1ed",
+=======
+    "/js/search.js": "/js/search.js?id=00cad7be80592aa4ed71",
+>>>>>>> feat/sessions-page
     "/js/event-create.js": "/js/event-create.js?id=e7b76b04760414bd25e1",
     "/css/main.css": "/css/main.css?id=408eaf27e779ea38bd3f"
 }

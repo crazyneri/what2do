@@ -30882,10 +30882,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var App = function App() {
   // input values
   var initialValues = {
-    city: "Prague",
-    date: luxon__WEBPACK_IMPORTED_MODULE_9__.DateTime.now().toFormat("yyyy-MM-dd"),
-    startTime: "12:00:00",
-    endTime: "12:00:00"
+    city: 'Prague',
+    date: luxon__WEBPACK_IMPORTED_MODULE_9__.DateTime.now().toFormat('yyyy-MM-dd'),
+    startTime: '12:00:00',
+    endTime: '12:00:00'
   };
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(initialValues),
@@ -30996,7 +30996,7 @@ var App = function App() {
               };
               _context.prev = 1;
               _context.next = 4;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.post)("/session/update", sessionData);
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.post)('/session/update', sessionData);
 
             case 4:
               response = _context.sent;
@@ -31039,7 +31039,7 @@ var App = function App() {
               console.log(searchDetailsData);
               _context2.prev = 3;
               _context2.next = 6;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.post)("/user-choice/store", searchDetailsData);
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.post)('/user-choice/store', searchDetailsData);
 
             case 6:
               response = _context2.sent;
@@ -31086,7 +31086,7 @@ var App = function App() {
           switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.get)("/api/user");
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.get)('/api/user');
 
             case 2:
               response = _context3.sent;
@@ -31095,9 +31095,9 @@ var App = function App() {
 
             case 5:
               u = _context3.sent;
-              console.log("logged in user", u);
+              console.log('logged in user', u);
               setUser(u);
-              !u && window.location.assign("/login");
+              !u && window.location.assign('/login');
 
             case 9:
             case "end":
@@ -31128,15 +31128,15 @@ var App = function App() {
                 user_id: user.id,
                 group_id: group_id
               };
-              console.log("starting session with group id", group_id);
+              console.log('starting session with group id', group_id);
               _context4.prev = 2;
               _context4.next = 5;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.post)("/session/store", sessionData);
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.post)('/session/store', sessionData);
 
             case 5:
               response = _context4.sent;
               search_session_id = response.data;
-              console.log("session started, id: ", search_session_id);
+              console.log('session started, id: ', search_session_id);
               setSearchSessionId(search_session_id);
               getSearchSessionDetails();
               _context4.next = 15;
@@ -31173,11 +31173,11 @@ var App = function App() {
               };
               _context5.prev = 2;
               _context5.next = 5;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.post)("/session/save-session-to-cookies", sessionData);
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.post)('/session/save-session-to-cookies', sessionData);
 
             case 5:
               response = _context5.sent;
-              console.log("session started, id: ", session_id);
+              console.log('session started, id: ', session_id);
               setSearchSessionId(session_id);
               _context5.next = 13;
               break;
@@ -31212,14 +31212,14 @@ var App = function App() {
             case 0:
               _context6.prev = 0;
               _context6.next = 3;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.get)("/api/session/details");
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.get)('/api/session/details');
 
             case 3:
               response = _context6.sent;
               session_id = response.data.id;
               group_id = response.data.group_id;
               setGroupId(group_id);
-              console.log("session details: ", response.data);
+              console.log('session details: ', response.data);
               setSearchSession(response.data);
               setSearchSessionId(session_id);
               user && user.id === 0 && session_id === 0 && startSession(group_id);
@@ -32171,16 +32171,29 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var SearchResults = function SearchResults(_ref) {
+<<<<<<< HEAD
   var _ref$results = _ref.results,
       event = _ref$results.event,
       group_choices = _ref$results.group_choices;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     console.log(event);
   }, [event]);
+=======
+  var score = _ref.score,
+      group_choices = _ref.group_choices,
+      event = _ref.event,
+      venue = _ref.venue,
+      status = _ref.status,
+      message = _ref.message;
+  // useEffect(() => {
+  //     console.log(event);
+  // }, [event]);
+>>>>>>> feat/sessions-page
   return event ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h2", {
       children: [" ", event.name]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h4", {
+<<<<<<< HEAD
       children: ["Event match score: ", group_choices[0].score]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
       children: ["Venue: ", event.venue.name]
@@ -32202,6 +32215,9 @@ var SearchResults = function SearchResults(_ref) {
       ,
       allowFullScreen: true // loading="lazy"
 
+=======
+      children: ["Event match score: ", score, "%"]
+>>>>>>> feat/sessions-page
     })]
   }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {});
 };
