@@ -38,10 +38,10 @@ foreach($user_sessions as $session)
         //     ->where('id', $user_id)
         //     ->get();
         // $user_sessions = $user_session_info[0];
-        return $user_choices[0][0]->user;
+        // return $user_choices[0][0]->user;
         
         return $user_sessions;
-        return $user_info->user_choices;
+        // return $user_info->user_choices;
         return view('search.sessions', compact('user_sessions'));
         return 'bollocks';
     }

@@ -1,26 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { get, post } from "../../../util/request";
-import UserContext from "../../../util/UserContext";
-import SoloOrGroupPopup from "../SoloOrGroupPopup/SoloOrGroupPopup";
-import { DateTime } from "luxon";
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
-import SearchControls from "../SearchControls/SearchControls";
-import SearchResults from "../SearchResults/SearchResults";
-import SelectSessionButton from "../SelectSessionButton/SelectSessionButton";
+import React, { useEffect, useState } from 'react';
+import { get, post } from '../../../util/request';
+import UserContext from '../../../util/UserContext';
+import SoloOrGroupPopup from '../SoloOrGroupPopup/SoloOrGroupPopup';
+import { DateTime } from 'luxon';
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    useNavigate,
+} from 'react-router-dom';
+import SearchControls from '../SearchControls/SearchControls';
+import SearchResults from '../SearchResults/SearchResults';
+import SelectSessionButton from '../SelectSessionButton/SelectSessionButton';
 
 const App = () => {
     // input values
 
     const initialValues = {
-        city: "Prague",
-        date: DateTime.now().toFormat("yyyy-MM-dd"),
-        startTime: "12:00:00",
-        endTime: "12:00:00",
+        city: 'Prague',
+        date: DateTime.now().toFormat('yyyy-MM-dd'),
+        startTime: '12:00:00',
+        endTime: '12:00:00',
     };
 
     const [values, setValues] = useState(initialValues);
-
-
 
     // drag and drop states
     const [state, setState] = useState(null);
@@ -49,8 +52,6 @@ const App = () => {
 
     // const navigate = useNavigate();
 
-
-
     const updateSession = async () => {
         const sessionData = {
             session_id: searchSessionId,
@@ -59,7 +60,7 @@ const App = () => {
             end_time: endTime,
         };
         try {
-            const response = await post("/session/update", sessionData);
+            const response = await post('/session/update', sessionData);
 
             console.log(response.data);
         } catch (error) {
@@ -78,19 +79,17 @@ const App = () => {
 
         try {
             const response = await post(
-                "/user-choice/store",
+                '/user-choice/store',
                 searchDetailsData
             );
 
-            const results = response.data
+            const results = response.data;
 
-            console.log(results)
+            console.log(results);
 
             setResults(results);
 
             // navigate("/search/results");
-
-
         } catch (error) {
             console.log(error.response);
         }
@@ -105,17 +104,17 @@ const App = () => {
 
     useEffect(() => {
         getSearchSessionDetails();
-    }, [loading])
+    }, [loading]);
 
     const fetchUser = async () => {
-        const response = await get("/api/user");
+        const response = await get('/api/user');
 
         const u = await response.data;
-        console.log("logged in user", u);
+        console.log('logged in user', u);
 
         setUser(u);
 
-        !u && window.location.assign("/login");
+        !u && window.location.assign('/login');
     };
 
     useEffect(() => {
@@ -128,14 +127,14 @@ const App = () => {
             user_id: user.id,
             group_id: group_id,
         };
-        console.log("starting session with group id", group_id);
+        console.log('starting session with group id', group_id);
 
         try {
-            const response = await post("/session/store", sessionData);
+            const response = await post('/session/store', sessionData);
 
             const search_session_id = response.data;
 
-            console.log("session started, id: ", search_session_id);
+            console.log('session started, id: ', search_session_id);
 
             setSearchSessionId(search_session_id);
         } catch (error) {
@@ -146,18 +145,18 @@ const App = () => {
     };
 
     const saveSessionToCookies = async (session_id) => {
-        setLoading(true)
+        setLoading(true);
         const sessionData = {
             session_id: session_id,
         };
 
         try {
             const response = await post(
-                "/session/save-session-to-cookies",
+                '/session/save-session-to-cookies',
                 sessionData
             );
 
-            console.log("session started, id: ", session_id);
+            console.log('session started, id: ', session_id);
 
             setSearchSessionId(session_id);
         } catch (error) {
@@ -171,12 +170,12 @@ const App = () => {
         // setLoading(true)
 
         try {
-            const response = await get("/api/session/details");
+            const response = await get('/api/session/details');
 
             const session_id = response.data.id;
             const group_id = response.data.group_id;
             setGroupId(group_id);
-            console.log("session details: ", response.data);
+            console.log('session details: ', response.data);
 
             setSearchSession(response.data);
 
@@ -194,14 +193,12 @@ const App = () => {
         getSearchSessionDetails();
     }, []);
 
-
-
     console.log(nonAnonymousSearch);
 
     return (
         <div className="search-grid">
             <UserContext.Provider value={user}>
-                <Router >
+                <Router>
                     {nonAnonymousSearch && popupOpen && (
                         <SoloOrGroupPopup
                             groupId={groupId}
@@ -215,30 +212,44 @@ const App = () => {
                     )}
                     <SelectSessionButton setPopupOpen={setPopupOpen} />
                     <Routes>
+                        <Route
+                            exact
+                            path="/search/results"
+                            element={
+                                <SearchResults
+                                    event={results.event}
+                                    group_choices={results.group_choices}
+                                />
+                            }
+                        />
 
-                        <Route exact path='/search/results' element={<SearchResults event={results.event} group_choices={results.group_choices} />} />
-
-                        <Route exact path='/search' element={
-                            <SearchControls
-                                values={values}
-                                setValues={setValues}
-                                state={state}
-                                setState={setState}
-                                showCinemaSubCats={showCinemaSubCats}
-                                setShowCinemaSubCats={setShowCinemaSubCats}
-                                showTheatreSubCats={showTheatreSubCats}
-                                setShowTheatreSubCats={setShowTheatreSubCats}
-                                showMusicSubCats={showMusicSubCats}
-                                setShowMusicSubCats={setShowMusicSubCats}
-                                columnsToRender={columnsToRender}
-                                setColumnsToRender={setColumnsToRender}
-                                searchIds={searchIds}
-                                setSearchIds={setSearchIds}
-                                searchSession={searchSession}
-                                searchSessionId={searchSessionId}
-                                search={search}
-                            />}>
-                        </Route>
+                        <Route
+                            exact
+                            path="/search"
+                            element={
+                                <SearchControls
+                                    values={values}
+                                    setValues={setValues}
+                                    state={state}
+                                    setState={setState}
+                                    showCinemaSubCats={showCinemaSubCats}
+                                    setShowCinemaSubCats={setShowCinemaSubCats}
+                                    showTheatreSubCats={showTheatreSubCats}
+                                    setShowTheatreSubCats={
+                                        setShowTheatreSubCats
+                                    }
+                                    showMusicSubCats={showMusicSubCats}
+                                    setShowMusicSubCats={setShowMusicSubCats}
+                                    columnsToRender={columnsToRender}
+                                    setColumnsToRender={setColumnsToRender}
+                                    searchIds={searchIds}
+                                    setSearchIds={setSearchIds}
+                                    searchSession={searchSession}
+                                    searchSessionId={searchSessionId}
+                                    search={search}
+                                />
+                            }
+                        ></Route>
                     </Routes>
                 </Router>
             </UserContext.Provider>

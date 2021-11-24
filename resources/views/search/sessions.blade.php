@@ -17,17 +17,17 @@
               <th>Date</th>
               <th>Time - start</th>
               <th>Time - end</th>
-              <th>Joined users<th>
+              <th>Joined users</th>
                 <th>Event</th>
               </tr>
             </thead>
             <tbody>
-                  @foreach($user_sessions->search_sessions as $session)
+                  @foreach($user_sessions as $session)
                       @if($session->event_id != null)
                             <tr>
                                 <td>{{$session->group->name}}</td>
                                 <td>{{$session->city}}</td>
-                                <td>{{$session->date}}</td>
+                                <td>{{$session->searched_date}}</td>
                                 <td>{{$session->start_time}}</td>
                                 <td>{{$session->end_time}}</td>
                                 <td>
@@ -59,12 +59,12 @@
                 </tr>
               </thead>
               <tbody>
-                      @foreach($user_sessions->search_sessions as $session)
+                      @foreach($user_sessions as $session)
                         @if($session->event_id == null)
                             <tr>
                                 <td>{{$session->group->name}}</td>
                                 <td>{{$session->city}}</td>
-                                <td>{{$session->date}}</td>
+                                <td>{{$session->searched_date}}</td>
                                 <td>{{$session->start_time}}</td>
                                 <td>{{$session->end_time}}</td>
                                 <td>

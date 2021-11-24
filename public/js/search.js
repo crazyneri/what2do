@@ -30882,10 +30882,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var App = function App() {
   // input values
   var initialValues = {
-    city: "Prague",
-    date: luxon__WEBPACK_IMPORTED_MODULE_9__.DateTime.now().toFormat("yyyy-MM-dd"),
-    startTime: "12:00:00",
-    endTime: "12:00:00"
+    city: 'Prague',
+    date: luxon__WEBPACK_IMPORTED_MODULE_9__.DateTime.now().toFormat('yyyy-MM-dd'),
+    startTime: '12:00:00',
+    endTime: '12:00:00'
   };
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(initialValues),
@@ -30985,7 +30985,7 @@ var App = function App() {
               };
               _context.prev = 1;
               _context.next = 4;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.post)("/session/update", sessionData);
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.post)('/session/update', sessionData);
 
             case 4:
               response = _context.sent;
@@ -31028,7 +31028,7 @@ var App = function App() {
               console.log(searchDetailsData);
               _context2.prev = 3;
               _context2.next = 6;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.post)("/user-choice/store", searchDetailsData);
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.post)('/user-choice/store', searchDetailsData);
 
             case 6:
               response = _context2.sent;
@@ -31077,7 +31077,7 @@ var App = function App() {
           switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.get)("/api/user");
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.get)('/api/user');
 
             case 2:
               response = _context3.sent;
@@ -31086,9 +31086,9 @@ var App = function App() {
 
             case 5:
               u = _context3.sent;
-              console.log("logged in user", u);
+              console.log('logged in user', u);
               setUser(u);
-              !u && window.location.assign("/login");
+              !u && window.location.assign('/login');
 
             case 9:
             case "end":
@@ -31119,15 +31119,15 @@ var App = function App() {
                 user_id: user.id,
                 group_id: group_id
               };
-              console.log("starting session with group id", group_id);
+              console.log('starting session with group id', group_id);
               _context4.prev = 2;
               _context4.next = 5;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.post)("/session/store", sessionData);
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.post)('/session/store', sessionData);
 
             case 5:
               response = _context4.sent;
               search_session_id = response.data;
-              console.log("session started, id: ", search_session_id);
+              console.log('session started, id: ', search_session_id);
               setSearchSessionId(search_session_id);
               _context4.next = 14;
               break;
@@ -31163,11 +31163,11 @@ var App = function App() {
               };
               _context5.prev = 2;
               _context5.next = 5;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.post)("/session/save-session-to-cookies", sessionData);
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.post)('/session/save-session-to-cookies', sessionData);
 
             case 5:
               response = _context5.sent;
-              console.log("session started, id: ", session_id);
+              console.log('session started, id: ', session_id);
               setSearchSessionId(session_id);
               _context5.next = 13;
               break;
@@ -31202,14 +31202,14 @@ var App = function App() {
             case 0:
               _context6.prev = 0;
               _context6.next = 3;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.get)("/api/session/details");
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.get)('/api/session/details');
 
             case 3:
               response = _context6.sent;
               session_id = response.data.id;
               group_id = response.data.group_id;
               setGroupId(group_id);
-              console.log("session details: ", response.data);
+              console.log('session details: ', response.data);
               setSearchSession(response.data);
               setSearchSessionId(session_id);
               user && user.id === 0 && session_id === 0 && startSession(group_id);
@@ -32128,15 +32128,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var SearchResults = function SearchResults(_ref) {
-  var event = _ref.event,
-      group_choices = _ref.group_choices;
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.log(event);
-  }, [event]);
-  return event ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h2", {
+  var score = _ref.score,
+      group_choices = _ref.group_choices,
+      event = _ref.event,
+      venue = _ref.venue,
+      status = _ref.status,
+      message = _ref.message;
+  // useEffect(() => {
+  //     console.log(event);
+  // }, [event]);
+  return event ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h2", {
       children: [" ", event.name]
-    })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h4", {
+      children: ["Event match score: ", score, "%"]
+    })]
   }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {});
 };
 
@@ -94254,11 +94260,7 @@ function combine (array, callback) {
 /***/ ((module) => {
 
 "use strict";
-<<<<<<< HEAD
 module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"axios@^0.21","name":"axios","escapedName":"axios","rawSpec":"^0.21","saveSpec":null,"fetchSpec":"^0.21"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_shasum":"c67b90dc0568e5c1cf2b0b858c43ba28e2eda575","_spec":"axios@^0.21","_where":"C:\\\\web\\\\codingbootcamp\\\\what2do","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundleDependencies":false,"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"deprecated":false,"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
-=======
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\web\\\\bootcamp\\\\projects\\\\what2do"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\web\\\\bootcamp\\\\projects\\\\what2do","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
->>>>>>> main
 
 /***/ })
 
