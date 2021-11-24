@@ -215,7 +215,7 @@ const App = () => {
     //         if (searchSession && searchSession.event_id && searchSession.event_id !== null) {
     //             navigate('/search/results');
     //         }
-    //     }, 5000)
+    //     }, 10000)
 
     // }, []);
 
