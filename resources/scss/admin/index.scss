@@ -1,61 +1,81 @@
-$table_font_size: 18px;
-$background: #fffaf1;
-$even_rows: #f9edcc;
-$input-colort: #f9edcc;
-$thead-color: #edae49;
-$button-color: #414c6b;
-$main-shadow: 0px 1px 5px rgb(173, 173, 173);
-$font-text: 'Comfortaa', cursive;
+@import '../colors.scss';
 
-h1 {
-    font-style: $font-text;
-}
-
-.admin-container {
-    display: grid;
-    width: 100vw;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: 1fr;
-    justify-items: start;
-    margin: 2em;
+body {
     font-family: $font-text;
 }
-.left-side,
-.right-side {
-    h2 {
-        text-align: left;
+
+.admin{
+    h1 {
+        margin: 2rem;
     }
-    button {
-        text-align: center;
+    a {
+    text-decoration: none;  
     }
-    .table-style {
-        border-collapse: collapse;
-        margin: 25px 0px;
-        font-size: $table_font_size;
-        min-width: 300px;
-        box-shadow: $main-shadow;
 
-        thead tr {
-            background-color: $thead-color;
-            color: #ffffff;
-            text-align: left;
-        }
+    .admin-container{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 1fr;
+        justify-items: start;
+        margin: 2rem;
+    }
+        .left-side, .right-side{
+            h2 {
+                text-align: left;
+                padding: 0;
+            }
+            button {
+                margin: 0 auto;
+                display: block;
+                background-color: $button-color;
+                width: 12rem;
+                height: 2rem;
 
-        th,
-        td {
-            padding: 10px 15px;
-        }
+                a {
+                    color: white;
+                    font-family: $font-text;
+                }
+            }
+            .events-btn{
+                display: flex;
+                margin: 0 auto;
+                width: 50%;
+                padding: 0;
+            }
+            .table-style {
+                border-collapse: collapse;
+                margin: 25px 0px;
+                font-size: $table_font_size;
+                min-width: 300px;
+                box-shadow: $main-shadow;
 
-        tbody tr {
-            border-bottom: 1px solid #dddddd;
-        }
+                thead tr {
+                    background-color: $thead-color;
+                    color: #ffffff;
+                    text-align: left;
+                }
 
-        tbody tr:nth-of-type(even) {
-            background-color: $background;
-        }
+                th, td {
+                    padding: 10px 15px;
+                }
 
-        tbody tr:last-of-type {
-            border-bottom: 2px solid $thead-color;
+                tbody tr {
+                    border-bottom: 1px solid #dddddd;
+                }
+
+                tbody tr:nth-of-type(even){
+                    background-color: $background;
+                }
+
+                tr:hover td{
+                    color:black;
+                    border-top: 1px solid grey;
+                    border-bottom: 1px solid grey;
+                }
+    
+                tbody tr:last-of-type {
+                    border-bottom: 2px solid $thead-color;
+            }
         }
     }
 }

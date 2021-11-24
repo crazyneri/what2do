@@ -1,0 +1,95 @@
+@import '../colors.scss';
+
+   
+.all_events{
+    h2 {
+        display: flex;
+        align-self: flex-start;
+        padding: 2rem 0 0 2rem;
+    }
+    button, input {
+        margin: 0 auto;
+        display: block;
+        background-color: $button-color;
+        width: 4rem;
+        height: 1.5rem;
+        margin: 0.2rem;
+        color: white;
+        font-family: $font-text;
+
+        a {
+            color: white;
+            font-family: $font-text;
+        }
+    }
+    p {
+    padding-left: 2rem;
+    }
+    .alert-success{
+        background-color: rgb(122, 190, 122);
+        width: 15%;
+        padding: 1rem;
+        margin-left: 2rem;
+    }
+}
+
+
+
+// containers
+.future-container,
+.repeated-container,
+.historical-container {
+    display: flex;
+    padding: 2rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+// content
+.future-event,
+.repeated-event,
+.historical-event {
+    width: 49%;
+    table {
+        border-collapse: collapse;
+        margin: 25px 0px;
+        font-size: $table_font_size;
+        min-width: 300px;
+        box-shadow: $main-shadow;
+
+        thead tr {
+            background-color: $thead-color;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        th,
+        td {
+            padding: 10px 15px;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        tbody tr:nth-of-type(even) {
+            background-color: $background;
+        }
+
+        tr:hover td {
+            color: black;
+            border-top: 1px solid grey;
+            border-bottom: 1px solid grey;
+        }
+
+        tbody tr:last-of-type {
+            border-bottom: 2px solid $thead-color;
+        }
+    }
+}
+
+.line {
+    width: 30%;
+    border: 1px dashed #b6b5b5;
+    margin: 1rem auto;
+}
