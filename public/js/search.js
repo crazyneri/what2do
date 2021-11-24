@@ -32283,7 +32283,9 @@ var SessionControls = function SessionControls(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "session-controls",
     children: [searchSession && searchSession.group && searchSession.group.users.length !== 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"] // className={
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h5", {
+        children: searchSession.group.name
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"] // className={
       //     classes.avatarsGroup
       // }
       , {
@@ -32474,23 +32476,26 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
             case 4:
               response = _context2.sent;
               res_group_id = response.data.group_id;
-              props.setGroupId(res_group_id);
-              props.startSession(res_group_id);
+              _context2.next = 8;
+              return Promise.all([props.setGroupId(res_group_id), props.startSession(res_group_id)]);
+
+            case 8:
+              props.getSearchSessionDetails();
               props.setPopupOpen(false);
-              _context2.next = 14;
+              _context2.next = 15;
               break;
 
-            case 11:
-              _context2.prev = 11;
+            case 12:
+              _context2.prev = 12;
               _context2.t0 = _context2["catch"](1);
               console.log(_context2.t0.response);
 
-            case 14:
+            case 15:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[1, 11]]);
+      }, _callee2, null, [[1, 12]]);
     }));
 
     return function createGroup() {
