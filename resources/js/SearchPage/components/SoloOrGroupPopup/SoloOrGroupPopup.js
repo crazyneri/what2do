@@ -333,7 +333,14 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
                                                             .sort()
                                                             // .filter((session=>session))
                                                             .map((session) => (
-                                                                !session.event_id && session.searched_date &&
+                                                                (session.status === 'started' || session.status === 'waiting')
+                                                                // &&
+                                                                // session.user_choices && session.user_choices.length
+                                                                // && !session.user_choices.some(
+                                                                //     (user_choice) => user_choice.user_id === user.id
+                                                                // )
+                                                                && session.user_id !== user.id
+                                                                &&
                                                                 <ListItem
                                                                     key={
                                                                         session.id
@@ -363,7 +370,7 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
                             </List>
                         </>
                     )}
-                    {user.role !== 'anonymous' &&
+                    {user && user.role && user.role !== 'anonymous' &&
                         <>
                             <h3>Create A New Group</h3>
                             <List>

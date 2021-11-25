@@ -1,18 +1,18 @@
-@import "colors.scss";
-@import "group/show.scss";
-@import "user/show.scss";
-@import "admin/index.scss";
-@import "admin/all-events.scss";
-@import "admin/manage-events.scss";
-@import "navigation/nav.scss";
-@import "sessions/show.scss";
+@import 'colors.scss';
+@import 'group/show.scss';
+@import 'user/show.scss';
+@import 'admin/index.scss';
+@import 'admin/all-events.scss';
+@import 'admin/manage-events.scss';
+@import 'navigation/nav.scss';
+@import 'sessions/show.scss';
 
 // @import "../js/SearchPage/components/DragAndDrop/style-ver1.scss";
 // @import "../js/SearchPage/components/DragAndDrop/style-ver2.scss";
 // @import "../js/SearchPage/components/DragAndDrop/style-ver3.scss";
-@import "../js/SearchPage/components/DragAndDrop/style-ver4.scss";
-@import "../js/SearchPage/components/SoloOrGroupPopup/SearchPopUp-ver1.scss";
-@import "login/login.scss";
+@import '../js/SearchPage/components/DragAndDrop/style-ver4.scss';
+@import '../js/SearchPage/components/SoloOrGroupPopup/SearchPopUp-ver1.scss';
+@import 'login/login.scss';
 
 * {
     box-sizing: border-box;
@@ -22,4 +22,8 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
+}
+
+.my_soul {
+    float: left;
 }

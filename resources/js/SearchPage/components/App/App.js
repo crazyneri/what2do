@@ -45,9 +45,11 @@ const App = () => {
 
     const [groupName, setGroupName] = useState('');
 
-    const nonAnonymousSearch = user && user.role !== 'anonymous';
+    const nonAnonymousSearch = user && user.role && user.role !== 'anonymous';
 
     const [popupOpen, setPopupOpen] = useState(true);
+
+    const [alreadyResponded, setAlreadyResponded] = useState(false);
 
     const navigate = useNavigate();
 
@@ -98,7 +100,7 @@ const App = () => {
         // setLoading(false);
     };
 
-    const search = async() => {
+    const search = async () => {
         await updateSession();
         sendSearchDetails();
     };
@@ -224,14 +226,19 @@ const App = () => {
     console.log(nonAnonymousSearch);
 
     useEffect(() => {
-        !nonAnonymousSearch && setPopupOpen(false);
+        if (!nonAnonymousSearch) {
+            console.log('anonymous, closing popup');
+            setPopupOpen(false)
+        };
+        if (searchSessionId === 0) {
+            setPopupOpen(true)
+        }
     }, [])
 
     return (
-        // <Router>
         <div className="search-grid">
             <UserContext.Provider value={user}>
-                {user && popupOpen && (
+                {((user && popupOpen)) && (
                     <SoloOrGroupPopup
                         groupId={groupId}
                         setGroupId={setGroupId}
@@ -247,6 +254,7 @@ const App = () => {
                         groupMembers={groupMembers}
                         groupName={groupName}
                         getSearchSessionDetails={getSearchSessionDetails}
+                        alreadyResponded={alreadyResponded}
                     />
                 )}
                 <SessionControls
@@ -291,13 +299,14 @@ const App = () => {
                                 searchSessionId={searchSessionId}
                                 search={search}
                                 results={results}
+                                alreadyResponded={alreadyResponded}
+                                setAlreadyResponded={setAlreadyResponded}
                             />
                         }
                     ></Route>
                 </Routes>
             </UserContext.Provider>
         </div>
-        // </Router>
     );
 };
 
