@@ -1,0 +1,51 @@
+@import '../colors.scss';
+
+.errors {
+    background-color: rgb(233, 108, 108);
+    width: 20%;
+    padding: 1rem;
+}
+
+.venue_form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    // .edit-form .venue_form-container {
+    @at-root .edit-form & {
+        justify-content: flex-start;
+
+    }
+
+    .create-venue {
+        width: 30%;
+        padding-top: 2rem;
+
+        label {
+            
+            align-self: flex-start;
+        }
+
+        input {
+        
+            background-color: $input-colort;
+            font-family: $font-text;
+            height: 2rem;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            margin-top: 1rem;
+            height: 2rem;
+            background-color: $button-color;
+            color: white;
+            font-family: $font-text;
+        }
+    }
+}
+
+
+    
+

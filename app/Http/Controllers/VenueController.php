@@ -16,7 +16,7 @@ class VenueController extends Controller
 
         $venue = new Venue;
 
-        return view('venue/form', compact('venue'));
+        return view('venue/create', compact('venue'));
     }
 
     // STORE DATA TO THE DATABASE
