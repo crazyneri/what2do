@@ -187,6 +187,7 @@ h5 {
 .dragging {
     background-color: #ff6951;
     box-shadow: 5px 5px 5px black;
+    z-index: 1;
     // .sub-category-box.list {
     //     z-index: 10;
     // }
@@ -195,6 +196,7 @@ h5 {
 .dragged-over {
     background-color: $pop-border;
     color: red;
+    z-index: 0;
 }
 
 .column h2 {
@@ -327,7 +329,7 @@ button.refine {
     border-radius: 5px;
     margin: 0 0 20px;
     position: relative;
-    z-index: 1;
+    // z-index: 1;
     bottom: 30px;
     text-align: center;
     &--empty {
@@ -343,14 +345,14 @@ button.refine {
 .refinement-box {
     width: 20%;
     height: 40%;
-    position: fixed;
     //z-index: 1;
+    position: fixed;
     background-color: $light-yellow;
     &:nth-child(4) {
-        left: 38%;
+        left: 37%;
     }
     &:nth-child(5) {
-        left: 60%;
+        left: 59%;
     }
 }
 

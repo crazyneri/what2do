@@ -394,11 +394,13 @@ h5 {
 .dragging {
   background-color: #ff6951;
   box-shadow: 5px 5px 5px black;
+  z-index: 1;
 }
 
 .dragged-over {
   background-color: #ea2b1f;
   color: red;
+  z-index: 0;
 }
 
 .column h2 {
@@ -517,7 +519,6 @@ button.refine.close {
   border-radius: 5px;
   margin: 0 0 20px;
   position: relative;
-  z-index: 1;
   bottom: 30px;
   text-align: center;
 }
@@ -536,10 +537,10 @@ button.refine.close {
   background-color: #f9df74;
 }
 .refinement-box:nth-child(4) {
-  left: 38%;
+  left: 37%;
 }
 .refinement-box:nth-child(5) {
-  left: 60%;
+  left: 59%;
 }
 
 .close-button {
