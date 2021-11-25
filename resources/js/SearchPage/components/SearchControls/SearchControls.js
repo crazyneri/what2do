@@ -22,29 +22,32 @@ const SearchControls = ({
     searchSession,
     searchSessionId,
     search,
-    results,
+    alreadyResponded,
+    setAlreadyResponded,
 }) => {
     const navigate = useNavigate();
 
     const user = useContext(UserContext);
 
-    const [alreadyResponded, setAlreadyResponded] = useState(false);
 
-    useEffect(() => {
-        const responded =
-            user &&
-            user.id &&
-            searchSession &&
-            searchSession.id &&
-            searchSessionId !== 0 &&
-            searchSessionId === searchSession.id &&
-            searchSession.user_choices &&
-            searchSession.user_choices.some(
-                (user_choice) => user_choice.user_id === user.id
-            );
 
-        setAlreadyResponded(responded);
-    }, [searchSessionId]);
+    // useEffect(() => {
+    // const responded =
+    // user &&
+    // user.id &&
+    // searchSession &&
+    // searchSession.id &&
+    // searchSessionId !== 0 &&
+    // searchSessionId === searchSession.id &&
+    // searchSession.user_choices &&
+    //     searchSession.user_choices.some(
+    //         (user_choice) => user_choice.user_id === user.id
+    //     );
+
+    // console.log('already responded ?', responded);
+
+    //     setAlreadyResponded(responded);
+    // }, [searchSessionId]);
 
     // useEffect(() => {
     //     results && navigate("/search/results");

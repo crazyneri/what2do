@@ -49,6 +49,8 @@ const App = () => {
 
     const [popupOpen, setPopupOpen] = useState(true);
 
+    const [alreadyResponded, setAlreadyResponded] = useState(false);
+
     const navigate = useNavigate();
 
 
@@ -252,6 +254,7 @@ const App = () => {
                         groupMembers={groupMembers}
                         groupName={groupName}
                         getSearchSessionDetails={getSearchSessionDetails}
+                        alreadyResponded={alreadyResponded}
                     />
                 )}
                 <SessionControls
@@ -296,6 +299,8 @@ const App = () => {
                                 searchSessionId={searchSessionId}
                                 search={search}
                                 results={results}
+                                alreadyResponded={alreadyResponded}
+                                setAlreadyResponded={setAlreadyResponded}
                             />
                         }
                     ></Route>
