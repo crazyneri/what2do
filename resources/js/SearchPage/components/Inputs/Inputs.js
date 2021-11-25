@@ -2,9 +2,13 @@ import React, { useEffect } from "react";
 
 import { DateTime } from "luxon";
 
-const Inputs = ({ values: { city, date, startTime, endTime }, setValues }) => {
+const Inputs = ({ values: { city, date, startTime, endTime }, setValues, searchSession }) => {
 
     // const { city, date, startTime, endTime } = values;
+
+
+    const sessionStarted = searchSession && searchSession.status === 'started'
+
 
     const convertToHoursAndMinutes = (timeString) => {
         const formated = DateTime.fromFormat(timeString, "hh:mm").toFormat(
@@ -67,6 +71,7 @@ const Inputs = ({ values: { city, date, startTime, endTime }, setValues }) => {
                     name="city"
                     value={city}
                     onChange={handleChange}
+                    disabled={sessionStarted}
                 />
             </div>
             <div className="inputs-item">
@@ -76,6 +81,7 @@ const Inputs = ({ values: { city, date, startTime, endTime }, setValues }) => {
                     name="date"
                     value={date}
                     onChange={handleChange}
+                    disabled={sessionStarted}
                 />
             </div>
             <div className="inputs-item">
@@ -85,6 +91,7 @@ const Inputs = ({ values: { city, date, startTime, endTime }, setValues }) => {
                     name="startTime"
                     value={startTime}
                     onChange={handleChange}
+                    disabled={sessionStarted}
                 />
             </div>
             <div className="inputs-item">
@@ -94,6 +101,7 @@ const Inputs = ({ values: { city, date, startTime, endTime }, setValues }) => {
                     name="endTime"
                     value={endTime}
                     onChange={handleChange}
+                    disabled={sessionStarted}
                 />
             </div>
         </div>
