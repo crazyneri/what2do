@@ -16,26 +16,28 @@
 </div>
 @endif
 {{-- <hr> --}}
-    <h4>Members of {{ $group->name }}:</h4>
-    <ul class="">
-    @foreach($group->users as $user)
-    @if($user->id === $group->owner_id)
-        <div class="group-display-members"><li>{{$user->name}}, owner <img class="img-group-owner" src="/img/butterfly/butterfly.svg"/></li></div>
-        
-        @else
-        <div class="group-display-members">
-            <li>{{$user->name}}</li>
-        @if(Auth::id()==$group->owner_id)
-            <form action="/group/{{$group->id}}/user/{{$user->id}}" method="post">
-                @csrf  
-                @method('delete')  
-                <button class="btn btn-group-remove">Remove</button>
-            </form>
+    <div class="user-item">
+        <h4>Members of {{ $group->name }}:</h4>
+        <ul class="">
+        @foreach($group->users as $user)
+        @if($user->id === $group->owner_id)
+            <div class="group-display-members"><li>{{$user->name}}, owner <img class="img-group-owner" src="/img/butterfly/butterfly.svg"/></li></div>
+            
+            @else
+            <div class="group-display-members">
+                <li>{{$user->name}}</li>
+            @if(Auth::id()==$group->owner_id)
+                <form action="/group/{{$group->id}}/user/{{$user->id}}" method="post">
+                    @csrf  
+                    @method('delete')  
+                    <button class="btn btn-group-remove">Remove</button>
+                </form>
+            @endif
+            </div>
+            
         @endif
-        </div>
-        
-    @endif
-    @endforeach
-    </ul>
+        @endforeach
+        </ul>
+    </div>
 </div>
 @endsection

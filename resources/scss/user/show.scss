@@ -84,6 +84,12 @@
     grid-template-columns: 1fr 1fr;
 }
 .select-group {
+    h4 {
+        border-bottom: 1px solid $pop-border;
+        box-shadow: 1px 1px 3px $pop-border;
+        padding: 0.5em 0 0.5em 0.5em;
+        margin-bottom: 1em;
+    }
     a {
         text-decoration: none;
         border-bottom: 1px solid grey;
@@ -93,6 +99,7 @@
         background-color: #f5d6a6;
         padding: 0.2em 0.3em;
         margin: 0 auto;
+
         &:hover {
             border-bottom: 2px solid $pop-border;
         }
