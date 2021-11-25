@@ -143,7 +143,9 @@ class SearchController extends Controller
     {
         $users = User::all();
 
-        $userNames = $users->map->only(['id', 'name']);
+        $userNames = $users->map->only(['id', 'name'])->filter(function ($user) {
+            return $user['name'] !== 'Anonymous User';
+        });
 
         return $userNames;
     }

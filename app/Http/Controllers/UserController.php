@@ -125,6 +125,7 @@ class UserController extends Controller
 
         // $group = new Group;
         $user->password = password_hash(random_bytes(10), PASSWORD_BCRYPT);
+        $user->role = 'anonymous';
         $user->save();
 
         $groupData = [

@@ -30948,37 +30948,29 @@ var App = function App() {
       results = _useState24[0],
       setResults = _useState24[1];
 
-  var city = values.city,
-      date = values.date,
-      startTime = values.startTime,
-      endTime = values.endTime;
+  var endTime = values.endTime;
 
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState26 = _slicedToArray(_useState25, 2),
-      loading = _useState26[0],
-      setLoading = _useState26[1];
+      users = _useState26[0],
+      setUsers = _useState26[1];
 
   var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState28 = _slicedToArray(_useState27, 2),
-      users = _useState28[0],
-      setUsers = _useState28[1];
+      groupMembers = _useState28[0],
+      setGroupMembers = _useState28[1];
 
-  var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+  var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
       _useState30 = _slicedToArray(_useState29, 2),
-      groupMembers = _useState30[0],
-      setGroupMembers = _useState30[1];
+      groupName = _useState30[0],
+      setGroupName = _useState30[1];
 
-  var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+  var nonAnonymousSearch = user && user.role !== 'anonymous';
+
+  var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
       _useState32 = _slicedToArray(_useState31, 2),
-      groupName = _useState32[0],
-      setGroupName = _useState32[1];
-
-  var nonAnonymousSearch = user && user.id !== 0;
-
-  var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
-      _useState34 = _slicedToArray(_useState33, 2),
-      popupOpen = _useState34[0],
-      setPopupOpen = _useState34[1];
+      popupOpen = _useState32[0],
+      setPopupOpen = _useState32[1];
 
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_10__.useNavigate)();
 
@@ -31113,7 +31105,7 @@ var App = function App() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetchUser();
-  }, []);
+  }, [searchSessionId]);
 
   var startSession = /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(group_id) {
@@ -31218,41 +31210,11 @@ var App = function App() {
               console.log('session details: ', response.data);
               session = response.data;
               setSearchSession(session);
-              setSearchSessionId(session_id);
-              _context6.next = 13;
-              return user;
+              setSearchSessionId(session_id); // (await user &&
+              //     user.id === 0 &&
+              //     session_id === 0 &&
+              //     startSession(group_id));
 
-            case 13:
-              _context6.t1 = _context6.sent;
-
-              if (!_context6.t1) {
-                _context6.next = 16;
-                break;
-              }
-
-              _context6.t1 = user.id === 0;
-
-            case 16:
-              _context6.t0 = _context6.t1;
-
-              if (!_context6.t0) {
-                _context6.next = 19;
-                break;
-              }
-
-              _context6.t0 = session_id === 0;
-
-            case 19:
-              _context6.t2 = _context6.t0;
-
-              if (!_context6.t2) {
-                _context6.next = 22;
-                break;
-              }
-
-              startSession(group_id);
-
-            case 22:
               console.log('navigate?', session, 'user choices', session.user_choices); // if (session && session.event_id && session.event_id !== null)
 
               if (session && session.user_choices.some(function (c) {
@@ -31262,20 +31224,20 @@ var App = function App() {
                 setPopupOpen(false);
               }
 
-              _context6.next = 29;
+              _context6.next = 18;
               break;
 
-            case 26:
-              _context6.prev = 26;
-              _context6.t3 = _context6["catch"](0);
-              console.log(_context6.t3.response);
+            case 15:
+              _context6.prev = 15;
+              _context6.t0 = _context6["catch"](0);
+              console.log(_context6.t0.response);
 
-            case 29:
+            case 18:
             case "end":
               return _context6.stop();
           }
         }
-      }, _callee6, null, [[0, 26]]);
+      }, _callee6, null, [[0, 15]]);
     }));
 
     return function getSearchSessionDetails() {
@@ -31296,6 +31258,9 @@ var App = function App() {
   // }, []);
 
   console.log(nonAnonymousSearch);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    !nonAnonymousSearch && setPopupOpen(false);
+  }, []);
   return (
     /*#__PURE__*/
     // <Router>
@@ -31303,7 +31268,7 @@ var App = function App() {
       className: "search-grid",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_util_UserContext__WEBPACK_IMPORTED_MODULE_3__["default"].Provider, {
         value: user,
-        children: [nonAnonymousSearch && popupOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_SoloOrGroupPopup_SoloOrGroupPopup__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        children: [user && popupOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_SoloOrGroupPopup_SoloOrGroupPopup__WEBPACK_IMPORTED_MODULE_4__["default"], {
           groupId: groupId,
           setGroupId: setGroupId,
           startSession: startSession,
@@ -31326,7 +31291,7 @@ var App = function App() {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
             exact: true,
             path: "/search/results",
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_SearchResults_SearchResults__WEBPACK_IMPORTED_MODULE_6__["default"], {
+            element: searchSession && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_SearchResults_SearchResults__WEBPACK_IMPORTED_MODULE_6__["default"], {
               results: results,
               searchSession: searchSession
             })
@@ -32023,9 +31988,11 @@ var Inputs = function Inputs(_ref) {
       date = _ref$values.date,
       startTime = _ref$values.startTime,
       endTime = _ref$values.endTime,
-      setValues = _ref.setValues;
-
+      setValues = _ref.setValues,
+      searchSession = _ref.searchSession;
   // const { city, date, startTime, endTime } = values;
+  var sessionStarted = searchSession && searchSession.status === 'started';
+
   var convertToHoursAndMinutes = function convertToHoursAndMinutes(timeString) {
     var formated = luxon__WEBPACK_IMPORTED_MODULE_2__.DateTime.fromFormat(timeString, "hh:mm").toFormat("HH:mm:ss");
     console.log(formated);
@@ -32067,7 +32034,8 @@ var Inputs = function Inputs(_ref) {
         type: "text",
         name: "city",
         value: city,
-        onChange: handleChange
+        onChange: handleChange,
+        disabled: sessionStarted
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
       className: "inputs-item",
@@ -32078,7 +32046,8 @@ var Inputs = function Inputs(_ref) {
         type: "date",
         name: "date",
         value: date,
-        onChange: handleChange
+        onChange: handleChange,
+        disabled: sessionStarted
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
       className: "inputs-item",
@@ -32089,7 +32058,8 @@ var Inputs = function Inputs(_ref) {
         type: "time",
         name: "startTime",
         value: startTime,
-        onChange: handleChange
+        onChange: handleChange,
+        disabled: sessionStarted
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
       className: "inputs-item",
@@ -32100,7 +32070,8 @@ var Inputs = function Inputs(_ref) {
         type: "time",
         name: "endTime",
         value: endTime,
-        onChange: handleChange
+        onChange: handleChange,
+        disabled: sessionStarted
       })]
     })]
   });
@@ -32187,7 +32158,8 @@ var SearchControls = function SearchControls(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Inputs_Inputs__WEBPACK_IMPORTED_MODULE_3__["default"], {
       values: values,
-      setValues: setValues
+      setValues: setValues,
+      searchSession: searchSession
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_DragAndDrop_DragAndDrop__WEBPACK_IMPORTED_MODULE_2__["default"], {
       state: state,
       setState: setState,
@@ -32250,7 +32222,7 @@ var SearchResults = function SearchResults(_ref) {
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)(); // useEffect(() => {
   //     !event ? navigate('/search') : console.log(event);
   // }, []);
-  // if (!event) {
+  // if (!event || !score || !message) {
   //     return null
   // }
 
@@ -32265,6 +32237,8 @@ var SearchResults = function SearchResults(_ref) {
       children: ["Venue: ", event.venue.name]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
       children: event.description
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
+      children: ["Date: ", event.start_date]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
       children: ["Starts at: ", event.start_time]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
@@ -32323,6 +32297,11 @@ var SessionControls = function SessionControls(_ref) {
   var setPopupOpen = _ref.setPopupOpen,
       searchSession = _ref.searchSession,
       groupMembers = _ref.groupMembers;
+
+  var handleClick = function handleClick() {
+    return setPopupOpen(true);
+  };
+
   var user = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_util_UserContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "session-controls",
@@ -32353,9 +32332,7 @@ var SessionControls = function SessionControls(_ref) {
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
       variant: "contained",
-      onClick: function onClick() {
-        return setPopupOpen(true);
-      },
+      onClick: handleClick,
       children: "Select a different session"
     })]
   });
@@ -32712,17 +32689,17 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
       },
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
         className: "popup",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("h2", {
-          children: ["Welcome back, ", user.name]
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
+          children: user.role === 'anonymous' ? 'You are sadly not logged in.' : "Welcome back, ".concat(user.name)
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
           variant: "contained",
           onClick: function onClick() {
             return handleSoloSearch();
           },
           children: "Find out WHAT2DO for yourself ! (solo search only)"
-        }), user.groups.length <= 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
+        }), user.groups.length <= 1 && user.role !== 'anonymous' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
           children: "You are not in any group yet. Create a new one."
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+        }) : user.role !== 'anonymous' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
             children: "Select the group: "
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_11__["default"], {
@@ -32800,8 +32777,9 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
                       },
                       children: "Start new session"
                     })
-                  }), group.search_sessions.sort().map(function (session) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
+                  }), group.search_sessions.sort() // .filter((session=>session))
+                  .map(function (session) {
+                    return !session.event_id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
                       disablePadding: true,
                       className: classes.root,
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -32809,7 +32787,8 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
                         onClick: function onClick() {
                           return selectSession(group.id, session.id);
                         },
-                        children: ["Session id:", " ", session.id]
+                        color: session.searched_date ? 'secondary' : 'primary',
+                        children: ["Session", session.searched_date ? " Started For Date: ".concat(session.searched_date) : " Not Started: ID ".concat(session.id)]
                       })
                     }, session.id);
                   })]
@@ -32817,47 +32796,49 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
               }, group.id);
             })
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
-          children: "Create A New Group"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_11__["default"], {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            disablePadding: true,
-            divider: true,
-            className: classes.root,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_18__["default"], {
-              multiple: true,
-              id: "tags-outlined",
-              options: props.users,
-              getOptionLabel: function getOptionLabel(user) {
-                return user.name;
-              },
-              defaultValue: [],
-              filterSelectedOptions: true,
-              onChange: getGroupArray,
-              renderInput: function renderInput(params) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_19__["default"], _objectSpread(_objectSpread({
-                  color: "primary"
-                }, params), {}, {
-                  label: "Search for friends",
-                  placeholder: "Add more..."
-                }));
-              }
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            className: classes.root,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_19__["default"], {
-              required: true,
-              color: "primary",
-              label: "Group Name",
-              onChange: handleGroupName,
-              value: props.groupName
-            })
+        }), user.role !== 'anonymous' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
+            children: "Create A New Group"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_11__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
+              disablePadding: true,
+              divider: true,
+              className: classes.root,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_18__["default"], {
+                multiple: true,
+                id: "tags-outlined",
+                options: props.users,
+                getOptionLabel: function getOptionLabel(user) {
+                  return user.name;
+                },
+                defaultValue: [],
+                filterSelectedOptions: true,
+                onChange: getGroupArray,
+                renderInput: function renderInput(params) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_19__["default"], _objectSpread(_objectSpread({
+                    color: "primary"
+                  }, params), {}, {
+                    label: "Search for friends",
+                    placeholder: "Add more..."
+                  }));
+                }
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
+              className: classes.root,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_19__["default"], {
+                required: true,
+                color: "primary",
+                label: "Group Name",
+                onChange: handleGroupName,
+                value: props.groupName
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            disabled: !(props.groupName && props.groupMembers.length),
+            variant: "contained",
+            onClick: createGroup,
+            children: props.groupName && props.groupMembers.length ? "Create the group and find out WHAT2DO !" : "Add at least one friend and give the group a name !"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
-          disabled: !(props.groupName && props.groupMembers.length),
-          variant: "contained",
-          onClick: createGroup,
-          children: props.groupName && props.groupMembers.length ? "Create the group and find out WHAT2DO !" : "Add at least one friend and give the group a name !"
         })]
       })
     })

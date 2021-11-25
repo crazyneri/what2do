@@ -52,7 +52,7 @@ const SearchControls = ({
 
     return (
         <>
-            <Inputs values={values} setValues={setValues} />
+            <Inputs values={values} setValues={setValues} searchSession={searchSession} />
             <DragAndDrop
                 state={state}
                 setState={setState}

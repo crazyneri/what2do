@@ -6,6 +6,9 @@ import './SessionControls.scss'
 
 const SessionControls = ({ setPopupOpen, searchSession, groupMembers }) => {
 
+
+    const handleClick = () => setPopupOpen(true)
+
     const user = useContext(UserContext);
 
     return (
@@ -37,7 +40,7 @@ const SessionControls = ({ setPopupOpen, searchSession, groupMembers }) => {
                     {searchSession.user_choices.length === searchSession.group.users.length ? <p>the session has finished</p> : <p>waiting for others to respond</p>}
                 </>
             }
-            <Button variant="contained" onClick={() => setPopupOpen(true)}>Select a different session
+            <Button variant="contained" onClick={handleClick}>Select a different session
             </Button>
         </div>
     )

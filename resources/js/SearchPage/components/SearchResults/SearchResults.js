@@ -11,9 +11,10 @@ const SearchResults = ({
     //     !event ? navigate('/search') : console.log(event);
     // }, []);
 
-    // if (!event) {
+    // if (!event || !score || !message) {
     //     return null
     // }
+
 
     return event ? (
         <>
@@ -22,6 +23,7 @@ const SearchResults = ({
             <h4>Event match score: {score}%</h4>
             <p>Venue: {event.venue.name}</p>
             <p>{event.description}</p>
+            <p>Date: {event.start_date}</p>
             <p>Starts at: {event.start_time}</p>
             <p>Ends at: {event.end_time}</p>
             <p>Address: {event.venue.address}</p>
