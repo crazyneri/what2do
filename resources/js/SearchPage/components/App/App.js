@@ -185,14 +185,15 @@ const App = () => {
 
             setSearchSessionId(session_id);
 
-            (await user) &&
+            (await user &&
                 user.id === 0 &&
                 session_id === 0 &&
-                startSession(group_id);
+                startSession(group_id));
 
-            console.log('navigate?', session);
+            console.log('navigate?', session, 'user choices', session.user_choices);
 
-            if (session && session.event_id && session.event_id !== null) {
+            // if (session && session.event_id && session.event_id !== null)
+            if (session && session.user_choices.some(c => c.user_id === user.id)) {
                 navigate('/search/results');
                 setPopupOpen(false);
             }
@@ -206,6 +207,17 @@ const App = () => {
     useEffect(() => {
         getSearchSessionDetails();
     }, []);
+
+    // setInterval to dynamically update the session every 5 seconds to show users the session has finished
+    // useEffect(() => {
+    //     setInterval(async () => {
+    //         await getSearchSessionDetails();
+    //         if (searchSession && searchSession.event_id && searchSession.event_id !== null) {
+    //             navigate('/search/results');
+    //         }
+    //     }, 10000)
+
+    // }, []);
 
     console.log(nonAnonymousSearch);
 

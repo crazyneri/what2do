@@ -29,7 +29,7 @@ class SearchSessionController extends Controller
 
         $search_session = SearchSession::findOrFail($search_session_id);
 
-        $search_session->city = $request->input('session_id');
+        $search_session->city = $request->input('city');
         $search_session->searched_date = $request->input('searched_date');
         $search_session->start_time = $request->input('start_time');
         $search_session->end_time = $request->input('end_time');

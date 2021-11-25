@@ -43,6 +43,7 @@ class InvoicePaid extends Notification
     public function toMail($notifiable)
     {
         // dd($notifiable);
+        // $url = url('/search/'.$this->session->id);
         $url = url('/search/'.$this->session->id);
 
         return (new MailMessage)

@@ -149,81 +149,88 @@ const saveCheckbox = (e) => {
     )
 }
 
-    return(
-        <div className="create-form">
-            
-                <form action={{id} ? `/admin/event/${id}/update` : '/admin/event/data'}  method='post' onSubmit={handleSubmit}>
-            
-                <label htmlFor="name">Name:</label>
-                <input type="text" name="name" id="name" value={input.name} onChange={saveInput}/>
-                <br/>
-                <label>Venue:</label>
-                <select name="venue_id" onChange={saveInput}>
-                    <option>-- select your venue --</option>
-                    {
-                        venues &&
-                        venues.map((venue, index) => (
-                                <option key={index} selected={input.venue_id} value={venue.id}>{venue.name}</option>
-                            
-                    ))
-                    }                
-                </select>
-                <br/>
-                <label htmlFor="start_date">Start date:</label>
-                <input type="date" name="start_date" id="start_date" value={input.start_date} onChange={saveInput}/>
-                <br/>
-                <label htmlFor="start_time">Start time:</label>
-                <input type="time" name="start_time" id="start_time" value={input.start_time} onChange={saveInput}/>
-                <br/>
-                <label htmlFor="end_date">End date:</label>
-                <input type="date" name="end_date" id="end_date" value={input.end_date} onChange={saveInput}/>
-                <br/>
-                <label htmlFor="end_time">End time:</label>
-                <input type="time" name="end_time" id="end_time" value={input.end_time} onChange={saveInput}/>
-                <br/>
-                <label htmlFor="description">Description:</label>
-                <textarea name="description" id="description" value={input.description} onChange={saveInput}></textarea>
-                <br/>
-                <label htmlFor="price">Price:</label>
-                <input type="number" name="price" id="price" value={input.price} onChange={saveInput}/>
-                <br/>
-                    <CategorySelection
-                        categories={categories}
-                        subcategories={input.categories}
-                        setSubcategories={(categories) => setInput({...input, categories})}
-                        selectedMainCategory={selectedMainCategory}
-                        setSelectedMainCategory={setSelectedMainCategory}
-                        />
+    return(    
+        <form action={{id} ? `/admin/event/${id}/update` : '/admin/event/data'}  method='post' onSubmit={handleSubmit} className="event-form">
+            <div className="create-form">
+                <div className="first-part">
+                    <label htmlFor="name">Name:</label>
+                    <input type="text" name="name" id="name" value={input.name} onChange={saveInput}/>
 
-
-                <br/>
-                <label htmlFor="is_recurring">Do you want to create event that is recuring in time?</label>
-                <input type="checkbox" name="is_recurring" id="is_recurring" checked={input.is_recurring} onChange={saveCheckbox}/>
-                <br/>
-                {
-                    days.map((day, index) => (
-                        input.is_recurring == 1 ?
-                        <div key={index}>
-                        <label htmlFor="dayofweek">{day}</label>
-                        <input className="dayofweek" type="checkbox" checked={input[day]} name={day} value={input[day]} onChange={saveCheckbox}/>
-                        <br/>
-                        </div>
-                        :
-                        ''
-
-                    ))
+                    <label htmlFor="start_date">Start date:</label>
+                    <input type="date" name="start_date" id="start_date" value={input.start_date} onChange={saveInput}/>
                     
-                }
-                {
-                    id ?
-                    <button onClick={() => getChecked()}>Edit event</button>
-                    :
-                    <button onClick={() => getChecked()}>Create event</button>
+                    <label htmlFor="start_time">Start time:</label>
+                    <input type="time" name="start_time" id="start_time" value={input.start_time} onChange={saveInput}/>
 
-                }
+                    <CategorySelection
+                            categories={categories}
+                            subcategories={input.categories}
+                            setSubcategories={(categories) => setInput({...input, categories})}
+                            selectedMainCategory={selectedMainCategory}
+                            setSelectedMainCategory={setSelectedMainCategory}
+                            />
+                </div>
+                <div className="second-part">
+
+                    <label>Venue:</label>
+                    <select name="venue_id" onChange={saveInput}>
+                        <option>-- select your venue --</option>
+                        {
+                            venues &&
+                            venues.map((venue, index) => (
+                                    <option key={index} selected={input.venue_id} value={venue.id}>{venue.name}</option>
+                                
+                        ))
+                        }                
+                    </select>
+                    
+                    <label htmlFor="end_date">End date:</label>
+                    <input type="date" name="end_date" id="end_date" value={input.end_date} onChange={saveInput}/>
+                    
+                    <label htmlFor="end_time">End time:</label>
+                    <input type="time" name="end_time" id="end_time" value={input.end_time} onChange={saveInput}/>
+                    
+                    <label htmlFor="price">Price:</label>
+                    <input type="number" name="price" id="price" value={input.price} onChange={saveInput}/>
+                    
+
+                   <div className="repeated-label">
+                        <label htmlFor="is_recurring">Repeated event?</label>
+                        <input type="checkbox" name="is_recurring" id="is_recurring" checked={input.is_recurring} onChange={saveCheckbox}/>
+                   </div>
+                    
+                    <div className="repeated-days">
+                        {
+                            days.map((day, index) => (
+                                input.is_recurring == 1 ?
+                                <div key={index}>
+                                <label htmlFor="dayofweek">{day}</label>
+                                <input className="dayofweek" type="checkbox" checked={input[day]} name={day} value={input[day]} onChange={saveCheckbox}/>
+                                <br/>
+                                </div>
+                                :
+                                ''
+        
+                            ))
+                            
+                        }
+                    </div>
+                    
+                </div>
                 
-
-            </form>
-        </div>
+            </div>
+            <div className="third-part">
+                    <label htmlFor="description">Description:</label>
+                    <textarea name="description" rows="4" id="description" value={input.description} onChange={saveInput}></textarea>
+    
+                    {
+                        id ?
+                        <button onClick={() => getChecked()}>Edit event</button>
+                        :
+                        <button onClick={() => getChecked()}>Create event</button>
+                    }
+                </div>
+        </form>
+        
     )
 }

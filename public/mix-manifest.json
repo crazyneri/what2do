@@ -1,5 +1,11 @@
 {
+<<<<<<< HEAD
     "/js/search.js": "/js/search.js?id=219ab633df5939f24b3e",
     "/js/event-create.js": "/js/event-create.js?id=516c06dc0e3334f82416",
     "/css/main.css": "/css/main.css?id=b018365caeeb36f01131"
+=======
+    "/js/search.js": "/js/search.js?id=94da3586ee53640e1c31",
+    "/js/event-create.js": "/js/event-create.js?id=5e7e9ea2646f9b78adc1",
+    "/css/main.css": "/css/main.css?id=9df7a5b03f2925c442f1"
+>>>>>>> b951446e777efc3f04fb8566df662c1d1473b1d2
 }
