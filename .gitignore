@@ -3,7 +3,6 @@
 # Added ignore for development
 /public/css
 /public/js
-
 /public/mix-manifest.json
 /public/**/*.map
 phploy.ini
