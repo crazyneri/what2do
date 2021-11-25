@@ -1,6 +1,7 @@
 {{-- @extends('layout/main')
 
 @section('content') --}}
+@if()
 <div class="session-container">
         
         <div class="session-item">
@@ -25,7 +26,7 @@
             </thead>
             <tbody>
                   @foreach($user_sessions as $session)
-                      @if($session->event_id != null)
+                      @if($session->event_id !== null)
                             <tr>
                                 <td>{{$session->group->name}}</td>
                                 <td>{{$session->city}}</td>
@@ -34,7 +35,7 @@
                                 <td>{{$session->end_time}}</td>
                                 <td>
                                 @foreach ($session->user_choices as $user)
-                                {{$user->user->name}}</br>
+                                {{$user->user->name}}<br>
                                 @endforeach
                                 </td>
                                 <td><a href="">{{$session->event->name}}</a></td>
