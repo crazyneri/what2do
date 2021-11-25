@@ -1,7 +1,45 @@
-.results-container {
+.results {
+    width: 100%;
+    height: 100%;
+    padding: 1em;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    flex: 1;
-    width: 60%;
+    align-items: center;
+    background-color: #fffaf1;
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 60%;
+    }
+    &__score {
+        margin: 0.5em 0;
+        text-align: center;
+    }
+    &__message {
+        height: 1.3em;
+        margin: 0.5em 0;
+        text-align: center;
+    }
+    &__info {
+        margin: 0.6em;
+        font-size: 1.1em;
+        text-align: center;
+    }
+    &__link {
+        text-align: center;
+        color: black;
+        margin-bottom: 0.5em;
+        &:hover {
+            font-weight: bold;
+        }
+    }
+    &__category {
+        font-weight: 900;
+    }
+    &__map {
+        border: 2px solid #ea2b1f;
+        border-radius: 15px;
+        align-self: center;
+    }
 }

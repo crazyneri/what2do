@@ -22,7 +22,7 @@ export default function EmptyRefinements() {
             </p>
             <p>
                 4. When you've chosen, press
-                <span className="instructions-bold">search</span>!
+                <span className="instructions-bold"> search</span>!
             </p>
         </div>
     );
