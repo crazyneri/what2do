@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Group;
 use App\Models\User;
+use App\Models\SearchSession;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -31,8 +32,12 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-
-        return view('user.show', compact('user'));
+        $user_sessions = [];
+        foreach($user->user_choices as $choice)
+        {
+            $user_sessions[] = SearchSession::find($choice->session_id);
+        }
+        return view('user.show', compact('user','user_sessions'));
     }
     // EDIT USER INFO
     public function edit($id)

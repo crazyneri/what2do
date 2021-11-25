@@ -44,13 +44,15 @@ class InvoicePaid extends Notification
     {
         // dd($notifiable);
         // $url = url('/search/'.$this->session->id);
-        $url = url('/search/'.$this->session->id);
+        // $url = url('/search/'.$this->session->id);
+        $url = url('/search');
+        // $session_data = $this->session->searched_date);
 
         return (new MailMessage)
-                    ->subject('Fun can begin!')
-                    ->line('Your friend have started the session. Join now')
-                    ->action('Fill your preferences', $url)
-                    ->line('Looking forward.');
+                    ->subject('The fun can begin!')
+                    ->line('Your friend has started a session on: ' .$this->session->searched_date . '.')
+                    ->action('Join now', $url)
+                    ->line('Have a good time.');
     }
 
     /**

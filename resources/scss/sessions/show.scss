@@ -1,0 +1,57 @@
+.session-container {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.session-item {
+    width: 100%;
+    background-color: $background;
+    box-shadow: $main-shadow;
+    margin: 0 0 5% 5%;
+    padding: 4%;
+    border-radius: 5px;
+    // grid-column: 1em;
+    button {
+        background-color: $headers;
+        border-radius: 5px;
+        width: 80px;
+        font-family: $font-text;
+        font-size: 15px;
+        padding: 10px 0;
+        a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 auto;
+        }
+    }
+    h4 {
+        margin-bottom: 0.9em;
+    }
+    p {
+        margin: 0.7em 0;
+    }
+}
+
+// .search-session {
+//     display: flex;
+//     flex-flow: column wrap;
+//     justify-content: space-around;
+// }
+.table-session {
+    width: 100%;
+    tr {
+        margin: 0;
+    }
+    th {
+        border: 1px solid grey;
+        margin: 0;
+        padding: 0.5em;
+    }
+    td {
+        border: 1px solid grey;
+        margin: 0;
+        padding: 0.5em;
+        text-align: center;
+    }
+}

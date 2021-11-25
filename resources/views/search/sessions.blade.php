@@ -1,15 +1,17 @@
-@extends('layout/main')
+{{-- @extends('layout/main')
 
-@section('content')
-
+@section('content') --}}
+<div class="session-container">
+        
+        <div class="session-item">
     <h1>Search sessions</h1>
 
 
     {{-- LIST OF USER'S SEARCH SESSIONS --}}
    
-      <div class="left-side">
+      <div class="search-session">
         <h2>List of your completed searches:</h2>
-        <table class="table-style">
+        <table class="table-session">
           <thead>
             <tr>
               <th>Group</th>
@@ -35,16 +37,18 @@
                                 {{$user->user->name}}</br>
                                 @endforeach
                                 </td>
-                                <td>{{$session->event->name}}</td>
+                                <td><a href="">{{$session->event->name}}</a></td>
                             </tr>
                       @endif
                   @endforeach
               </tbody>
             </table>
         </div>
-        
+      </div>
+
+      {{-- <div class="session-item"> --}}
         {{-- LIST OF OPEN SESSIONS --}}
-        <div class="right-side">
+        {{-- <div class="right-side">
           <h2>Search invites:</h2>
           <table class="table-style">
             <thead>
@@ -79,8 +83,11 @@
                     </tbody>
             </table>
         </div>
+        </div>
+    </div>
+  </div> --}}
 
    
     
     
-@endsection
+{{-- @endsection --}}
