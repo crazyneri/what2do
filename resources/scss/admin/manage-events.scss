@@ -3,10 +3,12 @@
 .create-form {
     display: flex;
     justify-content: center;
+    align-items: start;
     
     .first-part {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         width: 20%;
         padding: 2rem;
     }

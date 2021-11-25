@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     "/js/search.js": "/js/search.js",
     "/js/event-create.js": "/js/event-create.js",
@@ -8,4 +9,9 @@
     "/js/event-create.js": "/js/event-create.js?id=2867962f25927e02d4bd",
     "/css/main.css": "/css/main.css?id=230ef66c05bcd17e952c"
 >>>>>>> Stashed changes
+=======
+    "/js/search.js": "/js/search.js?id=8197b401b29a3a8b117d",
+    "/js/event-create.js": "/js/event-create.js?id=e28836af15035c5183fc",
+    "/css/main.css": "/css/main.css?id=75d919063a92f749771f"
+>>>>>>> main
 }

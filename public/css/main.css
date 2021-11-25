@@ -7,23 +7,192 @@
 .group-display-members {
   display: flex;
   justify-content: space-between;
-  width: 20%;
+  width: 100%;
+}
+
+#add-user {
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+}
+#add-user input[type=text] {
+  width: 100%;
+  padding: 5px;
+  margin: 1em 0;
+  border-radius: 5px;
+}
+#add-user button {
+  background-color: #414c6b;
+  color: #fff;
+  width: 80px;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 10px;
+  font-family: "Comfortaa", cursive;
+  font-size: 15px;
+}
+
+.user-container {
+  margin-top: 15px;
+  width: 50%;
+}
+
+.user-item {
+  width: 80%;
+  background-color: #fffaf1;
+  box-shadow: 0px 1px 5px #adadad;
+  margin: 0 0 5% 5%;
+  padding: 4%;
+  border-radius: 5px;
+}
+.user-item button {
+  background-color: #414c6b;
+  border-radius: 5px;
+  width: 80px;
+  font-family: "Comfortaa", cursive;
+  font-size: 15px;
+  padding: 10px 0;
+}
+.user-item button a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 auto;
+}
+.user-item h4 {
+  margin-bottom: 0.9em;
+}
+.user-item p {
+  margin: 0.7em 0;
+}
+
+.user-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid grey;
+  margin-bottom: 3%;
+  padding-bottom: 1%;
+}
+.user-header button {
+  border-radius: 5px;
+}
+.user-header button a {
+  text-decoration: none;
+  color: #fff;
+  background-color: #414c6b;
 }
 
 .form-create-group {
   display: flex;
   flex-direction: column;
-  width: 35%;
-  background-color: #ccc;
-  padding: 1em;
-}
-.form-create-group input[type=text] {
+  align-items: flex-end;
   width: 100%;
-  padding: 0 10%;
+  background-color: #faca7d;
+  padding: 1em;
+  margin-bottom: 1em;
 }
 .form-create-group_item {
-  width: 80%;
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
 }
+.form-create-group_item input[type=text] {
+  width: 100%;
+  padding: 5px;
+  margin: 1em 0;
+  border-radius: 5px;
+}
+.form-create-group input[type=submit] {
+  background-color: #414c6b;
+  color: #fff;
+  width: 80px;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 10px;
+  font-family: "Comfortaa", cursive;
+  font-size: 15px;
+}
+
+.user-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.select-group h4 {
+  border-bottom: 1px solid #ea2b1f;
+  box-shadow: 1px 1px 3px #ea2b1f;
+  padding: 0.5em 0 0.5em 0.5em;
+  margin-bottom: 1em;
+}
+.select-group a {
+  text-decoration: none;
+  border-bottom: 1px solid grey;
+  color: #414c6b;
+  font-size: 1.1em;
+  font-weight: 900;
+  background-color: #f5d6a6;
+  padding: 0.2em 0.3em;
+  margin: 0 auto;
+}
+.select-group a:hover {
+  border-bottom: 2px solid #ea2b1f;
+}
+.select-group ul {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-content: end;
+}
+.select-group li {
+  margin-bottom: 1.3em;
+  align-self: center;
+}
+
+.user-header-edit {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid grey;
+  margin-bottom: 3%;
+  padding-bottom: 1%;
+}
+.user-header-edit button {
+  border-radius: 5px;
+  color: #fff;
+  background-color: #414c6b;
+}
+
+.form-edit-user button {
+  width: 100%;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #414c6b;
+  font-family: "Comfortaa", cursive;
+  font-size: 15px;
+  width: 30%;
+  margin-top: 1em;
+}
+
+.form-edit-item {
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+.form-edit-item input {
+  width: 80%;
+  padding: 0.5em;
+}
+
+.user-edit-btn {
+  width: 100%;
+  text-align: center;
+}
+
 body {
   font-family: "Comfortaa", cursive;
 }
@@ -191,10 +360,12 @@ body {
 .create-form {
   display: flex;
   justify-content: center;
+  align-items: start;
 }
 .create-form .first-part {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 20%;
   padding: 2rem;
 }
@@ -336,10 +507,14 @@ body {
 
 main {
   width: 100vw;
-  height: 100%;
+  height: 90vh;
   margin-top: 0;
   padding: 0;
   display: flex;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .search-grid {
@@ -376,6 +551,7 @@ div p {
 .column {
   background-color: #f9edcc;
   width: 25%;
+  position: relative;
   height: 50vh;
   display: flex;
   flex-flow: column nowrap;
@@ -484,11 +660,13 @@ h5 {
 .dragging {
   background-color: #ff6951;
   box-shadow: 5px 5px 5px black;
+  z-index: 1;
 }
 
 .dragged-over {
   background-color: #ea2b1f;
   color: red;
+  z-index: 0;
 }
 
 .column h2 {
@@ -596,9 +774,9 @@ button.refine.close {
 }
 
 .btn-search-results {
+  width: 50%;
   background-color: #edae49;
   color: #222;
-  width: 50%;
   border: #f9edcc;
   box-shadow: 2px 2px 5px #9b9a9a;
   padding: 5px;
@@ -607,11 +785,37 @@ button.refine.close {
   border-radius: 5px;
   margin: 0 0 20px;
   position: relative;
-  z-index: 1;
   bottom: 30px;
   text-align: center;
 }
 .btn-search-results--empty {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #ea2b1f;
+  color: white;
+}
+
+.refinement-box {
+  width: 20%;
+  height: 40%;
+  position: fixed;
+  background-color: #f9df74;
+}
+.refinement-box:nth-child(4) {
+  left: 37%;
+}
+.refinement-box:nth-child(5) {
+  left: 59%;
+}
+
+.close-button {
+  width: 2em;
+  height: 2em;
+  margin: 0.5em;
+  padding: 0.2em;
+  border-radius: 50%;
+  font-size: 0.8em;
   background-color: #ea2b1f;
   color: white;
 }
@@ -633,6 +837,8 @@ button.refine.close {
   margin: 1rem 0;
   padding: 0.5rem 0;
   border: none;
+  font-family: "Nunito", sans-serif;
+  color: #414c6b;
 }
 
 .popup {
@@ -640,7 +846,7 @@ button.refine.close {
   width: 60%;
   padding: 0 20px;
   z-index: 3;
-  background: #dfb871;
+  background: #f9edcc;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
@@ -741,7 +947,7 @@ button.refine.close {
 .btn-login {
   font-family: "Comfortaa", cursive;
   font-size: 0.9rem;
-  background-color: #5f709e;
+  background-color: #1565c0;
   color: #fff;
   padding: 7px;
 }

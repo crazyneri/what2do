@@ -154,8 +154,8 @@ const saveCheckbox = (e) => {
             <div className="create-form">
                 <div className="first-part">
                     <label htmlFor="name">Name:</label>
-                    <input type="text" name="name" id="name" value={input.name} onChange={saveInput}/>
-                    
+                    <input type="text" name="name" id="name" value={input.name} onChange={saveInput}/>
+
                     <label htmlFor="start_date">Start date:</label>
                     <input type="date" name="start_date" id="start_date" value={input.start_date} onChange={saveInput}/>
                     
@@ -173,7 +173,7 @@ const saveCheckbox = (e) => {
                 <div className="second-part">
 
                     <label>Venue:</label>
-                    <select name="venue_id" onChange={saveInput}>
+                    <select name="venue_id" onChange={saveInput}>
                         <option>-- select your venue --</option>
                         {
                             venues &&

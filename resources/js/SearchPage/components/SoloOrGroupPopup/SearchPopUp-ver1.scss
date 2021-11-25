@@ -1,3 +1,5 @@
+@import "../../../../scss/colors.scss";
+
 .popup-bg {
     height: 100vh;
     width: 100vw;
@@ -14,6 +16,8 @@
         margin: 1rem 0;
         padding: 0.5rem 0;
         border: none;
+        font-family: $font-headers;
+        color: $headers;
     }
     display: flex;
     justify-content: center;
@@ -26,7 +30,7 @@
     width: 60%;
     padding: 0 20px;
     z-index: 3;
-    background: rgb(223, 184, 113);
+    background: $background-draggable;
     // position: absolute;
     // top: 50%;
     transform: translate(-50%, -50%);
