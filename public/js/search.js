@@ -31069,36 +31069,19 @@ var App = function App() {
     };
   }();
 
-  var search = function search() {
-    updateSession();
-    sendSearchDetails();
-  }; // useEffect(() => {
-  //     getSearchSessionDetails();
-  // }, [])
-
-
-  var fetchUser = /*#__PURE__*/function () {
+  var search = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-      var response, u;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.get)('/api/user');
+              return updateSession();
 
             case 2:
-              response = _context3.sent;
-              _context3.next = 5;
-              return response.data;
+              sendSearchDetails();
 
-            case 5:
-              u = _context3.sent;
-              console.log('logged in user', u);
-              setUser(u);
-              !u && window.location.assign('/login');
-
-            case 9:
+            case 3:
             case "end":
               return _context3.stop();
           }
@@ -31106,8 +31089,45 @@ var App = function App() {
       }, _callee3);
     }));
 
-    return function fetchUser() {
+    return function search() {
       return _ref3.apply(this, arguments);
+    };
+  }(); // useEffect(() => {
+  //     getSearchSessionDetails();
+  // }, [])
+
+
+  var fetchUser = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+      var response, u;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.get)('/api/user');
+
+            case 2:
+              response = _context4.sent;
+              _context4.next = 5;
+              return response.data;
+
+            case 5:
+              u = _context4.sent;
+              console.log('logged in user', u);
+              setUser(u);
+              !u && window.location.assign('/login');
+
+            case 9:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }));
+
+    return function fetchUser() {
+      return _ref4.apply(this, arguments);
     };
   }();
 
@@ -31116,11 +31136,11 @@ var App = function App() {
   }, []);
 
   var startSession = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(group_id) {
+    var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(group_id) {
       var sessionData, response, search_session_id;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
         while (1) {
-          switch (_context4.prev = _context4.next) {
+          switch (_context5.prev = _context5.next) {
             case 0:
               // setLoading(true)
               sessionData = {
@@ -31128,90 +31148,90 @@ var App = function App() {
                 group_id: group_id
               };
               console.log('starting session with group id', group_id);
-              _context4.prev = 2;
-              _context4.next = 5;
+              _context5.prev = 2;
+              _context5.next = 5;
               return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.post)('/session/store', sessionData);
 
             case 5:
-              response = _context4.sent;
+              response = _context5.sent;
               search_session_id = response.data;
               console.log('session started, id: ', search_session_id);
               setSearchSessionId(search_session_id);
               getSearchSessionDetails();
-              _context4.next = 15;
+              _context5.next = 15;
               break;
 
             case 12:
-              _context4.prev = 12;
-              _context4.t0 = _context4["catch"](2);
-              console.log(_context4.t0.response);
+              _context5.prev = 12;
+              _context5.t0 = _context5["catch"](2);
+              console.log(_context5.t0.response);
 
             case 15:
             case "end":
-              return _context4.stop();
+              return _context5.stop();
           }
         }
-      }, _callee4, null, [[2, 12]]);
+      }, _callee5, null, [[2, 12]]);
     }));
 
     return function startSession(_x) {
-      return _ref4.apply(this, arguments);
+      return _ref5.apply(this, arguments);
     };
   }();
 
   var saveSessionToCookies = /*#__PURE__*/function () {
-    var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(session_id) {
+    var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(session_id) {
       var sessionData, response;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
         while (1) {
-          switch (_context5.prev = _context5.next) {
+          switch (_context6.prev = _context6.next) {
             case 0:
               // setLoading(true)
               sessionData = {
                 session_id: session_id
               };
-              _context5.prev = 1;
-              _context5.next = 4;
+              _context6.prev = 1;
+              _context6.next = 4;
               return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.post)('/session/save-session-to-cookies', sessionData);
 
             case 4:
-              response = _context5.sent;
+              response = _context6.sent;
               console.log('saving session to cookies: ', session_id);
               setSearchSessionId(session_id);
-              _context5.next = 12;
+              _context6.next = 12;
               break;
 
             case 9:
-              _context5.prev = 9;
-              _context5.t0 = _context5["catch"](1);
-              console.log(_context5.t0.response);
+              _context6.prev = 9;
+              _context6.t0 = _context6["catch"](1);
+              console.log(_context6.t0.response);
 
             case 12:
             case "end":
-              return _context5.stop();
+              return _context6.stop();
           }
         }
-      }, _callee5, null, [[1, 9]]);
+      }, _callee6, null, [[1, 9]]);
     }));
 
     return function saveSessionToCookies(_x2) {
-      return _ref5.apply(this, arguments);
+      return _ref6.apply(this, arguments);
     };
   }();
 
   var getSearchSessionDetails = /*#__PURE__*/function () {
-    var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
+    var _ref7 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7() {
       var response, session_id, group_id, session;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
         while (1) {
-          switch (_context6.prev = _context6.next) {
+          switch (_context7.prev = _context7.next) {
             case 0:
-              _context6.prev = 0;
-              _context6.next = 3;
+              _context7.prev = 0;
+              _context7.next = 3;
               return (0,_util_request__WEBPACK_IMPORTED_MODULE_2__.get)('/api/session/details');
 
             case 3:
-              response = _context6.sent;
+              response = _context7.sent;
               session_id = response.data.id;
               group_id = response.data.group_id;
               setGroupId(group_id);
@@ -31219,34 +31239,34 @@ var App = function App() {
               session = response.data;
               setSearchSession(session);
               setSearchSessionId(session_id);
-              _context6.next = 13;
+              _context7.next = 13;
               return user;
 
             case 13:
-              _context6.t1 = _context6.sent;
+              _context7.t1 = _context7.sent;
 
-              if (!_context6.t1) {
-                _context6.next = 16;
+              if (!_context7.t1) {
+                _context7.next = 16;
                 break;
               }
 
-              _context6.t1 = user.id === 0;
+              _context7.t1 = user.id === 0;
 
             case 16:
-              _context6.t0 = _context6.t1;
+              _context7.t0 = _context7.t1;
 
-              if (!_context6.t0) {
-                _context6.next = 19;
+              if (!_context7.t0) {
+                _context7.next = 19;
                 break;
               }
 
-              _context6.t0 = session_id === 0;
+              _context7.t0 = session_id === 0;
 
             case 19:
-              _context6.t2 = _context6.t0;
+              _context7.t2 = _context7.t0;
 
-              if (!_context6.t2) {
-                _context6.next = 22;
+              if (!_context7.t2) {
+                _context7.next = 22;
                 break;
               }
 
@@ -31262,24 +31282,24 @@ var App = function App() {
                 setPopupOpen(false);
               }
 
-              _context6.next = 29;
+              _context7.next = 29;
               break;
 
             case 26:
-              _context6.prev = 26;
-              _context6.t3 = _context6["catch"](0);
-              console.log(_context6.t3.response);
+              _context7.prev = 26;
+              _context7.t3 = _context7["catch"](0);
+              console.log(_context7.t3.response);
 
             case 29:
             case "end":
-              return _context6.stop();
+              return _context7.stop();
           }
         }
-      }, _callee6, null, [[0, 26]]);
+      }, _callee7, null, [[0, 26]]);
     }));
 
     return function getSearchSessionDetails() {
-      return _ref6.apply(this, arguments);
+      return _ref7.apply(this, arguments);
     };
   }();
 

@@ -98,8 +98,8 @@ const App = () => {
         // setLoading(false);
     };
 
-    const search = () => {
-        updateSession();
+    const search = async() => {
+        await updateSession();
         sendSearchDetails();
     };
 
