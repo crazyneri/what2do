@@ -256,6 +256,7 @@ function DragAndDrop({
                             setShowTheatreSubCats={setShowTheatreSubCats}
                             showMusicSubCats={showMusicSubCats}
                             setShowMusicSubCats={setShowMusicSubCats}
+                            state={state}
                         />
                     );
                 })}

@@ -31403,6 +31403,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function CategoryBox(_ref) {
   var keyValue = _ref.keyValue,
       category = _ref.category,
@@ -31412,7 +31413,8 @@ function CategoryBox(_ref) {
       showTheatreSubCats = _ref.showTheatreSubCats,
       setShowTheatreSubCats = _ref.setShowTheatreSubCats,
       showMusicSubCats = _ref.showMusicSubCats,
-      setShowMusicSubCats = _ref.setShowMusicSubCats;
+      setShowMusicSubCats = _ref.setShowMusicSubCats,
+      state = _ref.state;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -31454,9 +31456,6 @@ function CategoryBox(_ref) {
     }
   };
 
-  console.log({
-    showMusicSubCats: showMusicSubCats
-  });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_3__.Draggable // has two required props
   , {
     draggableId: category.id // the unique id of that content
@@ -31476,11 +31475,11 @@ function CategoryBox(_ref) {
 
       }, provided.dragHandleProps), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
         children: category.id
-      }), category.parent_id === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+      }), category.parent_id === 0 && state.columns.what2do.categoryIds.includes(category.id) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
         type: "button",
         onClick: showRefinements,
         className: "refine",
-        children: "refine"
+        children: ["refine", console.log(category)]
       }));
     }
   });
@@ -31539,7 +31538,8 @@ function Column(_ref) {
       showTheatreSubCats = _ref.showTheatreSubCats,
       setShowTheatreSubCats = _ref.setShowTheatreSubCats,
       showMusicSubCats = _ref.showMusicSubCats,
-      setShowMusicSubCats = _ref.setShowMusicSubCats;
+      setShowMusicSubCats = _ref.setShowMusicSubCats,
+      state = _ref.state;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -31599,7 +31599,8 @@ function Column(_ref) {
               showTheatreSubCats: showTheatreSubCats,
               setShowTheatreSubCats: setShowTheatreSubCats,
               showMusicSubCats: showMusicSubCats,
-              setShowMusicSubCats: setShowMusicSubCats
+              setShowMusicSubCats: setShowMusicSubCats,
+              state: state
             }, category.id);
           }), provided.placeholder]
         }));
@@ -31894,7 +31895,8 @@ function DragAndDrop(_ref) {
           showTheatreSubCats: showTheatreSubCats,
           setShowTheatreSubCats: setShowTheatreSubCats,
           showMusicSubCats: showMusicSubCats,
-          setShowMusicSubCats: setShowMusicSubCats
+          setShowMusicSubCats: setShowMusicSubCats,
+          state: state
         }, columnId);
       })
     })

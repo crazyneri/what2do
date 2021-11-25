@@ -12,6 +12,7 @@ export default function CategoryBox({
     setShowTheatreSubCats,
     showMusicSubCats,
     setShowMusicSubCats,
+    state,
 }) {
     const [beingDragged, setBeingDragged] = useState(false);
     const [draggingClass, setDraggingClass] = useState('list');
@@ -48,7 +49,6 @@ export default function CategoryBox({
             setShowMusicSubCats(false);
         }
     };
-    console.log({ showMusicSubCats });
 
     return (
         <Draggable
@@ -73,15 +73,19 @@ export default function CategoryBox({
                     {...provided.dragHandleProps}
                 >
                     <h3>{category.id}</h3>
-                    {category.parent_id === 0 && (
-                        <button
-                            type="button"
-                            onClick={showRefinements}
-                            className="refine"
-                        >
-                            refine
-                        </button>
-                    )}
+                    {category.parent_id === 0 &&
+                        state.columns.what2do.categoryIds.includes(
+                            category.id
+                        ) && (
+                            <button
+                                type="button"
+                                onClick={showRefinements}
+                                className="refine"
+                            >
+                                refine
+                                {console.log(category)}
+                            </button>
+                        )}
                 </div>
             )}
         </Draggable>

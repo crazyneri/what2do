@@ -15,6 +15,7 @@ export default function Column({
     setShowTheatreSubCats,
     showMusicSubCats,
     setShowMusicSubCats,
+    state,
 }) {
     const [beingDraggedOver, setBeingDraggedOver] = useState(false);
     const [draggedOverClass, setDraggedOverClass] = useState('');
@@ -99,6 +100,7 @@ export default function Column({
                                     }
                                     showMusicSubCats={showMusicSubCats}
                                     setShowMusicSubCats={setShowMusicSubCats}
+                                    state={state}
                                 />
                             ))}
                             {provided.placeholder}
