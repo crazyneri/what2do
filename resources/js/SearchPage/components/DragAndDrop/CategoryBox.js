@@ -48,6 +48,7 @@ export default function CategoryBox({
             setShowMusicSubCats(false);
         }
     };
+    console.log({ showMusicSubCats });
 
     return (
         <Draggable

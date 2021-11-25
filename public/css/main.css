@@ -241,7 +241,7 @@ body {
 
 main {
   width: 100vw;
-  height: 100%;
+  height: 90vh;
   margin-top: 0;
   padding: 0;
   display: flex;
@@ -390,6 +390,7 @@ h5 {
 .dragging {
   background-color: #ff6951;
   box-shadow: 5px 5px 5px black;
+  z-index: 5;
 }
 
 .dragged-over {
@@ -526,7 +527,6 @@ button.refine.close {
   width: 20%;
   height: 40%;
   position: fixed;
-  z-index: 1;
   background-color: #f9df74;
 }
 .refinement-box:nth-child(4) {

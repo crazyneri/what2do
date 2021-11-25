@@ -50,26 +50,26 @@ function DragAndDrop({
             // });
             // const new_columns = main_columns_beneath.concat(columns);
             // console.log(new_columns);
-            setColumnsToRender(
+            setColumnsToRender([
                 'categories',
                 'what2do',
                 'empty-sub-categories',
-                'theatre-preferences',
-                'theatre-sub-categories'
-            );
+                'theater-preferences',
+                'theater-sub-categories',
+            ]);
         }
         if (showMusicSubCats) {
             // const columns = state.columnOrder.filter((category) => {
             //     return category === 'categories' || category.includes('music');
             // });
             // const new_columns = main_columns_beneath.concat(columns);
-            setColumnsToRender(
+            setColumnsToRender([
                 'categories',
                 'what2do',
                 'empty-sub-categories',
                 'music-preferences',
-                'music-sub-categories'
-            );
+                'music-sub-categories',
+            ]);
         }
         if (!showCinemaSubCats && !showMusicSubCats && !showTheatreSubCats) {
             // const columns = state.columnOrder.filter((category) => {

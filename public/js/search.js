@@ -31454,6 +31454,9 @@ function CategoryBox(_ref) {
     }
   };
 
+  console.log({
+    showMusicSubCats: showMusicSubCats
+  });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_3__.Draggable // has two required props
   , {
     draggableId: category.id // the unique id of that content
@@ -31685,7 +31688,7 @@ function DragAndDrop(_ref) {
       // });
       // const new_columns = main_columns_beneath.concat(columns);
       // console.log(new_columns);
-      setColumnsToRender('categories', 'what2do', 'empty-sub-categories', 'theatre-preferences', 'theatre-sub-categories');
+      setColumnsToRender(['categories', 'what2do', 'empty-sub-categories', 'theater-preferences', 'theater-sub-categories']);
     }
 
     if (showMusicSubCats) {
@@ -31693,7 +31696,7 @@ function DragAndDrop(_ref) {
       //     return category === 'categories' || category.includes('music');
       // });
       // const new_columns = main_columns_beneath.concat(columns);
-      setColumnsToRender('categories', 'what2do', 'empty-sub-categories', 'music-preferences', 'music-sub-categories');
+      setColumnsToRender(['categories', 'what2do', 'empty-sub-categories', 'music-preferences', 'music-sub-categories']);
     }
 
     if (!showCinemaSubCats && !showMusicSubCats && !showTheatreSubCats) {
@@ -31913,38 +31916,26 @@ function EmptyRefinements() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
       className: "instructions-bold",
       children: "Decide what you want to do - the closer to the top, the more you want to do it!"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ol", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-          className: "instructions-bold",
-          children: "Choose"
-        }), " the main category."]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-          className: "instructions-bold",
-          children: "Drag"
-        }), " it into 'what2do'."]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-          className: "instructions-bold",
-          children: "Click"
-        }), " the refine button."]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-          className: "instructions-bold",
-          children: "Choose"
-        }), " your sub-categories."]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-          className: "instructions-bold",
-          children: "Close"
-        }), " the sub-categories' when you have finished."]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-        children: ["Press ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-          className: "instructions-bold",
-          children: "search"
-        }), "!"]
-      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+      children: ["1. ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        className: "instructions-bold",
+        children: "Choose"
+      }), " the main category by dragging it into the centre."]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+      children: ["2. ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        className: "instructions-bold",
+        children: "Click"
+      }), " on a category to add the sub-categories you want."]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+      children: ["3. Click the ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        className: "instructions-bold",
+        children: "box"
+      }), " to close it again."]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+      children: ["4. When you've chosen, press", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        className: "instructions-bold",
+        children: "search"
+      }), "!"]
     })]
   });
 }
@@ -32221,7 +32212,7 @@ var SearchControls = function SearchControls(_ref) {
         children: "Search"
       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
         className: "btn-search-results btn-search-results--empty",
-        children: "You must refine your choices before you can search!"
+        children: "Before you can search you must have something in what2do with sub-categories!"
       })
     })]
   });
@@ -33266,7 +33257,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".session-controls {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  width: 50%;\n}", "",{"version":3,"sources":["webpack://./resources/js/SearchPage/components/SessionControls/SessionControls.scss"],"names":[],"mappings":"AAAA;EACI,aAAA;EACA,6BAAA;EACA,mBAAA;EACA,UAAA;AACJ","sourcesContent":[".session-controls {\r\n    display: flex;\r\n    justify-content: space-around;\r\n    align-items: center;\r\n    width: 50%;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".session-controls {\n  width: 100%;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  background-color: #fffaf1;\n}", "",{"version":3,"sources":["webpack://./resources/js/SearchPage/components/SessionControls/SessionControls.scss"],"names":[],"mappings":"AAAA;EACI,WAAA;EACA,aAAA;EACA,6BAAA;EACA,mBAAA;EACA,yBAAA;AACJ","sourcesContent":[".session-controls {\r\n    width: 100%;\r\n    display: flex;\r\n    justify-content: space-around;\r\n    align-items: center;\r\n    background-color: #fffaf1;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
