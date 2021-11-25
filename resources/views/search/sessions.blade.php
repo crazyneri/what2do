@@ -1,7 +1,7 @@
 {{-- @extends('layout/main')
 
 @section('content') --}}
-@if()
+
 <div class="session-container">
         
         <div class="session-item">
