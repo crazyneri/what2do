@@ -187,16 +187,11 @@ h5 {
 .dragging {
     background-color: #ff6951;
     box-shadow: 5px 5px 5px black;
-    z-index: 1;
-    // .sub-category-box.list {
-    //     z-index: 10;
-    // }
 }
 
 .dragged-over {
-    background-color: $pop-border;
+    //    background-color: $pop-border;
     color: red;
-    z-index: 0;
 }
 
 .column h2 {
@@ -238,9 +233,6 @@ h5 {
     font-size: 0.8em;
     width: 75%;
     border: none;
-    // .list {
-    //     z-index: 10;
-    // }
 }
 
 .hidden {
@@ -329,7 +321,6 @@ button.refine {
     border-radius: 5px;
     margin: 0 0 20px;
     position: relative;
-    // z-index: 1;
     bottom: 30px;
     text-align: center;
     &--empty {
@@ -343,16 +334,15 @@ button.refine {
 }
 
 .refinement-box {
-    width: 20%;
-    height: 40%;
-    //z-index: 1;
-    position: fixed;
+    width: 28%;
+    height: 60%;
+    position: absolute;
     background-color: $light-yellow;
     &:nth-child(4) {
-        left: 37%;
+        left: 33%;
     }
     &:nth-child(5) {
-        left: 59%;
+        left: 62%;
     }
 }
 
