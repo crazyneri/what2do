@@ -50,11 +50,17 @@ export default function Column({
             //         : ''
             // }
             key={key}
-            onClick={column.columnType === 'sub' && closeSubCats}
+            // onClick={column.columnType === 'sub' && closeSubCats}
         >
             <h2 id={column.columnType === 'sub' && 'refinement-box__title'}>
                 {column.title}
+                {column.columnType === 'sub' && (
+                    <span className="close-button" onClick={closeSubCats}>
+                        X
+                    </span>
+                )}
             </h2>
+
             {/* {column.columnType === 'sub' && (
                 <button
                     type="button"

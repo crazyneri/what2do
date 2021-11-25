@@ -245,6 +245,10 @@ main {
   margin-top: 0;
   padding: 0;
   display: flex;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .search-grid {
@@ -534,6 +538,17 @@ button.refine.close {
 }
 .refinement-box:nth-child(5) {
   left: 60%;
+}
+
+.close-button {
+  width: 2em;
+  height: 2em;
+  margin: 0.5em;
+  padding: 0.2em;
+  border-radius: 50%;
+  font-size: 0.8em;
+  background-color: #ea2b1f;
+  color: white;
 }
 
 .popup-bg {
