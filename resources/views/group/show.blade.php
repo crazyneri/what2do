@@ -1,8 +1,10 @@
 @extends('layout/main')
 
 @section('content')
-    <h3>My group's name: {{ $group->name }}</h3>
-<hr>
+<div class="user-container">
+    <div class="user-item">
+    <h3>My group's name:</h3> 
+    <p>{{ $group->name }}</p>
 @if(Auth::id()==$group->owner_id)
 <h4>Search friends to add</h4>
     <form id="add-user" action="/group/{{$group->id}}" method="post">
@@ -11,6 +13,7 @@
         <input class="search-friends" type="text" name="email-search" placeholder="email"/>
         <button type="submit">Add</button>
     </form>
+</div>
 @endif
 {{-- <hr> --}}
     <h4>Members of {{ $group->name }}:</h4>
@@ -34,5 +37,5 @@
     @endif
     @endforeach
     </ul>
-    
+</div>
 @endsection
