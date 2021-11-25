@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import { DragDropContext } from "react-beautiful-dnd";
+import { useEffect } from 'react';
+import { DragDropContext } from 'react-beautiful-dnd';
 // import './style.scss';
-import Column from "./Column";
-import { get } from "../../../util/request";
-import { RotateSpinner } from "react-spinners-kit";
+import Column from './Column';
+import { get } from '../../../util/request';
+import { RotateSpinner } from 'react-spinners-kit';
 
 function DragAndDrop({
     state,
@@ -18,40 +18,72 @@ function DragAndDrop({
     setColumnsToRender,
     searchIds,
     setSearchIds,
-    searchSessionId
+    searchSessionId,
 }) {
+    const main_columns_beneath = [
+        'categories',
+        'what2do',
+        'empty-sub-categories',
+    ];
+
     const renderColumns = () => {
         if (showCinemaSubCats) {
-            const columns = state.columnOrder.filter((category) => {
-                return category === "categories" || category.includes("cinema");
-            });
-            setColumnsToRender(columns);
+            // const columns = state.columnOrder.filter((category) => {
+            //     return category === 'categories' || category.includes('cinema');
+            // });
+            // const new_columns = main_columns_beneath.concat(columns);
+            setColumnsToRender([
+                'categories',
+                'what2do',
+                'empty-sub-categories',
+                'cinema-preferences',
+                'cinema-sub-categories',
+            ]);
         }
         if (showTheatreSubCats) {
-            const columns = state.columnOrder.filter((category) => {
-                return (
-                    category === "categories" ||
-                    category.includes("theater") ||
-                    category.includes("theatre")
-                );
-            });
-            setColumnsToRender(columns);
+            // const columns = state.columnOrder.filter((category) => {
+            //     return (
+            //         category === 'categories' ||
+            //         category.includes('theater') ||
+            //         category.includes('theatre')
+            //     );
+            // });
+            // const new_columns = main_columns_beneath.concat(columns);
+            // console.log(new_columns);
+            setColumnsToRender([
+                'categories',
+                'what2do',
+                'empty-sub-categories',
+                'theater-preferences',
+                'theater-sub-categories',
+            ]);
         }
         if (showMusicSubCats) {
-            const columns = state.columnOrder.filter((category) => {
-                return category === "categories" || category.includes("music");
-            });
-            setColumnsToRender(columns);
+            // const columns = state.columnOrder.filter((category) => {
+            //     return category === 'categories' || category.includes('music');
+            // });
+            // const new_columns = main_columns_beneath.concat(columns);
+            setColumnsToRender([
+                'categories',
+                'what2do',
+                'empty-sub-categories',
+                'music-preferences',
+                'music-sub-categories',
+            ]);
         }
         if (!showCinemaSubCats && !showMusicSubCats && !showTheatreSubCats) {
-            const columns = state.columnOrder.filter((category) => {
-                return (
-                    category === "categories" ||
-                    category === "what2do" ||
-                    category === "empty-sub-categories"
-                );
-            });
-            setColumnsToRender(columns);
+            // const columns = state.columnOrder.filter((category) => {
+            //     return (
+            //         category === 'categories' ||
+            //         category === 'what2do' ||
+            //         category === 'empty-sub-categories'
+            //     );
+            // });
+            setColumnsToRender([
+                'categories',
+                'what2do',
+                'empty-sub-categories',
+            ]);
         }
     };
 
@@ -184,7 +216,7 @@ function DragAndDrop({
     }, [state]);
 
     const fetchData = async () => {
-        const response = await get("/api/search");
+        const response = await get('/api/search');
 
         console.log(response.data);
         setState(response.data);
@@ -194,11 +226,11 @@ function DragAndDrop({
         fetchData();
         setShowCinemaSubCats(false);
         setShowMusicSubCats(false);
-        setShowTheatreSubCats(false)
+        setShowTheatreSubCats(false);
     }, [searchSessionId]);
 
     if (!state) {
-        return <RotateSpinner color='#ea2b1f' />;
+        return <RotateSpinner color="#ea2b1f" />;
     }
 
     return (
@@ -224,6 +256,7 @@ function DragAndDrop({
                             setShowTheatreSubCats={setShowTheatreSubCats}
                             showMusicSubCats={showMusicSubCats}
                             setShowMusicSubCats={setShowMusicSubCats}
+                            state={state}
                         />
                     );
                 })}

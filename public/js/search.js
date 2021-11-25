@@ -31368,6 +31368,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function CategoryBox(_ref) {
   var keyValue = _ref.keyValue,
       category = _ref.category,
@@ -31377,44 +31378,45 @@ function CategoryBox(_ref) {
       showTheatreSubCats = _ref.showTheatreSubCats,
       setShowTheatreSubCats = _ref.setShowTheatreSubCats,
       showMusicSubCats = _ref.showMusicSubCats,
-      setShowMusicSubCats = _ref.setShowMusicSubCats;
+      setShowMusicSubCats = _ref.setShowMusicSubCats,
+      state = _ref.state;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       beingDragged = _useState2[0],
       setBeingDragged = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("list"),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('list'),
       _useState4 = _slicedToArray(_useState3, 2),
       draggingClass = _useState4[0],
       setDraggingClass = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    beingDragged ? setDraggingClass("list dragging") : setDraggingClass("list");
+    beingDragged ? setDraggingClass('list dragging') : setDraggingClass('list');
   }, [beingDragged]);
 
   var showRefinements = function showRefinements() {
-    if (!showCinemaSubCats && category.id === "cinema") {
+    if (!showCinemaSubCats && category.id === 'cinema') {
       setShowCinemaSubCats(true);
     }
 
-    if (showCinemaSubCats && category.id === "cinema") {
+    if (showCinemaSubCats && category.id === 'cinema') {
       setShowCinemaSubCats(false);
     }
 
-    if (!showTheatreSubCats && (category.id === "theater" || category.id === "theatre")) {
+    if (!showTheatreSubCats && (category.id === 'theater' || category.id === 'theatre')) {
       setShowTheatreSubCats(true);
     }
 
-    if (showTheatreSubCats && (category.id === "theater" || category.id === "theatre")) {
+    if (showTheatreSubCats && (category.id === 'theater' || category.id === 'theatre')) {
       setShowTheatreSubCats(false);
     }
 
-    if (!showMusicSubCats && category.id === "music") {
+    if (!showMusicSubCats && category.id === 'music') {
       setShowMusicSubCats(true);
     }
 
-    if (showMusicSubCats && category.id === "music") {
+    if (showMusicSubCats && category.id === 'music') {
       setShowMusicSubCats(false);
     }
   };
@@ -31434,14 +31436,15 @@ function CategoryBox(_ref) {
       }, provided.draggableProps), {}, {
         // applied to the component that we want to move
         ref: provided.innerRef,
-        key: index
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", _objectSpread(_objectSpread({}, provided.dragHandleProps), {}, {
+        key: index // onClick={showRefinements}
+
+      }, provided.dragHandleProps), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
         children: category.id
-      })), category.parent_id === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+      }), category.parent_id === 0 && state.columns.what2do.categoryIds.includes(category.id) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
         type: "button",
         onClick: showRefinements,
         className: "refine",
-        children: "refine"
+        children: ["refine", console.log(category)]
       }));
     }
   });
@@ -31500,44 +31503,52 @@ function Column(_ref) {
       showTheatreSubCats = _ref.showTheatreSubCats,
       setShowTheatreSubCats = _ref.setShowTheatreSubCats,
       showMusicSubCats = _ref.showMusicSubCats,
-      setShowMusicSubCats = _ref.setShowMusicSubCats;
+      setShowMusicSubCats = _ref.setShowMusicSubCats,
+      state = _ref.state;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       beingDraggedOver = _useState2[0],
       setBeingDraggedOver = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState4 = _slicedToArray(_useState3, 2),
       draggedOverClass = _useState4[0],
       setDraggedOverClass = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    beingDraggedOver ? setDraggedOverClass("dragged-over") : setDraggedOverClass("");
+    beingDraggedOver ? setDraggedOverClass('dragged-over') : setDraggedOverClass('');
   }, [beingDraggedOver]);
 
   var closeSubCats = function closeSubCats() {
     setShowCinemaSubCats(false);
     setShowMusicSubCats(false);
     setShowTheatreSubCats(false);
-  };
+  }; // const empty = () => {
+  //     return <EmptyRefinements />;
+  // };
 
-  var empty = function empty() {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_EmptyRefinements__WEBPACK_IMPORTED_MODULE_2__["default"], {});
-  };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    className: "column ".concat(draggedOverClass),
+    className: column.columnType !== 'sub' ? "column ".concat(draggedOverClass) : "column refinement-box ".concat(draggedOverClass) // id={
+    //     column.columnType === 'sub' && column.categoryId === 0
+    //         ? 'refinement-box-1'
+    //         : column.columnType === 'sub' && column.categoryId !== 0
+    //         ? 'refinement-box-2'
+    //         : ''
+    // }
+    ,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
+      id: column.columnType === 'sub' && 'refinement-box__title',
       children: column.title
-    }), column.columnType === "sub" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+    }), column.columnType === 'sub' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
       type: "button",
       onClick: closeSubCats,
       className: "refine close",
       children: "close"
-    }), column.id === "empty-sub-categories" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_EmptyRefinements__WEBPACK_IMPORTED_MODULE_2__["default"], {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_4__.Droppable, {
+    }), column.id === 'empty-sub-categories' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_EmptyRefinements__WEBPACK_IMPORTED_MODULE_2__["default"], {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_4__.Droppable, {
       droppableId: column.id,
-      type: column.columnType === "sub" ? "sub" : "main",
+      type: column.columnType === 'sub' ? 'sub' : 'main',
       children: function children(provided, snapshot) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", _objectSpread(_objectSpread({
           className: "drag-space",
@@ -31553,7 +31564,8 @@ function Column(_ref) {
               showTheatreSubCats: showTheatreSubCats,
               setShowTheatreSubCats: setShowTheatreSubCats,
               showMusicSubCats: showMusicSubCats,
-              setShowMusicSubCats: setShowMusicSubCats
+              setShowMusicSubCats: setShowMusicSubCats,
+              state: state
             }, category.id);
           }), provided.placeholder]
         }));
@@ -31630,37 +31642,47 @@ function DragAndDrop(_ref) {
       searchIds = _ref.searchIds,
       setSearchIds = _ref.setSearchIds,
       searchSessionId = _ref.searchSessionId;
+  var main_columns_beneath = ['categories', 'what2do', 'empty-sub-categories'];
 
   var renderColumns = function renderColumns() {
     if (showCinemaSubCats) {
-      var columns = state.columnOrder.filter(function (category) {
-        return category === "categories" || category.includes("cinema");
-      });
-      setColumnsToRender(columns);
+      // const columns = state.columnOrder.filter((category) => {
+      //     return category === 'categories' || category.includes('cinema');
+      // });
+      // const new_columns = main_columns_beneath.concat(columns);
+      setColumnsToRender(['categories', 'what2do', 'empty-sub-categories', 'cinema-preferences', 'cinema-sub-categories']);
     }
 
     if (showTheatreSubCats) {
-      var _columns = state.columnOrder.filter(function (category) {
-        return category === "categories" || category.includes("theater") || category.includes("theatre");
-      });
-
-      setColumnsToRender(_columns);
+      // const columns = state.columnOrder.filter((category) => {
+      //     return (
+      //         category === 'categories' ||
+      //         category.includes('theater') ||
+      //         category.includes('theatre')
+      //     );
+      // });
+      // const new_columns = main_columns_beneath.concat(columns);
+      // console.log(new_columns);
+      setColumnsToRender(['categories', 'what2do', 'empty-sub-categories', 'theater-preferences', 'theater-sub-categories']);
     }
 
     if (showMusicSubCats) {
-      var _columns2 = state.columnOrder.filter(function (category) {
-        return category === "categories" || category.includes("music");
-      });
-
-      setColumnsToRender(_columns2);
+      // const columns = state.columnOrder.filter((category) => {
+      //     return category === 'categories' || category.includes('music');
+      // });
+      // const new_columns = main_columns_beneath.concat(columns);
+      setColumnsToRender(['categories', 'what2do', 'empty-sub-categories', 'music-preferences', 'music-sub-categories']);
     }
 
     if (!showCinemaSubCats && !showMusicSubCats && !showTheatreSubCats) {
-      var _columns3 = state.columnOrder.filter(function (category) {
-        return category === "categories" || category === "what2do" || category === "empty-sub-categories";
-      });
-
-      setColumnsToRender(_columns3);
+      // const columns = state.columnOrder.filter((category) => {
+      //     return (
+      //         category === 'categories' ||
+      //         category === 'what2do' ||
+      //         category === 'empty-sub-categories'
+      //     );
+      // });
+      setColumnsToRender(['categories', 'what2do', 'empty-sub-categories']);
     }
   };
 
@@ -31785,7 +31807,7 @@ function DragAndDrop(_ref) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return (0,_util_request__WEBPACK_IMPORTED_MODULE_3__.get)("/api/search");
+              return (0,_util_request__WEBPACK_IMPORTED_MODULE_3__.get)('/api/search');
 
             case 2:
               response = _context.sent;
@@ -31838,7 +31860,8 @@ function DragAndDrop(_ref) {
           showTheatreSubCats: showTheatreSubCats,
           setShowTheatreSubCats: setShowTheatreSubCats,
           showMusicSubCats: showMusicSubCats,
-          setShowMusicSubCats: setShowMusicSubCats
+          setShowMusicSubCats: setShowMusicSubCats,
+          state: state
         }, columnId);
       })
     })
@@ -31869,38 +31892,26 @@ function EmptyRefinements() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
       className: "instructions-bold",
       children: "Decide what you want to do - the closer to the top, the more you want to do it!"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ol", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-          className: "instructions-bold",
-          children: "Choose"
-        }), " the main category."]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-          className: "instructions-bold",
-          children: "Drag"
-        }), " it into 'what2do'."]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-          className: "instructions-bold",
-          children: "Click"
-        }), " the refine button."]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-          className: "instructions-bold",
-          children: "Choose"
-        }), " your sub-categories."]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-          className: "instructions-bold",
-          children: "Close"
-        }), " the sub-categories' when you have finished."]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-        children: ["Press ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-          className: "instructions-bold",
-          children: "search"
-        }), "!"]
-      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+      children: ["1. ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        className: "instructions-bold",
+        children: "Choose"
+      }), " the main category by dragging it into the centre."]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+      children: ["2. ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        className: "instructions-bold",
+        children: "Click"
+      }), " on refine to add the sub-categories you want."]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+      children: ["3. Click the", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        className: "instructions-bold",
+        children: " close button"
+      }), " to close the refinements."]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+      children: ["4. When you've chosen, press", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        className: "instructions-bold",
+        children: "search"
+      }), "!"]
     })]
   });
 }
@@ -32184,7 +32195,7 @@ var SearchControls = function SearchControls(_ref) {
         children: "Search"
       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
         className: "btn-search-results btn-search-results--empty",
-        children: "You must refine your choices before you can search!"
+        children: "You must refine your categories to search!"
       })
     })]
   });
@@ -33238,7 +33249,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".session-controls {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  width: 50%;\n}", "",{"version":3,"sources":["webpack://./resources/js/SearchPage/components/SessionControls/SessionControls.scss"],"names":[],"mappings":"AAAA;EACI,aAAA;EACA,6BAAA;EACA,mBAAA;EACA,UAAA;AACJ","sourcesContent":[".session-controls {\r\n    display: flex;\r\n    justify-content: space-around;\r\n    align-items: center;\r\n    width: 50%;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".session-controls {\n  width: 100%;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  background-color: #fffaf1;\n}", "",{"version":3,"sources":["webpack://./resources/js/SearchPage/components/SessionControls/SessionControls.scss"],"names":[],"mappings":"AAAA;EACI,WAAA;EACA,aAAA;EACA,6BAAA;EACA,mBAAA;EACA,yBAAA;AACJ","sourcesContent":[".session-controls {\r\n    width: 100%;\r\n    display: flex;\r\n    justify-content: space-around;\r\n    align-items: center;\r\n    background-color: #fffaf1;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -99875,11 +99886,7 @@ function combine (array, callback) {
 /***/ ((module) => {
 
 "use strict";
-<<<<<<< HEAD
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\web\\\\codingbootcamp\\\\exercises\\\\project\\\\what2do"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/","/localtunnel"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\web\\\\codingbootcamp\\\\exercises\\\\project\\\\what2do","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
-=======
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\web\\\\bootcamp\\\\projects\\\\what2do"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\web\\\\bootcamp\\\\projects\\\\what2do","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
->>>>>>> feat/search-page
+module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"axios@^0.21","name":"axios","escapedName":"axios","rawSpec":"^0.21","saveSpec":null,"fetchSpec":"^0.21"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_shasum":"c67b90dc0568e5c1cf2b0b858c43ba28e2eda575","_spec":"axios@^0.21","_where":"C:\\\\web\\\\codingbootcamp\\\\what2do","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundleDependencies":false,"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"deprecated":false,"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 

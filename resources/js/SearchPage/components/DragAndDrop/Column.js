@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 // import Task from './Category';
-import { Droppable } from "react-beautiful-dnd";
-import { useEffect, useState } from "react";
-import CategoryBox from "./CategoryBox";
-import EmptyRefinements from "./EmptyRefinements";
+import { Droppable } from 'react-beautiful-dnd';
+import { useEffect, useState } from 'react';
+import CategoryBox from './CategoryBox';
+import EmptyRefinements from './EmptyRefinements';
 
 export default function Column({
     key,
@@ -15,14 +15,15 @@ export default function Column({
     setShowTheatreSubCats,
     showMusicSubCats,
     setShowMusicSubCats,
+    state,
 }) {
     const [beingDraggedOver, setBeingDraggedOver] = useState(false);
-    const [draggedOverClass, setDraggedOverClass] = useState("");
+    const [draggedOverClass, setDraggedOverClass] = useState('');
 
     useEffect(() => {
         beingDraggedOver
-            ? setDraggedOverClass("dragged-over")
-            : setDraggedOverClass("");
+            ? setDraggedOverClass('dragged-over')
+            : setDraggedOverClass('');
     }, [beingDraggedOver]);
 
     const closeSubCats = () => {
@@ -31,14 +32,37 @@ export default function Column({
         setShowTheatreSubCats(false);
     };
 
-    const empty = () => {
-        return <EmptyRefinements />;
-    };
+    // const empty = () => {
+    //     return <EmptyRefinements />;
+    // };
 
     return (
-        <div className={`column ${draggedOverClass}`} key={key}>
-            <h2>{column.title}</h2>
-            {column.columnType === "sub" && (
+        <div
+            className={
+                column.columnType !== 'sub'
+                    ? `column ${draggedOverClass}`
+                    : `column refinement-box ${draggedOverClass}`
+            }
+            // id={
+            //     column.columnType === 'sub' && column.categoryId === 0
+            //         ? 'refinement-box-1'
+            //         : column.columnType === 'sub' && column.categoryId !== 0
+            //         ? 'refinement-box-2'
+            //         : ''
+            // }
+            key={key}
+            // onClick={column.columnType === 'sub' && closeSubCats}
+        >
+            <h2 id={column.columnType === 'sub' && 'refinement-box__title'}>
+                {column.title}
+                {/* {column.columnType === 'sub' && (
+                    <span className="close-button" onClick={closeSubCats}>
+                        X
+                    </span>
+                )} */}
+            </h2>
+
+            {column.columnType === 'sub' && (
                 <button
                     type="button"
                     onClick={closeSubCats}
@@ -47,12 +71,12 @@ export default function Column({
                     close
                 </button>
             )}
-            {column.id === "empty-sub-categories" ? (
+            {column.id === 'empty-sub-categories' ? (
                 <EmptyRefinements />
             ) : (
                 <Droppable
                     droppableId={column.id}
-                    type={column.columnType === "sub" ? "sub" : "main"}
+                    type={column.columnType === 'sub' ? 'sub' : 'main'}
                 >
                     {(provided, snapshot) => (
                         <div
@@ -76,6 +100,7 @@ export default function Column({
                                     }
                                     showMusicSubCats={showMusicSubCats}
                                     setShowMusicSubCats={setShowMusicSubCats}
+                                    state={state}
                                 />
                             ))}
                             {provided.placeholder}

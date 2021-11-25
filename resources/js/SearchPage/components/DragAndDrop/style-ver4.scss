@@ -25,13 +25,13 @@ $font-headers: 'Nunito', sans-serif;
 
 main {
     width: 100vw;
-    height: 100%;
+    height: 90vh;
     margin-top: 0;
     padding: 0;
     display: flex;
+    user-select: none;
     // justify-content: center;
     // align-items: flex-start;
-    // user-select: none;
     // font-family: "Comfortaa", cursive;
 }
 .search-grid {
@@ -67,6 +67,7 @@ div p {
 .column {
     background-color: $columns;
     width: 25%;
+    position: relative;
     height: 50vh;
     display: flex;
     flex-flow: column nowrap;
@@ -78,6 +79,7 @@ div p {
     border-radius: 5px;
     box-shadow: 1px 1px 5px $pop-border;
     position: absolute;
+
     // flex: 1;
     &:nth-child(1) {
         left: 20px;
@@ -170,9 +172,9 @@ h5 {
     &::-webkit-scrollbar-track {
         background-color: $search;
     }
-    &::-webkit-scrollbar-track-piece {
-        // background-color: red;
-    }
+    // &::-webkit-scrollbar-track-piece {
+    //     // background-color: red;
+    // }
     &::-webkit-scrollbar-thumb {
         background-color: rgba($pop-border, 0.6);
         height: 30%;
@@ -185,11 +187,16 @@ h5 {
 .dragging {
     background-color: #ff6951;
     box-shadow: 5px 5px 5px black;
+    z-index: 1;
+    // .sub-category-box.list {
+    //     z-index: 10;
+    // }
 }
 
 .dragged-over {
     background-color: $pop-border;
     color: red;
+    z-index: 0;
 }
 
 .column h2 {
@@ -231,6 +238,9 @@ h5 {
     font-size: 0.8em;
     width: 75%;
     border: none;
+    // .list {
+    //     z-index: 10;
+    // }
 }
 
 .hidden {
@@ -307,9 +317,10 @@ button.refine {
     justify-content: center;
 }
 .btn-search-results {
+    width: 50%;
+    //height: 2em;
     background-color: $search;
     color: #222;
-    width: 50%;
     border: $background-draggable;
     box-shadow: 2px 2px 5px rgb(155, 154, 154);
     padding: 5px;
@@ -318,11 +329,62 @@ button.refine {
     border-radius: 5px;
     margin: 0 0 20px;
     position: relative;
-    z-index: 1;
+    // z-index: 1;
     bottom: 30px;
     text-align: center;
     &--empty {
+        // padding: 5px;
+        // font-size: 0.8em;
+        width: fit-content;
+
         background-color: $pop-border;
         color: white;
     }
 }
+
+.refinement-box {
+    width: 20%;
+    height: 40%;
+    //z-index: 1;
+    position: fixed;
+    background-color: $light-yellow;
+    &:nth-child(4) {
+        left: 37%;
+    }
+    &:nth-child(5) {
+        left: 59%;
+    }
+}
+
+.close-button {
+    width: 2em;
+    height: 2em;
+    margin: 0.5em;
+    padding: 0.2em;
+    border-radius: 50%;
+    font-size: 0.8em;
+    background-color: $pop-border;
+    color: white;
+}
+
+// h2#refinement-box__title {
+//     font-size: 0.8em;
+// }
+
+// #refinement-box-2 {
+//     width: 20%;
+//     height: 40%;
+//     position: fixed;
+//     right: 10em;
+//     z-index: 1;
+//     background-color: $light-yellow;
+// }
+
+// #refinement-box {
+//     width: 20%;
+//     height: 40%;
+//     position: fixed;
+//     right: 5em;
+//     background-color: $light-yellow;
+//     z-index: 1;
+// }
