@@ -42,6 +42,7 @@ class AdminController extends Controller
                         ->where('admin_id', $user->id)
                         ->get();
 
+        
         return view('admin/index', compact('events', 'venues_events'));
     }
 
