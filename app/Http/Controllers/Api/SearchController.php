@@ -66,7 +66,10 @@ class SearchController extends Controller
 
         foreach ($categories as $category) {
 
-            $titleString = ucfirst("{$category->name} Preferences");
+            $titleString_pref = ucfirst("{$category->name} choices");
+
+            $titleString_sub = ucfirst("{$category->name} categories");
+
 
             $lowerCaseName = strtolower($category->name);
 
@@ -77,7 +80,7 @@ class SearchController extends Controller
             if ($category->parent_id === 0) {
                 $columnsObject[$preferencesString] = [
                     'id' => $preferencesString,
-                    'title' => $titleString,
+                    'title' => $titleString_pref,
                     'columnType' => 'sub',
                     'categoryId' => $category->id,
                     'categoryIds' => [],
@@ -85,7 +88,7 @@ class SearchController extends Controller
 
                 $columnsObject[$subcategoriesString] = [
                     'id' => $subcategoriesString,
-                    'title' => $titleString,
+                    'title' => $titleString_sub,
                     'columnType' => 'sub',
                     'categoryId' => $category->id,
                     'categoryIds' => array_values(

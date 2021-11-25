@@ -187,7 +187,9 @@ h5 {
 .dragging {
     background-color: #ff6951;
     box-shadow: 5px 5px 5px black;
-    z-index: 5;
+    // .sub-category-box.list {
+    //     z-index: 10;
+    // }
 }
 
 .dragged-over {
@@ -234,6 +236,9 @@ h5 {
     font-size: 0.8em;
     width: 75%;
     border: none;
+    // .list {
+    //     z-index: 10;
+    // }
 }
 
 .hidden {
@@ -310,9 +315,10 @@ button.refine {
     justify-content: center;
 }
 .btn-search-results {
+    width: 50%;
+    //height: 2em;
     background-color: $search;
     color: #222;
-    width: 50%;
     border: $background-draggable;
     box-shadow: 2px 2px 5px rgb(155, 154, 154);
     padding: 5px;
@@ -325,6 +331,10 @@ button.refine {
     bottom: 30px;
     text-align: center;
     &--empty {
+        // padding: 5px;
+        // font-size: 0.8em;
+        width: fit-content;
+
         background-color: $pop-border;
         color: white;
     }

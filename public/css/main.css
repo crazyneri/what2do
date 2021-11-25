@@ -394,7 +394,6 @@ h5 {
 .dragging {
   background-color: #ff6951;
   box-shadow: 5px 5px 5px black;
-  z-index: 5;
 }
 
 .dragged-over {
@@ -507,9 +506,9 @@ button.refine.close {
 }
 
 .btn-search-results {
+  width: 50%;
   background-color: #edae49;
   color: #222;
-  width: 50%;
   border: #f9edcc;
   box-shadow: 2px 2px 5px #9b9a9a;
   padding: 5px;
@@ -523,6 +522,9 @@ button.refine.close {
   text-align: center;
 }
 .btn-search-results--empty {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   background-color: #ea2b1f;
   color: white;
 }

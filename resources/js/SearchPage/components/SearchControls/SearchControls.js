@@ -80,8 +80,7 @@ const SearchControls = ({
                     </button>
                 ) : (
                     <p className="btn-search-results btn-search-results--empty">
-                        Before you can search you must have something in what2do
-                        with sub-categories!
+                        You must refine your categories to search!
                     </p>
                 )}
             </div>

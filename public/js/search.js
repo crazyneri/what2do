@@ -31927,7 +31927,7 @@ function EmptyRefinements() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
       className: "instructions-bold",
       children: "Decide what you want to do - the closer to the top, the more you want to do it!"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
       children: ["1. ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
         className: "instructions-bold",
         children: "Choose"
@@ -31936,12 +31936,12 @@ function EmptyRefinements() {
       children: ["2. ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
         className: "instructions-bold",
         children: "Click"
-      }), " on a category to add the sub-categories you want."]
+      }), " on refine to add the sub-categories you want."]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-      children: ["3. Click the ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+      children: ["3. Click the", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
         className: "instructions-bold",
-        children: "box"
-      }), " to close it again."]
+        children: " close button"
+      }), " to close the refinements."]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
       children: ["4. When you've chosen, press", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
         className: "instructions-bold",
@@ -32223,7 +32223,7 @@ var SearchControls = function SearchControls(_ref) {
         children: "Search"
       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
         className: "btn-search-results btn-search-results--empty",
-        children: "Before you can search you must have something in what2do with sub-categories!"
+        children: "You must refine your categories to search!"
       })
     })]
   });
