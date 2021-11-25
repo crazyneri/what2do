@@ -363,7 +363,7 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
                             </List>
                         </>
                     )}
-                    {user.role !== 'anonymous' &&
+                    {user && user.role && user.role !== 'anonymous' &&
                         <>
                             <h3>Create A New Group</h3>
                             <List>

@@ -45,7 +45,7 @@ const App = () => {
 
     const [groupName, setGroupName] = useState('');
 
-    const nonAnonymousSearch = user && user.role !== 'anonymous';
+    const nonAnonymousSearch = user && user.role && user.role !== 'anonymous';
 
     const [popupOpen, setPopupOpen] = useState(true);
 
@@ -98,7 +98,7 @@ const App = () => {
         // setLoading(false);
     };
 
-    const search = async() => {
+    const search = async () => {
         await updateSession();
         sendSearchDetails();
     };
@@ -224,14 +224,19 @@ const App = () => {
     console.log(nonAnonymousSearch);
 
     useEffect(() => {
-        !nonAnonymousSearch && setPopupOpen(false);
+        if (!nonAnonymousSearch) {
+            console.log('anonymous, closing popup');
+            setPopupOpen(false)
+        };
+        if (searchSessionId === 0) {
+            setPopupOpen(true)
+        }
     }, [])
 
     return (
-        // <Router>
         <div className="search-grid">
             <UserContext.Provider value={user}>
-                {user && popupOpen && (
+                {((user && popupOpen)) && (
                     <SoloOrGroupPopup
                         groupId={groupId}
                         setGroupId={setGroupId}
@@ -297,7 +302,6 @@ const App = () => {
                 </Routes>
             </UserContext.Provider>
         </div>
-        // </Router>
     );
 };
 
