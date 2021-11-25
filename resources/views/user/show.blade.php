@@ -74,11 +74,12 @@
         
                 {{-- <button><a href="">Manage groups</a></button> --}}
         </div>
-            
-           
+        
+        
+    </div>
     
-           
-</div>
+            @include('search/sessions')
+        
 @endsection
 @push('child-scripts')
 <script>
