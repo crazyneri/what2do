@@ -38,6 +38,11 @@
         @endif
         @endforeach
         </ul>
+        <form action="/group/{{$group->id}}" method="post">
+            @csrf
+            @method('delete')
+            <button class="">Delete Group</button>
+        </form>
     </div>
 </div>
 @endsection

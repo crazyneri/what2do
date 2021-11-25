@@ -65,7 +65,7 @@
                     <h4>Select group</h4>
                     <ul>
                 @foreach($user->groups as $group)
-                @if($user->id !== $group->id)
+                @if($group->name !== 'Myself')
                     <li><a href="/group/{{$group->id}}">{{ $group->name }}</a></li>
                 @endif
                 @endforeach

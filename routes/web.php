@@ -63,6 +63,11 @@ Route::delete('/group/{id}/user/{user_id}', 'UserController@removeFriend');
 
 Route::post('/group/{id}', 'UserController@groupAddUser');
 
+// delete group
+Route::get('/group/{id}', 'UserController@groupAddUser');
+Route::delete('/group/{id}', 'UserController@deleteGroup');
+
+
 // registration - CHANGE SENDING EMAIL AFTER THE REGISTRATION
 Route::get('/send-email', function () {
     Mail::to('user@email.com')->send(new TestEmail());
