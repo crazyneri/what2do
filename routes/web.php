@@ -77,13 +77,18 @@ Route::get('/send-email', function () {
 Route::get('/session-results/{user_id}/', 'SearchResultsController@show');
 
 // quick create group
-
 Route::post('/quick-create-group', 'GroupController@store');
+
+//sessions
 Route::post('/session/store', 'SearchSessionController@store');
 Route::post('/session/update', 'SearchSessionController@update');
 Route::post('/session/save-session-to-cookies', 'SearchSessionController@saveSessionToCookies');
 
+// user choices
 Route::post('/user-choice/store', 'UserChoiceController@store');
+
+// anonymous login
 Route::post('/anonymous-login', 'UserController@anonymousLogin')->name('anonymous-login');
 
+// create default group for the user
 Route::post('/user/change-default-group', 'UserController@anonymousLogin');
