@@ -32779,7 +32779,7 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
                     })
                   }), group.search_sessions.sort() // .filter((session=>session))
                   .map(function (session) {
-                    return !session.event_id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
+                    return !session.event_id && session.searched_date && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_12__["default"], {
                       disablePadding: true,
                       className: classes.root,
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -32788,7 +32788,7 @@ var SoloOrGroupPopup = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.forwar
                           return selectSession(group.id, session.id);
                         },
                         color: session.searched_date ? 'secondary' : 'primary',
-                        children: ["Session", session.searched_date ? " Started For Date: ".concat(session.searched_date) : " Not Started: ID ".concat(session.id)]
+                        children: ["Session Started For Date ", session.searched_date]
                       })
                     }, session.id);
                   })]

@@ -333,7 +333,7 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
                                                             .sort()
                                                             // .filter((session=>session))
                                                             .map((session) => (
-                                                                !session.event_id &&
+                                                                !session.event_id && session.searched_date &&
                                                                 <ListItem
                                                                     key={
                                                                         session.id
@@ -352,10 +352,7 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
                                                                             )
                                                                         }
                                                                         color={session.searched_date ? 'secondary' : 'primary'}
-                                                                    >Session
-                                                                        {
-                                                                            session.searched_date ? ` Started For Date: ${session.searched_date}` : ` Not Started: ID ${session.id}`
-                                                                        }
+                                                                    >Session Started For Date {session.searched_date}
                                                                     </Button>
                                                                 </ListItem>
                                                             ))}
