@@ -32,6 +32,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
+        
         $user_sessions = [];
         foreach($user->user_choices as $choice)
         {
@@ -172,4 +173,22 @@ class UserController extends Controller
         $user->save();
 
     }
+    public function deleteGroup($id)
+    {
+        // dd($id);
+        $user_id = Auth::user()->id;
+        // dd($user);
+        $group = Group::findOrFail($id);
+        // dd($group);
+        $group->users()->detach();
+        
+        $group->delete();
+
+
+        // return redirect()->route('/user/' . $user_id);
+        // return view('user.show', compact('user'));
+        return redirect()->action('UserController@show',['id'=> $user_id]);
+
+    }
+
 }

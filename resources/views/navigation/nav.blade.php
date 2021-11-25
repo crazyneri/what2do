@@ -3,7 +3,7 @@
     @if(Auth::check() !== true)   
         <ul class="nav-container-list">
             <li><a href="/search">Home</a></li>
-            <li><a href="">Register</a></li>
+            <li><a href="/register">Register</a></li>
             <li><a href="/login">Login</a>
         </ul>
     @elseif(Auth::user())

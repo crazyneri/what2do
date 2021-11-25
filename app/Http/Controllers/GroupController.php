@@ -28,4 +28,17 @@ class GroupController extends Controller
             'group_id' => $group->id,
         ];
     }
+    public function delete($id)
+    {
+        // dd($id);
+        $group = Group::findOrFail($id);
+        // dd($group);
+        $group->users()->detach();
+        
+        $group->delete();
+
+
+        // return redirect()->action('UserController@show');
+
+    }
 }
