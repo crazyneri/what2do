@@ -192,7 +192,7 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
                 }}
             >
                 <div className="popup">
-                    <h2>Welcome back, {user.name}</h2>
+                    <h2>{user.role === 'anonymous' ? 'You are sadly not logged in.' : `Welcome back, ${user.name}`}</h2>
                     <Button
                         variant="contained"
                         onClick={() => handleSoloSearch()}
@@ -200,9 +200,9 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
                         Find out WHAT2DO for yourself ! (solo search only)
                     </Button>
 
-                    {user.groups.length <= 1 ? (
+                    {user.groups.length <= 1 && user.role !== 'anonymous' ? (
                         <h3>You are not in any group yet. Create a new one.</h3>
-                    ) : (
+                    ) : user.role !== 'anonymous' && (
                         <>
                             <h3>Select the group: </h3>
                             <Divider />
@@ -331,7 +331,9 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
                                                         </ListItem>
                                                         {group.search_sessions
                                                             .sort()
+                                                            // .filter((session=>session))
                                                             .map((session) => (
+                                                                !session.event_id &&
                                                                 <ListItem
                                                                     key={
                                                                         session.id
@@ -349,11 +351,10 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
                                                                                 session.id
                                                                             )
                                                                         }
-                                                                    >
-                                                                        Session
-                                                                        id:{" "}
+                                                                        color={session.searched_date ? 'secondary' : 'primary'}
+                                                                    >Session
                                                                         {
-                                                                            session.id
+                                                                            session.searched_date ? ` Started For Date: ${session.searched_date}` : ` Not Started: ID ${session.id}`
                                                                         }
                                                                     </Button>
                                                                 </ListItem>
@@ -365,50 +366,54 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
                             </List>
                         </>
                     )}
-                    <h3>Create A New Group</h3>
-                    <List>
-                        <ListItem
-                            disablePadding
-                            divider
-                            className={classes.root}
-                        >
-                            <Autocomplete
-                                multiple
-                                id="tags-outlined"
-                                options={props.users}
-                                getOptionLabel={(user) => user.name}
-                                defaultValue={[]}
-                                filterSelectedOptions
-                                onChange={getGroupArray}
-                                renderInput={(params) => (
-                                    <TextField
-                                        color="primary"
-                                        {...params}
-                                        label="Search for friends"
-                                        placeholder="Add more..."
+                    {user.role !== 'anonymous' &&
+                        <>
+                            <h3>Create A New Group</h3>
+                            <List>
+                                <ListItem
+                                    disablePadding
+                                    divider
+                                    className={classes.root}
+                                >
+                                    <Autocomplete
+                                        multiple
+                                        id="tags-outlined"
+                                        options={props.users}
+                                        getOptionLabel={(user) => user.name}
+                                        defaultValue={[]}
+                                        filterSelectedOptions
+                                        onChange={getGroupArray}
+                                        renderInput={(params) => (
+                                            <TextField
+                                                color="primary"
+                                                {...params}
+                                                label="Search for friends"
+                                                placeholder="Add more..."
+                                            />
+                                        )}
                                     />
-                                )}
-                            />
-                        </ListItem>
-                        <ListItem className={classes.root}>
-                            <TextField
-                                required
-                                color="primary"
-                                label="Group Name"
-                                onChange={handleGroupName}
-                                value={props.groupName}
-                            />
-                        </ListItem>
-                    </List>
-                    <Button
-                        disabled={!(props.groupName && props.groupMembers.length)}
-                        variant="contained"
-                        onClick={createGroup}
-                    >
-                        {props.groupName && props.groupMembers.length
-                            ? "Create the group and find out WHAT2DO !"
-                            : "Add at least one friend and give the group a name !"}
-                    </Button>
+                                </ListItem>
+                                <ListItem className={classes.root}>
+                                    <TextField
+                                        required
+                                        color="primary"
+                                        label="Group Name"
+                                        onChange={handleGroupName}
+                                        value={props.groupName}
+                                    />
+                                </ListItem>
+                            </List>
+                            <Button
+                                disabled={!(props.groupName && props.groupMembers.length)}
+                                variant="contained"
+                                onClick={createGroup}
+                            >
+                                {props.groupName && props.groupMembers.length
+                                    ? "Create the group and find out WHAT2DO !"
+                                    : "Add at least one friend and give the group a name !"}
+                            </Button>
+                        </>
+                    }
                 </div>
             </Zoom>
         </div>

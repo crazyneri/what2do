@@ -52,7 +52,7 @@ const SearchControls = ({
 
     return (
         <>
-            <Inputs values={values} setValues={setValues} />
+            <Inputs values={values} setValues={setValues} searchSession={searchSession} />
             <DragAndDrop
                 state={state}
                 setState={setState}
@@ -80,7 +80,7 @@ const SearchControls = ({
                     </button>
                 ) : (
                     <p className="btn-search-results btn-search-results--empty">
-                        You must refine your choices before you can search!
+                        You must refine your categories to search!
                     </p>
                 )}
             </div>

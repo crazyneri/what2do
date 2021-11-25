@@ -37,9 +37,7 @@ const App = () => {
 
     const [results, setResults] = useState(null);
 
-    const { city, date, startTime, endTime } = values;
-
-    const [loading, setLoading] = useState(false);
+    const { endTime } = values;
 
     const [users, setUsers] = useState([]);
 
@@ -47,11 +45,13 @@ const App = () => {
 
     const [groupName, setGroupName] = useState('');
 
-    const nonAnonymousSearch = user && user.id !== 0;
+    const nonAnonymousSearch = user && user.role !== 'anonymous';
 
     const [popupOpen, setPopupOpen] = useState(true);
 
     const navigate = useNavigate();
+
+
 
     const updateSession = async () => {
         const sessionData = {
@@ -120,7 +120,7 @@ const App = () => {
 
     useEffect(() => {
         fetchUser();
-    }, []);
+    }, [searchSessionId]);
 
     const startSession = async (group_id) => {
         // setLoading(true)
@@ -185,10 +185,10 @@ const App = () => {
 
             setSearchSessionId(session_id);
 
-            (await user &&
-                user.id === 0 &&
-                session_id === 0 &&
-                startSession(group_id));
+            // (await user &&
+            //     user.id === 0 &&
+            //     session_id === 0 &&
+            //     startSession(group_id));
 
             console.log('navigate?', session, 'user choices', session.user_choices);
 
@@ -208,6 +208,8 @@ const App = () => {
         getSearchSessionDetails();
     }, []);
 
+
+
     // setInterval to dynamically update the session every 5 seconds to show users the session has finished
     // useEffect(() => {
     //     setInterval(async () => {
@@ -221,11 +223,15 @@ const App = () => {
 
     console.log(nonAnonymousSearch);
 
+    useEffect(() => {
+        !nonAnonymousSearch && setPopupOpen(false);
+    }, [])
+
     return (
         // <Router>
         <div className="search-grid">
             <UserContext.Provider value={user}>
-                {nonAnonymousSearch && popupOpen && (
+                {user && popupOpen && (
                     <SoloOrGroupPopup
                         groupId={groupId}
                         setGroupId={setGroupId}
@@ -253,6 +259,8 @@ const App = () => {
                         exact
                         path="/search/results"
                         element={
+
+                            searchSession &&
                             <SearchResults
                                 results={results}
                                 searchSession={searchSession}

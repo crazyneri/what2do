@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index($id)
     {
         $users = User::orderBy('name')->get();
-        if(Auth::user() === null){
+        if (Auth::user() === null) {
             return 'Hello';
         }
         // dd($users);
@@ -119,11 +119,36 @@ class UserController extends Controller
 
     public function anonymousLogin()
     {
-        $user = [
-            'id' => 0,
-            'name' => "Anonymous User",
-            'groups' => [],
+
+        $user = new User;
+        $user->name = 'Anonymous User';
+
+        // $group = new Group;
+        $user->password = password_hash(random_bytes(10), PASSWORD_BCRYPT);
+        $user->role = 'anonymous';
+        $user->save();
+
+        $groupData = [
+            'name' => 'Myself',
+            'owner_id' => $user->id,
         ];
+
+        $group = Group::create($groupData);
+
+        $group->users()->attach($user->id);
+
+        $user->default_group_id = $group->id;
+
+        $user->save();
+
+        $user->load(['groups', 'groups.users', 'groups.search_sessions']);
+
+        // $user = [
+        //     'id' => 0,
+        //     'name' => "Anonymous User",
+        //     'groups' => [],
+        // ];
+
         session(['user' => $user]);
 
         return redirect()->route('search');
