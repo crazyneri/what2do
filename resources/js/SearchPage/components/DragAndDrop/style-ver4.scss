@@ -29,9 +29,9 @@ main {
     margin-top: 0;
     padding: 0;
     display: flex;
+    user-select: none;
     // justify-content: center;
     // align-items: flex-start;
-    // user-select: none;
     // font-family: "Comfortaa", cursive;
 }
 .search-grid {
@@ -342,6 +342,17 @@ button.refine {
     &:nth-child(5) {
         left: 60%;
     }
+}
+
+.close-button {
+    width: 2em;
+    height: 2em;
+    margin: 0.5em;
+    padding: 0.2em;
+    border-radius: 50%;
+    font-size: 0.8em;
+    background-color: $pop-border;
+    color: white;
 }
 
 // h2#refinement-box__title {
