@@ -8,6 +8,7 @@ use App\Models\SearchSession;
 use App\Models\UserChoice;
 use App\Models\Venue;
 use Illuminate\Http\Request;
+use App\Notifications\InvoicePaid;
 
 class UserChoiceController extends Controller
 {
@@ -30,10 +31,34 @@ class UserChoiceController extends Controller
         };
 
         $session_id = $request->input('session_id');
+        $user_id = $request->input('user_id');
+
+        $session = SearchSession::findOrFail($session_id);
+
+        
+
+        $session->load(['group','group.users']);
+
+        // return ['koo' => $session];
+
+        $groupMembers=$session->group->users->filter(function ($member) use ($user_id){
+            return $member->id!==$user_id;
+        });
+
+        // return ['mem' => $groupMembers];
+
+        foreach($groupMembers as $member) {
+             $member->notify(new InvoicePaid($session));
+        };
+
+       
 
         $user_choice = UserChoice::create($userChoicesData);
 
         $user_choices_id = $user_choice->id;
+
+
+        
 
         return $this->handleSearch($session_id, $user_choices_id);
     }
