@@ -31472,10 +31472,15 @@ function CategoryBox(_ref) {
       }, provided.draggableProps), {}, {
         // applied to the component that we want to move
         ref: provided.innerRef,
-        key: index,
-        onClick: showRefinements
+        key: index // onClick={showRefinements}
+
       }, provided.dragHandleProps), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
         children: category.id
+      }), category.parent_id === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        type: "button",
+        onClick: showRefinements,
+        className: "refine",
+        children: "refine"
       }));
     }
   });
@@ -31568,13 +31573,14 @@ function Column(_ref) {
     //         : ''
     // }
     ,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("h2", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
       id: column.columnType === 'sub' && 'refinement-box__title',
-      children: [column.title, column.columnType === 'sub' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-        className: "close-button",
-        onClick: closeSubCats,
-        children: "X"
-      })]
+      children: column.title
+    }), column.columnType === 'sub' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+      type: "button",
+      onClick: closeSubCats,
+      className: "refine close",
+      children: "close"
     }), column.id === 'empty-sub-categories' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_EmptyRefinements__WEBPACK_IMPORTED_MODULE_2__["default"], {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_4__.Droppable, {
       droppableId: column.id,
       type: column.columnType === 'sub' ? 'sub' : 'main',

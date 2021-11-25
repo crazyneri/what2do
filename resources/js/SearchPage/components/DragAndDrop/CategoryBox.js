@@ -69,11 +69,11 @@ export default function CategoryBox({
                     {...provided.draggableProps} // applied to the component that we want to move
                     ref={provided.innerRef}
                     key={index}
-                    onClick={showRefinements}
+                    // onClick={showRefinements}
                     {...provided.dragHandleProps}
                 >
                     <h3>{category.id}</h3>
-                    {/* {category.parent_id === 0 && (
+                    {category.parent_id === 0 && (
                         <button
                             type="button"
                             onClick={showRefinements}
@@ -81,7 +81,7 @@ export default function CategoryBox({
                         >
                             refine
                         </button>
-                    )} */}
+                    )}
                 </div>
             )}
         </Draggable>

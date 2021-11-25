@@ -54,14 +54,14 @@ export default function Column({
         >
             <h2 id={column.columnType === 'sub' && 'refinement-box__title'}>
                 {column.title}
-                {column.columnType === 'sub' && (
+                {/* {column.columnType === 'sub' && (
                     <span className="close-button" onClick={closeSubCats}>
                         X
                     </span>
-                )}
+                )} */}
             </h2>
 
-            {/* {column.columnType === 'sub' && (
+            {column.columnType === 'sub' && (
                 <button
                     type="button"
                     onClick={closeSubCats}
@@ -69,7 +69,7 @@ export default function Column({
                 >
                     close
                 </button>
-            )} */}
+            )}
             {column.id === 'empty-sub-categories' ? (
                 <EmptyRefinements />
             ) : (
