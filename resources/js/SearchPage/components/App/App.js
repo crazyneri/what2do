@@ -37,7 +37,7 @@ const App = () => {
 
     const [results, setResults] = useState(null);
 
-    const { endTime } = values;
+    const { startTime, endTime, city, date } = values;
 
     const [users, setUsers] = useState([]);
 
@@ -58,14 +58,15 @@ const App = () => {
     const updateSession = async () => {
         const sessionData = {
             session_id: searchSessionId,
-            searched_date: values.date,
-            start_time: values.startTime,
+            searched_date: date,
+            start_time: startTime,
             end_time: endTime,
+            city: 'Prague',
         };
         try {
             const response = await post('/session/update', sessionData);
 
-            console.log(response.data);
+            console.log('session updated with data:', response.data);
         } catch (error) {
             console.log(error.response);
         }
@@ -211,6 +212,16 @@ const App = () => {
     }, []);
 
 
+    useEffect(() => {
+        searchSessionId !== 0 && setValues({
+            ...values,
+            city: searchSession.city,
+            date: searchSession.searched_date,
+            start_time: searchSession.start_time,
+            end_time: searchSession.end_time,
+        })
+    }, [searchSession])
+
 
     // setInterval to dynamically update the session every 5 seconds to show users the session has finished
     // useEffect(() => {
@@ -236,7 +247,10 @@ const App = () => {
         // if (searchSessionId === 0) {
         //     setPopupOpen(true)
         // }
-    }, [user, searchSessionId])
+    }, [user, searchSessionId]);
+
+
+
 
     return (
         <div className="search-grid">
