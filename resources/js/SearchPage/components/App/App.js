@@ -45,7 +45,7 @@ const App = () => {
 
     const [groupName, setGroupName] = useState('');
 
-    const nonAnonymousSearch = user && user.role && user.role !== 'anonymous';
+    const nonAnonymousSearch = user && user.role !== 'anonymous';
 
     const [popupOpen, setPopupOpen] = useState(true);
 
@@ -226,14 +226,17 @@ const App = () => {
     console.log(nonAnonymousSearch);
 
     useEffect(() => {
-        if (!nonAnonymousSearch) {
+        if (!nonAnonymousSearch || searchSessionId !== 0) {
             console.log('anonymous, closing popup');
             setPopupOpen(false)
-        };
-        if (searchSessionId === 0) {
+        }
+        else {
             setPopupOpen(true)
         }
-    }, [])
+        // if (searchSessionId === 0) {
+        //     setPopupOpen(true)
+        // }
+    }, [user, searchSessionId])
 
     return (
         <div className="search-grid">
