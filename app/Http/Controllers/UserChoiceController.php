@@ -6,9 +6,8 @@ use App\Models\Event;
 use App\Models\Group;
 use App\Models\SearchSession;
 use App\Models\UserChoice;
-use App\Models\Venue;
-use Illuminate\Http\Request;
 use App\Notifications\InvoicePaid;
+use Illuminate\Http\Request;
 
 class UserChoiceController extends Controller
 {
@@ -35,30 +34,23 @@ class UserChoiceController extends Controller
 
         $session = SearchSession::findOrFail($session_id);
 
-        
-
-        $session->load(['group','group.users']);
+        $session->load(['group', 'group.users']);
 
         // return ['koo' => $session];
 
-        $groupMembers=$session->group->users->filter(function ($member) use ($user_id){
-            return $member->id!==$user_id;
+        $groupMembers = $session->group->users->filter(function ($member) use ($user_id) {
+            return $member->id !== $user_id;
         });
 
         // return ['mem' => $groupMembers];
 
-        foreach($groupMembers as $member) {
-             $member->notify(new InvoicePaid($session));
+        foreach ($groupMembers as $member) {
+            $member->notify(new InvoicePaid($session));
         };
-
-       
 
         $user_choice = UserChoice::create($userChoicesData);
 
         $user_choices_id = $user_choice->id;
-
-
-        
 
         return $this->handleSearch($session_id, $user_choices_id);
     }
@@ -139,20 +131,20 @@ class UserChoiceController extends Controller
     public function findMatch($session_id, $users_completed_number)
     {
         // ** find the search session and matching user_choice tables
-        
+
         $search_session = SearchSession::findOrFail($session_id);
         // return $search_session;
-        
+
         $user_choices = UserChoice::where('session_id', '=', $session_id)
-        ->get(); // $user_choices is an array of individual results
-        
+            ->get(); // $user_choices is an array of individual results
+
         // ** filter the events by the time and date
-        
+
         $possible_events_by_date_time = Event::with('categories')
-        ->where('start_date', '<=', $search_session->searched_date)->where('end_date', '>=', $search_session->searched_date)
-        ->where('start_time', '>=', $search_session->start_time)->where('end_time', '<=', $search_session->end_time)
-        ->get();
-        
+            ->where('start_date', '<=', $search_session->searched_date)->where('end_date', '>=', $search_session->searched_date)
+            ->where('start_time', '>=', $search_session->start_time)->where('end_time', '<=', $search_session->end_time)
+            ->get();
+
         // return $possible_events_by_date_time;
 
         // ** filter days for repeated events hat occur on that day
@@ -190,9 +182,7 @@ class UserChoiceController extends Controller
 
         $group_choices = [];
 
-        
-        if($users_completed_number > 1)
-        {
+        if ($users_completed_number > 1) {
             for ($i = 0; $i < count($user_category_choices); $i++) {
                 foreach ($user_category_choices[$i] as $choice_i) {
                     for ($j = $i + 1; $j < count($user_category_choices); $j++) {
@@ -202,7 +192,7 @@ class UserChoiceController extends Controller
                                 $choice_i['score'] += $user_category_choices[$j][$k]['score'] + 2;
                                 // ** remove the event so it doesn't get recounted
                                 array_splice($user_category_choices[$j], $k, 1);
-    
+
                                 $group_choices[] = $choice_i;
                             }
                         }
@@ -211,8 +201,7 @@ class UserChoiceController extends Controller
             }
         }
 
-        if($users_completed_number == 1)
-        {
+        if ($users_completed_number == 1) {
             $group_choices = $user_category_choices[0];
         }
 
@@ -228,15 +217,15 @@ class UserChoiceController extends Controller
     {
         $search_session = SearchSession::findOrFail($session_id);
         $user_choices = UserChoice::findOrFail($user_choices_id);
-        
+
         $group_info = Group::with('users')
-        ->where('id', '=', $search_session->group_id)
-        ->get();
-        
+            ->where('id', '=', $search_session->group_id)
+            ->get();
+
         $group_info = $group_info[0]->users;
-        
+
         $group_number = count($group_info);
-        
+
         // ** find out how many people have completed this session
         // ** HOW?!
 
@@ -244,8 +233,6 @@ class UserChoiceController extends Controller
             ->get();
         $users_completed_number = count($user_info);
 
-
-        
         // ** If the numbers are the same, run the search.
         // ** If the user is the first (i.e. they set up the search),
         // ** send the others a notifcation to complete their choices.
@@ -269,44 +256,43 @@ class UserChoiceController extends Controller
                 // email and notify the other group members
 
                 $search_session->status = 'started';
-                $search_session->message = "You're the first, now you just need to wait for your friends. You can check the progress of searches on your user page.";
-                $search_session->save();
-                
-                return $search_session;
-            }
-            
-                $search_session->status = 'waiting';
                 $search_session->message = "Thank you for your choices, when everyone has completed the search we'll let you know! You can check the progress of searches on your user page.";
+                $search_session->save();
 
                 return $search_session;
+            }
+
+            $search_session->status = 'waiting';
+            $search_session->message = "Thank you for your choices, when everyone has completed the search we'll let you know! You can check the progress of searches on your user page.";
+
+            return $search_session;
         }
 
         if ($users_completed_number == $group_number) {
             // return $this->findMatch($search_session->id, $users_completed_number);
             $group_choices = $this->findMatch($search_session->id, $users_completed_number);
-            
+
             // ** get winning event
-            if(!empty($group_choices[0]['event_id']))
-            {
+            if (!empty($group_choices[0]['event_id'])) {
                 $event = Event::findOrFail($group_choices[0]['event_id']);
                 // ** add event to search session
                 $search_session->event_id = $group_choices[0]['event_id'];
                 // ** calculate score
-                $max_score = ($group_number*9)+(($group_number-1)*2);
+                $max_score = ($group_number * 9) + (($group_number - 1) * 2);
                 $search_session->score = $group_choices[0]['score'] / $max_score * 100;
-                
+
                 $search_session->status = 'complete';
                 $search_session->message = 'The results are in, have a good one!';
                 $search_session->save();
-               
+
                 return $search_session;
             }
 
-                $search_session->status = 'nothing';
-                $search_session->message = "Sorry, you need to try again - we couldn't find a match this time :(";
-                $search_session->save();
+            $search_session->status = 'nothing';
+            $search_session->message = "Sorry, you need to try again - we couldn't find a match this time :(";
+            $search_session->save();
 
-                return $search_session;
+            return $search_session;
             // return view('search\result', compact('group_choices', 'event'));
             // return ['url' => "/session/{search_session->id}"];
             // return view('search\result', compact('group_choices', 'event'));
