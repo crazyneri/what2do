@@ -51,7 +51,11 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
     const getUsers = async () => {
         const response = await get("/api/users");
 
-        const allUsers = response.data;
+        let object = response.data
+
+        const allUsers = Object.keys(object).map((k) => object[k])
+        console.log('fetching all users:', allUsers);
+
 
         const otherUsers = allUsers.filter((u) => u.id !== user.id);
         props.setUsers(otherUsers);
@@ -59,7 +63,7 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
 
     useEffect(() => {
         getUsers();
-    }, []);
+    }, [user]);
 
     const handleGroupName = (e) => {
         props.setGroupName(e.target.value);
@@ -123,6 +127,7 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
 
             const res_group_id = response.data.group_id;
 
+            console.log('default group created: ', res_group_id);
             const data = {
                 user_id: user.id,
                 default_group_id: res_group_id,
@@ -132,6 +137,8 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
                 "/user/change-default-group",
                 data
             );
+
+            console.log('creating a default group: ', default_group_response);
 
             props.setGroupId(res_group_id);
 
@@ -370,7 +377,7 @@ const SoloOrGroupPopup = forwardRef((props, ref) => {
                             </List>
                         </>
                     )}
-                    {user && user.role && user.role !== 'anonymous' &&
+                    {user && user.role !== 'anonymous' &&
                         <>
                             <h3>Create A New Group</h3>
                             <List>

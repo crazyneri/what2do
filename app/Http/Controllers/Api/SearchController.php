@@ -70,7 +70,6 @@ class SearchController extends Controller
 
             $titleString_sub = ucfirst("{$category->name} categories");
 
-
             $lowerCaseName = strtolower($category->name);
 
             $preferencesString = "{$lowerCaseName}-preferences";
